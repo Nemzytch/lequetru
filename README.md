@@ -12,7 +12,7 @@ Next features :
 
 - Asynchronous functions to detect ennemie, position on map etc.
 
-- Spliting functions in différent files
+- Spliting functions in different files
 
 - Adding chat command features
 
