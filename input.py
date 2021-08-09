@@ -8,9 +8,9 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 class lobby():
     print(' select your port ')
-    port = 49930
+    port = 64942
     print('select your passowrd')
-    password = '_wwNN3bfIyAUTE1S6HUH4w'
+    password = 'iVH2M77v32psMpKFYO8BBA'
     username = 'riot'
     champion = 350
     host = '127.0.0.1'
