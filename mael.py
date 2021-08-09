@@ -1,13 +1,9 @@
 import os
-import sys
-import cv2
 import time
 import json
 import math
 import random
 import win32api
-import keyboard
-import datetime
 import win32con
 import requests
 import pyautogui
@@ -487,7 +483,7 @@ class Personnage:
                 print('level up Q')
             else:
                 print('Nothing To Level Up')
-        print("Yuumi is level "+str(self.YuumiLevel))
+        print("Yuumi is level  "+str(self.YuumiLevel))
 
     def updatePerso(self):
         self.yuumiState = self.datas["activePlayer"]
