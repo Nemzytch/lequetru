@@ -388,21 +388,21 @@ class Personnage:
             else:
                 print('Nothing To Level Up')
         if self.YuumiLevel == 3:
+            if self.QLevel < 2:
+                self.ctrlq()
+                print('level up Q')
+            else:
+                print('Nothing To Level Up')
+        if self.YuumiLevel == 4:
             if self.ELevel < 2:
                 self.ctrle()
                 print('level up E')
             else:
                 print('Nothing To Level Up')
-        if self.YuumiLevel == 4:
-            if self.WLevel < 2:
-                self.ctrlw()
-                print('level up W')
-            else:
-                print('Nothing To Level Up')
         if self.YuumiLevel == 5:
-            if self.ELevel < 3:
-                self.ctrle()
-                print('level up E')
+            if self.QLevel < 3:
+                self.ctrlq()
+                print('level up Q')
             else:
                 print('Nothing To Level Up')
         if self.YuumiLevel == 6:
@@ -412,25 +412,25 @@ class Personnage:
             else:
                 print('Nothing To Level Up')
         if self.YuumiLevel == 7:
-            if self.ELevel < 4:
-                self.ctrle()
-                print('level up E')
+            if self.QLevel < 4:
+                self.ctrlq()
+                print('level up Q')
             else:
                 print('Nothing To Level Up')
         if self.YuumiLevel == 8:
-            if self.WLevel < 3:
+            if self.WLevel < 2:
                 self.ctrlw()
                 print('level up W')
             else:
                 print('Nothing To Level Up')
         if self.YuumiLevel == 9:
-            if self.ELevel < 5:
-                self.ctrle()
-                print('level up E')
+            if self.QLevel < 5:
+                self.ctrlq()
+                print('level up Q')
             else:
                 print('Nothing To Level Up')
         if self.YuumiLevel == 10:
-            if self.WLevel < 4:
+            if self.WLevel < 3:
                 self.ctrlw()
                 print('level up W')
             else:
@@ -442,27 +442,27 @@ class Personnage:
             else:
                 print('Nothing To Level Up')
         if self.YuumiLevel == 12:
+            if self.QLevel < 6:
+                self.ctrlq()
+                print('level up Q')
+            else:
+                print('Nothing To Level Up')
+        if self.YuumiLevel == 13:
+            if self.WLevel < 4:
+                self.ctrlw()
+                print('level up W')
+            else:
+                print('Nothing To Level Up')
+        if self.YuumiLevel == 14:
             if self.WLevel < 5:
                 self.ctrlw()
                 print('level up W')
             else:
                 print('Nothing To Level Up')
-        if self.YuumiLevel == 13:
-            if self.QLevel < 2:
-                self.ctrlq()
-                print('level up Q')
-            else:
-                print('Nothing To Level Up')
-        if self.YuumiLevel == 14:
-            if self.QLevel < 3:
-                self.ctrlq()
-                print('level up Q')
-            else:
-                print('Nothing To Level Up')
         if self.YuumiLevel == 15:
-            if self.QLevel < 4:
-                self.ctrlq()
-                print('level up Q')
+            if self.ELevel < 3:
+                self.ctrle()
+                print('level up E')
             else:
                 print('Nothing To Level Up')
         if self.YuumiLevel == 16:
@@ -472,15 +472,15 @@ class Personnage:
             else:
                 print('Nothing To Level Up')
         if self.YuumiLevel == 17:
-            if self.QLevel < 5:
-                self.ctrlq()
-                print('level up Q')
+            if self.ELevel < 4:
+                self.ctrle()
+                print('level up E')
             else:
                 print('Nothing To Level Up')
         if self.YuumiLevel == 18:
-            if self.QLevel < 6:
-                self.ctrlq()
-                print('level up Q')
+            if self.ELevel < 5:
+                self.ctrle()
+                print('level up E')
             else:
                 print('Nothing To Level Up')
         print("Yuumi is level  "+str(self.YuumiLevel))
