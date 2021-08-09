@@ -180,7 +180,7 @@ class Personnage:
                 if itemInTheSlot != desiredItem:
                     print("intem in the slot "+itemInTheSlot)
                     print("desired item"+desiredItem)
-                    print('Item precedent non complété')
+                    print('Item precedent not completed')
                     pydirectinput.press('p')
                     time.sleep(0.2)
                     pydirectinput.keyDown('ctrl')
@@ -541,7 +541,7 @@ def statuscheck():
         time.sleep(1)
         # print("avant perso")
         perso = Personnage()
-        # print("après perso")
+        # print("apres perso")
     except ConnectionError as ce:
         print("you aren't in game")
 
