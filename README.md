@@ -1,4 +1,4 @@
-# Yumercenary V1.0
+# Yuumercenary V1.0
 
 Actual features:
 Before game :
