@@ -8,9 +8,9 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 class lobby():
     print(' select your port ')
-    port = 49930
+    port = 55269
     print('select your passowrd')
-    password = '_wwNN3bfIyAUTE1S6HUH4w'
+    password = 'wWo5QQ1fmb5Nhf5k7ng36g'
     username = 'riot'
     champion = 350
     host = '127.0.0.1'
@@ -103,12 +103,7 @@ while True:
         if r.status_code != 200:
             continue
 
-    
-
         cs = r.json()
-
-
-
         actorCellId = -1
 
         for member in cs['myTeam']:
@@ -117,23 +112,42 @@ while True:
 
         if actorCellId == -1:
             continue
+        
 
+        
         for action in cs['actions'][0]:
             if action['actorCellId'] != actorCellId:
                 continue
             #pick yuumi
+
+
+        if cs["timer"]["phase"] == "PLANNING":
+            print('planning the game')
             if action['championId'] == 0:
                 url = '/lol-champ-select/v1/session/actions/%d' % action['id']
-                data = {'championId': 350}
-
-                # Pick champion
+                data = {'championId': 22}
+                # Chose champ to ban
                 r = request('patch', url, '', data)
                 print(r.status_code, r.text)
+                # # Ban champ
+                # if action['completed'] == False:
+                #     r = request('post', url+'/complete', '', data)
+                #     print(r.status_code, r.text)
 
-                # Lock champion
-                if action['completed'] == False:
-                    r = request('post', url+'/complete', '', data)
-                    print(r.status_code, r.text)
+
+            # if ['actions'][0]["isInProgress"] == False:
+            #     if action['championId'] == 0:
+            #         url = '/lol-champ-select/v1/session/actions/%d' % action['id']
+            #         data = {'championId': 350}
+            #         # Chose champ to pick
+            #         r = request('patch', url, '', data)
+            #         print(r.status_code, r.text)
+            #         # Lock champ
+            #         if action['completed'] == False:
+            #             r = request('post', url+'/complete', '', data)
+            #             print(r.status_code, r.text)
+
+
 
     elif phase == 'InProgress':
         print('in progress')

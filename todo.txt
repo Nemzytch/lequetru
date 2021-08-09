@@ -1,0 +1,26 @@
+si adc > 85% mana, locate all ennemies on screen if > 2 : send R
+
+et manière générale,locate ennemi après avoir faire un E et sous certaines conditions lancer le R meme si pas encore trop low hp
+
+arpès avoir sleep 7sec pour le retour vers la base, locate ennemies on screen, si > 0 recliquer vers la base
+
+system de grid pour savoir si on a vraiment back à la base
+
+Quand pas attaché, refais un call à l'api pour savoir si vriament pas attaché ? 
+
+Cooldown sur la fonction de back ?
+
+quand ff écrire " i think we can win this "
+
+créer une fonction " 2nd check " qui s'occupera de faire les " eme checks"
+
+( recheckera si attached etc.))
+
+
+
+
+BASE CHECK SSI MANA DIFFERENT DE 100%
+
+
+while loadingt, charger l'image de l'adc, la cropper et la mettre dans la fonction locate on map
+
