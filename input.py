@@ -8,9 +8,9 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 class lobby():
     print(' select your port ')
-    port = 60520
+    port = 49930
     print('select your passowrd')
-    password = 'Bd_kgxjsD_4yoVOMpyBrpA'
+    password = '_wwNN3bfIyAUTE1S6HUH4w'
     username = 'riot'
     champion = 350
     host = '127.0.0.1'
@@ -87,9 +87,9 @@ while True:
 
     if phase =='Lobby':
         print('need to pick lanes')
-        r = request('put', '/lol-lobby/v2/lobby/members/localMember/position-preferences', data ={"firstPreference": "utility","secondPreference":"middle",})
-
-
+        r = request('put', '/lol-lobby/v2/lobby/members/localMember/position-preferences', data ={"firstPreference": "UTILITY","secondPreference":"MIDDLE",})
+        sleep(2)
+        r = request('post', '/lol-lobby/v2/lobby/matchmaking/search')
     if phase != 'ChampSelect':
         championIdx = 0
 
