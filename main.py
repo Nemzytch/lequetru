@@ -1,6 +1,6 @@
 import splitimport
 
-requests.packages.urllib3.disable_warnings(InsecureRequestWarning) #( ´･ω･)人(・ω・｀ )   
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning) #   
 os.system("")
 
 def fetchDatas():
@@ -8,7 +8,7 @@ def fetchDatas():
     return json.loads(response)
 
 class Personnage:
-    # Yuumi   ( ´･ω･)人(・ω・｀ )  
+    # Yuumi     
     team = None
     index = None
     yuumiState = None
@@ -37,7 +37,7 @@ class Personnage:
     atHome = None
     ultimateCooldown = 1
 
-    # Taxi    ( ´･ω･)人(・ω・｀ )  
+    # Taxi      
     toplanerTimer = None
     adcDead = None
     adcIndex = None
@@ -45,7 +45,7 @@ class Personnage:
     adcName = None
 
 
-    # GENERIC FUNCTIONS    ( ´･ω･)人(・ω・｀ )   
+    # GENERIC FUNCTIONS       
     def setup(self):                    
         self.updateDatas()
         i=0
@@ -255,7 +255,7 @@ class Personnage:
             time.sleep(0.5)
 
 
-    # UPDATES         ( ´･ω･)人(・ω・｀ )    
+    # UPDATES             
 
     def updatePosition(self):
         self.position = [self.datas.posX, self.datas.posY]
@@ -488,7 +488,7 @@ class Personnage:
 
 
 
-#         ( ´･ω･)人(・ω・｀ )    
+#             
 
         self.action()
 
