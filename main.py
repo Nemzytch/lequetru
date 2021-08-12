@@ -64,6 +64,10 @@ class Personnage:
     resourceMax = None
     atHome = None
     ultimateCooldown = 1
+    qspellCooldown = 1
+    ennemy = None
+    backCooldown = 1
+    healCooldown = 1
 
     # Taxi     
     toplanerTimer = None
@@ -162,15 +166,6 @@ class Personnage:
     #     else:
     #         print('cant heal yet')
 
-    def checkHeal(self):
-        screen=pyscreeze.screenshot()
-        eCast=screen.getpixel((1041,1000))
-        if eCast[1] > 248:
-            print('adc needs healing')
-            pydirectinput.press('f')
-        else:
-            print('cant heal yet')
-
 
     def cameraLock(self):
         camera = pyautogui.locateOnScreen("images/camera.png", grayscale=False,confidence=0.90)
@@ -239,8 +234,6 @@ class Personnage:
                     self.updateDatas()
                     self.updatePerso()     
 
-
-
             if self.adcDead == False:
                 if self.attached == False:
                     print('going to adc')
@@ -253,9 +246,8 @@ class Personnage:
                 self.hpCheck()
                 if self.carryHP<40:
                     print(' Mon adc a '+str(self.carryHP)+'%HP')
-                    self.checkHeal()
-                    print('sendingheal')
-                    # self.manacheckR()
+                    if time.time()> (self.healCooldown+240):
+                        pydirectinput.press('f')
                     self.ultimateCast()
                     print('send R')
                     self.manacheckE()
@@ -264,6 +256,14 @@ class Personnage:
                     print(' Mon adc a '+str(self.carryHP)+'%HP')
                     self.manacheckE()
                     print('Healed ADC')
+
+                if self.carryHP>85:
+                    if time.time() > (self.qspellCooldown+30):
+                        ennemy = pyautogui.locateOnScreen("images/1.png", grayscale=False,confidence=0.90)
+                        if ennemy!=None:
+                            self.qSpell()
+                            self.qspellCooldown = time.time()
+
                 if self.yuumiMana < (15*(self.resourceMax)/100):
                     print('you got '+ str(self.yuumiMana))
                     self.procPassive()
@@ -273,16 +273,40 @@ class Personnage:
             
 
             if self.adcDead == True:
-                pyautogui.moveTo(self.BaseX,self.BaseY)
-                print('adc is not alive')
-                win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTDOWN, 0,0)
-                time.sleep(0.2)
-                win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTUP, 0,0)
-                print('going back to base')
-                time.sleep(5)
-                pydirectinput.press('b')
-                time.sleep(9)
-                self.shop()
+
+                allies = pyautogui.locateOnScreen("images/1.png", grayscale=False,confidence=0.90)
+                if allies!=None:
+                    print('found an ally, going to him ')
+                    pyautogui.moveTo(allies[0]+40,allies[1]+70)
+                    pydirectinput.press('w')
+                    self.manacheckE()
+                    time.sleep(5)
+                    self.manacheckE()
+                    time.sleep(3)
+                    pydirectinput.press('w')
+                    pyautogui.moveTo(self.BaseX,self.BaseY)
+                    print('adc is not alive')
+                    win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTDOWN, 0,0)
+                    time.sleep(0.2)
+                    win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTUP, 0,0)
+                    print('going back to base')
+                    time.sleep(5)
+                    pydirectinput.press('b')
+                    time.sleep(9)
+                    self.shop()
+            
+                else:
+                    if time.time()> (self.backCooldown+50):
+                        pyautogui.moveTo(self.BaseX,self.BaseY)
+                        print('adc is not alive')
+                        win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTDOWN, 0,0)
+                        time.sleep(0.2)
+                        win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTUP, 0,0)
+                        print('going back to base')
+                        time.sleep(5)
+                        pydirectinput.press('b')
+                        time.sleep(9)
+                        self.shop()
 
             # sleep(randrange([0.3, 0.7]))
             time.sleep(0.5)
@@ -351,6 +375,41 @@ class Personnage:
             print('Not at Home')
 
 
+    def qSpell(self):
+        x =0
+        minx = 1150
+        miny = 100
+        for pos in pyautogui.locateAllOnScreen('images/minions.png'):
+            x = x+1
+            posx = pos[0]
+            posy = pos[1]
+            if pos[0] < minx:
+                minx = pos[0]
+            if pos[1] < miny:
+                miny = pos[1]
+            # print(pos)
+            if pos[0] == None:
+                print('no minions')
+            print('les coordonees du minion'+str(x)+' sont: x'+str(posx)+' y'+str(posy))
+        
+
+        print('le plus petit x vaut'+ str(minx) )
+        print('le minions le plus haut se situe à '+ str(miny))
+
+        offsetx = minx -100
+        offsety = miny -40
+        pydirectinput.press('y') 
+        pyautogui.moveTo(offsetx, offsety)
+        pydirectinput.press('q') 
+        try:
+            ennemy = pyautogui.locateOnScreen("images/1.png", confidence=0.95)
+            time.sleep(0.3)
+            pyautogui.moveTo(ennemy[0]+40,ennemy[1]+70)
+            print('hello')
+        except TypeError:
+            print('failed q spell')
+        pydirectinput.press('y')  
+
     def ultimateCast(self):
         if time.time() > (self.ultimateCooldown +70):
             try:
@@ -364,8 +423,6 @@ class Personnage:
                 pyautogui.moveTo(self.BaseX,self.BaseY)
                 pydirectinput.press('r')
                 self.ultimateCooldown = time.time()
-
-
 
 
     def procPassive(self) : 
@@ -530,9 +587,9 @@ class Personnage:
 
 class lobby():
     print(' select your port ')
-    port = 62025
+    port = 58152
     print('select your passowrd')
-    password = '9r9mmHt7nE6bzLQRK1W4bw'
+    password = '2ehR3LwHyn8SilA0qZmv6Q'
     username = 'riot'
     champion = 350
     host = '127.0.0.1'
@@ -630,7 +687,15 @@ def statuscheck():
             continue
         print(Back.BLACK + Fore.GREEN + str(r.status_code) + Style.RESET_ALL, r.text)
 
+        if phase =='PreEndOfGame':
+            pyautogui.click(900,500)
+
         phase = r.json()
+        if phase =='EndOfGame':
+            time.sleep(2)
+            print('thanking the mates and going next')
+            playAgain = pyautogui.locateOnScreen("images/playagian.JPG", confidence=0.90)
+            pyautogui.click(playAgain)
 
         if phase =='None':
             print('need to create lobby')
