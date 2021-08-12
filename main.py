@@ -19,6 +19,14 @@ from requests.exceptions import HTTPError
 from requests.exceptions import ConnectionError
 from requests.packages.urllib3.util.retry import Retry
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
+import requests
+import urllib3
+import json
+from base64 import b64encode
+from time import sleep
+from colorama import Fore, Back, Style
+import pyautogui
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning) #  
 os.system("")
@@ -225,12 +233,17 @@ class Personnage:
             self.updatePerso()
             self.LevelUP()
 
+            if self.adcDead == False:
+                if self.attached == False:
+                    self.baseCheck()
+                    self.updateDatas()
+                    self.updatePerso()     
+
+
 
             if self.adcDead == False:
                 if self.attached == False:
-                    print(' adc is alive')
-                    print('i am not attached ')
-                    self.baseCheck()          
+                    print('going to adc')
                     pyautogui.click(1861,603)                    
                     pydirectinput.press('w')  
                     print('goin to adc')
@@ -515,26 +528,35 @@ class Personnage:
     def action(self):
         return False
 
+class lobby():
+    print(' select your port ')
+    port = 62025
+    print('select your passowrd')
+    password = '9r9mmHt7nE6bzLQRK1W4bw'
+    username = 'riot'
+    champion = 350
+    host = '127.0.0.1'
+    protocol = 'https'
 
 def statuscheck():
-    roleselect = pyautogui.locateOnScreen("images/roleselect.jpg", grayscale=False,confidence=0.80)
-    role1selected = pyautogui.locateOnScreen("images/role1selected.jpg", grayscale=False,confidence=0.8)
-    role2selected = pyautogui.locateOnScreen("images/role2selected.jpg", grayscale=False,confidence=0.8)
-    mainmenu = pyautogui.locateOnScreen("images/mainmenu.jpg", grayscale=False,confidence=0.80)
-    queueselect = pyautogui.locateOnScreen("images/queueselect.jpg", grayscale=False,confidence=0.95)
-    queueselected = pyautogui.locateOnScreen("images/queueselected.jpg", grayscale=True,confidence=0.99)
-    lowpriority = pyautogui.locateOnScreen("images/lowpriority.jpg", grayscale=False,confidence=0.9)
-    confirm= pyautogui.locateOnScreen("images/confirm.jpg", grayscale=False,confidence=0.9)
-    banchamp= pyautogui.locateOnScreen("images/banchamp.jpg", grayscale=False,confidence=0.9)
-    inqueue = pyautogui.locateOnScreen("images/inqueue.jpg", grayscale=False,confidence=0.8)
-    choseloadout = pyautogui.locateOnScreen("images/choseloadout.jpg", grayscale=False,confidence=0.8)
-    acceptqueue = pyautogui.locateOnScreen("images/acceptqueue.png", grayscale=False,confidence=0.8)
-    matchfound = pyautogui.locateOnScreen("images/matchfound.png", grayscale=False,confidence=0.8)
+    # roleselect = pyautogui.locateOnScreen("images/roleselect.jpg", grayscale=False,confidence=0.80)
+    # role1selected = pyautogui.locateOnScreen("images/role1selected.jpg", grayscale=False,confidence=0.8)
+    # role2selected = pyautogui.locateOnScreen("images/role2selected.jpg", grayscale=False,confidence=0.8)
+    # mainmenu = pyautogui.locateOnScreen("images/mainmenu.jpg", grayscale=False,confidence=0.80)
+    # queueselect = pyautogui.locateOnScreen("images/queueselect.jpg", grayscale=False,confidence=0.95)
+    # queueselected = pyautogui.locateOnScreen("images/queueselected.jpg", grayscale=True,confidence=0.99)
+    # lowpriority = pyautogui.locateOnScreen("images/lowpriority.jpg", grayscale=False,confidence=0.9)
+    # confirm= pyautogui.locateOnScreen("images/confirm.jpg", grayscale=False,confidence=0.9)
+    # banchamp= pyautogui.locateOnScreen("images/banchamp.jpg", grayscale=False,confidence=0.9)
+    # inqueue = pyautogui.locateOnScreen("images/inqueue.jpg", grayscale=False,confidence=0.8)
+    # choseloadout = pyautogui.locateOnScreen("images/choseloadout.jpg", grayscale=False,confidence=0.8)
+    # acceptqueue = pyautogui.locateOnScreen("images/acceptqueue.png", grayscale=False,confidence=0.8)
+    # matchfound = pyautogui.locateOnScreen("images/matchfound.png", grayscale=False,confidence=0.8)
     Riot_adapter = HTTPAdapter(max_retries=1)   
     session = requests.Session()
     session.mount('https://127.0.0.1:2999/liveclientdata/allgamedata', Riot_adapter)
 
-
+    print('status check')
     try:
         session.get('https://127.0.0.1:2999/liveclientdata/allgamedata', verify = False)
         print("Avant Chargement")
@@ -545,110 +567,135 @@ def statuscheck():
     except ConnectionError as ce:
         print("you aren't in game")
 
-    if acceptqueue != None:
-        print('matchfound')
-        acceptqueue = pyautogui.locateOnScreen("images/acceptqueue.png", grayscale=False,confidence=0.8)
-        print('accepting the queue')
-        pyautogui.click(acceptqueue[0],acceptqueue[1])
-        time.sleep(5)
-        statuscheck()
 
-    if choseloadout!= None:
-        print('champion picked, waiting game to start')
 
-    DeclareUrChamp = pyautogui.locateOnScreen("images/DeclareUrChamp.png", grayscale=False,confidence=0.90)
-    if DeclareUrChamp != None:
+    print(' connecting to port '+str(lobby.port)+' with the password' +str(lobby.password)+ ' we will lock champ #'+ str(lobby.champion))
 
-        print('Time to declare your champion')
-        
-        SearchChamp = pyautogui.locateOnScreen("images/search.png", grayscale=False,confidence=0.90)
-        if SearchChamp != None:
+    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-            pyautogui.click(SearchChamp[0],SearchChamp[1])
-            print("I am going to search Yuumi")
-            pyautogui.write('Yuumi', interval=0.25)
-            Yuumy = pyautogui.locateOnScreen("images/FaceDeYuumi.png", grayscale=False,confidence=0.90)
-
-            if Yuumy[0] != None:
-                pyautogui.click(Yuumy[0],Yuumy[1])
-    
-    PhaseDeBan = pyautogui.locateOnScreen("images/PhaseDeBan.png", grayscale=False,confidence=0.90)
-    if PhaseDeBan != None:
-        print("Time to ban some champs")
-        SearchChamp = pyautogui.locateOnScreen("images/search.png", grayscale=False,confidence=0.90)
-        pyautogui.click(SearchChamp[0],SearchChamp[1])
-        pyautogui.write('Alistar', interval=0.25)
-        Alistar = pyautogui.locateOnScreen("images/FaceDeAlistar.png", grayscale=False,confidence=0.90)
-        Bannissement = pyautogui.locateOnScreen("images/Bannissement.jpg", grayscale=False,confidence=0.70)
-
-        if Alistar != None:
-            pyautogui.click(Alistar[0],Alistar[1])
-            time.sleep(3)
-            if Bannissement != None:
-                pyautogui.click(Bannissement[0],Bannissement[1])
-            else: 
-                print("cant find ban button")
-
-    Lockin = pyautogui.locateOnScreen("images/Lockin.jpg", grayscale=False,confidence=0.70)
-    if Lockin != None:
-        pyautogui.click(Lockin[0],Lockin[1])
-        print("Champion Lock Nigga !")
-    Fleche = pyautogui.locateOnScreen("images/Fleche.jpg", grayscale=False,confidence=0.70)
-    if Fleche != None:
-        if Fleche[0] != -1:
-            pyautogui.click(Fleche[0], Fleche[1])
-
-            print('Yesss')
-
-    PlayAgain = pyautogui.locateOnScreen("images/PlayAgain.jpg", grayscale=False,confidence=0.70)
-    if PlayAgain != None:
-        if PlayAgain[0] != -1:
-            pyautogui.click(PlayAgain[0], PlayAgain[1])
-
-            print('Go Another game')
-
-    elif mainmenu !=None:
-        print('main menu ')
-        pyautogui.click(mainmenu[0], mainmenu[1])
-    elif lowpriority !=None:
-        print('you are in lowpriority queue, be patient')
-    elif inqueue !=None:
-        print('you are in queue')
-    elif role2selected !=None:
-        print('selected 2nd role, launch queue')
-        findmatch = pyautogui.locateOnScreen("images/findmatch.jpg", grayscale=False,confidence=0.80)
-        if findmatch!=None:
-            pyautogui.click(findmatch[0],findmatch[1])
+    # Helper function
+    def request(method, path, query='', data=''):
+        if not query:
+            url = '%s://%s:%s%s' % (lobby.protocol, lobby.host, lobby.port, path)
         else:
-            print('Cant start queue yet')
-    elif role1selected !=None:
-        print('selected first role, need 2nd')
-        win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0,0)
-        time.sleep(0.2)
-        win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0,0)
-        time.sleep(3)
-        mid = pyautogui.locateOnScreen("images/mid.jpg", grayscale=False,confidence=0.80)
-        pyautogui.click(mid[0],mid[1])
-    elif roleselect !=None:
-        print('need to select 1st role')
-        pyautogui.click(roleselect[0],roleselect[1])
-        time.sleep(2)
-        support = pyautogui.locateOnScreen("images/support.jpg", grayscale=False,confidence=0.80)
-        pyautogui.click(support[0],support[1])
+            url = '%s://%s:%s%s?%s' % (lobby.protocol, lobby.host, lobby.port, path, query)
+
+        print('%s %s %s' % (method.upper().ljust(7, ' '), url, data))
+
+        fn = getattr(s, method)
+
+        if not data:
+            r = fn(url, verify=False, headers=headers)
+        else:
+            r = fn(url, verify=False, headers=headers, json=data)
+
+        return r
 
 
-    elif queueselected !=None:
-        print('queue selected, starting queue')
-        pyautogui.click(confirm[0],confirm[1])
 
-    elif queueselect !=None:
-        print('selecting queue')
-        pyautogui.click(queueselect[0], queueselect[1])
+    userpass = b64encode(bytes('%s:%s' % (lobby.username, lobby.password), 'utf-8')).decode('ascii')
+    headers = { 'Authorization': 'Basic %s' % userpass }
+    print(headers['Authorization'])
 
-    
-    else:
-        print('i dont know where you at')
-    statuscheck()
+    # Create Request session
+    s = requests.session()
+
+
+
+    # while True:
+    #     sleep(1)
+    #     r = request('get', '/lol-login/v1/session')
+
+    #     if r.status_code != 200:
+    #         print(r.status_code)
+    #         continue
+
+    #     # Login completed, now we can get data
+    #     if r.json()['state'] == 'SUCCEEDED':
+    #         break
+    #     else:
+    #         print(r.json()['state'])
+
+    # summonerId = r.json()['summonerId']
+
+
+    # # Main worker loop
+
+
+    while True:
+        r = request('get', '/lol-gameflow/v1/gameflow-phase')
+
+        if r.status_code != 200:
+            print(Back.BLACK + Fore.RED + str(r.status_code) + Style.RESET_ALL, r.text)
+            continue
+        print(Back.BLACK + Fore.GREEN + str(r.status_code) + Style.RESET_ALL, r.text)
+
+        phase = r.json()
+
+        if phase =='None':
+            print('need to create lobby')
+            r =request('post','/lol-lobby/v2/lobby',data={"queueId": 420})
+
+        if phase =='Lobby':
+            print('need to pick lanes')
+            r = request('put', '/lol-lobby/v2/lobby/members/localMember/position-preferences', data ={"firstPreference": "UTILITY","secondPreference":"MIDDLE",})
+            sleep(2)
+            r = request('post', '/lol-lobby/v2/lobby/matchmaking/search')
+        if phase != 'ChampSelect':
+            championIdx = 0
+
+        # Auto accept match
+        if phase == 'ReadyCheck':
+            r = request('post', '/lol-matchmaking/v1/ready-check/accept') 
+
+        # Pick/lock champion
+        elif phase == 'ChampSelect':
+            r = request('get', '/lol-champ-select/v1/session')
+            if r.status_code != 200:
+                continue
+
+            cs = r.json()
+            if cs["timer"]["phase"] == "PLANNING":
+                print('Looking to prepick yuumi')
+                SearchChamp = pyautogui.locateOnScreen("images/search.png", grayscale=False,confidence=0.90)
+                if SearchChamp != None:
+                    pyautogui.click(SearchChamp[0],SearchChamp[1])
+                    print("I am going to search Yuumi")
+                    pyautogui.write('Yuumi', interval=0.25)
+                    Yuumy = pyautogui.locateOnScreen("images/FaceDeYuumi.png", grayscale=False,confidence=0.90)
+                    if Yuumy[0] != None:
+                        pyautogui.click(Yuumy[0],Yuumy[1])
+
+            banchamp= pyautogui.locateOnScreen("images/banchamp.jpg", grayscale=False,confidence=0.9)
+            PhaseDeBan = pyautogui.locateOnScreen("images/PhaseDeBan.png", grayscale=False,confidence=0.90)
+            if PhaseDeBan != None:
+                print("Time to ban some champs")
+                SearchChamp = pyautogui.locateOnScreen("images/search.png", grayscale=False,confidence=0.90)
+                pyautogui.click(SearchChamp[0],SearchChamp[1])
+                pyautogui.write('Alistar', interval=0.25)
+                Alistar = pyautogui.locateOnScreen("images/FaceDeAlistar.png", grayscale=False,confidence=0.90)
+                Bannissement = pyautogui.locateOnScreen("images/Bannissement.jpg", grayscale=False,confidence=0.70)
+
+                if Alistar != None:
+                    pyautogui.click(Alistar[0],Alistar[1])
+                    sleep(3)
+                    if Bannissement != None:
+                        pyautogui.click(Bannissement[0],Bannissement[1])
+                    else: 
+                        print("cant find ban button")
+
+            Lockin = pyautogui.locateOnScreen("images/Lockin.jpg", grayscale=False,confidence=0.70)
+            if Lockin != None:
+                pyautogui.click(Lockin[0],Lockin[1])
+                print("Champion Lock bro!")
+
+        elif phase == 'InProgress':
+            print('in progress')
+            statuscheck()
+        else:
+                sleep(1)
+
+        sleep(0.5)
 
 
 def main():

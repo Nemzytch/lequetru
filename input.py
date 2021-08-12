@@ -4,20 +4,21 @@ import json
 from base64 import b64encode
 from time import sleep
 from colorama import Fore, Back, Style
+import pyautogui
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
 
 class lobby():
     print(' select your port ')
-    port = 55269
+    port = 58953
     print('select your passowrd')
-    password = 'wWo5QQ1fmb5Nhf5k7ng36g'
+    password = 'gAs3BsxuScBMFb1impMrgg'
     username = 'riot'
     champion = 350
     host = '127.0.0.1'
     protocol = 'https'
 
 print(' connecting to port '+str(lobby.port)+' with the password' +str(lobby.password)+ ' we will lock champ #'+ str(lobby.champion))
-
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -29,7 +30,6 @@ def request(method, path, query='', data=''):
         url = '%s://%s:%s%s?%s' % (lobby.protocol, lobby.host, lobby.port, path, query)
 
     print('%s %s %s' % (method.upper().ljust(7, ' '), url, data))
-
 
     fn = getattr(s, method)
 
@@ -51,24 +51,24 @@ s = requests.session()
 
 
 
-while True:
-    sleep(1)
-    r = request('get', '/lol-login/v1/session')
+# while True:
+#     sleep(1)
+#     r = request('get', '/lol-login/v1/session')
 
-    if r.status_code != 200:
-        print(r.status_code)
-        continue
+#     if r.status_code != 200:
+#         print(r.status_code)
+#         continue
 
-    # Login completed, now we can get data
-    if r.json()['state'] == 'SUCCEEDED':
-        break
-    else:
-        print(r.json()['state'])
+#     # Login completed, now we can get data
+#     if r.json()['state'] == 'SUCCEEDED':
+#         break
+#     else:
+#         print(r.json()['state'])
 
-summonerId = r.json()['summonerId']
+# summonerId = r.json()['summonerId']
 
 
-# Main worker loop
+# # Main worker loop
 
 
 while True:
@@ -104,57 +104,43 @@ while True:
             continue
 
         cs = r.json()
-        actorCellId = -1
-
-        for member in cs['myTeam']:
-            if member['summonerId'] == summonerId:
-                actorCellId = member['cellId']
-
-        if actorCellId == -1:
-            continue
-        
-
-        
-        for action in cs['actions'][0]:
-            if action['actorCellId'] != actorCellId:
-                continue
-            #pick yuumi
-
-
         if cs["timer"]["phase"] == "PLANNING":
-            print('planning the game')
-            if action['championId'] == 0:
-                url = '/lol-champ-select/v1/session/actions/%d' % action['id']
-                data = {'championId': 22}
-                # Chose champ to ban
-                r = request('patch', url, '', data)
-                print(r.status_code, r.text)
-                # # Ban champ
-                # if action['completed'] == False:
-                #     r = request('post', url+'/complete', '', data)
-                #     print(r.status_code, r.text)
+            print('Looking to prepick yuumi')
+            SearchChamp = pyautogui.locateOnScreen("images/search.png", grayscale=False,confidence=0.90)
+            if SearchChamp != None:
+                pyautogui.click(SearchChamp[0],SearchChamp[1])
+                print("I am going to search Yuumi")
+                pyautogui.write('Yuumi', interval=0.25)
+                Yuumy = pyautogui.locateOnScreen("images/FaceDeYuumi.png", grayscale=False,confidence=0.90)
+                if Yuumy[0] != None:
+                    pyautogui.click(Yuumy[0],Yuumy[1])
 
+        banchamp= pyautogui.locateOnScreen("images/banchamp.jpg", grayscale=False,confidence=0.9)
+        PhaseDeBan = pyautogui.locateOnScreen("images/PhaseDeBan.png", grayscale=False,confidence=0.90)
+        if PhaseDeBan != None:
+            print("Time to ban some champs")
+            SearchChamp = pyautogui.locateOnScreen("images/search.png", grayscale=False,confidence=0.90)
+            pyautogui.click(SearchChamp[0],SearchChamp[1])
+            pyautogui.write('Alistar', interval=0.25)
+            Alistar = pyautogui.locateOnScreen("images/FaceDeAlistar.png", grayscale=False,confidence=0.90)
+            Bannissement = pyautogui.locateOnScreen("images/Bannissement.jpg", grayscale=False,confidence=0.70)
 
-            # if ['actions'][0]["isInProgress"] == False:
-            #     if action['championId'] == 0:
-            #         url = '/lol-champ-select/v1/session/actions/%d' % action['id']
-            #         data = {'championId': 350}
-            #         # Chose champ to pick
-            #         r = request('patch', url, '', data)
-            #         print(r.status_code, r.text)
-            #         # Lock champ
-            #         if action['completed'] == False:
-            #             r = request('post', url+'/complete', '', data)
-            #             print(r.status_code, r.text)
+            if Alistar != None:
+                pyautogui.click(Alistar[0],Alistar[1])
+                sleep(3)
+                if Bannissement != None:
+                    pyautogui.click(Bannissement[0],Bannissement[1])
+                else: 
+                    print("cant find ban button")
 
-
+        Lockin = pyautogui.locateOnScreen("images/Lockin.jpg", grayscale=False,confidence=0.70)
+        if Lockin != None:
+            pyautogui.click(Lockin[0],Lockin[1])
+            print("Champion Lock bro!")
 
     elif phase == 'InProgress':
         print('in progress')
     else:
-            sleep(3)
-
-
+            sleep(1)
 
     sleep(0.5)
-
