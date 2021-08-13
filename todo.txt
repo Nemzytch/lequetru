@@ -16,11 +16,26 @@ créer une fonction " 2nd check " qui s'occupera de faire les " eme checks"
 
 ( recheckera si attached etc.))
 
-
-
-
 BASE CHECK SSI MANA DIFFERENT DE 100%
 
 
 while loadingt, charger l'image de l'adc, la cropper et la mettre dans la fonction locate on map
 
+
+levelup:  [None,E,Q,W,E,Q,Q]
+
+for yuumilevel in eoaihzoefih :
+	if yuumilevel[level] != levelup[yuumilevel]
+	levelup(levelup[yuumilevel])
+
+text func :
+Champ select :-  hello team
+- me new to game, so be cool with me
+
+cooldown for base func ( 30 sec )
+
+check la différence de gold pour savoir si on a touché le q spell
+
+meme raisonnemnt pour le R
+
+ping cd du R si 3 ennemis mais en cd

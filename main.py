@@ -26,10 +26,18 @@ from base64 import b64encode
 from time import sleep
 from colorama import Fore, Back, Style
 import pyautogui
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning) #  
+
+gamedirs = [r'C:\Games\Garena\32787\LeagueClient',
+            r'D:\Games\League of Legends']
+
+
 os.system("")
+
+
+
 
 def fetchDatas():
     response = requests.get("https://127.0.0.1:2999/liveclientdata/allgamedata", verify = False).text
@@ -68,6 +76,8 @@ class Personnage:
     ennemy = None
     backCooldown = 1
     healCooldown = 1
+    qX = 1
+    qY = 1
 
     # Taxi     
     toplanerTimer = None
@@ -106,11 +116,15 @@ class Personnage:
                     self.Team = 'Blue'
                     self.BaseX = 1539
                     self.BaseY = 1042
+                    self.qX = 1250
+                    self.qY = 100
                     print(self.Team)
                 if team ==2:
                     self.team = 'Red'
                     self.BaseX = 1888
                     self.BaseY = 691
+                    self.qX = 450
+                    self.qY = 350
                     print(self.Team)
                 else:
                     print(str(i))
@@ -156,15 +170,6 @@ class Personnage:
         else:
             print('cant heal yet')
 
-
-    # def manacheckR(self):
-    #     screen=pyscreeze.screenshot()
-    #     eCast=screen.getpixel((953,1001))
-    #     if eCast[0] > 250:
-    #         print('adc needs healing')
-    #         pydirectinput.press('r')
-    #     else:
-    #         print('cant heal yet')
 
 
     def cameraLock(self):
@@ -258,7 +263,7 @@ class Personnage:
                     print('Healed ADC')
 
                 if self.carryHP>85:
-                    if time.time() > (self.qspellCooldown+30):
+                    if time.time() > (self.qspellCooldown+25):
                         ennemy = pyautogui.locateOnScreen("images/1.png", grayscale=False,confidence=0.90)
                         if ennemy!=None:
                             self.qSpell()
@@ -274,7 +279,7 @@ class Personnage:
 
             if self.adcDead == True:
 
-                allies = pyautogui.locateOnScreen("images/1.png", grayscale=False,confidence=0.90)
+                allies = pyautogui.locateOnScreen("images/ally.png", grayscale=False,confidence=0.90)
                 if allies!=None:
                     print('found an ally, going to him ')
                     pyautogui.moveTo(allies[0]+40,allies[1]+70)
@@ -294,6 +299,7 @@ class Personnage:
                     pydirectinput.press('b')
                     time.sleep(9)
                     self.shop()
+                    self.backCooldown = time.time()
             
                 else:
                     if time.time()> (self.backCooldown+50):
@@ -307,6 +313,7 @@ class Personnage:
                         pydirectinput.press('b')
                         time.sleep(9)
                         self.shop()
+                        self.backCooldown = time.time()
 
             # sleep(randrange([0.3, 0.7]))
             time.sleep(0.5)
@@ -356,7 +363,7 @@ class Personnage:
     def baseCheck(self):
         ManaPrecedent = self.yuumiMana
         print("You got "+ str(ManaPrecedent))
-        time.sleep(2)
+        time.sleep(5)
 
         response = requests.get("https://127.0.0.1:2999/liveclientdata/allgamedata", verify = False).text
         datas = json.loads(response)
@@ -370,6 +377,7 @@ class Personnage:
             #open shop()
             print('At Home')
             self.shop()
+            time.sleep(3)
 
         else:
             print('Not at Home')
@@ -377,28 +385,26 @@ class Personnage:
 
     def qSpell(self):
         x =0
-        minx = 1150
-        miny = 100
         for pos in pyautogui.locateAllOnScreen('images/minions.png'):
             x = x+1
             posx = pos[0]
             posy = pos[1]
-            if pos[0] < minx:
-                minx = pos[0]
-            if pos[1] < miny:
-                miny = pos[1]
+            if pos[0] < self.qX:
+                self.qX = pos[0]
+            if pos[1] < self.qY:
+                self.qY = pos[1]
             # print(pos)
             if pos[0] == None:
                 print('no minions')
             print('les coordonees du minion'+str(x)+' sont: x'+str(posx)+' y'+str(posy))
         
 
-        print('le plus petit x vaut'+ str(minx) )
-        print('le minions le plus haut se situe à '+ str(miny))
+        print('le plus petit x vaut'+ str(self.qX) )
+        print('le minions le plus haut se situe à '+ str(self.qY))
 
-        offsetx = minx -100
-        offsety = miny -40
-        pydirectinput.press('y') 
+        offsetx = self.qX -100
+        offsety = self.qY -40
+        # pydirectinput.press('y') 
         pyautogui.moveTo(offsetx, offsety)
         pydirectinput.press('q') 
         try:
@@ -408,7 +414,7 @@ class Personnage:
             print('hello')
         except TypeError:
             print('failed q spell')
-        pydirectinput.press('y')  
+        # pydirectinput.press('y')  
 
     def ultimateCast(self):
         if time.time() > (self.ultimateCooldown +70):
@@ -426,7 +432,7 @@ class Personnage:
 
 
     def procPassive(self) : 
-        if time.time() > (self.passiveCooldown +30):
+        if time.time() > (self.passiveCooldown +15):
             try:
                 Ennemies = pyautogui.locateOnScreen(r"images/1.png", grayscale=False,confidence=0.95)
                 # pydirectinput.press('y')
@@ -586,29 +592,39 @@ class Personnage:
         return False
 
 class lobby():
-    print(' select your port ')
-    port = 58152
-    print('select your passowrd')
-    password = '2ehR3LwHyn8SilA0qZmv6Q'
     username = 'riot'
     champion = 350
     host = '127.0.0.1'
     protocol = 'https'
+    gamedirs = [r'C:\Riot Games\League of Legends',
+            r'D:\Games\League of Legends']
+    lockfile = None
+    print('Waiting for League of Legends to start ..')
+    while not lockfile:
+        for gamedir in gamedirs:
+            lockpath = r'%s\lockfile' % gamedir
+
+            if not os.path.isfile(lockpath):
+                continue
+
+            print('Found running League of Legends, dir', gamedir)
+            lockfile = open(r'%s\lockfile' % gamedir, 'r')
+
+    lockdata = lockfile.read()
+    lockfile.close()
+    lock = lockdata.split(':')
+    procname = lock[0]
+    pid = lock[1]
+    protocol = lock[4]
+    host = '127.0.0.1'
+    port = lock[2]
+
+    username = 'riot'
+    password = lock[3]
+    print(port,password)
 
 def statuscheck():
-    # roleselect = pyautogui.locateOnScreen("images/roleselect.jpg", grayscale=False,confidence=0.80)
-    # role1selected = pyautogui.locateOnScreen("images/role1selected.jpg", grayscale=False,confidence=0.8)
-    # role2selected = pyautogui.locateOnScreen("images/role2selected.jpg", grayscale=False,confidence=0.8)
-    # mainmenu = pyautogui.locateOnScreen("images/mainmenu.jpg", grayscale=False,confidence=0.80)
-    # queueselect = pyautogui.locateOnScreen("images/queueselect.jpg", grayscale=False,confidence=0.95)
-    # queueselected = pyautogui.locateOnScreen("images/queueselected.jpg", grayscale=True,confidence=0.99)
-    # lowpriority = pyautogui.locateOnScreen("images/lowpriority.jpg", grayscale=False,confidence=0.9)
-    # confirm= pyautogui.locateOnScreen("images/confirm.jpg", grayscale=False,confidence=0.9)
-    # banchamp= pyautogui.locateOnScreen("images/banchamp.jpg", grayscale=False,confidence=0.9)
-    # inqueue = pyautogui.locateOnScreen("images/inqueue.jpg", grayscale=False,confidence=0.8)
-    # choseloadout = pyautogui.locateOnScreen("images/choseloadout.jpg", grayscale=False,confidence=0.8)
-    # acceptqueue = pyautogui.locateOnScreen("images/acceptqueue.png", grayscale=False,confidence=0.8)
-    # matchfound = pyautogui.locateOnScreen("images/matchfound.png", grayscale=False,confidence=0.8)
+
     Riot_adapter = HTTPAdapter(max_retries=1)   
     session = requests.Session()
     session.mount('https://127.0.0.1:2999/liveclientdata/allgamedata', Riot_adapter)
@@ -618,9 +634,7 @@ def statuscheck():
         session.get('https://127.0.0.1:2999/liveclientdata/allgamedata', verify = False)
         print("Avant Chargement")
         time.sleep(1)
-        # print("avant perso")
         perso = Personnage()
-        # print("apres perso")
     except ConnectionError as ce:
         print("you aren't in game")
 
@@ -659,23 +673,6 @@ def statuscheck():
 
 
 
-    # while True:
-    #     sleep(1)
-    #     r = request('get', '/lol-login/v1/session')
-
-    #     if r.status_code != 200:
-    #         print(r.status_code)
-    #         continue
-
-    #     # Login completed, now we can get data
-    #     if r.json()['state'] == 'SUCCEEDED':
-    #         break
-    #     else:
-    #         print(r.json()['state'])
-
-    # summonerId = r.json()['summonerId']
-
-
     # # Main worker loop
 
 
@@ -687,10 +684,13 @@ def statuscheck():
             continue
         print(Back.BLACK + Fore.GREEN + str(r.status_code) + Style.RESET_ALL, r.text)
 
+        phase = r.json()
+
+
         if phase =='PreEndOfGame':
             pyautogui.click(900,500)
 
-        phase = r.json()
+        
         if phase =='EndOfGame':
             time.sleep(2)
             print('thanking the mates and going next')
