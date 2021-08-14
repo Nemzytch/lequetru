@@ -22,6 +22,4 @@ Next features :
 
 - Improving gameplay again again and again
 
-- Messsages into games
-
 - surrender
