@@ -21,3 +21,7 @@ Next features :
 - Improving global perfomance
 
 - Improving gameplay again again and again
+
+- Messsages into games
+
+- surrender
