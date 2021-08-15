@@ -334,44 +334,45 @@ class Personnage:
             
 
             if self.adcDead == True:
-                if self.jungleDead == False:
-                    pyautogui.click(self.junglePicture[0],self.junglePicture[1]) 
-                    time.sleep(0.2)                   
-                    pydirectinput.press('w')  
-                    print('going to jungler')
-                    time.sleep(5)
-                    pydirectinput.press('e')
-                    time.sleep(9)
-                    pydirectinput.press('e')
-                    pyautogui.moveTo(400,400)
-                    pydirectinput.press('w')
-
-                if self.jungleDead == True:
-                    if self.midDead == False:
-                        pyautogui.click(self.midPicture[0],self.midPicture[1])
-                        time.sleep(0.2)                     
+                if self.datas["gameData"]["gameTime"] > 600:
+                    if self.jungleDead == False:
+                        pyautogui.click(self.junglePicture[0],self.junglePicture[1]) 
+                        time.sleep(0.2)                   
                         pydirectinput.press('w')  
-                        print('going to midlaner')
+                        print('going to jungler')
                         time.sleep(5)
                         pydirectinput.press('e')
                         time.sleep(9)
                         pydirectinput.press('e')
                         pyautogui.moveTo(400,400)
                         pydirectinput.press('w')
-                    if self.midDead == True:
-                        if self.topDead == False:
-                            pyautogui.click(self.topPicture[0],self.topPicture[1])
+
+                    if self.jungleDead == True:
+                        if self.midDead == False:
+                            pyautogui.click(self.midPicture[0],self.midPicture[1])
                             time.sleep(0.2)                     
                             pydirectinput.press('w')  
-                            print('going to toplaner')
+                            print('going to midlaner')
                             time.sleep(5)
                             pydirectinput.press('e')
                             time.sleep(9)
                             pydirectinput.press('e')
                             pyautogui.moveTo(400,400)
                             pydirectinput.press('w')
-                        if self.topDead == True:
-                            print('going back to base')  
+                        if self.midDead == True:
+                            if self.topDead == False:
+                                pyautogui.click(self.topPicture[0],self.topPicture[1])
+                                time.sleep(0.2)                     
+                                pydirectinput.press('w')  
+                                print('going to toplaner')
+                                time.sleep(5)
+                                pydirectinput.press('e')
+                                time.sleep(9)
+                                pydirectinput.press('e')
+                                pyautogui.moveTo(400,400)
+                                pydirectinput.press('w')
+                            if self.topDead == True:
+                                print('going back to base')  
             
 
 
@@ -535,7 +536,6 @@ class Personnage:
                 print("No ennemies found")
 
     def LevelUP(self):
-
         if self.YuumiLevel == 1:
             if self.ELevel < 1:
                 self.ctrle()
@@ -759,8 +759,6 @@ def statuscheck():
 
 
     # # Main worker loop
-
-
     while True:
         r = request('get', '/lol-gameflow/v1/gameflow-phase')
 
@@ -773,7 +771,11 @@ def statuscheck():
 
 
         if phase =='PreEndOfGame':
+            okPreEndOfGame = pyautogui.locateOnScreen("images/okPreEndOfGame.png")
             pyautogui.click(900,500)
+            if okPreEndOfGame !=None:
+                pyautogui.click(okPreEndOfGame[0],okPreEndOfGame[1])
+            
 
         
         if phase =='EndOfGame':
