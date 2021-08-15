@@ -96,6 +96,8 @@ class Personnage:
     junglePicture = [1670,600]
     topPicture = [1570,600]
 
+    randx = random.random()
+
 
 
     # GENERIC FUNCTIONS      
@@ -109,7 +111,7 @@ class Personnage:
             time.sleep(0.2)
             self.updateDatas()
             print("Loading Screen")
-        print("la partie viens de commencer, on setup tout les bro vive les ours etc etc")
+        print("Game just started")
         f = open('stuff.json',)
         self.stuff = json.load(f)
         f.close()
@@ -210,6 +212,19 @@ class Personnage:
                     pydirectinput.press('enter')
                     pydirectinput.press('p')
 
+            if self.nombreItems ==4:
+                if self.gold > 1550:
+                    if self.yuumiItems[2]["displayName"] != ["Moonstone Renewer"]:
+                        pydirectinput.press('p')
+                        time.sleep(0.2)
+                        pydirectinput.keyDown('ctrl')
+                        pydirectinput.press('l')
+                        pydirectinput.keyUp('ctrl')
+                        pyautogui.write(("Moonstone Renewer").lower(), interval=0.15)
+                        time.sleep(0.2)
+                        pydirectinput.press('enter')
+                        pydirectinput.press('p')
+
 
             if self.gold > self.stuff["items"][A]["price"]:
                 if itemInTheSlot != desiredItem:
@@ -259,6 +274,14 @@ class Personnage:
             self.updateDatas()
             self.updatePerso()
             self.LevelUP()
+            self.randx = random.random()
+            print(self.randx)
+            if self.randx >0.80:
+                pyautogui.moveTo(960,480)
+                win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0,0)
+                time.sleep(0.1)
+                win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0,0)
+                pydirectinput.press('space')   
 
             if self.adcDead == False:
                 if self.attached == False:
@@ -312,7 +335,8 @@ class Personnage:
 
             if self.adcDead == True:
                 if self.jungleDead == False:
-                    pyautogui.click(self.junglePicture[0],self.junglePicture[1])                    
+                    pyautogui.click(self.junglePicture[0],self.junglePicture[1]) 
+                    time.sleep(0.2)                   
                     pydirectinput.press('w')  
                     print('going to jungler')
                     time.sleep(5)
@@ -324,7 +348,8 @@ class Personnage:
 
                 if self.jungleDead == True:
                     if self.midDead == False:
-                        pyautogui.click(self.midPicture[0],self.midPicture[1])                    
+                        pyautogui.click(self.midPicture[0],self.midPicture[1])
+                        time.sleep(0.2)                     
                         pydirectinput.press('w')  
                         print('going to midlaner')
                         time.sleep(5)
@@ -335,7 +360,8 @@ class Personnage:
                         pydirectinput.press('w')
                     if self.midDead == True:
                         if self.topDead == False:
-                            pyautogui.click(self.topPicture[0],self.topPicture[1])                    
+                            pyautogui.click(self.topPicture[0],self.topPicture[1])
+                            time.sleep(0.2)                     
                             pydirectinput.press('w')  
                             print('going to toplaner')
                             time.sleep(5)
