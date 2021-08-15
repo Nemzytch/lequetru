@@ -32,12 +32,7 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning) #
 
 gamedirs = [r'C:\Games\Garena\32787\LeagueClient',
             r'D:\Games\League of Legends']
-
-
 os.system("")
-
-
-
 
 def fetchDatas():
     response = requests.get("https://127.0.0.1:2999/liveclientdata/allgamedata", verify = False).text
@@ -51,10 +46,13 @@ class Personnage:
     teamState = None
     WName = None
     attached = None
+
+    #spell levels
     QLevel = None
     WLevel = None
     ELevel = None
     RLevel = None
+
     YuumiLevel = None
     datas = None
     hp = None
@@ -68,8 +66,9 @@ class Personnage:
     yuumiItems = None
     nombreItems = None
     yuumiMana = None
-    passiveCooldown = None
     resourceMax = None
+    passiveCooldown = None
+
     atHome = None
     ultimateCooldown = 1
     qspellCooldown = 1
@@ -82,9 +81,23 @@ class Personnage:
     # Taxi     
     toplanerTimer = None
     adcDead = None
+    jungleDead = None
+    midDead = None
+    topDead = None
     adcIndex = None
+    midIndex = None
+    jungleIndex = None
+    topIndex = None
     carryHP =None
     adcName = None
+
+    adcPicture = [1870,600]
+    midPicture = [1770,600]
+    junglePicture = [1670,600]
+    topPicture = [1570,600]
+
+    randx = random.random()
+
 
 
     # GENERIC FUNCTIONS      
@@ -98,7 +111,7 @@ class Personnage:
             time.sleep(0.2)
             self.updateDatas()
             print("Loading Screen")
-        print("la partie viens de commencer, on setup tout les bro vive les ours etc etc")
+        print("Game just started")
         f = open('stuff.json',)
         self.stuff = json.load(f)
         f.close()
@@ -109,6 +122,9 @@ class Personnage:
                 print('Found it in the '+str(i)+" th index")
                 self.yuumiIndex = i
                 self.adcIndex = i-1
+                self.midIndex = i-2
+                self.jungleIndex = i-3
+                self.topIndex = i-4
                 print(self.adcIndex)
                 team= math.ceil((i+1)/(len(self.datas["allPlayers"])/2))
 
@@ -184,6 +200,32 @@ class Personnage:
         desiredItem = self.stuff["items"][A-1]["displayName"]
         itemInTheSlot = self.yuumiItems[A-1]["displayName"]
         if self.nombreItems<7:
+            if self.nombreItems <4:
+                if self.gold > 950:
+                    pydirectinput.press('p')
+                    time.sleep(0.2)
+                    pydirectinput.keyDown('ctrl')
+                    pydirectinput.press('l')
+                    pydirectinput.keyUp('ctrl')
+                    pyautogui.write(("Bandleglass Mirror").lower(), interval=0.15)
+                    time.sleep(0.2)
+                    pydirectinput.press('enter')
+                    pydirectinput.press('p')
+
+            if self.nombreItems ==4:
+                if self.gold > 1550:
+                    if self.yuumiItems[2]["displayName"] != ["Moonstone Renewer"]:
+                        pydirectinput.press('p')
+                        time.sleep(0.2)
+                        pydirectinput.keyDown('ctrl')
+                        pydirectinput.press('l')
+                        pydirectinput.keyUp('ctrl')
+                        pyautogui.write(("Moonstone Renewer").lower(), interval=0.15)
+                        time.sleep(0.2)
+                        pydirectinput.press('enter')
+                        pydirectinput.press('p')
+
+
             if self.gold > self.stuff["items"][A]["price"]:
                 if itemInTheSlot != desiredItem:
                     print("intem in the slot "+itemInTheSlot)
@@ -232,12 +274,21 @@ class Personnage:
             self.updateDatas()
             self.updatePerso()
             self.LevelUP()
+            self.randx = random.random()
+            print(self.randx)
+            if self.randx >0.80:
+                pyautogui.moveTo(960,480)
+                win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0,0)
+                time.sleep(0.1)
+                win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0,0)
+                pydirectinput.press('space')   
 
             if self.adcDead == False:
                 if self.attached == False:
-                    self.baseCheck()
-                    self.updateDatas()
-                    self.updatePerso()     
+                    if self.yuumiMana < self.resourceMax:
+                        self.baseCheck()
+                        self.updateDatas()
+                        self.updatePerso()     
 
             if self.adcDead == False:
                 if self.attached == False:
@@ -249,12 +300,17 @@ class Personnage:
             if self.attached == True:
                 print('yuumi is attached')
                 self.hpCheck()
-                if self.carryHP<40:
+                if self.carryHP<50:
                     print(' Mon adc a '+str(self.carryHP)+'%HP')
                     if time.time()> (self.healCooldown+240):
                         pydirectinput.press('f')
+                        self.healCooldown = time.time()
                     self.ultimateCast()
                     print('send R')
+                    ennemy = pyautogui.locateOnScreen("images/1.png", grayscale=False,confidence=0.90)
+                    if ennemy!=None:
+                        pyautogui.moveTo(ennemy[0]+40,ennemy[1]+100)
+                        pydirectinput.press('d')
                     self.manacheckE()
                     print('Healed ADC')
                 if self.carryHP<85:
@@ -278,17 +334,50 @@ class Personnage:
             
 
             if self.adcDead == True:
+                if self.datas["gameData"]["gameTime"] > 600:
+                    if self.jungleDead == False:
+                        pyautogui.click(self.junglePicture[0],self.junglePicture[1]) 
+                        time.sleep(0.2)                   
+                        pydirectinput.press('w')  
+                        print('going to jungler')
+                        time.sleep(5)
+                        pydirectinput.press('e')
+                        time.sleep(9)
+                        pydirectinput.press('e')
+                        pyautogui.moveTo(400,400)
+                        pydirectinput.press('w')
 
-                allies = pyautogui.locateOnScreen("images/ally.png", grayscale=False,confidence=0.90)
-                if allies!=None:
-                    print('found an ally, going to him ')
-                    pyautogui.moveTo(allies[0]+40,allies[1]+70)
-                    pydirectinput.press('w')
-                    self.manacheckE()
-                    time.sleep(5)
-                    self.manacheckE()
-                    time.sleep(3)
-                    pydirectinput.press('w')
+                    if self.jungleDead == True:
+                        if self.midDead == False:
+                            pyautogui.click(self.midPicture[0],self.midPicture[1])
+                            time.sleep(0.2)                     
+                            pydirectinput.press('w')  
+                            print('going to midlaner')
+                            time.sleep(5)
+                            pydirectinput.press('e')
+                            time.sleep(9)
+                            pydirectinput.press('e')
+                            pyautogui.moveTo(400,400)
+                            pydirectinput.press('w')
+                        if self.midDead == True:
+                            if self.topDead == False:
+                                pyautogui.click(self.topPicture[0],self.topPicture[1])
+                                time.sleep(0.2)                     
+                                pydirectinput.press('w')  
+                                print('going to toplaner')
+                                time.sleep(5)
+                                pydirectinput.press('e')
+                                time.sleep(9)
+                                pydirectinput.press('e')
+                                pyautogui.moveTo(400,400)
+                                pydirectinput.press('w')
+                            if self.topDead == True:
+                                print('going back to base')  
+            
+
+
+
+                if time.time()> (self.backCooldown+50):
                     pyautogui.moveTo(self.BaseX,self.BaseY)
                     print('adc is not alive')
                     win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTDOWN, 0,0)
@@ -300,20 +389,6 @@ class Personnage:
                     time.sleep(9)
                     self.shop()
                     self.backCooldown = time.time()
-            
-                else:
-                    if time.time()> (self.backCooldown+50):
-                        pyautogui.moveTo(self.BaseX,self.BaseY)
-                        print('adc is not alive')
-                        win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTDOWN, 0,0)
-                        time.sleep(0.2)
-                        win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTUP, 0,0)
-                        print('going back to base')
-                        time.sleep(5)
-                        pydirectinput.press('b')
-                        time.sleep(9)
-                        self.shop()
-                        self.backCooldown = time.time()
 
             # sleep(randrange([0.3, 0.7]))
             time.sleep(0.5)
@@ -327,8 +402,22 @@ class Personnage:
     def hpCheck(self):
         screen=pyscreeze.screenshot()
         i=0
-        x = 1835
+        x = None
         y = 635
+        if self.adcDead == False:
+            x = 1835
+        if self.adcDead == True:
+            if self.jungleDead== False:
+                print('check jungle hp')  
+                x = 1738
+            if self.jungleDead== True: 
+                if self.midDead == False:
+                    print('check mid hp') 
+                    x = 1641
+                if self.midDead == True:
+                    print('check top hp') 
+                    x = 1544
+
         for i in range(69):
             rgb_values=screen.getpixel((x,y))
             if rgb_values[1] == 19:
@@ -362,8 +451,8 @@ class Personnage:
 
     def baseCheck(self):
         ManaPrecedent = self.yuumiMana
-        print("You got "+ str(ManaPrecedent))
-        time.sleep(5)
+        print("You got "+ str(ManaPrecedent)+ " mana")
+        time.sleep(3)
 
         response = requests.get("https://127.0.0.1:2999/liveclientdata/allgamedata", verify = False).text
         datas = json.loads(response)
@@ -384,37 +473,34 @@ class Personnage:
 
 
     def qSpell(self):
+
         x =0
+        ennemy = pyautogui.locateOnScreen("images/1.png", confidence=0.95)
         for pos in pyautogui.locateAllOnScreen('images/minions.png'):
             x = x+1
-            posx = pos[0]
-            posy = pos[1]
+            self.qX = pos[0]
+            self.qY = pos[1]
             if pos[0] < self.qX:
                 self.qX = pos[0]
             if pos[1] < self.qY:
                 self.qY = pos[1]
-            # print(pos)
             if pos[0] == None:
                 print('no minions')
-            print('les coordonees du minion'+str(x)+' sont: x'+str(posx)+' y'+str(posy))
+                self.qX = ennemy[0]
+                self.qY = ennemy[1]
         
-
-        print('le plus petit x vaut'+ str(self.qX) )
-        print('le minions le plus haut se situe à '+ str(self.qY))
-
-        offsetx = self.qX -100
-        offsety = self.qY -40
-        # pydirectinput.press('y') 
-        pyautogui.moveTo(offsetx, offsety)
-        pydirectinput.press('q') 
-        try:
-            ennemy = pyautogui.locateOnScreen("images/1.png", confidence=0.95)
-            time.sleep(0.3)
-            pyautogui.moveTo(ennemy[0]+40,ennemy[1]+70)
-            print('hello')
-        except TypeError:
-            print('failed q spell')
-        # pydirectinput.press('y')  
+        if self.qX != None:
+            offsetx = self.qX -100
+            offsety = self.qY -40
+            pyautogui.moveTo(offsetx, offsety)
+            pydirectinput.press('q') 
+            try:
+                ennemy = pyautogui.locateOnScreen("images/1.png", confidence=0.95)
+                time.sleep(0.3)
+                pyautogui.moveTo(ennemy[0]+40,ennemy[1]+70)
+                print('hello')
+            except TypeError:
+                print('failed q spell')
 
     def ultimateCast(self):
         if time.time() > (self.ultimateCooldown +70):
@@ -432,7 +518,7 @@ class Personnage:
 
 
     def procPassive(self) : 
-        if time.time() > (self.passiveCooldown +15):
+        if time.time() > (self.passiveCooldown +10):
             try:
                 Ennemies = pyautogui.locateOnScreen(r"images/1.png", grayscale=False,confidence=0.95)
                 # pydirectinput.press('y')
@@ -450,7 +536,6 @@ class Personnage:
                 print("No ennemies found")
 
     def LevelUP(self):
-
         if self.YuumiLevel == 1:
             if self.ELevel < 1:
                 self.ctrle()
@@ -576,15 +661,15 @@ class Personnage:
         self.YuumiLevel = self.yuumiState["level"]
         self.adcName = self.teamState[self.adcIndex]["championName"]
         self.adcDead = self.teamState[self.adcIndex]["isDead"]
+        self.jungleDead = self.teamState[self.jungleIndex]["isDead"]
+        self.midDead = self.teamState[self.midIndex]["isDead"]
+        self.topDead = self.teamState[self.topIndex]["isDead"]
         self.gold = self.yuumiState["currentGold"]
         self.yuumiItems = self.teamState[self.yuumiIndex]["items"]
         self.nombreItems = len(self.yuumiItems)
         self.yuumiMana = self.yuumiState["championStats"]["resourceValue"]
         self.resourceMax = self.yuumiState["championStats"]["resourceMax"]
 
-
-
-#            
 
         self.action()
 
@@ -674,8 +759,6 @@ def statuscheck():
 
 
     # # Main worker loop
-
-
     while True:
         r = request('get', '/lol-gameflow/v1/gameflow-phase')
 
@@ -688,7 +771,11 @@ def statuscheck():
 
 
         if phase =='PreEndOfGame':
+            okPreEndOfGame = pyautogui.locateOnScreen("images/okPreEndOfGame.png")
             pyautogui.click(900,500)
+            if okPreEndOfGame !=None:
+                pyautogui.click(okPreEndOfGame[0],okPreEndOfGame[1])
+            
 
         
         if phase =='EndOfGame':
