@@ -859,6 +859,10 @@ if __name__ == "__main__":
 
 
 
+# https://ddragon.leagueoflegends.com/cdn/11.16.1/data/en_US/champion/Yuumi.json
+# http://ddragon.leagueoflegends.com/cdn/6.8.1/img/map/map11.png
+# store last attached command to who ( with positions of the pictures we know who), si self attached = true, on sait à qui on est attaché
+
 
 
 
