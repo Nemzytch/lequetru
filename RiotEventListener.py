@@ -31,7 +31,7 @@ PlayersNameDic={}
 NAME_YUUMI = "Tresh"
 NAME_YUUMI_ACCOUNT = ""
 TEAM_YUUMI = ""
-NAME_ADC_ACCOUNT = "HELICOPTER DATAK"
+NAME_ADC_ACCOUNT = ""
 
 
 
@@ -53,12 +53,13 @@ def SetupPlayerList():
 
     global NAME_YUUMI_ACCOUNT
     global TEAM_YUUMI
+    global NAME_ADC_ACCOUNT
 
     for player in datas["allPlayers"] :
         if DatasAllPlayers[index]['championName'] == NAME_YUUMI:
             NAME_YUUMI_ACCOUNT = DatasAllPlayers[index]['summonerName']
             TEAM_YUUMI = DatasAllPlayers[index]['team']
-
+            NAME_ADC_ACCOUNT=DatasAllPlayers[index-1]['summonerName']
         PlayersTeamDic.update({DatasAllPlayers[index]['summonerName']:DatasAllPlayers[index]['team']})
         PlayersNameDic.update({DatasAllPlayers[index]['summonerName']:DatasAllPlayers[index]['championName']})
         index = index +1
@@ -71,10 +72,10 @@ def UpdateEvent():
 
 def UpdateData():
     global datas 
-    ##datas = fetchDatas()
-    f = open('Test.json',)
-    datas = json.load(f)
-    f.close()
+    datas = fetchDatas()
+    #f = open('Test.json',)
+    #datas = json.load(f)
+    #f.close()
 
 
 class Event:
@@ -163,8 +164,6 @@ def SendMsgForEvent():
     KillerName = ""
 
     if True : # SI YUUMI EST ENTRAIN DE RIEN FAIRE
-        CheckNewEvent()
-        decrementEventQueue()
         event  = GetEventWithMoreValue()
         if event.KillerName in PlayersTeamDic:
             KillerName = event.KillerName
@@ -201,8 +200,6 @@ UpdateData()
 UpdateEvent()
 SetupPlayerList()
 
-def Send_Msg2():
-    Send_Msg()
 
 def Send_Msg3():
     SendMsgForEvent()
@@ -213,7 +210,7 @@ def UpdateAll():
     CheckNewEvent()
     decrementEventQueue()
 
-def Send_Msg():
+def MainMsg():
     SendMsgForEvent()
 
 

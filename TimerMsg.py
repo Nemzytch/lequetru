@@ -18,7 +18,7 @@ loop = asyncio.get_event_loop()
 try : 
     #loop.run_until_complete(main())
     asyncio.ensure_future(Corout1s())
-    asyncio.ensure_future(Corout10s())
+    #asyncio.ensure_future(Corout10s())
     loop.run_forever()
 except KeyboardInterrupt:
     pass

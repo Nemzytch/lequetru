@@ -25,7 +25,7 @@ import json
 from base64 import b64encode
 from time import sleep
 from colorama import Fore, Back, Style
-import pyautogui
+import RiotEventListener
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning) #  
@@ -99,7 +99,6 @@ class Personnage:
     randx = random.random()
 
 
-
     # GENERIC FUNCTIONS      
     def setup(self):                    
         self.updateDatas()
@@ -170,6 +169,7 @@ class Personnage:
         # if gameTime > self.toplanerTimer:
         #     self.adcIndex = i-4
         self.passiveCooldown = time.time()
+        RiotEventListener.MainMsg()
 
     def manacheckE(self):
     # if Mana < 0.15*(MaxMana)+40:
@@ -324,6 +324,9 @@ class Personnage:
                         if ennemy!=None:
                             self.qSpell()
                             self.qspellCooldown = time.time()
+                    else:
+                        RiotEventListener.MainMsg()
+                            
 
                 if self.yuumiMana < (15*(self.resourceMax)/100):
                     print('you got '+ str(self.yuumiMana))
