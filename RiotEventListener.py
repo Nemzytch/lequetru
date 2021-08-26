@@ -14,7 +14,6 @@ from ScriptMsg import Classic
 from ScriptMsg import SpellYuumi
 import keyboard
 from operator import itemgetter, attrgetter
-import TimerMsg
 
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -212,8 +211,4 @@ def UpdateAll():
 
 def MainMsg():
     SendMsgForEvent()
-
-
-#keyboard.add_hotkey("j",Send_Msg3)
-#keyboard.wait()
 

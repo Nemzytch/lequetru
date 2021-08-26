@@ -8,7 +8,6 @@ import win32con
 import requests
 import pyautogui
 import pyscreeze
-import pytesseract
 import numpy as nm
 import pydirectinput
 from time import sleep
@@ -25,7 +24,7 @@ import json
 from base64 import b64encode
 from time import sleep
 from colorama import Fore, Back, Style
-import RiotEventListener
+import TimerMsg
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning) #  
@@ -169,7 +168,7 @@ class Personnage:
         # if gameTime > self.toplanerTimer:
         #     self.adcIndex = i-4
         self.passiveCooldown = time.time()
-        RiotEventListener.MainMsg()
+        TimerMsg.RiotEventListener.MainMsg()
 
     def manacheckE(self):
     # if Mana < 0.15*(MaxMana)+40:
@@ -325,7 +324,7 @@ class Personnage:
                             self.qSpell()
                             self.qspellCooldown = time.time()
                     else:
-                        RiotEventListener.MainMsg()
+                        TimerMsg.RiotEventListener.MainMsg()
                             
 
                 if self.yuumiMana < (15*(self.resourceMax)/100):
