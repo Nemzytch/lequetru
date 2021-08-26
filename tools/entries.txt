@@ -1,29 +1,13 @@
 GET /lol-lobby/v2/lobby/matchmaking/search-state
-
-
 POST /lol-lobby/v2/lobby/matchmaking/search
-
-
 GET https://127.0.0.1:53052/lol-patch/v1/products/league_of_legends/state
-
-
 GET https://127.0.0.1:53052/lol-gameflow/v1/gameflow-metadata/player-status
-
-
-
 GET /lol-player-behavior/v1/ban
-
 GET /lol-ranked-stats/v1/status
-
 POST /lol-lobby/v2/lobby
 {"queueId": 420}
-
-
 Get : /lol-champ-select/v1/current-champion
-
-
 Get :https://127.0.0.1:53052/lol-champ-select/v1/session -> etat de la champ select
-
 https://127.0.0.1:53052/lol-champ-select/v1/session/actions/1 ( /complete pour valider )
 {"actorCellId": 1,
 "championId": 222,
@@ -31,3 +15,4 @@ https://127.0.0.1:53052/lol-champ-select/v1/session/actions/1 ( /complete pour v
 }
 
 350
+
