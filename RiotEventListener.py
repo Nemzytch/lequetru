@@ -28,7 +28,7 @@ OffSetEvent = {'GameStart':60,'DragonKill':30,"NashorKill":30,"InhibKill":10,"Mu
 PlayersTeamDic= {}
 PlayersNameDic={}
 
-NAME_YUUMI = "Tresh"
+NAME_YUUMI = "Yuumi"
 NAME_YUUMI_ACCOUNT = ""
 TEAM_YUUMI = ""
 NAME_ADC_ACCOUNT = ""
