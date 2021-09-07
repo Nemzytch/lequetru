@@ -27,5 +27,5 @@ MSG OK :
                     "MidGame": false,		## TIMER_MID_GAME = 1200
                     "LateGame": false,		## TIMER_LATE_GAME = 1800
                     "PowerRand": 1,		## Power of this msg // exemple for msg with power = 50 ( 50 + 20 +100 + 30 ) = 200 / 50 , 1/4 FOR THIS MSG is read
-                    "TimerDernierEnvoie": 10,	## And TIMER DELAY FOR THIS MSG
+                    "TimerDernierEnvoie": 10,	## And TIMER DELAY FOR THIS MSG in snd
                     "DernierEnvoie": 1629501942.8762677
