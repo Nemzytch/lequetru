@@ -40,6 +40,8 @@ EventList = []
 EventQueue = []
 EventLastIndexCheck = -1
 
+PlayerIsSetup = False
+
 def fetchDatas():
     response = requests.get("https://127.0.0.1:2999/liveclientdata/allgamedata", verify = False).text
     return json.loads(response)
@@ -72,11 +74,12 @@ def UpdateEvent():
 
 def UpdateData():
     global datas 
+    global PlayerIsSetup
     datas = fetchDatas()
-    #f = open('Test.json',)
-    #datas = json.load(f)
-    #f.close()
-
+    if not PlayerIsSetup :
+        PlayerIsSetup = True
+        SetupPlayerList()
+    UpdateEvent()
 
 class Event:
     def __init__(self,ID,Name,KillerName,Attribute,Value):
@@ -91,69 +94,44 @@ class Event:
 def FilterDataEvent(EventJson):
     global OffSetEvent
     if EventJson['EventName'] == "GameStart" :
-        return Event(EventJson['EventID'],"GameStart","","",OffSetEvent["GameStart"] )
+        return Event(EventJson['EventID'],"GameStart","","",EventJson['EventTime'] +OffSetEvent["GameStart"] )
     elif EventJson['EventName'] == "DragonKill" :
-        return Event(EventJson['EventID'],"DragonKill",EventJson['KillerName'],EventJson['Stolen'],OffSetEvent["DragonKill"] )
+        return Event(EventJson['EventID'],"DragonKill",EventJson['KillerName'],EventJson['Stolen'],EventJson['EventTime'] +OffSetEvent["DragonKill"] )
     elif EventJson['EventName'] == "NashorKill" :
-        return Event(EventJson['EventID'],"NashorKill",EventJson['KillerName'],EventJson['Stolen'],OffSetEvent["NashorKill"])
+        return Event(EventJson['EventID'],"NashorKill",EventJson['KillerName'],EventJson['Stolen'],EventJson['EventTime'] +OffSetEvent["NashorKill"])
     elif EventJson['EventName'] == "InhibKill" :
-        return Event(EventJson['EventID'],"InhibKill",EventJson['KillerName'],EventJson['InhibKilled'],OffSetEvent["InhibKill"])
+        return Event(EventJson['EventID'],"InhibKill",EventJson['KillerName'],"",EventJson['EventTime'] +OffSetEvent["InhibKill"])
     elif EventJson['EventName'] == "Multikill" :
-        return Event(EventJson['EventID'],"Multikill",EventJson['KillerName'],EventJson['KillStreak'],OffSetEvent["Multikill"])  
+        return Event(EventJson['EventID'],"Multikill",EventJson['KillerName'],EventJson['KillStreak'],EventJson['EventTime'] +OffSetEvent["Multikill"])  
     elif EventJson['EventName'] == "TurretKilled" :
-        return Event(EventJson['EventID'],"TurretKilled",EventJson['KillerName'],EventJson['TurretKilled'],OffSetEvent["TurretKilled"])      
+        return Event(EventJson['EventID'],"TurretKilled",EventJson['KillerName'],"",EventJson['EventTime'] +OffSetEvent["TurretKilled"])      
     elif EventJson['EventName'] == "ChampionKill" :
-        return Event(EventJson['EventID'],"ChampionKill",EventJson['KillerName'],EventJson['VictimName'],OffSetEvent["ChampionKill"])  
+        return Event(EventJson['EventID'],"ChampionKill",EventJson['KillerName'],EventJson['VictimName'],EventJson['EventTime'] +OffSetEvent["ChampionKill"])  
         
+
 
 def GetEvent():
     global datas_events
     _last_datas_events = []
     EventChoise = ""
-    for event in range(len(datas_events)-10,len(datas_events)) :
+    _IndexFirstForRange =20
+    if len(datas_events) < 20 :
+       _IndexFirstForRange = len(datas_events) 
+    for event in range(len(datas_events)-_IndexFirstForRange,len(datas_events)) :
         if datas_events[event]['EventName'] in OffSetEvent :
-            _last_datas_events.append(datas_events[event])
-            _last_datas_events[len(_last_datas_events)-1]['EventTime'] = _last_datas_events[len(_last_datas_events)-1]['EventTime'] + OffSetEvent[datas_events[event]['EventName']]
-    for event in _last_datas_events:
+            _last_datas_events.append(FilterDataEvent(datas_events[event]))
+    for event in _last_datas_events :
         if EventChoise == "" :
             EventChoise = event
         else : 
-            if EventChoise['EventTime'] < event['EventTime']:
+            if EventChoise.Value < event.Value:
                 EventChoise = event
     return EventChoise
 
 
-def CheckNewEvent():
-    global EventQueue 
-    global EventLastIndexCheck
-    global datas_events
-    for EventJson in range(EventLastIndexCheck+1,len(datas_events)):
-        EventAdd = FilterDataEvent(datas_events[EventJson])
-        if EventAdd != None:
-            EventQueue.append(EventAdd)
-        EventLastIndexCheck = datas_events[EventJson]["EventID"]
-
-def decrementEventQueue():
-    global EventQueue 
-    for event in EventQueue:
-        event.Value = event.Value-1
-        if event.Value < 0 :
-            EventQueue.remove(event)
-
-def GetEventWithMoreValue():
-    global EventQueue
-
-    EventQueue.sort(key=attrgetter('Value'),reverse=True)
-    if len(EventQueue) > 0:
-        return EventQueue[0]
-    else :
-        return False
-
-
-
 
 def SendMsgForEvent():
-
+    
     global PlayersTeamDic
     global PlayersNameDic
 
@@ -162,13 +140,15 @@ def SendMsgForEvent():
     global datas
     global NAME_ADC_ACCOUNT
     global datas_events
+    print(datas['gameData']['gameTime'])
     TimerGame = datas['gameData']['gameTime']
     IsAlly = True
     KillerName = ""
 
     if True : # SI YUUMI EST ENTRAIN DE RIEN FAIRE
-        event  = GetEventWithMoreValue()
-        if event != False :
+        event  = GetEvent()
+        print(event)
+        if event != "" :
             if event.KillerName in PlayersTeamDic:
                 KillerName = event.KillerName
                 KillerName = PlayersNameDic[KillerName]
@@ -176,8 +156,6 @@ def SendMsgForEvent():
                     IsAlly = True
                 else :
                     IsAlly = False
-
-            print(event.Name)
             if event.Name == "GameStart":
                 Msg(Classic.Begin,IsAlly,90,TimerGame,KillerName,event.Attribute)
             elif event.Name == "DragonKill":
@@ -193,27 +171,17 @@ def SendMsgForEvent():
                     Msg(DeathEvent.Penta,IsAlly,80,TimerGame,KillerName,event.Attribute) 
             elif event.Name == "ChampionKill":
                 if event.KillerName == NAME_YUUMI_ACCOUNT:
-                    Msg(DeathEvent.Me,False,80,TimerGame,"",event.Attribute)
+                    Msg(DeathEvent.Me,False,80,TimerGame,"","")
                 elif event.KillerName == NAME_ADC_ACCOUNT:
-                    Msg(DeathEvent.Adc,False,80,TimerGame,KillerName,event.Attribute)
+                    Msg(DeathEvent.Adc,False,80,TimerGame,KillerName,"")
                 elif event.Attribute == NAME_YUUMI_ACCOUNT:
-                    Msg(DeathEvent.Me,True,80,TimerGame,KillerName,event.Attribute)
+                    Msg(DeathEvent.Me,True,80,TimerGame,KillerName,"")
                 else:
-                    Msg(DeathEvent.Other,IsAlly,80,TimerGame,KillerName,event.Attribute)
-UpdateData()
-UpdateEvent()
-SetupPlayerList()
+                    Msg(DeathEvent.Other,IsAlly,30,TimerGame,KillerName,"")
 
-
-def Send_Msg3():
-    SendMsgForEvent()
-
-def UpdateAll():
-    UpdateData()
-    UpdateEvent()
-    CheckNewEvent()
-    decrementEventQueue()
 
 def MainMsg():
+    UpdateData()
     SendMsgForEvent()
 
+ 

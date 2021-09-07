@@ -24,7 +24,7 @@ import json
 from base64 import b64encode
 from time import sleep
 from colorama import Fore, Back, Style
-import TimerMsg
+import RiotEventListener
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning) #  
@@ -99,7 +99,8 @@ class Personnage:
 
 
     # GENERIC FUNCTIONS      
-    def setup(self):                    
+    def setup(self):    
+        print("setup")                
         self.updateDatas()
         i=0
         while not "gameData" in self.datas:
@@ -119,10 +120,10 @@ class Personnage:
             if x["championName"] == "Yuumi":
                 print('Found it in the '+str(i)+" th index")
                 self.yuumiIndex = i
-                self.adcIndex = i-1
-                self.midIndex = i-2
-                self.jungleIndex = i-3
-                self.topIndex = i-4
+                self.adcIndex = i+1
+                self.midIndex = i+2
+                self.jungleIndex = i+3
+                self.topIndex = i+4
                 print(self.adcIndex)
                 team= math.ceil((i+1)/(len(self.datas["allPlayers"])/2))
 
@@ -168,7 +169,7 @@ class Personnage:
         # if gameTime > self.toplanerTimer:
         #     self.adcIndex = i-4
         self.passiveCooldown = time.time()
-        TimerMsg.RiotEventListener.MainMsg()
+        RiotEventListener.MainMsg()
 
     def manacheckE(self):
     # if Mana < 0.15*(MaxMana)+40:
@@ -262,6 +263,7 @@ class Personnage:
 
 
     def __init__(self):
+        print("1")
         self.setup()
         self.start()
 
@@ -324,7 +326,7 @@ class Personnage:
                             self.qSpell()
                             self.qspellCooldown = time.time()
                     else:
-                        TimerMsg.RiotEventListener.MainMsg()
+                        RiotEventListener.MainMsg()
                             
 
                 if self.yuumiMana < (15*(self.resourceMax)/100):
@@ -853,6 +855,7 @@ def statuscheck():
 
 
 def main():
+    print("2")
     statuscheck()
     return True
 

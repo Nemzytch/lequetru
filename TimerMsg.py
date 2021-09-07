@@ -9,16 +9,17 @@ async def Corout1s():
 async def Corout10s(): 
     while True:
         await asyncio.sleep(10)
-        RiotEventListener.Send_Msg()
+        RiotEventListener.MainMsg()
 
 #asyncio.run(main())
 
-loop = asyncio.get_event_loop()
+loop = asyncio.new_event_loop()
+asyncio.set_event_loop(loop)
 
 try : 
     #loop.run_until_complete(main())
     asyncio.ensure_future(Corout1s())
-    #asyncio.ensure_future(Corout10s())
+    asyncio.ensure_future(Corout10s())
     loop.run_forever()
 except KeyboardInterrupt:
     pass

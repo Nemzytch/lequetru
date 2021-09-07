@@ -118,7 +118,7 @@ def SubListSortByAttribute(Attribute,ListSort) :
         if Attribute == msg["Attribute"]:
             ListSortAttribute.append(msg)  
     if len(ListSortAttribute) == 0:
-        print("No msg with this attribute")    
+        print("No msg with this attribute "+Attribute)    
     return ListSortAttribute
 
 def SubListBasedOnTimer(TimerGame,ListMsg):
@@ -151,8 +151,9 @@ def WriteMsg(text):
 def Msg(Event,IsAlly,ProbaEvent,TimerGame,ValueInput,Attribute) : 
     global text
     if checkTypeOfEvent(Event,IsAlly) :
-        if random.randint(0, 100)< ProbaEvent :
+        if random.randint(0, 100)<= ProbaEvent :
             ListMsg = ReadJson()
+            print(ListMsg)
             ListSort = SubListBasedOnTimer(TimerGame,ListMsg) 
             ListSort = SubListSortByAttribute(Attribute,ListSort)
             ListSort = SubListCheckIfInputValue(ListSort,ValueInput)
@@ -210,7 +211,7 @@ def ReadJson() :
 
 
 def Send_Msg():
-    Msg(GameEvent.Drake,True,100,2,"","stolen")
+    Msg(GameEvent.Drake,True,100,2,"","")
 
 #keyboard.add_hotkey("j",Send_Msg)
 #keyboard.wait()
