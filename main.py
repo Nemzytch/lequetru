@@ -8,7 +8,6 @@ import win32con
 import requests
 import pyautogui
 import pyscreeze
-import pytesseract
 import numpy as nm
 import pydirectinput
 from time import sleep
@@ -25,7 +24,7 @@ import json
 from base64 import b64encode
 from time import sleep
 from colorama import Fore, Back, Style
-import pyautogui
+import TimerMsg
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning) #  
@@ -99,7 +98,6 @@ class Personnage:
     randx = random.random()
 
 
-
     # GENERIC FUNCTIONS      
     def setup(self):                    
         self.updateDatas()
@@ -170,6 +168,7 @@ class Personnage:
         # if gameTime > self.toplanerTimer:
         #     self.adcIndex = i-4
         self.passiveCooldown = time.time()
+        TimerMsg.RiotEventListener.MainMsg()
 
     def manacheckE(self):
     # if Mana < 0.15*(MaxMana)+40:
@@ -324,6 +323,9 @@ class Personnage:
                         if ennemy!=None:
                             self.qSpell()
                             self.qspellCooldown = time.time()
+                    else:
+                        TimerMsg.RiotEventListener.MainMsg()
+                            
 
                 if self.yuumiMana < (15*(self.resourceMax)/100):
                     print('you got '+ str(self.yuumiMana))
