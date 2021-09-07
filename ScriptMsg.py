@@ -6,7 +6,7 @@ import pydirectinput
 import keyboard
  
 
-
+LAST_TIMER_MSG = 0
 
 f = open('msg.json',)
 JsonMsg = json.load(f)
@@ -150,21 +150,25 @@ def WriteMsg(text):
     ## Main Def ################## 
 def Msg(Event,IsAlly,ProbaEvent,TimerGame,ValueInput,Attribute) : 
     global text
-    if checkTypeOfEvent(Event,IsAlly) :
-        if random.randint(0, 100)<= ProbaEvent :
-            ListMsg = ReadJson()
-            print(ListMsg)
-            ListSort = SubListBasedOnTimer(TimerGame,ListMsg) 
-            ListSort = SubListSortByAttribute(Attribute,ListSort)
-            ListSort = SubListCheckIfInputValue(ListSort,ValueInput)
-            ListSort = SubListBasedOnDeltaTime(ListSort)
-            RandForMsgAndSetString(ListSort,ValueInput)
-            WriteMsg(text)
-            print(text)
+    global LAST_TIMER_MSG
+    if LAST_TIMER_MSG < TimerGame -300 :
+        if checkTypeOfEvent(Event,IsAlly) :
+            if random.randint(0, 100)<= ProbaEvent :
+                ListMsg = ReadJson()
+                print(ListMsg)
+                ListSort = SubListBasedOnTimer(TimerGame,ListMsg) 
+                ListSort = SubListSortByAttribute(Attribute,ListSort)
+                ListSort = SubListCheckIfInputValue(ListSort,ValueInput)
+                ListSort = SubListBasedOnDeltaTime(ListSort)
+                RandForMsgAndSetString(ListSort,ValueInput)
+                WriteMsg(text)
+                LAST_TIMER_MSG = TimerGame
+                print(text)
+            else :
+                print("BadLuck")
         else :
-            print("BadLuck")
-    else :
-        print("ErrorMsg")
+            print("ErrorMsg")
+    else : print("Msg resament envoyer")
 
     ## Path JSON ##################
 
