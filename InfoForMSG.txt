@@ -22,10 +22,15 @@ MSG OK :
                     "Content": "have fun",	## MSG TO DISPLAY
                     "Attribute": "",		## For Special case or Empty
                     "All": false,		## for msg in all
-                    "NeedValueInput": 0,	##  /!\    MANDATORY == 0 /!\  just for this case :1 for input value ( using for ADC kill enemy (print name adc) , and other  ( ENEMY , ALLY ) (print name Killer)  AND put " # " for display input in Content ( care at space )
-                    "EarlyGame": false,  	## TIMER_EARLY_GAME = 600
+		    
+                    "NeedValueInput": 0,	
+		    ##  /!\    MANDATORY == 0 /!\  just for this case :1 for input value ( using for ADC kill enemy (print name adc) , and other  ( ENEMY , ALLY ) 
+		    ## (print name Killer)  AND put " # " for display input in Content ( care at space )
+		    
+                    "EarlyGame": false,  	## TIMER_EARLY_GAME = 600 ## "EarlyGame": false + "MidGame": false +"LateGame": false = disable MSG
                     "MidGame": false,		## TIMER_MID_GAME = 1200
                     "LateGame": false,		## TIMER_LATE_GAME = 1800
+		    
                     "PowerRand": 1,		## Power of this msg // exemple for msg with power = 50 ( 50 + 20 +100 + 30 ) = 200 / 50 , 1/4 FOR THIS MSG is read
                     "TimerDernierEnvoie": 10,	## And TIMER DELAY FOR THIS MSG in snd
                     "DernierEnvoie": 1629501942.8762677
