@@ -8,7 +8,6 @@ import win32con
 import requests
 import pyautogui
 import pyscreeze
-import pytesseract
 import numpy as nm
 import pydirectinput
 from time import sleep
@@ -19,7 +18,7 @@ from requests.exceptions import HTTPError
 from requests.exceptions import ConnectionError
 from requests.packages.urllib3.util.retry import Retry
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
-import requests
+import RiotEventListener
 import urllib3
 import json
 from base64 import b64encode
@@ -98,8 +97,6 @@ class Personnage:
 
     randx = random.random()
 
-
-
     # GENERIC FUNCTIONS      
     def setup(self):                    
         self.updateDatas()
@@ -170,6 +167,7 @@ class Personnage:
         # if gameTime > self.toplanerTimer:
         #     self.adcIndex = i-4
         self.passiveCooldown = time.time()
+        RiotEventListener.MainMsg()
 
     def manacheckE(self):
     # if Mana < 0.15*(MaxMana)+40:
@@ -331,7 +329,7 @@ class Personnage:
 
                 else:
                     print('HP > 85%, no need to heal ')
-            
+                    RiotEventListener.MainMsg()
 
             if self.adcDead == True:
                 if self.datas["gameData"]["gameTime"] > 600:
