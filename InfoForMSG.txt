@@ -1,0 +1,31 @@
+MSG OK :
+
+	DRAKE ( ENEMY , ALLY ) , Attribut = "stolen" 
+	NASH ( ENEMY , ALLY ) , Attribut = "stolen" 
+	TOWER ( ENEMY , ALLY ) 
+	INIB ( ENEMY , ALLY ) 
+	TOWER ( ENEMY , ALLY ) 
+
+	BEGIN
+
+	
+	// DEATH ALLY = Im die // DEATH ENNEMY = I KILL // exemple = ADC ( ENNEMY ) My adc take a kill
+	DEATH
+		OTHER ( ENEMY , ALLY )
+		MultiKill ( ENEMY , ALLY ) , Attribut = "4" or "5"  // Quadra or Penta
+		ME ( ENEMY , ALLY )
+		ADC ( ENNEMY )
+	
+
+	//////////////////////////////// MESSAGE TYPE ////////////////////////
+	            "MsgName": "msgA1",		### Name of msg ( no using)
+                    "Content": "have fun",	## MSG TO DISPLAY
+                    "Attribute": "",		## For Special case or Empty
+                    "All": false,		## for msg in all
+                    "NeedValueInput": 0,	##  /!\    MANDATORY == 0 /!\  just for this case :1 for input value ( using for ADC kill enemy (print name adc) , and other  ( ENEMY , ALLY ) (print name Killer) 
+                    "EarlyGame": false,  	## TIMER_EARLY_GAME = 600
+                    "MidGame": false,		## TIMER_MID_GAME = 1200
+                    "LateGame": false,		## TIMER_LATE_GAME = 1800
+                    "PowerRand": 1,		## Power of this msg // exemple for msg with power = 50 ( 50 + 20 +100 + 30 ) = 200 / 50 , 1/4 FOR THIS MSG is read
+                    "TimerDernierEnvoie": 10,	## And TIMER DELAY FOR THIS MSG
+                    "DernierEnvoie": 1629501942.8762677
