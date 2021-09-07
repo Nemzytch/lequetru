@@ -173,7 +173,7 @@ def SendMsgForEvent():
                     elif event.KillerName == NAME_ADC_ACCOUNT:
                         Msg(DeathEvent.Adc,False,100,TimerGame,KillerName,"")
                     elif event.Attribute == NAME_YUUMI_ACCOUNT:
-                        Msg(DeathEvent.Me,True,100,TimerGame,KillerName,"")
+                        Msg(DeathEvent.Me,True,100,TimerGame,"","")
                     else:
                         Msg(DeathEvent.Other,IsAlly,100,TimerGame,KillerName,"")
         else :
