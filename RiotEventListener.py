@@ -17,7 +17,8 @@ from operator import itemgetter, attrgetter
 
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-requests.packages.urllib3.disable_warnings(InsecureRequestWarning) #  
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning) #  
 
 datas = "a"
 datas_events = ""
@@ -143,7 +144,10 @@ def GetEventWithMoreValue():
     global EventQueue
 
     EventQueue.sort(key=attrgetter('Value'),reverse=True)
-    return EventQueue[0]
+    if len(EventQueue) > 0:
+        return EventQueue[0]
+    else :
+        return False
 
 
 
@@ -164,37 +168,38 @@ def SendMsgForEvent():
 
     if True : # SI YUUMI EST ENTRAIN DE RIEN FAIRE
         event  = GetEventWithMoreValue()
-        if event.KillerName in PlayersTeamDic:
-            KillerName = event.KillerName
-            KillerName = PlayersNameDic[KillerName]
-            if PlayersTeamDic[event.KillerName] == TEAM_YUUMI:
-                IsAlly = True
-            else :
-                IsAlly = False
+        if event != False :
+            if event.KillerName in PlayersTeamDic:
+                KillerName = event.KillerName
+                KillerName = PlayersNameDic[KillerName]
+                if PlayersTeamDic[event.KillerName] == TEAM_YUUMI:
+                    IsAlly = True
+                else :
+                    IsAlly = False
 
-        print(event.Name)
-        if event.Name == "GameStart":
-            Msg(Classic.Begin,IsAlly,90,TimerGame,KillerName,event.Attribute)
-        elif event.Name == "DragonKill":
-            Msg(GameEvent.Drake,IsAlly,90,TimerGame,KillerName,event.Attribute)
-        elif event.Name == "NashorKilled":
-            Msg(GameEvent.Nashor,IsAlly,80,TimerGame,KillerName,event.Attribute)
-        elif event.Name == "TurretKilled":
-            Msg(GameEvent.Tower,IsAlly,80,TimerGame,KillerName,event.Attribute)
-        elif event.Name == "InibKill":
-            Msg(GameEvent.Inib,IsAlly,80,TimerGame,KillerName,event.Attribute) 
-        elif event.Name == "Multikill":
-            if event.Attribute >3:
-                Msg(DeathEvent.Penta,IsAlly,80,TimerGame,KillerName,event.Attribute) 
-        elif event.Name == "ChampionKill":
-            if event.KillerName == NAME_YUUMI_ACCOUNT:
-               Msg(DeathEvent.Me,False,80,TimerGame,"",event.Attribute)
-            elif event.KillerName == NAME_ADC_ACCOUNT:
-                Msg(DeathEvent.Adc,False,80,TimerGame,KillerName,event.Attribute)
-            elif event.Attribute == NAME_YUUMI_ACCOUNT:
-               Msg(DeathEvent.Me,True,80,TimerGame,KillerName,event.Attribute)
-            else:
-               Msg(DeathEvent.Other,IsAlly,80,TimerGame,KillerName,event.Attribute)
+            print(event.Name)
+            if event.Name == "GameStart":
+                Msg(Classic.Begin,IsAlly,90,TimerGame,KillerName,event.Attribute)
+            elif event.Name == "DragonKill":
+                Msg(GameEvent.Drake,IsAlly,90,TimerGame,KillerName,event.Attribute)
+            elif event.Name == "NashorKilled":
+                Msg(GameEvent.Nashor,IsAlly,80,TimerGame,KillerName,event.Attribute)
+            elif event.Name == "TurretKilled":
+                Msg(GameEvent.Tower,IsAlly,80,TimerGame,KillerName,event.Attribute)
+            elif event.Name == "InibKill":
+                Msg(GameEvent.Inib,IsAlly,80,TimerGame,KillerName,event.Attribute) 
+            elif event.Name == "Multikill":
+                if event.Attribute >3:
+                    Msg(DeathEvent.Penta,IsAlly,80,TimerGame,KillerName,event.Attribute) 
+            elif event.Name == "ChampionKill":
+                if event.KillerName == NAME_YUUMI_ACCOUNT:
+                    Msg(DeathEvent.Me,False,80,TimerGame,"",event.Attribute)
+                elif event.KillerName == NAME_ADC_ACCOUNT:
+                    Msg(DeathEvent.Adc,False,80,TimerGame,KillerName,event.Attribute)
+                elif event.Attribute == NAME_YUUMI_ACCOUNT:
+                    Msg(DeathEvent.Me,True,80,TimerGame,KillerName,event.Attribute)
+                else:
+                    Msg(DeathEvent.Other,IsAlly,80,TimerGame,KillerName,event.Attribute)
 UpdateData()
 UpdateEvent()
 SetupPlayerList()
