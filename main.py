@@ -357,6 +357,7 @@ class Personnage:
                             pydirectinput.press('e')
                             pyautogui.moveTo(400,400)
                             pydirectinput.press('w')
+                            
                         if self.midDead == True:
                             if self.topDead == False:
                                 pyautogui.click(self.topPicture[0],self.topPicture[1])
