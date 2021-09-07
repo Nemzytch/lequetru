@@ -145,7 +145,7 @@ def SendMsgForEvent():
 
     if True : # SI YUUMI EST ENTRAIN DE RIEN FAIRE
         event  = GetEvent()
-        if event.Value > TimerGame -30:
+        if event.Value > TimerGame -60:
             if event != "" :
                 if event.KillerName in PlayersTeamDic:
                     KillerName = event.KillerName
