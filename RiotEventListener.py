@@ -157,25 +157,25 @@ def SendMsgForEvent():
                 if event.Name == "GameStart":
                     Msg(Classic.Begin,IsAlly,100,TimerGame,KillerName,event.Attribute)
                 elif event.Name == "DragonKill":
-                    Msg(GameEvent.Drake,IsAlly,100,TimerGame,KillerName,event.Attribute)
+                    Msg(GameEvent.Drake,IsAlly,80,TimerGame,KillerName,event.Attribute)
                 elif event.Name == "NashorKilled":
-                    Msg(GameEvent.Nashor,IsAlly,100,TimerGame,KillerName,event.Attribute)
+                    Msg(GameEvent.Nashor,IsAlly,80,TimerGame,KillerName,event.Attribute)
                 elif event.Name == "TurretKilled":
-                    Msg(GameEvent.Tower,IsAlly,100,TimerGame,KillerName,event.Attribute)
+                    Msg(GameEvent.Tower,IsAlly,0,TimerGame,KillerName,event.Attribute)
                 elif event.Name == "InibKill":
-                    Msg(GameEvent.Inib,IsAlly,100,TimerGame,KillerName,event.Attribute) 
+                    Msg(GameEvent.Inib,IsAlly,0,TimerGame,KillerName,event.Attribute) 
                 elif event.Name == "Multikill":
                     if event.Attribute >3:
-                        Msg(DeathEvent.Penta,IsAlly,100,TimerGame,KillerName,event.Attribute) 
+                        Msg(DeathEvent.Penta,IsAlly,80,TimerGame,KillerName,event.Attribute) 
                 elif event.Name == "ChampionKill":
                     if event.KillerName == NAME_YUUMI_ACCOUNT:
-                        Msg(DeathEvent.Me,False,100,TimerGame,"","")
+                        Msg(DeathEvent.Me,False,70,TimerGame,"","")
                     elif event.KillerName == NAME_ADC_ACCOUNT:
-                        Msg(DeathEvent.Adc,False,100,TimerGame,KillerName,"")
+                        Msg(DeathEvent.Adc,False,80,TimerGame,KillerName,"")
                     elif event.Attribute == NAME_YUUMI_ACCOUNT:
-                        Msg(DeathEvent.Me,True,100,TimerGame,"","")
+                        Msg(DeathEvent.Me,True,70,TimerGame,"","")
                     else:
-                        Msg(DeathEvent.Other,IsAlly,100,TimerGame,KillerName,"")
+                        Msg(DeathEvent.Other,IsAlly,30,TimerGame,KillerName,"")
         else :
             print("aucun event recent")
 
