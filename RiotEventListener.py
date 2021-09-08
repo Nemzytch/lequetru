@@ -64,7 +64,7 @@ def SetupPlayerList():
         PlayersTeamDic.update({DatasAllPlayers[index]['summonerName']:DatasAllPlayers[index]['team']})
         PlayersNameDic.update({DatasAllPlayers[index]['summonerName']:DatasAllPlayers[index]['championName']})
         index = index +1
-    
+    print(PlayersTeamDic)
 
 
 def UpdateEvent():

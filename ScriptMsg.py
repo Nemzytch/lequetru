@@ -151,7 +151,7 @@ def WriteMsg(text):
 def Msg(Event,IsAlly,ProbaEvent,TimerGame,ValueInput,Attribute) : 
     global text
     global LAST_TIMER_MSG
-    if TimerGame > LAST_TIMER_MSG + 300 :
+    if TimerGame > LAST_TIMER_MSG + 180 :
         if checkTypeOfEvent(Event,IsAlly) :
             if random.randint(0, 100)<= ProbaEvent :
                 ListMsg = ReadJson()
