@@ -157,8 +157,16 @@ def SendMsgForEvent():
                 if event.Name == "GameStart":
                     Msg(Classic.Begin,IsAlly,100,TimerGame,KillerName,event.Attribute)
                 elif event.Name == "DragonKill":
+                    if IsAlly == True:
+                        IsAlly =False
+                    elif :
+                        IsAlly =True
                     Msg(GameEvent.Drake,IsAlly,80,TimerGame,KillerName,event.Attribute)
                 elif event.Name == "NashorKilled":
+                    if IsAlly == True:
+                        IsAlly =False
+                    elif :
+                        IsAlly =True
                     Msg(GameEvent.Nashor,IsAlly,80,TimerGame,KillerName,event.Attribute)
                 elif event.Name == "TurretKilled":
                     Msg(GameEvent.Tower,IsAlly,0,TimerGame,KillerName,event.Attribute)
