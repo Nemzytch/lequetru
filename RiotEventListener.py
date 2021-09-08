@@ -151,9 +151,9 @@ def SendMsgForEvent():
                     KillerName = event.KillerName
                     KillerName = PlayersNameDic[KillerName]
                     if PlayersTeamDic[event.KillerName] == TEAM_YUUMI:
-                        IsAlly = True
-                    else :
                         IsAlly = False
+                    else :
+                        IsAlly = True
                 if event.Name == "GameStart":
                     Msg(Classic.Begin,IsAlly,100,TimerGame,KillerName,event.Attribute)
                 elif event.Name == "DragonKill":
