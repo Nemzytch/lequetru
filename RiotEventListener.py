@@ -60,7 +60,7 @@ def SetupPlayerList():
         if DatasAllPlayers[index]['championName'] == NAME_YUUMI:
             NAME_YUUMI_ACCOUNT = DatasAllPlayers[index]['summonerName']
             TEAM_YUUMI = DatasAllPlayers[index]['team']
-            NAME_ADC_ACCOUNT=DatasAllPlayers[index+1]['summonerName']
+            NAME_ADC_ACCOUNT=DatasAllPlayers[index-1]['summonerName']
         PlayersTeamDic.update({DatasAllPlayers[index]['summonerName']:DatasAllPlayers[index]['team']})
         PlayersNameDic.update({DatasAllPlayers[index]['summonerName']:DatasAllPlayers[index]['championName']})
         index = index +1
