@@ -1,4 +1,3 @@
-from logging import info
 import os
 import sys 
 import time
@@ -6,27 +5,17 @@ import datetime
 import json
 import math
 import random
-import mouse 
-import termcolor
-from cv2 import validateDisparity
 import win32api
 import win32con
 import requests
 import pyautogui
 import pyscreeze
-import keyboard
-import pytesseract
-import numpy as nm
 import pydirectinput
 from time import sleep
-from PIL import ImageGrab
-from random import randrange
 from pyairtable import Table 
 from pyairtable.formulas import match
 from requests.adapters import HTTPAdapter
-from requests.exceptions import HTTPError
 from requests.exceptions import ConnectionError
-from requests.packages.urllib3.util.retry import Retry
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 import requests
 import urllib3
@@ -135,13 +124,11 @@ class Personnage:
 
     randx = random.random()
 
-
-
     # GENERIC FUNCTIONS      
     def setup(self):                    
         self.updateDatas()
         i=0
-        while not "gameData" in self.datas:
+        while "gameData" not in self.datas:
             time.sleep(0.2)
             self.updateDatas()
         while self.datas["gameData"]["gameTime"] < 1:
@@ -149,14 +136,13 @@ class Personnage:
             self.updateDatas()
             print("Loading Screen")
         print("Game just started")
-        f = open('stuff.json',)
-        self.stuff = json.load(f)
-        f.close()
+        with open('stuff.json',) as f:
+            self.stuff = json.load(f)
         print('stuff loaded')
         i=0
         for x in self.datas["allPlayers"]:
             if x["championName"] == "Singed":
-                
+
                 global NumberSinged
                 print('Going to dudge')
                 time.sleep(5)
@@ -174,7 +160,7 @@ class Personnage:
                 time.sleep(0.2)
                 NumberSinged=NumberSinged-1
                 print('Number For Max Dudge With Singed Now is', NumberSinged)
-                
+
             if x["championName"] == "Yuumi":
                 print('Found it in the '+str(i)+" th index")
                 self.yuumiIndex = i
@@ -207,17 +193,17 @@ class Personnage:
                 pydirectinput.press('enter')
                 pydirectinput.press('p')
                 time.sleep(0.2)
-                list1 = [('glhf'), ('have fun'), ('good luck'), ('')]
+                list1 = [('glhf'), ('go win this'), ('good luck guys'), ('')]
                 pydirectinput.press('enter')
                 time.sleep(0.2)
                 pydirectinput.write(random.choice(list1))
                 time.sleep(0.2)
                 pydirectinput.press('enter')
-                
+
                 # if gameTime > self.toplanerTimer:
                 #     self.adcIndex = i-4
                 self.passiveCooldown = time.time()
-                
+
                 if team ==1:
                     self.Team = 'Blue'
                     self.BaseX = 1539
@@ -233,10 +219,10 @@ class Personnage:
                     self.qY = 350
                     print(self.Team)
                 else:
-                    print(str(i))
+                    print(i)
                 break
             else:
-                i=i+1
+                i += 1
 
     def manacheckE(self):
     # if Mana < 0.15*(MaxMana)+40:
