@@ -1,0 +1,106 @@
+champ-select:
+    data:
+        skins:
+            102: 102000
+            103: 103000
+            106: 106000
+            119: 119000
+            12: 12000
+            126: 126000
+            143: 143000
+            145: 145000
+            17: 17000
+            18: 18000
+            203: 203000
+            21: 21000
+            222: 222000
+            27: 27000
+            350: 350000
+            38: 38000
+            42: 42000
+            429: 429000
+            516: 516000
+            57: 57000
+            62: 62000
+            74: 74000
+            876: 876000
+        spells:
+            420:
+            - 7
+            - 14
+            830:
+            - 4
+            - 7
+    schemaVersion: 1
+lol-champ-select:
+    data:
+        reportAndMutingTooltipShown: true
+    schemaVersion: 0
+lol-clash:
+    data:
+        clash-start-modal-seen: true
+    schemaVersion: 1
+lol-general:
+    data:
+        uploadCrashReports: true
+    schemaVersion: 0
+lol-home-hubs:
+    data:
+        sentinels-hub-2021:
+            clickedSkip: true
+            skipAll: true
+            watchedIntro: true
+    schemaVersion: 1
+lol-notifications:
+    data:
+        rgmNotificationTimestamp: 1639670661111
+    schemaVersion: 1
+lol-npe-first-touch:
+    data: null
+    schemaVersion: 1
+lol-npe-rewards:
+    data:
+        challenges:
+            allMissionsCompleted: false
+            totalCount: 8
+        login:
+            allRewardsClaimed: false
+            lastCompletedMissionDate: 1639885481000
+            lastCompletedMissionInternalName: "npe_rewards_login_v1_step4"
+    schemaVersion: 1
+lol-npe-tutorial-path:
+    data:
+        hasSeenTutorialPath: true
+        hasSkippedTutorialPath: false
+        shouldSeeNewPlayerExperience: false
+    schemaVersion: 1
+lol-parties:
+    data:
+        hasSeenOpenPartyFirstExperience: true
+        hasSeenOpenPartyTooltip: true
+    schemaVersion: 1
+lol-player-behavior:
+    data:
+        codeOfConductAccepted: true
+    schemaVersion: 0
+lol-premade-voice:
+    data:
+        autoJoin: true
+        inputMode: "voiceActivity"
+        muteOnConnect: false
+        pushToTalkKey: "[<Unbound>]"
+        showFirstExperienceInGame: true
+        showFirstExperienceInLCU: true
+    schemaVersion: 1
+lol-profiles:
+    data:
+        ranked-reference-modal-login-seen-for-season: 11
+    schemaVersion: 0
+lol-tft:
+    data:
+        previouslySeenSeasons: "TFT6_Series"
+    schemaVersion: 1
+lol-tutorial:
+    data:
+        championSelectRunesTooltipSeenCount: 9
+    schemaVersion: 1

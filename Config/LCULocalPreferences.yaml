@@ -1,0 +1,41 @@
+GeoInfo:
+    data:
+        city: "evere"
+        country: "bel"
+        region: "bru"
+    schemaVersion: 1
+lol-audio:
+    data:
+        masterVolume: 2
+    schemaVersion: 5
+lol-clash:
+    data:
+        simpleStateFlagIds:
+        - "registration_open_tournament_3522"
+        - "lock_in_open_tournament_3522_phase_3642"
+        - "registration_open_tournament_3542"
+        - "lock_in_open_tournament_3542_phase_3662"
+    schemaVersion: 1
+lol-home:
+    data:
+        useTFTOverride: false
+    schemaVersion: 0
+lol-parties:
+    data:
+        permanentHideAutofillModal: true
+    schemaVersion: 1
+lol-premade-voice:
+    data:
+        currentCaptureDeviceHandle: "Default System Device"
+        inputVolume: 50
+        vadSensitivity: 65
+    schemaVersion: 1
+lol-replays:
+    data:
+        dontShowEogUsageTip: true
+    schemaVersion: 1
+lol-user-experience:
+    data:
+        hasBeenPromptedForPotatoMode: true
+        lastKnownMachineSpec: 5
+    schemaVersion: 2

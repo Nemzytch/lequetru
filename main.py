@@ -1,18 +1,28 @@
+from logging import info
 import os
+import sys 
 import time
+import datetime
 import json
 import math
 import random
+import mouse 
+import termcolor
+from cv2 import validateDisparity
 import win32api
 import win32con
 import requests
 import pyautogui
 import pyscreeze
+import keyboard
+import pytesseract
 import numpy as nm
 import pydirectinput
 from time import sleep
 from PIL import ImageGrab
 from random import randrange
+from pyairtable import Table 
+from pyairtable.formulas import match
 from requests.adapters import HTTPAdapter
 from requests.exceptions import HTTPError
 from requests.exceptions import ConnectionError
@@ -24,18 +34,46 @@ import json
 from base64 import b64encode
 from time import sleep
 from colorama import Fore, Back, Style
-import TimerMsg
+import pyautogui
+
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-requests.packages.urllib3.disable_warnings(InsecureRequestWarning) #  
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 gamedirs = [r'C:\Games\Garena\32787\LeagueClient',
             r'D:\Games\League of Legends']
 os.system("")
 
+
+#NuberGamesToPlay
+NumberGamesToPlay = random.randint(10, 15)
+print(NumberGamesToPlay)
+#surrend
+OneMinute= 900
+#Number Dudge Singed
+NumberSinged= 1
+print('Number For Max Dudge With Singed is', NumberSinged)
+
+#Account Status Check
+API_KEY= "key181wgNDrYM2bms"
+BASE_ID = "appHnr7cu8j1HlMC2"
+table = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'YUUMI')
+
+def restart():
+    print("argv was",sys.argv)
+    print("sys.executable was", sys.executable)
+    print("restart now")
+
+    os.execv(sys.executable, ['python'] + sys.argv)
+
 def fetchDatas():
     response = requests.get("https://127.0.0.1:2999/liveclientdata/allgamedata", verify = False).text
     return json.loads(response)
+
+def MouseClick():
+    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0,0)
+    time.sleep(0.1)
+    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0,0)
 
 class Personnage:
     # Yuumi    
@@ -98,6 +136,7 @@ class Personnage:
     randx = random.random()
 
 
+
     # GENERIC FUNCTIONS      
     def setup(self):                    
         self.updateDatas()
@@ -116,6 +155,26 @@ class Personnage:
         print('stuff loaded')
         i=0
         for x in self.datas["allPlayers"]:
+            if x["championName"] == "Singed":
+                
+                global NumberSinged
+                print('Going to dudge')
+                time.sleep(5)
+                pyautogui.moveTo(1000,500)
+                time.sleep(1)
+                MouseClick()
+                time.sleep(1)
+                pydirectinput.press('enter')
+                time.sleep(0.2)
+                pyautogui.write('Sorry guys need to go, pls dudge at 3min', interval=0.15)
+                time.sleep(0.2)
+                pydirectinput.press('enter')
+                time.sleep(8)
+                os.system('taskkill /f /im "League of Legends.exe"')
+                time.sleep(0.2)
+                NumberSinged=NumberSinged-1
+                print('Number For Max Dudge With Singed Now is', NumberSinged)
+                
             if x["championName"] == "Yuumi":
                 print('Found it in the '+str(i)+" th index")
                 self.yuumiIndex = i
@@ -126,6 +185,39 @@ class Personnage:
                 print(self.adcIndex)
                 team= math.ceil((i+1)/(len(self.datas["allPlayers"])/2))
 
+                #Start of the game 
+                self.toplanerTimer = random.randint(900, 1300)
+                print('will go to toplaner at '+ str(self.toplanerTimer))
+                self.cameraLock()
+                pydirectinput.press('p')
+                time.sleep(0.2)
+                pydirectinput.keyDown('ctrl')
+                time.sleep(0.1)
+                pydirectinput.press('l')
+                pydirectinput.keyUp('ctrl')
+                pyautogui.write('spellt', interval=0.15)
+                time.sleep(0.2)
+                pydirectinput.press('enter')
+                pydirectinput.keyDown('ctrl')
+                pydirectinput.press('l')
+                pydirectinput.keyUp('ctrl')
+                time.sleep(0.1)
+                pyautogui.write('oracle', interval=0.15)
+                time.sleep(0.2)
+                pydirectinput.press('enter')
+                pydirectinput.press('p')
+                time.sleep(0.2)
+                list1 = [('glhf'), ('have fun'), ('good luck'), ('')]
+                pydirectinput.press('enter')
+                time.sleep(0.2)
+                pydirectinput.write(random.choice(list1))
+                time.sleep(0.2)
+                pydirectinput.press('enter')
+                
+                # if gameTime > self.toplanerTimer:
+                #     self.adcIndex = i-4
+                self.passiveCooldown = time.time()
+                
                 if team ==1:
                     self.Team = 'Blue'
                     self.BaseX = 1539
@@ -145,30 +237,6 @@ class Personnage:
                 break
             else:
                 i=i+1
-        self.toplanerTimer = random.randint(900, 1300)
-        print('will go to toplaner at '+ str(self.toplanerTimer))
-        self.cameraLock()
-        pydirectinput.press('p')
-        time.sleep(0.2)
-        pydirectinput.keyDown('ctrl')
-        time.sleep(0.1)
-        pydirectinput.press('l')
-        pydirectinput.keyUp('ctrl')
-        pyautogui.write('spellt', interval=0.15)
-        time.sleep(0.2)
-        pydirectinput.press('enter')
-        pydirectinput.keyDown('ctrl')
-        pydirectinput.press('l')
-        pydirectinput.keyUp('ctrl')
-        time.sleep(0.1)
-        pyautogui.write('oracle', interval=0.15)
-        time.sleep(0.2)
-        pydirectinput.press('enter')
-        pydirectinput.press('p')
-        # if gameTime > self.toplanerTimer:
-        #     self.adcIndex = i-4
-        self.passiveCooldown = time.time()
-        TimerMsg.RiotEventListener.MainMsg()
 
     def manacheckE(self):
     # if Mana < 0.15*(MaxMana)+40:
@@ -184,9 +252,7 @@ class Personnage:
             pydirectinput.press('e')
         else:
             print('cant heal yet')
-
-
-
+        
     def cameraLock(self):
         camera = pyautogui.locateOnScreen("images/camera.png", grayscale=False,confidence=0.90)
         if camera!=None:
@@ -273,13 +339,13 @@ class Personnage:
             self.updateDatas()
             self.updatePerso()
             self.LevelUP()
+            self.Surrender()
             self.randx = random.random()
             print(self.randx)
+            
             if self.randx >0.80:
                 pyautogui.moveTo(960,480)
-                win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0,0)
-                time.sleep(0.1)
-                win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0,0)
+                MouseClick()
                 pydirectinput.press('space')   
 
             if self.adcDead == False:
@@ -323,9 +389,6 @@ class Personnage:
                         if ennemy!=None:
                             self.qSpell()
                             self.qspellCooldown = time.time()
-                    else:
-                        TimerMsg.RiotEventListener.MainMsg()
-                            
 
                 if self.yuumiMana < (15*(self.resourceMax)/100):
                     print('you got '+ str(self.yuumiMana))
@@ -376,17 +439,15 @@ class Personnage:
                             if self.topDead == True:
                                 print('going back to base')  
             
-
-
-
                 if time.time()> (self.backCooldown+50):
                     pyautogui.moveTo(self.BaseX,self.BaseY)
                     print('adc is not alive')
-                    win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTDOWN, 0,0)
                     time.sleep(0.2)
-                    win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTUP, 0,0)
+                    MouseClick()
                     print('going back to base')
-                    time.sleep(5)
+                    time.sleep(1.5)
+                    MouseClick()
+                    time.sleep(4)
                     pydirectinput.press('b')
                     time.sleep(9)
                     self.shop()
@@ -526,9 +587,7 @@ class Personnage:
                 # pydirectinput.press('y')
                 pyautogui.moveTo(Ennemies[0]+40, Ennemies[1]+100)
                 pydirectinput.press('w')
-                win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0,0)
-                time.sleep(0.1)
-                win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0,0)      
+                MouseClick()      
                 pyautogui.moveTo(1861,603)
                 time.sleep(0.3)
                 pydirectinput.press('w')
@@ -537,6 +596,26 @@ class Personnage:
             except TypeError:
                 print("No ennemies found")
 
+    def Surrender(self):
+        
+        global OneMinute
+        if self.datas["gameData"]["gameTime"] > OneMinute:
+            Surrend = pyautogui.locateOnScreen("images/Surrend.png", grayscale=False,confidence=0.80)
+            OneMinute=OneMinute+20
+            print(OneMinute)
+            try:
+                pyautogui.moveTo(Surrend[0],Surrend[1]+77)
+                time.sleep(0.1)
+                MouseClick() 
+                time.sleep(0.5)
+                MouseClick()
+                time.sleep(0.1)
+                print('I am surrending')
+            except :
+                print('No surrend detected')
+        else:
+            print('Not Time to Surrender')
+                    
     def LevelUP(self):
         if self.YuumiLevel == 1:
             if self.ELevel < 1:
@@ -678,15 +757,181 @@ class Personnage:
     def action(self):
         return False
 
+
+def Connexion():
+    
+    with open("config.json") as json_data_file:
+        config = json.load(json_data_file)
+    PcName = config["info"]["PcName"]
+    print(PcName)
+        
+    table = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'YUUMI')
+            
+    Play = pyautogui.locateOnScreen("images/Play.png", grayscale=False,confidence=0.90)    
+    Connexion = pyautogui.locateOnScreen("images/Connexion.png", grayscale=False,confidence=0.90)
+    try:
+        if Connexion!=None:
+            
+            formula = match({"PcName": PcName})
+            account = table.first(formula=formula, sort=["Unban"])['fields']['Account']
+            password = table.first(formula=formula, sort=["Unban"])['fields']['Password']
+            
+            #LogDesired
+            pyautogui.moveTo(Connexion[0],Connexion[1]+80)
+            time.sleep(0.1)
+            MouseClick()
+            pyautogui.typewrite(account, interval=0.10)
+            time.sleep(0.1)
+            print('Log Write')
+                
+            #PwdDesired
+            pyautogui.moveTo(Connexion[0],Connexion[1]+140)
+            time.sleep(0.1)
+            MouseClick()
+            pyautogui.typewrite(password, interval=0.10)
+            time.sleep(0.1)
+            print('Pwd Write')
+                
+            #Press connexion button
+            pyautogui.moveTo(Connexion[0]+60,Connexion[1]+520)
+            time.sleep(0.1)
+            MouseClick()
+            time.sleep(6)
+            
+            #Press Play button
+            pyautogui.moveTo(Connexion[0],Connexion[1]+650)
+            time.sleep(0.1)
+            MouseClick()
+            time.sleep(20)   
+        else:
+            print('No connexion detected')       
+    except:
+        print('No more accounts')
+               
+def PopUpClose():
+    GG = pyautogui.locateOnScreen('images/GG.png', grayscale=False,confidence=0.90)
+    ok = pyautogui.locateOnScreen('images/ok.jpg', grayscale=False,confidence=0.90)
+    list1 =list(pyautogui.locateAllOnScreen('images/CroixM.png', grayscale=False,confidence=0.90))
+    print (list1)
+    try:
+        pyautogui.moveTo(list1[1])
+        time.sleep(0.1)
+        MouseClick()
+        time.sleep(0.1)
+        print('PopUp Close')
+        time.sleep(0.5)
+        
+        if GG != None:
+            pyautogui.moveTo(GG)
+            time.sleep(0.1)
+            MouseClick()
+            time.sleep(0.1)
+            print('GG')
+            time.sleep(0.5)
+        if ok != None:
+            pyautogui.moveTo(ok)
+            time.sleep(0.1)
+            MouseClick()
+            time.sleep(0.1)
+            print('Ok')
+            time.sleep(0.5)
+            
+    except:
+        print('No PopUp')
+        time.sleep(0.5)
+    
+def SignOutt():
+    CroixM = pyautogui.locateOnScreen("images/CroixM.png", grayscale=False,confidence=0.90)
+    
+    if CroixM!=None:
+        pyautogui.moveTo(CroixM[0]+5,CroixM[1]+5)
+        time.sleep(0.1)
+        MouseClick()
+        time.sleep(3)
+        pyautogui.moveTo(CroixM[0]-600,CroixM[1]+400)
+        time.sleep(0.1)
+        MouseClick()
+        time.sleep(0.1)
+        print('SignOut')
+        time.sleep(10)
+        restart()
+    else:
+        print('No CroixM')
+        
+def Store():
+    store = pyautogui.locateOnScreen("images/store.png", grayscale=False,confidence=0.90)
+    Alarme = pyautogui.locateOnScreen("images/Alarme.png", confidence=0.80)
+    if store != None:
+        #store
+        pyautogui.moveTo(store[0]+5,store[1]+20)
+        MouseClick()
+        time.sleep(1.5)
+        #champions
+        pyautogui.moveTo(store[0]-700,store[1]+80)
+        time.sleep(0.1)
+        MouseClick()
+        time.sleep(1.5)
+        MouseClick()
+        time.sleep(1)
+        #Price 
+        pyautogui.moveTo(store[0]-700,store[1]+350)
+        time.sleep(0.1)
+        MouseClick()
+        time.sleep(1)
+        #Price selection
+        pyautogui.moveTo(store[0]-700,store[1]+550)
+        time.sleep(0.1)
+        MouseClick()
+        time.sleep(1)
+        
+        def BoughtChamp():
+            #Champ selection
+            pyautogui.moveTo(store[0]-530,store[1]+200)
+            time.sleep(0.1)
+            MouseClick()
+            time.sleep(1)
+            #Champ Buy
+            pyautogui.moveTo(store[0]-250,store[1]+440)
+            time.sleep(0.1)
+            MouseClick()
+            time.sleep(1)
+            pyautogui.moveTo(store[0]-530,store[1]+200)
+            time.sleep(0.1)
+            MouseClick()
+            time.sleep(1)
+        
+        for _ in range(18):
+            BoughtChamp()
+            
+        #Yummi store
+        pyautogui.moveTo(store[0]-700,store[1]+260)
+        time.sleep(0.1)
+        MouseClick()
+        time.sleep(1)
+        pyautogui.write('yuumi', interval=0.1)
+        time.sleep(1)
+        BoughtChamp()
+        
+        pyautogui.moveTo(store[0]-750,store[1]+20)
+        MouseClick()
+        time.sleep(2)
+        
+        if Alarme != None:
+            SignOutt()
+        else:
+            print('No Alarme')
+        
 class lobby():
     username = 'riot'
-    champion = 350
+    champion = 350 
     host = '127.0.0.1'
     protocol = 'https'
     gamedirs = [r'C:\Riot Games\League of Legends',
             r'D:\Games\League of Legends']
     lockfile = None
     print('Waiting for League of Legends to start ..')
+    print('Trying to connect')
+    Connexion()
     while not lockfile:
         for gamedir in gamedirs:
             lockpath = r'%s\lockfile' % gamedir
@@ -770,31 +1015,148 @@ def statuscheck():
         print(Back.BLACK + Fore.GREEN + str(r.status_code) + Style.RESET_ALL, r.text)
 
         phase = r.json()
-
-
+                  
         if phase =='PreEndOfGame':
             okPreEndOfGame = pyautogui.locateOnScreen("images/okPreEndOfGame.png")
             pyautogui.click(900,500)
             if okPreEndOfGame !=None:
                 pyautogui.click(okPreEndOfGame[0],okPreEndOfGame[1])
+            try:
+                os.system('taskkill /f /im "SystemSettings.exe"')
+            except:
+                print('no SystemSettings.exe')
             
-
-        
         if phase =='EndOfGame':
+            
+            global NumberGamesToPlay
+            #get the summoner name
+            SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
             time.sleep(2)
+            
+            try:
+                os.system('taskkill /f /im "SystemSettings.exe"')
+                PopUpClose()
+                OKEND2 = pyautogui.locateOnScreen("images/ok.JPG", confidence=0.90)
+                pyautogui.click(OKEND2)                
+                OKEND = pyautogui.locateOnScreen("images/OKEND.JPG", confidence=0.90)
+                pyautogui.click(OKEND)
+                IUnderstand = pyautogui.locateOnScreen("images/IUnderstand.JPG", confidence=0.70)
+                pyautogui.click(IUnderstand)
+                IAgree = pyautogui.locateOnScreen("images/IAgree.JPG", grayscale=False,confidence=0.90)
+                if IAgree != None:
+                    print('I Agree')
+                    pyautogui.click(IAgree[0]+80,IAgree[1]-20)
+                    pyautogui.write('I Agree', interval=0.25)
+            except:
+                print('Nice')
+                
             print('thanking the mates and going next')
+            
+            #NumberGamesToPlay -1 + Integrations
+            NumberGamesToPlay =NumberGamesToPlay -1
+            print(NumberGamesToPlay,'avec le -1')
+            
+            for records in table.all():
+                if records['fields']['IngameName'] == SummonerName:
+                    recordId = records['id']
+                    table.update(recordId, {"GamesToPlay": str(NumberGamesToPlay)})
+            
+            #Thanking Mates
             playAgain = pyautogui.locateOnScreen("images/playagian.JPG", confidence=0.90)
             pyautogui.click(playAgain)
+            
+            puuid = request('get', '/lol-summoner/v1/current-summoner').json()['puuid']
+
+            r = request('get', '/lol-ranked/v1/ranked-stats/'+puuid)
+            tier = r.json()["queues"][0]["tier"]
+            division =r.json()["queues"][0]["division"]
+            leaguepoints= r.json()["queues"][0]["leaguePoints"]
+            wins = r.json()["queues"][0]["wins"]
+            losses= r.json()["queues"][0]["losses"]
+
+            for records in table.all(sort=["Unban"]):
+                if records['fields']['IngameName'] == SummonerName:
+                    recordId = records['id']
+                    table.update(recordId, {"Rank": str(tier) +' '+ str(division) +' '+ str(leaguepoints)+"LP"})
+                    table.update(recordId, {"WIN/LOSS": str(wins)+'W/'+str(losses)+'L'})
+            
+            #Iron4 0Lp stop account
+            if tier == 'IRON' and division == 'IV' and leaguepoints == 0:
+                print('One more account readyyyyy')
+                table.update(recordId, {"PcName": "Finish"})
+                SignOutt()
+                
+            if NumberGamesToPlay == 0:
+                print('No more game to play, bye')
+                SignOutt()
+                    
+            time.sleep(10)
 
         if phase =='None':
+            time.sleep(3)
+            
+            SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
+
+            for records in table.all():
+                if records['fields']['IngameName'] == SummonerName:
+                    recordId = records['id']
+                    table.update(recordId, {"Unban": str(datetime.datetime.now())})
+            
+            for _ in range(10):
+                PopUpClose()
+            
             print('need to create lobby')
             r =request('post','/lol-lobby/v2/lobby',data={"queueId": 420})
 
-        if phase =='Lobby':
+        if phase =='Lobby':   
+            QueueLockout = pyautogui.locateOnScreen("images/QueueLockout.png", confidence=0.90)
+            AtemptToJoin = pyautogui.locateOnScreen("images/AtemptToJoin.png", confidence=0.90)
+            OKEND = pyautogui.locateOnScreen("images/OKEND.JPG", confidence=0.90)
+            IUnderstand = pyautogui.locateOnScreen("images/IUnderstand.JPG", confidence=0.70)
+            GG = pyautogui.locateOnScreen('images/GG.png', grayscale=False,confidence=0.90)
+            #DudgeTimer = pyautogui.locateOnScreen("images/DudgeTimer.JPG", confidence=0.90)
+            
             print('need to pick lanes')
             r = request('put', '/lol-lobby/v2/lobby/members/localMember/position-preferences', data ={"firstPreference": "UTILITY","secondPreference":"MIDDLE",})
             sleep(2)
             r = request('post', '/lol-lobby/v2/lobby/matchmaking/search')
+            
+            try:
+                Alarme = pyautogui.locateOnScreen("images/Alarme.png", confidence=0.80)
+                if Alarme != None:
+                    print('New Account Detected, going to pick some champs')
+                    Store()
+                IAgree = pyautogui.locateOnScreen("images/IAgree.JPG", grayscale=False,confidence=0.90)
+                if IAgree != None:
+                    print('I Agree')
+                    pyautogui.click(IAgree[0]+80,IAgree[1]-20)
+                    pyautogui.write('I Agree', interval=0.25)
+                    time.sleep(2)
+                    OKEND = pyautogui.locateOnScreen("images/OKEND.JPG", confidence=0.90)
+                    pyautogui.click(OKEND)
+                if IUnderstand != None:
+                    print('I Understand')
+                    pyautogui.click(IUnderstand)
+                if GG != None:
+                    print('GG')
+                    pyautogui.click(GG)
+                if OKEND != None:
+                    print('OKEND')
+                    pyautogui.click(OKEND)
+            except: 
+                print('No I Agree')
+                
+            if QueueLockout or AtemptToJoin != None:                     
+                pyautogui.click(OKEND)
+                time.sleep(1)
+                pyautogui.click(OKEND)
+                time.sleep(1)
+                pyautogui.click(OKEND)
+                time.sleep(1)
+                SignOutt()
+            else:
+                print('No QueueLockout detected')
+
         if phase != 'ChampSelect':
             championIdx = 0
 
@@ -817,10 +1179,13 @@ def statuscheck():
                     print("I am going to search Yuumi")
                     pyautogui.write('Yuumi', interval=0.25)
                     Yuumy = pyautogui.locateOnScreen("images/FaceDeYuumi.png", grayscale=False,confidence=0.90)
-                    if Yuumy[0] != None:
-                        pyautogui.click(Yuumy[0],Yuumy[1])
+                    try:
+                        if Yuumy[0] != None:
+                            pyautogui.click(Yuumy[0],Yuumy[1])
+                    except:
+                        print('No Yuumi detected')
 
-            banchamp= pyautogui.locateOnScreen("images/banchamp.jpg", grayscale=False,confidence=0.9)
+            banchamp= pyautogui.locateOnScreen("images/banchamp.jpg", grayscale=False,confidence=0.90)
             PhaseDeBan = pyautogui.locateOnScreen("images/PhaseDeBan.png", grayscale=False,confidence=0.90)
             if PhaseDeBan != None:
                 print("Time to ban some champs")
@@ -829,7 +1194,8 @@ def statuscheck():
                 pyautogui.write('Alistar', interval=0.25)
                 Alistar = pyautogui.locateOnScreen("images/FaceDeAlistar.png", grayscale=False,confidence=0.90)
                 Bannissement = pyautogui.locateOnScreen("images/Bannissement.jpg", grayscale=False,confidence=0.70)
-
+                Ghost= pyautogui.locateOnScreen("images/Ghost.png", grayscale=False,confidence=0.70)
+                    
                 if Alistar != None:
                     pyautogui.click(Alistar[0],Alistar[1])
                     sleep(3)
@@ -837,11 +1203,48 @@ def statuscheck():
                         pyautogui.click(Bannissement[0],Bannissement[1])
                     else: 
                         print("cant find ban button")
+                
+                    if Ghost != None:
+                        print("I am going to switch Summoners and Runes")
+                        #summoner change
+                        pyautogui.click(Ghost[0],Ghost[1])
+                        time.sleep(0.5)
+                        pyautogui.click(Ghost[0]-50,Ghost[1]-140)
+                        time.sleep(0.5)
+                        pyautogui.click(Ghost[0]+60,Ghost[1])
+                        time.sleep(0.5)
+                        pyautogui.click(Ghost[0]+120,Ghost[1]-140)
+                        #rune change
+                        time.sleep(0.5)
+                        pyautogui.click(Ghost[0]-120,Ghost[1])
+                        time.sleep(0.5)
+                        pyautogui.click(Ghost[0]-120,Ghost[1]-140)
+                    
+                        
+                
 
-            Lockin = pyautogui.locateOnScreen("images/Lockin.jpg", grayscale=False,confidence=0.70)
+            Lockin = pyautogui.locateOnScreen("images/Lockin.jpg", grayscale=False,confidence=0.99)
+            Singed = pyautogui.locateOnScreen("images/FaceDeSinged.jpg", grayscale=False,confidence=0.90)
+            LockinOff = pyautogui.locateOnScreen("images/LockinOff.jpg", grayscale=False,confidence=0.90)
+                
             if Lockin != None:
                 pyautogui.click(Lockin[0],Lockin[1])
                 print("Champion Lock bro!")
+                    
+            if LockinOff != None:
+                SearchChamp = pyautogui.locateOnScreen("images/search.png", grayscale=False,confidence=0.90)
+                try:
+                    print('Pick another champ for dudge')
+                    pyautogui.click(SearchChamp[0],SearchChamp[1])
+                    pyautogui.write('Singed', interval=0.25)
+                    print('Singed Found')
+                except TypeError:
+                    print('failed to search')
+                        
+            if NumberSinged > 0:
+                if Singed != None:
+                    pyautogui.click(Singed[0],Singed[1])
+                    print('Singed locked')
 
         elif phase == 'InProgress':
             print('in progress')
@@ -850,8 +1253,8 @@ def statuscheck():
                 sleep(1)
 
         sleep(0.5)
-
-
+        
+          
 def main():
     statuscheck()
     return True
@@ -864,8 +1267,3 @@ if __name__ == "__main__":
 # https://ddragon.leagueoflegends.com/cdn/11.16.1/data/en_US/champion/Yuumi.json
 # http://ddragon.leagueoflegends.com/cdn/6.8.1/img/map/map11.png
 # store last attached command to who ( with positions of the pictures we know who), si self attached = true, on sait à qui on est attaché
-
-
-
-
-
