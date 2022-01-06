@@ -1,0 +1,40 @@
+{"items": [
+    {
+        "count": 1,
+        "displayName": "Spellthief's Edge",
+        "price": 400,
+        "slot": 0
+    },
+    {
+        "count": 1,
+        "displayName": "Dark Seal",
+        "price": 350,
+        "slot": 1
+    },
+    {
+        "count": 1,
+        "displayName": "Moonstone Renewer",
+        "price": 2500,
+        "subItem": "Bandleglass Mirror",
+        "subPrice": 950,
+        "slot": 2
+    },
+    {
+        "count": 1,
+        "displayName": "Staff of Flowing Water",
+        "price": 2300,
+        "slot": 3
+    },
+    {
+        "count": 1,
+        "displayName": "Ardent Censer",
+        "price": 2300,
+        "slot": 4
+    },
+    {
+        "count": 1,
+        "displayName": "Chemtech Putrifier",
+        "price": 2300,
+        "slot": 5
+    }
+]}

@@ -1,0 +1,35 @@
+Towers=[
+    (1700,600,'T1 BOT BLUE'), 
+    (1700,600,'T2 BOT BLUE'),
+    (1700,600,'T3 BOT BLUE'),
+    (1700,600,'T1 MID BLUE'),
+    (1700,600,'T2 MID BLUE'),
+    (1700,600,'T3 MID BLUE'),
+    (1700,600,'T1 TOP BLUE'),
+    (1700,600,'T2 TOP BLUE'),
+    (1700,600,'T3 TOP BLUE'),
+    (1700,600,'T1 BOT RED'),
+    (1700,600,'T2 BOT RED'),
+    (1700,600,'T3 BOT RED'),
+    (1700,600,'T1 MID RED'),
+    (1700,600,'T2 MID RED'),
+    (1700,600,'T3 MID RED'),
+    (1700,600,'T1 TOP RED'),
+    (1700,600,'T2 TOP RED'),
+    (1700,600,'T3 TOP RED')
+    ]
+JungleCamps=[
+    (1700,600,'BLUE Buff BLUE'),
+    (1700,600,'RED Buff BLUE'),
+    (1700,600,'GROMP BLUE'),
+    (1700,600,'GOLEMS BLUE'),
+    (1700,600,'WRAITHS BLUE'),
+    (1700,600,'WOLVES BLUE'),
+    (1700,600,'BLUE Buff RED'),
+    (1700,600,'RED Buff BLUE'),
+    (1700,600,'GROMP RED'),
+    (1700,600,'GOLEMS RED'),
+    (1700,600,'WRAITHS RED'),
+    (1700,600,'WOLVES RED'),
+]
+
