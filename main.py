@@ -156,7 +156,7 @@ class Personnage:
         i=0
         for x in self.datas["allPlayers"]:
             if x["championName"] == "Singed":
-                
+                print("Singed found")
                 global NumberSinged
                 print('Going to dudge')
                 time.sleep(5)
