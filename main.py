@@ -154,26 +154,30 @@ class Personnage:
         f.close()
         print('stuff loaded')
         i=0
+        
         for x in self.datas["allPlayers"]:
             if x["championName"] == "Singed":
-                print("Singed found")
-                global NumberSinged
-                print('Going to dudge')
-                time.sleep(5)
-                pyautogui.moveTo(1000,500)
-                time.sleep(1)
-                MouseClick()
-                time.sleep(1)
-                pydirectinput.press('enter')
-                time.sleep(0.2)
-                pyautogui.write('Sorry guys need to go, pls dudge at 3min', interval=0.15)
-                time.sleep(0.2)
-                pydirectinput.press('enter')
-                time.sleep(8)
-                os.system('taskkill /f /im "League of Legends.exe"')
-                time.sleep(0.2)
-                NumberSinged=NumberSinged-1
-                print('Number For Max Dudge With Singed Now is', NumberSinged)
+                self.yuumiState = self.datas["activePlayer"]
+                self.WName = self.yuumiState["abilities"]["W"]["displayName"]
+                if self.WName == "Mega Adhesive":
+                    print('fling')
+                    global NumberSinged
+                    print('Going to dudge')
+                    time.sleep(5)
+                    pyautogui.moveTo(1000,500)
+                    time.sleep(1)
+                    MouseClick()
+                    time.sleep(1)
+                    pydirectinput.press('enter')
+                    time.sleep(0.2)
+                    pyautogui.write('Sorry guys need to go, pls dudge at 3min', interval=0.15)
+                    time.sleep(0.2)
+                    pydirectinput.press('enter')
+                    time.sleep(8)
+                    os.system('taskkill /f /im "League of Legends.exe"')
+                    time.sleep(0.2)
+                    NumberSinged=NumberSinged-1
+                    print('Number For Max Dudge With Singed Now is', NumberSinged)
                 
             if x["championName"] == "Yuumi":
                 print('Found it in the '+str(i)+" th index")
