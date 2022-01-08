@@ -357,7 +357,8 @@ class Personnage:
                     if self.yuumiMana < self.resourceMax:
                         self.baseCheck()
                         self.updateDatas()
-                        self.updatePerso()     
+                        self.updatePerso()
+                        self.Surrender()     
 
             if self.adcDead == False:
                 if self.attached == False:
