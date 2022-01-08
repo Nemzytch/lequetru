@@ -1101,6 +1101,16 @@ def statuscheck():
             time.sleep(10)
 
         if phase =='None':
+            #AccountSuspended = pyautogui.locateOnScreen("images/AccountSuspended.png", confidence=0.90)
+            
+            
+            #Banned Account 
+            #if AccountSuspended != None:
+            #    for records in table.all():
+            #        if records['fields']['IngameName'] == SummonerName:
+            #            recordId = records['id']
+            #            table.update(recordId, {"PcName": "子供は死んでいます"})
+            
             time.sleep(3)
             
             SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
