@@ -1,5 +1,6 @@
 from logging import info
 import os
+import re
 import sys 
 import time
 import datetime
@@ -8,11 +9,13 @@ import math
 import random
 import mouse 
 import termcolor
+import cv2
 from cv2 import validateDisparity
 import win32api
 import win32con
 import requests
 import pyautogui
+import pytesseract
 import pyscreeze
 import keyboard
 import pytesseract
@@ -1151,14 +1154,50 @@ def statuscheck():
             except: 
                 print('No I Agree')
                 
-            if QueueLockout or AtemptToJoin != None:                     
-                pyautogui.click(OKEND)
-                time.sleep(1)
-                pyautogui.click(OKEND)
-                time.sleep(1)
-                pyautogui.click(OKEND)
-                time.sleep(1)
-                SignOutt()
+            if QueueLockout or AtemptToJoin != None:
+                
+                pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract'
+                QueueLockout = pyautogui.locateOnScreen('images/QueueLockout.png')
+
+                while(True):
+                    
+                    cord = (QueueLockout[0]+145, QueueLockout[1]+80, QueueLockout[0]+230, QueueLockout[1]+105)
+                    cap = ImageGrab.grab(bbox =(cord))
+
+                    BanTime = pytesseract.image_to_string(
+                            cv2.cvtColor(nm.array(cap), cv2.COLOR_BGR2GRAY), 
+                            lang ='eng')
+                    
+                    numbers = re.findall(r'\d+', BanTime)
+                    
+                    Seconde = 0
+                    Minutes = 0
+                    Hours = 0
+                    Day = 0
+                    
+                    try:
+                        Seconde = numbers[-1]
+                        Minutes = numbers[-2]
+                        Hours = numbers[-3]
+                        Day = numbers[-4]
+                    except:
+                        pass
+                    
+                    time_change = datetime. timedelta(days=int(Day), hours=int(Hours), minutes=int(Minutes), seconds=int(Seconde))
+                    
+                    for records in table.all():
+                        if records['fields']['IngameName'] == SummonerName:
+                            recordId = records['id']
+                            table.update(recordId, {"Unban": str(datetime.datetime.now()+time_change)})
+                            
+                                
+                    pyautogui.click(OKEND)
+                    time.sleep(1)
+                    pyautogui.click(OKEND)
+                    time.sleep(1)
+                    pyautogui.click(OKEND)
+                    time.sleep(1)
+                    SignOutt()
             else:
                 print('No QueueLockout detected')
 
