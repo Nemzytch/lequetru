@@ -1,0 +1,7673 @@
+{
+
+  "tempo": [
+
+    {
+
+      "song_id": "NY8jN",
+
+      "song_title": "\"Adagio Sostenuto\" from \"Moonlight\" Sonata",
+
+      "song_uri": "https://getsongbpm.com/song/adagio-sostenuto-from-moonlight-sonata/NY8jN",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "Bnn2",
+
+        "name": "Béla Fleck",
+
+        "uri": "https://getsongbpm.com/artist/bela-fleck/Bnn2",
+
+        "img": "https://i.scdn.co/image/edff5f62a4a651a39ee9c7bf0e879f9c35f31756",
+
+        "genres": [
+
+          "classical",
+
+          "country",
+
+          "folk",
+
+          "funk",
+
+          "jazz"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "e1a889b7-5e45-447f-baa0-b9c6cbc0d39f"
+
+      },
+
+      "album": {
+
+        "title": "Perpetual Motion",
+
+        "uri": "https://getsongbpm.com/album/perpetual-motion/mBnr",
+
+        "img": "https://i.scdn.co/image/442b807d04a7a43f4a53c904d21f2df5e55d0e22",
+
+        "year": "2001"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "lxB7l",
+
+      "song_title": "Texas Flood",
+
+      "song_uri": "https://getsongbpm.com/song/texas-flood/lxB7l",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "gJQ9",
+
+        "name": "Stevie Ray Vaughan and Double Trouble",
+
+        "uri": "https://getsongbpm.com/artist/stevie-ray-vaughan-and-double-trouble/gJQ9",
+
+        "img": "https://i.scdn.co/image/5bd95fbc961256c56560d838bd74d05be50701d4",
+
+        "genres": [
+
+          "blues",
+
+          "rock"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "e3c8b0c8-3fa0-464b-b1f5-119cb52d3817"
+
+      },
+
+      "album": {
+
+        "title": "Texas Flood",
+
+        "uri": "https://getsongbpm.com/album/texas-flood/0B8X",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e02f7143c00741b94bb62025340",
+
+        "year": "1983"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "nmVJR",
+
+      "song_title": "At Last",
+
+      "song_uri": "https://getsongbpm.com/song/at-last/nmVJR",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "gnQY",
+
+        "name": "Etta James",
+
+        "uri": "https://getsongbpm.com/artist/etta-james/gnQY",
+
+        "img": "https://i.scdn.co/image/4cf0ce631f5c4b189648a4fde4f95a986be27580",
+
+        "genres": [
+
+          "blues",
+
+          "jazz",
+
+          "r&b",
+
+          "soul"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "e22d2f66-881e-41ca-9356-544697ee5f90"
+
+      },
+
+      "album": {
+
+        "title": "Love Songs",
+
+        "uri": "https://getsongbpm.com/album/love-songs/mZAAE",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e02020f11b1dcb769f10dd9f88b",
+
+        "year": "2001"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "467Bn7",
+
+      "song_title": "The Sweetest Gift - Dedicated to Annie Schmidt",
+
+      "song_uri": "https://getsongbpm.com/song/the-sweetest-gift-dedicated-to-annie-schmidt/467Bn7",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "QAgn7",
+
+        "name": "The Piano Guys",
+
+        "uri": "https://getsongbpm.com/artist/the-piano-guys/QAgn7",
+
+        "img": "https://i.scdn.co/image/42332561d5707e81cedbb3aa2d609451d0fbe93a",
+
+        "genres": null,
+
+        "from": "US",
+
+        "mbid": "322d2e0e-7df2-4208-a46c-26cb6c60ba56"
+
+      },
+
+      "album": {
+
+        "title": "Christmas Together",
+
+        "uri": "https://getsongbpm.com/album/christmas-together/E2q3v",
+
+        "img": "https://i.scdn.co/image/d66a6c4656b3ec21c10201e39512f94902f94f34",
+
+        "year": "2017"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "3lxkwr",
+
+      "song_title": "Burung Kakatua",
+
+      "song_uri": "https://getsongbpm.com/song/burung-kakatua/3lxkwr",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "60yMV",
+
+        "name": "Rosy & Andres",
+
+        "uri": "https://getsongbpm.com/artist/rosy-and-andres/60yMV",
+
+        "img": "https://i.scdn.co/image/2257f73f8008c66cb57571055895b96683408d76",
+
+        "genres": null,
+
+        "from": null,
+
+        "mbid": "0c6a82cc-26ae-43ee-9d2b-3fe94761426c"
+
+      },
+
+      "album": {
+
+        "title": "Pasar Malam Souvenirs",
+
+        "uri": "https://getsongbpm.com/album/pasar-malam-souvenirs/N5pMN",
+
+        "img": "https://i.scdn.co/image/06acc80db4bd3b2fa16e999f3bb205b7b9a09d7c",
+
+        "year": "2000"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "zKr8zO",
+
+      "song_title": "IFHY",
+
+      "song_uri": "https://getsongbpm.com/song/ifhy/zKr8zO",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "QNJEY",
+
+        "name": "Tyler, the Creator",
+
+        "uri": "https://getsongbpm.com/artist/tyler-the-creator/QNJEY",
+
+        "img": "https://i.scdn.co/image/fe839f5bd121774e64f377b5eead237c69a01711",
+
+        "genres": [
+
+          "hip hop",
+
+          "rap"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "f6beac20-5dfe-4d1f-ae02-0b0a740aafd6"
+
+      },
+
+      "album": {
+
+        "title": "Wolf",
+
+        "uri": "https://getsongbpm.com/album/wolf/zYkR7",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e024893508eb6495df8ddb015e0",
+
+        "year": "2013"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "66N8On",
+
+      "song_title": "You Lost Me",
+
+      "song_uri": "https://getsongbpm.com/song/you-lost-me/66N8On",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "pXX",
+
+        "name": "Christina Aguilera",
+
+        "uri": "https://getsongbpm.com/artist/christina-aguilera/pXX",
+
+        "img": "https://i.scdn.co/image/e3ea6d2340bba0d93450a813a0843fd9cf998e39",
+
+        "genres": [
+
+          "pop",
+
+          "rock",
+
+          "soul"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "b202beb7-99bd-47e7-8b72-195c8d72ebdd"
+
+      },
+
+      "album": {
+
+        "title": "Bionic",
+
+        "uri": "https://getsongbpm.com/album/bionic/gQxxY",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e0228fe22447c78b08c5e2d81e9",
+
+        "year": "2010"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "86Oo2l",
+
+      "song_title": "Peter Grimes: Prologue. Interlude I",
+
+      "song_uri": "https://getsongbpm.com/song/peter-grimes-prologuepoint-interlude-i/86Oo2l",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "6ByQ",
+
+        "name": "Benjamin Britten",
+
+        "uri": "https://getsongbpm.com/artist/benjamin-britten/6ByQ",
+
+        "img": null,
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "GB",
+
+        "mbid": "49ae5227-605a-47a8-9b8e-cd89bf01a97c"
+
+      },
+
+      "album": {
+
+        "title": "Peter Grimes",
+
+        "uri": "https://getsongbpm.com/album/peter-grimes/x6MVz",
+
+        "img": "https://i.scdn.co/image/765b829be0e4b7b12d9ff08d135d204d5edc696c",
+
+        "year": "1985"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "1jRROq",
+
+      "song_title": "Till Earth Outwears: 3. The Market-Girl",
+
+      "song_uri": "https://getsongbpm.com/song/till-earth-outwears-3point-the-market-girl/1jRROq",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "RXrV",
+
+        "name": "Gerald Finzi",
+
+        "uri": "https://getsongbpm.com/artist/gerald-finzi/RXrV",
+
+        "img": "https://i.scdn.co/image/ad1cd3bbfdee2ed897042aac732de876d9c0f2aa",
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "GB",
+
+        "mbid": "bdc820cb-c7cf-4301-8f5d-ec9ae2f62f94"
+
+      },
+
+      "album": {
+
+        "title": "Earth and Air and Rain",
+
+        "uri": "https://getsongbpm.com/album/earth-and-air-and-rain/Y05Y0",
+
+        "img": "https://i.scdn.co/image/15e1b5a4248f9f0609cdd08085782b88171ba72d",
+
+        "year": "1990"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "9959kz",
+
+      "song_title": "Da Pacem Domine",
+
+      "song_uri": "https://getsongbpm.com/song/da-pacem-domine/9959kz",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "wyNQm",
+
+        "name": "The Monks of the Abbey of Notre Dame",
+
+        "uri": "https://getsongbpm.com/artist/the-monks-of-the-abbey-of-notre-dame/wyNQm",
+
+        "img": "https://i.scdn.co/image/f51a077307d3a297b7bbc5389fd3769e4be3f06f",
+
+        "genres": null,
+
+        "from": null,
+
+        "mbid": "4868c13a-6089-400e-82f9-34e61e3a87e4"
+
+      },
+
+      "album": {
+
+        "title": "Gregorian Chant",
+
+        "uri": "https://getsongbpm.com/album/gregorian-chant/o0Q4N",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e02d31157d05130061f8ac769fa",
+
+        "year": null
+
+      }
+
+    },
+
+    {
+
+      "song_id": "VNvvO",
+
+      "song_title": "The Christmas Song",
+
+      "song_uri": "https://getsongbpm.com/song/the-christmas-song/VNvvO",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "E5xm",
+
+        "name": "Mel Tormé",
+
+        "uri": "https://getsongbpm.com/artist/mel-torme/E5xm",
+
+        "img": "https://i.scdn.co/image/19f5cc26f6149a8864421acbd63fd34ecdf0bbd9",
+
+        "genres": [
+
+          "jazz"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "4439c2fd-a754-4f6a-b3a6-791b47726156"
+
+      },
+
+      "album": {
+
+        "title": "Christmas Songs",
+
+        "uri": "https://getsongbpm.com/album/christmas-songs/kXONr",
+
+        "img": "https://i.scdn.co/image/ded1f17126d87135fa759e25cce4c03603723215",
+
+        "year": "1992"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "WnD7Eo",
+
+      "song_title": "Flat Tire at the Dead Sea",
+
+      "song_uri": "https://getsongbpm.com/song/flat-tire-at-the-dead-sea/WnD7Eo",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "0gkmK",
+
+        "name": "Ran Slavin",
+
+        "uri": "https://getsongbpm.com/artist/ran-slavin/0gkmK",
+
+        "img": "https://i.scdn.co/image/8a4ac79dfedae04e582fdc97dc6fc9b5d72a33f9",
+
+        "genres": [
+
+          "electronic"
+
+        ],
+
+        "from": null,
+
+        "mbid": "4693af0e-149e-4eae-92ce-6b90fa6210f0"
+
+      },
+
+      "album": {
+
+        "title": "Product 02",
+
+        "uri": "https://getsongbpm.com/album/product-02/AADlP",
+
+        "img": "https://lastfm.freetls.fastly.net/i/u/300x300/c013dab7e6028eba27688bcde45f6a7d.png",
+
+        "year": "2004"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "98zWgx",
+
+      "song_title": "La donna nel mondo",
+
+      "song_uri": "https://getsongbpm.com/song/la-donna-nel-mondo/98zWgx",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "1GQ70",
+
+        "name": "Bologna Violenta",
+
+        "uri": "https://getsongbpm.com/artist/bologna-violenta/1GQ70",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b2734a5238f62e544bff0df314c8",
+
+        "genres": [
+
+          "electronic"
+
+        ],
+
+        "from": "IT",
+
+        "mbid": "5704cc0c-9252-46ac-881c-5fef0fab0250"
+
+      },
+
+      "album": {
+
+        "title": "Il nuovissimo mondo",
+
+        "uri": "https://getsongbpm.com/album/il-nuovissimo-mondo/R50kw",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e02ffb18d2137d2719442c3798b",
+
+        "year": "2010"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "oZVoN",
+
+      "song_title": "Spirit Valley",
+
+      "song_uri": "https://getsongbpm.com/song/spirit-valley/oZVoN",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "p7Y6",
+
+        "name": "R. Carlos Nakai",
+
+        "uri": "https://getsongbpm.com/artist/rpoint-carlos-nakai/p7Y6",
+
+        "img": "https://i.scdn.co/image/5923f29592430f7538aaa981e774f60160803138",
+
+        "genres": [
+
+          "folk",
+
+          "new age",
+
+          "world"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "3c050ada-9db8-4e87-86fb-11c5294f9711"
+
+      },
+
+      "album": {
+
+        "title": "Desert Dance",
+
+        "uri": "https://getsongbpm.com/album/desert-dance/nwPY",
+
+        "img": "https://i.scdn.co/image/aa3fff0fcf3e5f15598403d34468e15562900814",
+
+        "year": "1990"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "L9GGXj",
+
+      "song_title": "Her",
+
+      "song_uri": "https://getsongbpm.com/song/her/L9GGXj",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "5QDKY",
+
+        "name": "Ghosts on the Radio",
+
+        "uri": "https://getsongbpm.com/artist/ghosts-on-the-radio/5QDKY",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b273716de4ab7cd9f39ce55c09b3",
+
+        "genres": [
+
+          "electronic",
+
+          "rock"
+
+        ],
+
+        "from": null,
+
+        "mbid": "e16a1c3f-7e7e-48d7-8305-784f2c8745ae"
+
+      },
+
+      "album": {
+
+        "title": "Standing on Clovers",
+
+        "uri": "https://getsongbpm.com/album/standing-on-clovers/KLjOR",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e02139d84fd69db69954bbfbc1a",
+
+        "year": "2006"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "76jKMj",
+
+      "song_title": "Skyscraper",
+
+      "song_uri": "https://getsongbpm.com/song/skyscraper/76jKMj",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "Apj1",
+
+        "name": "John Foxx",
+
+        "uri": "https://getsongbpm.com/artist/john-foxx/Apj1",
+
+        "img": "https://i.scdn.co/image/9219a10694d88522597224ff5cc6e1348ecba6c1",
+
+        "genres": [
+
+          "electronic",
+
+          "pop"
+
+        ],
+
+        "from": "GB",
+
+        "mbid": "6e913bad-4812-4286-b6cc-18548422f194"
+
+      },
+
+      "album": {
+
+        "title": "Tiny Colour Movies",
+
+        "uri": "https://getsongbpm.com/album/tiny-colour-movies/jLrVP",
+
+        "img": "https://lastfm.freetls.fastly.net/i/u/300x300/517661b9bd184fccbd7607a7a6e97358.png",
+
+        "year": "2006"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "rkmPoL",
+
+      "song_title": "English Suite No. 3 in G minor, BWV 808: IV. Sarabande",
+
+      "song_uri": "https://getsongbpm.com/song/english-suite-nopoint-3-in-g-minor-bwv-808-ivpoint-sarabande/rkmPoL",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "QWOY",
+
+        "name": "Johann Sebastian Bach",
+
+        "uri": "https://getsongbpm.com/artist/johann-sebastian-bach/QWOY",
+
+        "img": null,
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "DE",
+
+        "mbid": "24f1766e-9635-4d58-a4d4-9413f9f98a4c"
+
+      },
+
+      "album": {
+
+        "title": "English Suites",
+
+        "uri": "https://getsongbpm.com/album/english-suites/mq9Mr",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e0231cb6b907510d1ad7af47c47",
+
+        "year": "1997"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "p85N9r",
+
+      "song_title": "Cócó",
+
+      "song_uri": "https://getsongbpm.com/song/coco/p85N9r",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "pkJjV",
+
+        "name": "Foge Foge Bandido",
+
+        "uri": "https://getsongbpm.com/artist/foge-foge-bandido/pkJjV",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b273f4e506719f5569a91bb5f42e",
+
+        "genres": [
+
+          "pop"
+
+        ],
+
+        "from": null,
+
+        "mbid": "4f128265-a7f7-48cf-9aef-8f74f0854b1b"
+
+      },
+
+      "album": {
+
+        "title": "O Amor Dá-me Tesão / Não Fui Eu Que Estraguei",
+
+        "uri": "https://getsongbpm.com/album/o-amor-da-me-tesao-nao-fui-eu-que-estraguei/mkwp0",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e02f4e506719f5569a91bb5f42e",
+
+        "year": "2008"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "9rmr88",
+
+      "song_title": "Intro",
+
+      "song_uri": "https://getsongbpm.com/song/intro/9rmr88",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "Bro6W",
+
+        "name": "Vilém Čok",
+
+        "uri": "https://getsongbpm.com/artist/vilem-cok/Bro6W",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b273114080197cf2d2417f7693b3",
+
+        "genres": [
+
+          "rock"
+
+        ],
+
+        "from": "CZ",
+
+        "mbid": "bcd5cc37-a5e4-4dea-b07b-42a167370e4f"
+
+      },
+
+      "album": {
+
+        "title": "Braňče s kouzemi",
+
+        "uri": "https://getsongbpm.com/album/brance-s-kouzemi/wKMG8",
+
+        "img": "https://lastfm.freetls.fastly.net/i/u/300x300/839d46db23894358bda9eba6dafcabf0.png",
+
+        "year": "1998"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "KqDVx",
+
+      "song_title": "Felt Up",
+
+      "song_uri": "https://getsongbpm.com/song/felt-up/KqDVx",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "pOWN",
+
+        "name": "Skeptics",
+
+        "uri": "https://getsongbpm.com/artist/skeptics/pOWN",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b2735d916e35c9eb2a8046226d41",
+
+        "genres": [
+
+          "electronic",
+
+          "rock"
+
+        ],
+
+        "from": "NZ",
+
+        "mbid": "a419ece0-8014-48b9-92dd-c977a7c0f12f"
+
+      },
+
+      "album": {
+
+        "title": "Amalgam",
+
+        "uri": "https://getsongbpm.com/album/amalgam/l56gj",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e02b6211c131db9bdabb6ba9b7d",
+
+        "year": "1990"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "XDV3Ql",
+
+      "song_title": "We'll Get You Out",
+
+      "song_uri": "https://getsongbpm.com/song/we-ll-get-you-out/XDV3Ql",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "48Rn6",
+
+        "name": "Psilodump",
+
+        "uri": "https://getsongbpm.com/artist/psilodump/48Rn6",
+
+        "img": "https://i.scdn.co/image/6118acc6b284589b90ea0014fa6340b44d7cc043",
+
+        "genres": [
+
+          "electronic"
+
+        ],
+
+        "from": "SE",
+
+        "mbid": "cb85543c-e95b-463b-a111-d04d290b4a2a"
+
+      },
+
+      "album": {
+
+        "title": "Never Heal",
+
+        "uri": "https://getsongbpm.com/album/never-heal/GMEB0",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e02cd12595ad94e550022b52bad",
+
+        "year": "2006"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "Y7rOM0",
+
+      "song_title": "Soda Pop",
+
+      "song_uri": "https://getsongbpm.com/song/soda-pop/Y7rOM0",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "AOrJB",
+
+        "name": "Erases Eraser",
+
+        "uri": "https://getsongbpm.com/artist/erases-eraser/AOrJB",
+
+        "img": null,
+
+        "genres": null,
+
+        "from": "US",
+
+        "mbid": "ce274465-2f65-4eb9-bff8-e2b025db9818"
+
+      },
+
+      "album": {
+
+        "title": "Domestic Violence",
+
+        "uri": "https://getsongbpm.com/album/domestic-violence/kKA8x",
+
+        "img": "https://lastfm.freetls.fastly.net/i/u/300x300/5f56901b30c39dbcfa9c8919b2a644cf.png",
+
+        "year": "2015"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "xkYmxz",
+
+      "song_title": "Lullaby Overture",
+
+      "song_uri": "https://getsongbpm.com/song/lullaby-overture/xkYmxz",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "wypJ",
+
+        "name": "The Wiggles",
+
+        "uri": "https://getsongbpm.com/artist/the-wiggles/wypJ",
+
+        "img": "https://i.scdn.co/image/6fa8436b0b71bab55219ad671c7e1964f5f9b091",
+
+        "genres": [
+
+          "pop",
+
+          "rock"
+
+        ],
+
+        "from": "AU",
+
+        "mbid": "e684ed8b-bced-4e0f-bdfa-462861891409"
+
+      },
+
+      "album": {
+
+        "title": "Go to Sleep Jeff",
+
+        "uri": "https://getsongbpm.com/album/go-to-sleep-jeff/znW8q",
+
+        "img": "https://i.scdn.co/image/c719da67fce2e0c7cd19baf14e19cd408ceb5d23",
+
+        "year": "2003"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "1rBBgV",
+
+      "song_title": "Yeah? Your Girl",
+
+      "song_uri": "https://getsongbpm.com/song/yeahquestion-your-girl/1rBBgV",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "QOrBM",
+
+        "name": "Henry Santos",
+
+        "uri": "https://getsongbpm.com/artist/henry-santos/QOrBM",
+
+        "img": "https://i.scdn.co/image/78e01626e97be4b97f70367ca8588c83ffa5e2b4",
+
+        "genres": null,
+
+        "from": "DO",
+
+        "mbid": "51a73bea-f7de-40cc-ad69-de48317ed638"
+
+      },
+
+      "album": {
+
+        "title": "Introducing",
+
+        "uri": "https://getsongbpm.com/album/introducing/D6V9n",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e0274fa5a1d88ed260fbeb316f4",
+
+        "year": "2011"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "ER6L04",
+
+      "song_title": "Daisy Daisy",
+
+      "song_uri": "https://getsongbpm.com/song/daisy-daisy/ER6L04",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "580V8",
+
+        "name": "The Countdown Singers",
+
+        "uri": "https://getsongbpm.com/artist/the-countdown-singers/580V8",
+
+        "img": null,
+
+        "genres": [
+
+          "heavy metal",
+
+          "punk"
+
+        ],
+
+        "from": "CA",
+
+        "mbid": "9090c749-befd-4d1d-b459-674a9795aff8"
+
+      },
+
+      "album": {
+
+        "title": "150 Fun Songs for Kids",
+
+        "uri": "https://getsongbpm.com/album/150-fun-songs-for-kids/v8gkm",
+
+        "img": null,
+
+        "year": "2005"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "QnZ1Aq",
+
+      "song_title": "Broken",
+
+      "song_uri": "https://getsongbpm.com/song/broken/QnZ1Aq",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "W26W",
+
+        "name": "Brian Tyler",
+
+        "uri": "https://getsongbpm.com/artist/brian-tyler/W26W",
+
+        "img": "https://i.scdn.co/image/949cf1680270a167801301be6f090db31e2d0f49",
+
+        "genres": [
+
+          "classical",
+
+          "electronic"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "23d89243-79c9-4afc-8db5-fce27e7ba78d"
+
+      },
+
+      "album": {
+
+        "title": "Middle Men: Music From The Original Score",
+
+        "uri": "https://getsongbpm.com/album/middle-men-music-from-the-original-score/omMMY",
+
+        "img": "https://i.scdn.co/image/e4ed6549bf87500b14b4dea01921fff1c7edeaab",
+
+        "year": "2010"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "r0rOD2",
+
+      "song_title": "English Suite No. 3 in G minor, BWV 808: IV. Sarabande",
+
+      "song_uri": "https://getsongbpm.com/song/english-suite-nopoint-3-in-g-minor-bwv-808-ivpoint-sarabande/r0rOD2",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "QWOY",
+
+        "name": "Johann Sebastian Bach",
+
+        "uri": "https://getsongbpm.com/artist/johann-sebastian-bach/QWOY",
+
+        "img": null,
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "DE",
+
+        "mbid": "24f1766e-9635-4d58-a4d4-9413f9f98a4c"
+
+      },
+
+      "album": {
+
+        "title": "Mozart Bach",
+
+        "uri": "https://getsongbpm.com/album/mozart-bach/51zNA",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e02cbaa466490c9c9e49640a250",
+
+        "year": "2009"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "L9jwXj",
+
+      "song_title": "Ma Yafou Dadaich (Mawal)",
+
+      "song_uri": "https://getsongbpm.com/song/ma-yafou-dadaich-mawal/L9jwXj",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "XLKqm",
+
+        "name": "Emil Zrihan",
+
+        "uri": "https://getsongbpm.com/artist/emil-zrihan/XLKqm",
+
+        "img": "https://i.scdn.co/image/96d807bf7fa5e33dad9e5060dbbaa0d634f2ede7",
+
+        "genres": [
+
+          "folk",
+
+          "world"
+
+        ],
+
+        "from": "IL",
+
+        "mbid": "0207f461-83fd-40ae-a3de-8c643513463e"
+
+      },
+
+      "album": {
+
+        "title": "Ashkelon",
+
+        "uri": "https://getsongbpm.com/album/ashkelon/q2vmk",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e02d814dee8606cf3ef0eeccde7",
+
+        "year": "2000"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "wpMPmX",
+
+      "song_title": "Cócó",
+
+      "song_uri": "https://getsongbpm.com/song/coco/wpMPmX",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "pkJjV",
+
+        "name": "Foge Foge Bandido",
+
+        "uri": "https://getsongbpm.com/artist/foge-foge-bandido/pkJjV",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b273f4e506719f5569a91bb5f42e",
+
+        "genres": [
+
+          "pop"
+
+        ],
+
+        "from": null,
+
+        "mbid": "4f128265-a7f7-48cf-9aef-8f74f0854b1b"
+
+      },
+
+      "album": {
+
+        "title": "O Amor Dá-me Tesão",
+
+        "uri": "https://getsongbpm.com/album/o-amor-da-me-tesao/kwD05",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e02f4e506719f5569a91bb5f42e",
+
+        "year": "2008"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "gLDw8k",
+
+      "song_title": "Arise",
+
+      "song_uri": "https://getsongbpm.com/song/arise/gLDw8k",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "k6xrr",
+
+        "name": "Proletar",
+
+        "uri": "https://getsongbpm.com/artist/proletar/k6xrr",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b273a721c9163edc72463a179975",
+
+        "genres": null,
+
+        "from": "ID",
+
+        "mbid": "e66254ef-b633-4acb-baf7-c922067d5e48"
+
+      },
+
+      "album": {
+
+        "title": "Back to Hatevolution",
+
+        "uri": "https://getsongbpm.com/album/back-to-hatevolution/lXnyg",
+
+        "img": "https://i.scdn.co/image/15a1596b3b4a65836ed26bc5321f95d74020d9d0",
+
+        "year": "2010"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "zKNm5q",
+
+      "song_title": "English Suite No. 3 in G Minor, BWV 808: IV. Sarabande",
+
+      "song_uri": "https://getsongbpm.com/song/english-suite-nopoint-3-in-g-minor-bwv-808-ivpoint-sarabande/zKNm5q",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "QWOY",
+
+        "name": "Johann Sebastian Bach",
+
+        "uri": "https://getsongbpm.com/artist/johann-sebastian-bach/QWOY",
+
+        "img": null,
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "DE",
+
+        "mbid": "24f1766e-9635-4d58-a4d4-9413f9f98a4c"
+
+      },
+
+      "album": {
+
+        "title": "English Suites",
+
+        "uri": "https://getsongbpm.com/album/english-suites/6G3oV",
+
+        "img": "https://i.scdn.co/image/8879f13e6f70576e1eb13ef97c6e86efda4ffd90",
+
+        "year": "1995"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "91WkLJ",
+
+      "song_title": "High Chef",
+
+      "song_uri": "https://getsongbpm.com/song/high-chef/91WkLJ",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "4V7O1",
+
+        "name": "John Roy",
+
+        "uri": "https://getsongbpm.com/artist/john-roy/4V7O1",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b27365d69f863b24a8d2748c891b",
+
+        "genres": null,
+
+        "from": null,
+
+        "mbid": "0764f405-8714-4ed5-8847-327dc81cae88"
+
+      },
+
+      "album": {
+
+        "title": "Dressed For Recess",
+
+        "uri": "https://getsongbpm.com/album/dressed-for-recess/6M06O",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e0265d69f863b24a8d2748c891b",
+
+        "year": "2008"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "ZYlLPQ",
+
+      "song_title": "Combo's (intro)",
+
+      "song_uri": "https://getsongbpm.com/song/combo-s-intro/ZYlLPQ",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "Lgg2g",
+
+        "name": "Mike Rayburn",
+
+        "uri": "https://getsongbpm.com/artist/mike-rayburn/Lgg2g",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b2737af9025628eda6b9795e6111",
+
+        "genres": [
+
+          "folk"
+
+        ],
+
+        "from": null,
+
+        "mbid": "3698cb6a-6916-47f2-9cf9-36ac5a8eba78"
+
+      },
+
+      "album": {
+
+        "title": "Mike Rayburn at Carnegie Hall",
+
+        "uri": "https://getsongbpm.com/album/mike-rayburn-at-carnegie-hall/mkKR0",
+
+        "img": null,
+
+        "year": "2008"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "NL4LA8",
+
+      "song_title": "English Suite no. 3 in G minor, BWV 808: IV. Sarabande",
+
+      "song_uri": "https://getsongbpm.com/song/english-suite-nopoint-3-in-g-minor-bwv-808-ivpoint-sarabande/NL4LA8",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "QWOY",
+
+        "name": "Johann Sebastian Bach",
+
+        "uri": "https://getsongbpm.com/artist/johann-sebastian-bach/QWOY",
+
+        "img": null,
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "DE",
+
+        "mbid": "24f1766e-9635-4d58-a4d4-9413f9f98a4c"
+
+      },
+
+      "album": {
+
+        "title": "Bach Edition, Volume 13: Keyboard Works/Klavierwerke, Volume II",
+
+        "uri": "https://getsongbpm.com/album/bach-edition-volume-13-keyboard-works-klavierwerke-volume-ii/qoplG",
+
+        "img": null,
+
+        "year": "2000"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "86oML3",
+
+      "song_title": "La Calisto: Act I, Scene 3. \"Come scherne acerbetta\"",
+
+      "song_uri": "https://getsongbpm.com/song/la-calisto-act-i-scene-3point-come-scherne-acerbetta/86oML3",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "v22w0",
+
+        "name": "Francesco Cavalli",
+
+        "uri": "https://getsongbpm.com/artist/francesco-cavalli/v22w0",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b2730efff1b66596615f6e258404",
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "IT",
+
+        "mbid": "2afb8d0b-50ff-43b0-8ab2-5471e66ea91c"
+
+      },
+
+      "album": {
+
+        "title": "La Calisto (Concerto Vocale feat. conductor: René Jacobs)",
+
+        "uri": "https://getsongbpm.com/album/la-calisto-concerto-vocale-featpoint-conductor-rene-jacobs/v8wpn",
+
+        "img": null,
+
+        "year": "2003"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "jRBZYR",
+
+      "song_title": "Pied-Billed Grebe",
+
+      "song_uri": "https://getsongbpm.com/song/pied-billed-grebe/jRBZYR",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "yojpn",
+
+        "name": "Pigeon Funk",
+
+        "uri": "https://getsongbpm.com/artist/pigeon-funk/yojpn",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b2730c2513a7ce1324e9fc7c4100",
+
+        "genres": [
+
+          "electronic"
+
+        ],
+
+        "from": null,
+
+        "mbid": "8e0d2ce1-7c2c-4546-b10e-8ad1ce664be7"
+
+      },
+
+      "album": {
+
+        "title": "Proptronix Presents: Pigeon Funk!",
+
+        "uri": "https://getsongbpm.com/album/proptronix-presents-pigeon-funkexclamation/4zr0J",
+
+        "img": null,
+
+        "year": "2004"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "qQkQQD",
+
+      "song_title": "Prelude",
+
+      "song_uri": "https://getsongbpm.com/song/prelude/qQkQQD",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "GvyJ",
+
+        "name": "Michael Card",
+
+        "uri": "https://getsongbpm.com/artist/michael-card/GvyJ",
+
+        "img": "https://i.scdn.co/image/7e1822778407c12ef96f82615118a030c9871595",
+
+        "genres": [
+
+          "folk"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "d1de79d5-3ca3-42f5-8d82-fbc71a76ec93"
+
+      },
+
+      "album": {
+
+        "title": "Unveiled Hope",
+
+        "uri": "https://getsongbpm.com/album/unveiled-hope/qXn72",
+
+        "img": "https://i.scdn.co/image/553db4c8ecdf79e6c2b38d3f2146be27d3c7f713",
+
+        "year": "2006"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "RNkZR",
+
+      "song_title": "Sarah Jane",
+
+      "song_uri": "https://getsongbpm.com/song/sarah-jane/RNkZR",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "1BJm",
+
+        "name": "Ramsey Lewis",
+
+        "uri": "https://getsongbpm.com/artist/ramsey-lewis/1BJm",
+
+        "img": "https://i.scdn.co/image/9a2eab6bc766ae54e2741f85a2275a2e935e4b38",
+
+        "genres": [
+
+          "blues",
+
+          "funk",
+
+          "jazz",
+
+          "soul"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "fe19b809-e86c-4736-882a-53b72e23171b"
+
+      },
+
+      "album": {
+
+        "title": "Ivory Pyramid",
+
+        "uri": "https://getsongbpm.com/album/ivory-pyramid/E9vPK",
+
+        "img": "https://i.scdn.co/image/1a6b39319ddfc2da02ebed829ed84805ddbbd30c",
+
+        "year": "1992"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "zyY62",
+
+      "song_title": "Room #8: Reprise",
+
+      "song_uri": "https://getsongbpm.com/song/room-8-reprise/zyY62",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "JvXP",
+
+        "name": "Nits",
+
+        "uri": "https://getsongbpm.com/artist/nits/JvXP",
+
+        "img": "https://i.scdn.co/image/835efe6656b5353a4fbfb90f330e0e6e49a55e94",
+
+        "genres": [
+
+          "pop",
+
+          "rock"
+
+        ],
+
+        "from": "NL",
+
+        "mbid": "2418092b-330c-48cf-85ee-e935dfce537c"
+
+      },
+
+      "album": {
+
+        "title": "Hjuvi: A Rhapsody in Time (Netherlands Radio Symphony Orchestra feat. conductor: Jan Stulen)",
+
+        "uri": "https://getsongbpm.com/album/hjuvi-a-rhapsody-in-time-netherlands-radio-symphony-orchestra-featpoint-conductor-jan-stulen/k5NAX",
+
+        "img": null,
+
+        "year": "1992"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "vWjm8",
+
+      "song_title": "Petite agonie de l'enfant assassin",
+
+      "song_uri": "https://getsongbpm.com/song/petite-agonie-de-l-enfant-assassin/vWjm8",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "Y659p",
+
+        "name": "Jean-Claude Vannier",
+
+        "uri": "https://getsongbpm.com/artist/jean-claude-vannier/Y659p",
+
+        "img": null,
+
+        "genres": [
+
+          "rock"
+
+        ],
+
+        "from": "FR",
+
+        "mbid": "489cf278-99eb-460b-b272-9fe36f41c729"
+
+      },
+
+      "album": {
+
+        "title": "L'Enfant assassin des mouches",
+
+        "uri": "https://getsongbpm.com/album/l-enfant-assassin-des-mouches/9Q8g3",
+
+        "img": "https://lastfm.freetls.fastly.net/i/u/300x300/5c51856655004f79cf521c359c233bad.png",
+
+        "year": "1972"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "Y72lK",
+
+      "song_title": "Always",
+
+      "song_uri": "https://getsongbpm.com/song/always/Y72lK",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "q7BG3",
+
+        "name": "Harry Nilsson",
+
+        "uri": "https://getsongbpm.com/artist/harry-nilsson/q7BG3",
+
+        "img": "https://i.scdn.co/image/775f9134b3f1cf04551b7a666eb811b796f2ca8c",
+
+        "genres": [
+
+          "folk",
+
+          "pop",
+
+          "rock"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "e5963d26-01fa-40f5-b200-e0127f410a45"
+
+      },
+
+      "album": {
+
+        "title": "A Little Touch of Schmilsson in the Night",
+
+        "uri": "https://getsongbpm.com/album/a-little-touch-of-schmilsson-in-the-night/mAWE",
+
+        "img": "https://lastfm.freetls.fastly.net/i/u/300x300/c0a4e9d71c35440ea21fea9551acf007.png",
+
+        "year": "1973"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "ZVqJ1E",
+
+      "song_title": "Once Upon a Summertime",
+
+      "song_uri": "https://getsongbpm.com/song/once-upon-a-summertime/ZVqJ1E",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "xkEVr",
+
+        "name": "Harry Allen",
+
+        "uri": "https://getsongbpm.com/artist/harry-allen/xkEVr",
+
+        "img": "https://i.scdn.co/image/1009bb4bf5a579496702f35e267ebc203ef55237",
+
+        "genres": [
+
+          "jazz"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "2c7c6d82-73d3-454a-a4e0-94eb85b24393"
+
+      },
+
+      "album": {
+
+        "title": "Once Upon a Summertime",
+
+        "uri": "https://getsongbpm.com/album/once-upon-a-summertime/DWpE5",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e0260202e33614b1084ac918506",
+
+        "year": "2009"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "jqz1nz",
+
+      "song_title": "Takin' Money (skit)",
+
+      "song_uri": "https://getsongbpm.com/song/takin-money-skit/jqz1nz",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "2XAM",
+
+        "name": "Ruff Ryders",
+
+        "uri": "https://getsongbpm.com/artist/ruff-ryders/2XAM",
+
+        "img": "https://i.scdn.co/image/ad197df9cfedbf084a69b14ff9fce38a0ee6f329",
+
+        "genres": [
+
+          "hip hop",
+
+          "rap"
+
+        ],
+
+        "from": null,
+
+        "mbid": "ff2e2b50-35f6-4860-8a4d-7fe6ffc8f790"
+
+      },
+
+      "album": {
+
+        "title": "Ryde or Die, Volume 1",
+
+        "uri": "https://getsongbpm.com/album/ryde-or-die-volume-1/RGP0",
+
+        "img": "https://lastfm.freetls.fastly.net/i/u/300x300/6cd4b7f4e9e44ef6ce0032e04cb4dc74.png",
+
+        "year": "1999"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "pZ2y6r",
+
+      "song_title": "My Thousand Times Beloved; Pastheen Fionn",
+
+      "song_uri": "https://getsongbpm.com/song/my-thousand-times-beloved-pastheen-fionn/pZ2y6r",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "rYOM4",
+
+        "name": "Elena Polonska",
+
+        "uri": "https://getsongbpm.com/artist/elena-polonska/rYOM4",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b27306f98979e392e1eb682982d6",
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": null,
+
+        "mbid": "0bc44833-a8e5-40f5-bf8a-4a069ce7089d"
+
+      },
+
+      "album": {
+
+        "title": "The Baroque Harp",
+
+        "uri": "https://getsongbpm.com/album/the-baroque-harp/8Ax52",
+
+        "img": null,
+
+        "year": "1975"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "K8pBgn",
+
+      "song_title": "Wozzeck, Op. 7, Act 2, Scene 4: Transformation Music",
+
+      "song_uri": "https://getsongbpm.com/song/wozzeck-oppoint-7-act-2-scene-4-transformation-music/K8pBgn",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "xrgE",
+
+        "name": "Alban Berg",
+
+        "uri": "https://getsongbpm.com/artist/alban-berg/xrgE",
+
+        "img": "https://i.scdn.co/image/1580b627c92769dbe5e59e5a549464452defa21d",
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "AT",
+
+        "mbid": "f61c909a-db95-4a61-bc23-65a86e0d2907"
+
+      },
+
+      "album": {
+
+        "title": "Wozzeck",
+
+        "uri": "https://getsongbpm.com/album/wozzeck/rBryK",
+
+        "img": "https://i.scdn.co/image/bc54a5ff48dac3c0fc7e75889395bece6bcb8976",
+
+        "year": "2009"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "wVMXMr",
+
+      "song_title": "Until the Time Is Right (outro)",
+
+      "song_uri": "https://getsongbpm.com/song/until-the-time-is-right-outro/wVMXMr",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "nEvp",
+
+        "name": "Neophyte",
+
+        "uri": "https://getsongbpm.com/artist/neophyte/nEvp",
+
+        "img": "https://i.scdn.co/image/fbb069b51daa945b3130c42091a4792f58335c7c",
+
+        "genres": [
+
+          "electronic"
+
+        ],
+
+        "from": "NL",
+
+        "mbid": "ba474cdb-fd06-4a49-988d-819a6bbd2077"
+
+      },
+
+      "album": {
+
+        "title": "Mainiak Chapter.2",
+
+        "uri": "https://getsongbpm.com/album/mainiak-chapterpoint2/kgJg5",
+
+        "img": "https://i.scdn.co/image/82ae1856aa2f09c9307c80736821ab2b4bf9a345",
+
+        "year": "2013"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "4R8B5V",
+
+      "song_title": "Funny Way of Laughin' [live]",
+
+      "song_uri": "https://getsongbpm.com/song/funny-way-of-laughin-live/4R8B5V",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "vgm",
+
+        "name": "Burl Ives",
+
+        "uri": "https://getsongbpm.com/artist/burl-ives/vgm",
+
+        "img": null,
+
+        "genres": [
+
+          "country",
+
+          "folk"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "086c1936-9eaa-4091-b140-ad33a51a3b71"
+
+      },
+
+      "album": {
+
+        "title": "Genius of Folk",
+
+        "uri": "https://getsongbpm.com/album/genius-of-folk/g8Z3Y",
+
+        "img": null,
+
+        "year": "2005"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "Q1L8Pl",
+
+      "song_title": "True Love",
+
+      "song_uri": "https://getsongbpm.com/song/true-love/Q1L8Pl",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "zOpZ",
+
+        "name": "Jack Jones",
+
+        "uri": "https://getsongbpm.com/artist/jack-jones/zOpZ",
+
+        "img": "https://i.scdn.co/image/928e035baf4ee642d019942291719059f8763a23",
+
+        "genres": [
+
+          "jazz",
+
+          "pop"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "5ac5a455-ea7c-4afc-bc04-b6533a72559a"
+
+      },
+
+      "album": {
+
+        "title": "She Loves Me / There's Love & There's Love & There's Love",
+
+        "uri": "https://getsongbpm.com/album/she-loves-me-there-s-love-and-there-s-love-and-there-s-love/qAq57",
+
+        "img": null,
+
+        "year": "2004"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "G6yqnQ",
+
+      "song_title": "كان فاضل",
+
+      "song_uri": "https://getsongbpm.com/song/k-n-f-dl/G6yqnQ",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "Q6DvZ",
+
+        "name": "محمد منير",
+
+        "uri": "https://getsongbpm.com/artist/mhmd-mnyr/Q6DvZ",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b2734535dcf5bce21d67be0e3799",
+
+        "genres": [
+
+          "blues",
+
+          "jazz",
+
+          "pop",
+
+          "reggae"
+
+        ],
+
+        "from": "EG",
+
+        "mbid": "5235052b-7fa0-498b-accf-26b9e7767da7"
+
+      },
+
+      "album": {
+
+        "title": "طعم البيوت",
+
+        "uri": "https://getsongbpm.com/album/taam-lbyot/Wwjlg",
+
+        "img": "https://lastfm.freetls.fastly.net/i/u/300x300/10f8e2fafccb01d1396f7f743b1b6ad9.png",
+
+        "year": "2008"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "VJQzX",
+
+      "song_title": "Prelude",
+
+      "song_uri": "https://getsongbpm.com/song/prelude/VJQzX",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "GvyJ",
+
+        "name": "Michael Card",
+
+        "uri": "https://getsongbpm.com/artist/michael-card/GvyJ",
+
+        "img": "https://i.scdn.co/image/7e1822778407c12ef96f82615118a030c9871595",
+
+        "genres": [
+
+          "folk"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "d1de79d5-3ca3-42f5-8d82-fbc71a76ec93"
+
+      },
+
+      "album": {
+
+        "title": "Unveiled Hope",
+
+        "uri": "https://getsongbpm.com/album/unveiled-hope/4KpOx",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e024a3f4b7e1ca7f5b7f9a5c831",
+
+        "year": "1997"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "X5mnk",
+
+      "song_title": "King of All Kings",
+
+      "song_uri": "https://getsongbpm.com/song/king-of-all-kings/X5mnk",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "jZMv",
+
+        "name": "Hate Eternal",
+
+        "uri": "https://getsongbpm.com/artist/hate-eternal/jZMv",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b273cb68c4bab868f5a51b0f2016",
+
+        "genres": null,
+
+        "from": "US",
+
+        "mbid": "5c9e111d-579e-4eb3-a6e4-51e223635ee0"
+
+      },
+
+      "album": {
+
+        "title": "King of All Kings",
+
+        "uri": "https://getsongbpm.com/album/king-of-all-kings/n5rnP",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e02e9f1fdbe56db7e4e364c4ddd",
+
+        "year": "2002"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "r8BxrL",
+
+      "song_title": "Concertino, op. 27: IV. Air. Molto moderato",
+
+      "song_uri": "https://getsongbpm.com/song/concertino-oppoint-27-ivpoint-airpoint-molto-moderato/r8BxrL",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "jO9z",
+
+        "name": "Sir Neville Marriner",
+
+        "uri": "https://getsongbpm.com/artist/sir-neville-marriner/jO9z",
+
+        "img": "https://i.scdn.co/image/9b95c304da6310eb36b7451ad97fa76f2b53496b",
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "GB",
+
+        "mbid": "afb8d624-52d7-4a72-8d0b-62fff3e29f79"
+
+      },
+
+      "album": {
+
+        "title": "The 20th-century Concerto Grosso",
+
+        "uri": "https://getsongbpm.com/album/the-20th-century-concerto-grosso/JX4Zy",
+
+        "img": null,
+
+        "year": "2013"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "oZG4qA",
+
+      "song_title": "Absence and Dead Princess - Commentary",
+
+      "song_uri": "https://getsongbpm.com/song/absence-and-dead-princess-commentary/oZG4qA",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "z4jP8",
+
+        "name": "Belle Chen",
+
+        "uri": "https://getsongbpm.com/artist/belle-chen/z4jP8",
+
+        "img": "https://i.scdn.co/image/a7faed0db09097c4f9ace2abbf528bbef59a899b",
+
+        "genres": null,
+
+        "from": "GB",
+
+        "mbid": "87aa07ab-495d-4d74-adad-4f357267c03c"
+
+      },
+
+      "album": {
+
+        "title": "Mademoiselle",
+
+        "uri": "https://getsongbpm.com/album/mademoiselle/8xWNr",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e02221ea6ff341a980a659dd19b",
+
+        "year": null
+
+      }
+
+    },
+
+    {
+
+      "song_id": "k8Enk6",
+
+      "song_title": "Moving Forward",
+
+      "song_uri": "https://getsongbpm.com/song/moving-forward/k8Enk6",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "P1Jj2",
+
+        "name": "Kierra Kiki Sheard",
+
+        "uri": "https://getsongbpm.com/artist/kierra-kiki-sheard/P1Jj2",
+
+        "img": "https://i.scdn.co/image/8e5c42701e03b9c87786a55f35efde916c40228b",
+
+        "genres": [
+
+          "soul"
+
+        ],
+
+        "from": null,
+
+        "mbid": "83d102d1-c13b-483b-ba25-b23900e689d1"
+
+      },
+
+      "album": {
+
+        "title": "GRACELAND",
+
+        "uri": "https://getsongbpm.com/album/graceland/wxgLR",
+
+        "img": "https://i.scdn.co/image/af0453eff6010371e6c360b303037554960fe52e",
+
+        "year": "2011"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "M8731m",
+
+      "song_title": "Bill",
+
+      "song_uri": "https://getsongbpm.com/song/bill/M8731m",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "L7vNA",
+
+        "name": "Paul Motian Band",
+
+        "uri": "https://getsongbpm.com/artist/paul-motian-band/L7vNA",
+
+        "img": "https://i.scdn.co/image/97f860029b48804981cdc5ba2e9071b01b91ac27",
+
+        "genres": [
+
+          "jazz"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "bbf03dc4-391e-424d-b745-40c87e09190b"
+
+      },
+
+      "album": {
+
+        "title": "Garden of Eden",
+
+        "uri": "https://getsongbpm.com/album/garden-of-eden/28zRN",
+
+        "img": "https://lastfm.freetls.fastly.net/i/u/300x300/61b9fc5762854ff9a5283703b639184b.png",
+
+        "year": "2006"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "zK00Zq",
+
+      "song_title": "Concerto no. 4 in G, BWV 1049: II. Andante",
+
+      "song_uri": "https://getsongbpm.com/song/concerto-nopoint-4-in-g-bwv-1049-iipoint-andante/zK00Zq",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "QWOY",
+
+        "name": "Johann Sebastian Bach",
+
+        "uri": "https://getsongbpm.com/artist/johann-sebastian-bach/QWOY",
+
+        "img": null,
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "DE",
+
+        "mbid": "24f1766e-9635-4d58-a4d4-9413f9f98a4c"
+
+      },
+
+      "album": {
+
+        "title": "Brandenburg Concertos Nos. 4-6 / Orchestral Suite No. 3",
+
+        "uri": "https://getsongbpm.com/album/brandenburg-concertos-nospoint-4-6-orchestral-suite-nopoint-3/WmmqE",
+
+        "img": null,
+
+        "year": "2005"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "J6JJxl",
+
+      "song_title": "Fantasia 8 in G minor: III. Allegro",
+
+      "song_uri": "https://getsongbpm.com/song/fantasia-8-in-g-minor-iiipoint-allegro/J6JJxl",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "vxO5",
+
+        "name": "Georg Philipp Telemann",
+
+        "uri": "https://getsongbpm.com/artist/georg-philipp-telemann/vxO5",
+
+        "img": "https://i.scdn.co/image/ce74f8a9c9d6a6dd5aa59b5b54a618a6c58df6f1",
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "DE",
+
+        "mbid": "8f831f50-e409-47c3-8598-71a61bc8cfb3"
+
+      },
+
+      "album": {
+
+        "title": "The Twelve Fantasies for Recorder (Peter Holtslag)",
+
+        "uri": "https://getsongbpm.com/album/the-twelve-fantasies-for-recorder-peter-holtslag/EPrVN",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e02d91765accca6043f22b4f06c",
+
+        "year": "1994"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "nwzDl",
+
+      "song_title": "Brandenburg Concerto No. 4 in G, BWV 1049: II. Andante",
+
+      "song_uri": "https://getsongbpm.com/song/brandenburg-concerto-nopoint-4-in-g-bwv-1049-iipoint-andante/nwzDl",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "QWOY",
+
+        "name": "Johann Sebastian Bach",
+
+        "uri": "https://getsongbpm.com/artist/johann-sebastian-bach/QWOY",
+
+        "img": null,
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "DE",
+
+        "mbid": "24f1766e-9635-4d58-a4d4-9413f9f98a4c"
+
+      },
+
+      "album": {
+
+        "title": "Brandenburg Concertos nos. 3, 4 & 5",
+
+        "uri": "https://getsongbpm.com/album/brandenburg-concertos-nospoint-3-4-and-5/YvO7M",
+
+        "img": "https://i.scdn.co/image/756573ed3abe6b19f3e5a58789ae37fc61465033",
+
+        "year": "1989"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "3XmoR",
+
+      "song_title": "Requiem",
+
+      "song_uri": "https://getsongbpm.com/song/requiem/3XmoR",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "gJr26",
+
+        "name": "Delight",
+
+        "uri": "https://getsongbpm.com/artist/delight/gJr26",
+
+        "img": "https://i.scdn.co/image/3197fb4e8081132b4f9511ffb321c57859e10c10",
+
+        "genres": [
+
+          "rock"
+
+        ],
+
+        "from": "PL",
+
+        "mbid": "4183764c-c68a-4492-8054-f19876d3fb18"
+
+      },
+
+      "album": {
+
+        "title": "Eternity",
+
+        "uri": "https://getsongbpm.com/album/eternity/g5j7j",
+
+        "img": "https://lastfm.freetls.fastly.net/i/u/300x300/c3e38a6313534989c969f84efb0edc2a.png",
+
+        "year": "2002"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "M8kxYR",
+
+      "song_title": "Ma Yafou Dadaich",
+
+      "song_uri": "https://getsongbpm.com/song/ma-yafou-dadaich/M8kxYR",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "XLKqm",
+
+        "name": "Emil Zrihan",
+
+        "uri": "https://getsongbpm.com/artist/emil-zrihan/XLKqm",
+
+        "img": "https://i.scdn.co/image/96d807bf7fa5e33dad9e5060dbbaa0d634f2ede7",
+
+        "genres": [
+
+          "folk",
+
+          "world"
+
+        ],
+
+        "from": "IL",
+
+        "mbid": "0207f461-83fd-40ae-a3de-8c643513463e"
+
+      },
+
+      "album": {
+
+        "title": "Ashkelon",
+
+        "uri": "https://getsongbpm.com/album/ashkelon/q2vmk",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e02d814dee8606cf3ef0eeccde7",
+
+        "year": "2000"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "lRw73j",
+
+      "song_title": "Bass Interlude",
+
+      "song_uri": "https://getsongbpm.com/song/bass-interlude/lRw73j",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "2GnJN",
+
+        "name": "David Liebman",
+
+        "uri": "https://getsongbpm.com/artist/david-liebman/2GnJN",
+
+        "img": "https://i.scdn.co/image/d5a14fc9b7c459586ab055acaf37a251ff1763cd",
+
+        "genres": [
+
+          "jazz"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "42433208-9dbe-4261-986a-e648b68e236f"
+
+      },
+
+      "album": {
+
+        "title": "The Elements: Water",
+
+        "uri": "https://getsongbpm.com/album/the-elements-water/G7GMJ",
+
+        "img": "https://lastfm.freetls.fastly.net/i/u/300x300/26fc4c5fe3af9988fe635b910bd117a7.jpg",
+
+        "year": "1997"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "9wMgJ",
+
+      "song_title": "Suite 3 in G minor, BWV 808: IV. Sarabande",
+
+      "song_uri": "https://getsongbpm.com/song/suite-3-in-g-minor-bwv-808-ivpoint-sarabande/9wMgJ",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "QWOY",
+
+        "name": "Johann Sebastian Bach",
+
+        "uri": "https://getsongbpm.com/artist/johann-sebastian-bach/QWOY",
+
+        "img": null,
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "DE",
+
+        "mbid": "24f1766e-9635-4d58-a4d4-9413f9f98a4c"
+
+      },
+
+      "album": {
+
+        "title": "English Suites Nos. 1, 3 & 6",
+
+        "uri": "https://getsongbpm.com/album/english-suites-nospoint-1-3-and-6/qlOm3",
+
+        "img": "https://i.scdn.co/image/7ab934420a7a6b03a84971226bc3d92165a5bd97",
+
+        "year": "1998"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "L9q5Ew",
+
+      "song_title": "Buenos días por la mañana",
+
+      "song_uri": "https://getsongbpm.com/song/buenos-dias-por-la-manana/L9q5Ew",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "yP0jW",
+
+        "name": "Refree",
+
+        "uri": "https://getsongbpm.com/artist/refree/yP0jW",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b273f100126aef1938eb10c70f14",
+
+        "genres": [
+
+          "folk",
+
+          "pop"
+
+        ],
+
+        "from": "ES",
+
+        "mbid": "0a797765-7506-43ac-8f75-b9e4132b31d6"
+
+      },
+
+      "album": {
+
+        "title": "Els invertebrats",
+
+        "uri": "https://getsongbpm.com/album/els-invertebrats/mEOjn",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e025dadbe1c87b6fc451cddbcd0",
+
+        "year": "2007"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "XoZRmW",
+
+      "song_title": "Trio Sonata in E major, op. 1 no. 4, RV 66: I. Largo",
+
+      "song_uri": "https://getsongbpm.com/song/trio-sonata-in-e-major-oppoint-1-nopoint-4-rv-66-ipoint-largo/XoZRmW",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "Kmjr",
+
+        "name": "Antonio Vivaldi",
+
+        "uri": "https://getsongbpm.com/artist/antonio-vivaldi/Kmjr",
+
+        "img": "https://i.scdn.co/image/12caee0d8c2843b37e2b19da99e385010a2f8c5b",
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "IT",
+
+        "mbid": "ad79836d-9849-44df-8789-180bbc823f3c"
+
+      },
+
+      "album": {
+
+        "title": "Suonate da camera a tre",
+
+        "uri": "https://getsongbpm.com/album/suonate-da-camera-a-tre/x8DzE",
+
+        "img": null,
+
+        "year": "2000"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "VAxNl9",
+
+      "song_title": "Spark Rising Over the Lights of Scarlett Heights",
+
+      "song_uri": "https://getsongbpm.com/song/spark-rising-over-the-lights-of-scarlett-heights/VAxNl9",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "J6Mzv",
+
+        "name": "Janek Schaefer",
+
+        "uri": "https://getsongbpm.com/artist/janek-schaefer/J6Mzv",
+
+        "img": "https://i.scdn.co/image/809b6f69b2647b0c18d77a46d2322dfe2406764f",
+
+        "genres": [
+
+          "electronic"
+
+        ],
+
+        "from": null,
+
+        "mbid": "65c11d32-d685-4621-8c84-cbcdefb22b02"
+
+      },
+
+      "album": {
+
+        "title": "Double Exposure",
+
+        "uri": "https://getsongbpm.com/album/double-exposure/NKNw2",
+
+        "img": "https://lastfm.freetls.fastly.net/i/u/300x300/0f95ca7894575eebefcdbbe35d226fc8.png",
+
+        "year": "2011"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "46DyXx",
+
+      "song_title": "You Are Not \"Superman\"",
+
+      "song_uri": "https://getsongbpm.com/song/you-are-not-superman/46DyXx",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "lMzr",
+
+        "name": "Bonnie “Prince” Billy",
+
+        "uri": "https://getsongbpm.com/artist/bonnie-prince-billy/lMzr",
+
+        "img": "https://i.scdn.co/image/905b76919774d4458efda931f2ac7e869a3a912d",
+
+        "genres": null,
+
+        "from": "US",
+
+        "mbid": "7b0a63b2-b8e8-490e-b724-1d30cb5edfe3"
+
+      },
+
+      "album": {
+
+        "title": "Epic Jammers and Fortunate Little Ditties",
+
+        "uri": "https://getsongbpm.com/album/epic-jammers-and-fortunate-little-ditties/NnWjv",
+
+        "img": null,
+
+        "year": "2016"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "AP4561",
+
+      "song_title": "When I Fall in Love",
+
+      "song_uri": "https://getsongbpm.com/song/when-i-fall-in-love/AP4561",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "N248",
+
+        "name": "Jeffrey Osborne",
+
+        "uri": "https://getsongbpm.com/artist/jeffrey-osborne/N248",
+
+        "img": "https://i.scdn.co/image/75e7f6d83628b3cb7bf381f241f506f6a56785c7",
+
+        "genres": [
+
+          "funk",
+
+          "jazz",
+
+          "pop",
+
+          "r&b",
+
+          "soul"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "dfb666cb-933c-4675-8678-da8d6b43f86b"
+
+      },
+
+      "album": {
+
+        "title": "A Time for Love",
+
+        "uri": "https://getsongbpm.com/album/a-time-for-love/42oB1",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e029b0dbfcec1baa2925493d090",
+
+        "year": "2013"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "K1y8ll",
+
+      "song_title": "English Suite No. 3 in G Minor, BWV 808: IV. Sarabande",
+
+      "song_uri": "https://getsongbpm.com/song/english-suite-nopoint-3-in-g-minor-bwv-808-ivpoint-sarabande/K1y8ll",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "QWOY",
+
+        "name": "Johann Sebastian Bach",
+
+        "uri": "https://getsongbpm.com/artist/johann-sebastian-bach/QWOY",
+
+        "img": null,
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "DE",
+
+        "mbid": "24f1766e-9635-4d58-a4d4-9413f9f98a4c"
+
+      },
+
+      "album": {
+
+        "title": "Complete Works for Harpsichord, Vol. 6: English Suites Nos. 1, 2 & 3",
+
+        "uri": "https://getsongbpm.com/album/complete-works-for-harpsichord-volpoint-6-english-suites-nospoint-1-2-and-3/m0n1G",
+
+        "img": null,
+
+        "year": "1990"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "BLo6XX",
+
+      "song_title": "English Suite no. 3 in G minor, BWV 808: IV. Sarabande",
+
+      "song_uri": "https://getsongbpm.com/song/english-suite-nopoint-3-in-g-minor-bwv-808-ivpoint-sarabande/BLo6XX",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "QWOY",
+
+        "name": "Johann Sebastian Bach",
+
+        "uri": "https://getsongbpm.com/artist/johann-sebastian-bach/QWOY",
+
+        "img": null,
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "DE",
+
+        "mbid": "24f1766e-9635-4d58-a4d4-9413f9f98a4c"
+
+      },
+
+      "album": {
+
+        "title": "Partita no. 1 / English Suite no. 3 / French Suite no. 2",
+
+        "uri": "https://getsongbpm.com/album/partita-nopoint-1-english-suite-nopoint-3-french-suite-nopoint-2/JlJG9",
+
+        "img": "https://i.scdn.co/image/ed03d5cb7dde3ad9b1c56c28683d2222dbb39bd9",
+
+        "year": "1995"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "oV4L2K",
+
+      "song_title": "Rage",
+
+      "song_uri": "https://getsongbpm.com/song/rage/oV4L2K",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "lXoMV",
+
+        "name": "Fran Soler",
+
+        "uri": "https://getsongbpm.com/artist/fran-soler/lXoMV",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b27343ee61d94a2b06e0dc54436a",
+
+        "genres": null,
+
+        "from": null,
+
+        "mbid": "85f25dd3-ae87-4fa7-84fe-9f1d18166cc9"
+
+      },
+
+      "album": {
+
+        "title": "The Change",
+
+        "uri": "https://getsongbpm.com/album/the-change/DxRWk",
+
+        "img": "https://i.scdn.co/image/3de8cf37b79695e0543d6f2df007204e51e1f415",
+
+        "year": "2014"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "rRL5wB",
+
+      "song_title": "Mmm",
+
+      "song_uri": "https://getsongbpm.com/song/mmm/rRL5wB",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "Q6NrZ",
+
+        "name": "Nordpolen",
+
+        "uri": "https://getsongbpm.com/artist/nordpolen/Q6NrZ",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b2732fc2fe21123eedf44efd188f",
+
+        "genres": [
+
+          "electronic",
+
+          "pop"
+
+        ],
+
+        "from": "SE",
+
+        "mbid": "88a74d28-58c5-4810-ad91-ddfac130708f"
+
+      },
+
+      "album": {
+
+        "title": "Vi är många som är vakna i natt",
+
+        "uri": "https://getsongbpm.com/album/vi-aer-maanga-som-aer-vakna-i-natt/RjGAz",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e022fc2fe21123eedf44efd188f",
+
+        "year": "2013"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "k8gkkv",
+
+      "song_title": "Sonata da Camera in B-Flat Major, No. 5: IV. Tempo di Gavotta – Allegro",
+
+      "song_uri": "https://getsongbpm.com/song/sonata-da-camera-in-b-flat-major-nopoint-5-ivpoint-tempo-di-gavotta-allegro/k8gkkv",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "V26O",
+
+        "name": "Arcangelo Corelli",
+
+        "uri": "https://getsongbpm.com/artist/arcangelo-corelli/V26O",
+
+        "img": "https://i.scdn.co/image/0ae0253fe36151eea5dc09fb5731004c416c7a23",
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "IT",
+
+        "mbid": "a3546087-fe59-47d3-a3a8-42d58e2573c7"
+
+      },
+
+      "album": {
+
+        "title": "Opus 2 & 4: Chamber Sonatas",
+
+        "uri": "https://getsongbpm.com/album/opus-2-and-4-chamber-sonatas/RKlOq",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e02c42ff21e5a3dd6a14a046f74",
+
+        "year": "2013"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "4QR8D1",
+
+      "song_title": "English Suite No. 3 in G minor, BWV 808: Sarabande",
+
+      "song_uri": "https://getsongbpm.com/song/english-suite-nopoint-3-in-g-minor-bwv-808-sarabande/4QR8D1",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "QWOY",
+
+        "name": "Johann Sebastian Bach",
+
+        "uri": "https://getsongbpm.com/artist/johann-sebastian-bach/QWOY",
+
+        "img": null,
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "DE",
+
+        "mbid": "24f1766e-9635-4d58-a4d4-9413f9f98a4c"
+
+      },
+
+      "album": {
+
+        "title": "The Authorised Recordings: Bach",
+
+        "uri": "https://getsongbpm.com/album/the-authorised-recordings-bach/3JwNQ",
+
+        "img": null,
+
+        "year": "1994"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "r8wBEw",
+
+      "song_title": "Hell as the Earth",
+
+      "song_uri": "https://getsongbpm.com/song/hell-as-the-earth/r8wBEw",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "XD4EV",
+
+        "name": "Priceless",
+
+        "uri": "https://getsongbpm.com/artist/priceless/XD4EV",
+
+        "img": "https://i.scdn.co/image/f7250c8c40e6dabc9a60f9ec3c4fc964ea040378",
+
+        "genres": [
+
+          "hip hop",
+
+          "rap"
+
+        ],
+
+        "from": null,
+
+        "mbid": "b48668cf-90f9-4099-bc6c-1b8fdab42193"
+
+      },
+
+      "album": {
+
+        "title": "Hate (Hell as the Earth)",
+
+        "uri": "https://getsongbpm.com/album/hate-hell-as-the-earth/W1m7x",
+
+        "img": "https://lastfm.freetls.fastly.net/i/u/300x300/551a9b98a06245dfc54dcaf931bb797b.png",
+
+        "year": "2014"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "r2PDPk",
+
+      "song_title": "Here We Go",
+
+      "song_uri": "https://getsongbpm.com/song/here-we-go/r2PDPk",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "RwZXw",
+
+        "name": "The Paul Deslauriers Band",
+
+        "uri": "https://getsongbpm.com/artist/the-paul-deslauriers-band/RwZXw",
+
+        "img": "https://i.scdn.co/image/3d69a7cedf0d8226410ac0702f4eb5c1a09bb405",
+
+        "genres": null,
+
+        "from": "CA",
+
+        "mbid": "d6630137-bba0-430b-af92-db4e4ef27e76"
+
+      },
+
+      "album": {
+
+        "title": "Bounce",
+
+        "uri": "https://getsongbpm.com/album/bounce/rvN2W",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e02bb0e0c98c56367f43f196e33",
+
+        "year": "2019"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "7LAV3G",
+
+      "song_title": "Third Degree",
+
+      "song_uri": "https://getsongbpm.com/song/third-degree/7LAV3G",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "gDQj",
+
+        "name": "Eddie Boyd",
+
+        "uri": "https://getsongbpm.com/artist/eddie-boyd/gDQj",
+
+        "img": "https://i.scdn.co/image/4108d6afedb1f5c44a2af4680c1595acefaac400",
+
+        "genres": [
+
+          "blues",
+
+          "jazz",
+
+          "rock"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "8766468c-9a0f-41e2-8466-601d94d5098e"
+
+      },
+
+      "album": {
+
+        "title": "7936 South Rhodes",
+
+        "uri": "https://getsongbpm.com/album/7936-south-rhodes/ZvgOQ",
+
+        "img": "https://lastfm.freetls.fastly.net/i/u/300x300/606c6662af1a443ac445110c5ec56fb6.png",
+
+        "year": "1968"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "32k3vO",
+
+      "song_title": "Tiddlywinks TV Spot",
+
+      "song_uri": "https://getsongbpm.com/song/tiddlywinks-tv-spot/32k3vO",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "oELL",
+
+        "name": "NRBQ",
+
+        "uri": "https://getsongbpm.com/artist/nrbq/oELL",
+
+        "img": "https://i.scdn.co/image/d037975fbb7db56ac04cd668d975ddca8c8047a4",
+
+        "genres": [
+
+          "rock"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "4777dc1b-2533-4189-9062-c1b2b477d5c5"
+
+      },
+
+      "album": {
+
+        "title": "Lou and the Q",
+
+        "uri": "https://getsongbpm.com/album/lou-and-the-q/73EL8",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e0290df4cf4a27bcc8d04db0e02",
+
+        "year": "1985"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "MZyJ8Q",
+
+      "song_title": "Bum Voyage",
+
+      "song_uri": "https://getsongbpm.com/song/bum-voyage/MZyJ8Q",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "9rnY3",
+
+        "name": "Nanowar of Steel",
+
+        "uri": "https://getsongbpm.com/artist/nanowar-of-steel/9rnY3",
+
+        "img": "https://i.scdn.co/image/e5a48748077e450fe2e71c5b7afbc40ce93f7d28",
+
+        "genres": [
+
+          "heavy metal"
+
+        ],
+
+        "from": "IT",
+
+        "mbid": "b879af63-9ff6-49b3-a556-1af86e753119"
+
+      },
+
+      "album": {
+
+        "title": "Stairway to Valhalla",
+
+        "uri": "https://getsongbpm.com/album/stairway-to-valhalla/4q4Jx",
+
+        "img": "https://i.scdn.co/image/c7ab8c29b7f254754c54cd75221af89f4c42e447",
+
+        "year": "2018"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "99Lglz",
+
+      "song_title": "Hark! The Herald Angels Sing",
+
+      "song_uri": "https://getsongbpm.com/song/harkexclamation-the-herald-angels-sing/99Lglz",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "ZEOJ",
+
+        "name": "The Isaacs",
+
+        "uri": "https://getsongbpm.com/artist/the-isaacs/ZEOJ",
+
+        "img": "https://i.scdn.co/image/f41ff1f227734a5a37cfee1fb48236bd674f115c",
+
+        "genres": null,
+
+        "from": null,
+
+        "mbid": "c18472c5-67ce-4d38-9fa3-d5bc2ef856e8"
+
+      },
+
+      "album": {
+
+        "title": "Christmas Spirit",
+
+        "uri": "https://getsongbpm.com/album/christmas-spirit/XwOgo",
+
+        "img": "https://i.scdn.co/image/a7c69070d973d76c4f0b4c66098f45d7a0e8b0ea",
+
+        "year": "2002"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "jZVny4",
+
+      "song_title": "English Suite no. 3 in G minor, BWV 808: Sarabande",
+
+      "song_uri": "https://getsongbpm.com/song/english-suite-nopoint-3-in-g-minor-bwv-808-sarabande/jZVny4",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "QWOY",
+
+        "name": "Johann Sebastian Bach",
+
+        "uri": "https://getsongbpm.com/artist/johann-sebastian-bach/QWOY",
+
+        "img": null,
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "DE",
+
+        "mbid": "24f1766e-9635-4d58-a4d4-9413f9f98a4c"
+
+      },
+
+      "album": {
+
+        "title": "Bach: Englische Suiten 2 & 3 / Scarlatti: 4 Sonaten",
+
+        "uri": "https://getsongbpm.com/album/bach-englische-suiten-2-and-3-scarlatti-4-sonaten/nmY3l",
+
+        "img": null,
+
+        "year": "1992"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "mZk5jA",
+
+      "song_title": "Grande valse, op. 42 en La bémol majeur",
+
+      "song_uri": "https://getsongbpm.com/song/grande-valse-oppoint-42-en-la-bemol-majeur/mZk5jA",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "68n",
+
+        "name": "Fryderyk Chopin",
+
+        "uri": "https://getsongbpm.com/artist/fryderyk-chopin/68n",
+
+        "img": null,
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "PL",
+
+        "mbid": "09ff1fe8-d61c-4b98-bb82-18487c74d7b7"
+
+      },
+
+      "album": {
+
+        "title": "14 valses",
+
+        "uri": "https://getsongbpm.com/album/14-valses/4z0wg",
+
+        "img": null,
+
+        "year": "1999"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "E0v7k",
+
+      "song_title": "I've Heard (live)",
+
+      "song_uri": "https://getsongbpm.com/song/i-ve-heard-live/E0v7k",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "nZWP",
+
+        "name": "Dag Nasty",
+
+        "uri": "https://getsongbpm.com/artist/dag-nasty/nZWP",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b273e5bf49bfc6a535d48a25abf5",
+
+        "genres": [
+
+          "punk"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "4709dd69-1034-4634-9e88-d1099453b192"
+
+      },
+
+      "album": {
+
+        "title": "Can I Say",
+
+        "uri": "https://getsongbpm.com/album/can-i-say/gnYxY",
+
+        "img": "https://i.scdn.co/image/ff69016683edd7358e318216888f02f7dcf33d2f",
+
+        "year": "1986"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "14lAG",
+
+      "song_title": "Caca De Kick",
+
+      "song_uri": "https://getsongbpm.com/song/caca-de-kick/14lAG",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "kNo5",
+
+        "name": "Infectious Grooves",
+
+        "uri": "https://getsongbpm.com/artist/infectious-grooves/kNo5",
+
+        "img": "https://i.scdn.co/image/76203432bb24dfaaf5c771d94411d4811d2494ff",
+
+        "genres": [
+
+          "funk",
+
+          "rock"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "7e14cf06-532b-4789-8c03-5aa13da4f6f3"
+
+      },
+
+      "album": {
+
+        "title": "Sarsippius' Ark",
+
+        "uri": "https://getsongbpm.com/album/sarsippius-ark/L9gqg",
+
+        "img": "https://i.scdn.co/image/dc00bcc01e49e8ad359ce7f75809daaf80b60165",
+
+        "year": "1993"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "WBokv",
+
+      "song_title": "Ghost Two",
+
+      "song_uri": "https://getsongbpm.com/song/ghost-two/WBokv",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "zp5pr",
+
+        "name": "L. Pierre",
+
+        "uri": "https://getsongbpm.com/artist/lpoint-pierre/zp5pr",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b2739d57bb2ea22dfab2b9dde0c2",
+
+        "genres": [
+
+          "classical",
+
+          "electronic"
+
+        ],
+
+        "from": "GB",
+
+        "mbid": "b40f3a6c-cb54-4d2e-a200-04e67ef15374"
+
+      },
+
+      "album": {
+
+        "title": "Hypnogogia",
+
+        "uri": "https://getsongbpm.com/album/hypnogogia/rkzMw",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e025c8c28b54e82fe2e297fb161",
+
+        "year": "2002"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "qp2Rr",
+
+      "song_title": "Winter Carol",
+
+      "song_uri": "https://getsongbpm.com/song/winter-carol/qp2Rr",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "wKgw",
+
+        "name": "London Symphony Orchestra",
+
+        "uri": "https://getsongbpm.com/artist/london-symphony-orchestra/wKgw",
+
+        "img": "https://i.scdn.co/image/4a42ecf4bccf7bcc14f484fc3254427d2225b350",
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "GB",
+
+        "mbid": "38712b4c-0fd4-4c65-8c7a-45676fecc973"
+
+      },
+
+      "album": {
+
+        "title": "Winterscapes",
+
+        "uri": "https://getsongbpm.com/album/winterscapes/gJAlD",
+
+        "img": "https://lastfm.freetls.fastly.net/i/u/300x300/fe2e46f5b81711ec15ceee6187d610c9.png",
+
+        "year": "2005"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "JrXXK",
+
+      "song_title": "4-3",
+
+      "song_uri": "https://getsongbpm.com/song/4-3/JrXXK",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "1DqZ",
+
+        "name": "Kit Clayton",
+
+        "uri": "https://getsongbpm.com/artist/kit-clayton/1DqZ",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b2739482d30b592d15bff2ba6d2d",
+
+        "genres": [
+
+          "electronic"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "88aa3eaf-e4e9-448f-a24b-b5991cf66f89"
+
+      },
+
+      "album": {
+
+        "title": "Ping Pong",
+
+        "uri": "https://getsongbpm.com/album/ping-pong/VmK89",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e0223c37ca4405f0548bc5bb75e",
+
+        "year": "2002"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "N671v",
+
+      "song_title": "Moments of Being",
+
+      "song_uri": "https://getsongbpm.com/song/moments-of-being/N671v",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "jExz",
+
+        "name": "Stephen Duffy",
+
+        "uri": "https://getsongbpm.com/artist/stephen-duffy/jExz",
+
+        "img": "https://i.scdn.co/image/7e0567fa11f0a579b61ce8956dd3e8ae5e418993",
+
+        "genres": [
+
+          "folk",
+
+          "pop"
+
+        ],
+
+        "from": "GB",
+
+        "mbid": "a0580131-73f3-49c8-aac5-2c478f64a363"
+
+      },
+
+      "album": {
+
+        "title": "They Called Him Tintin",
+
+        "uri": "https://getsongbpm.com/album/they-called-him-tintin/8qV82",
+
+        "img": "https://lastfm.freetls.fastly.net/i/u/300x300/5361e7f52e644eaa95a2d3f36f66709b.png",
+
+        "year": "1998"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "jYjMQY",
+
+      "song_title": "Arminio, HWV 36: Act 1: Oime! parte Ramise, e seco porta l'anima mia",
+
+      "song_uri": "https://getsongbpm.com/song/arminio-hwv-36-act-1-oimeexclamation-parte-ramise-e-seco-porta-l-anima-mia/jYjMQY",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "kAJN",
+
+        "name": "George Frideric Handel",
+
+        "uri": "https://getsongbpm.com/artist/george-frideric-handel/kAJN",
+
+        "img": "https://i.scdn.co/image/80e4fa2aac467af1b0a13201b585ae0ca27367dc",
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "GB",
+
+        "mbid": "27870d47-bb98-42d1-bf2b-c7e972e6befc"
+
+      },
+
+      "album": {
+
+        "title": "Arminio",
+
+        "uri": "https://getsongbpm.com/album/arminio/QqyY7",
+
+        "img": "https://i.scdn.co/image/d280f8873d11b8281b201195b9ac61defedcf1ee",
+
+        "year": "2016"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "PyLYn",
+
+      "song_title": "Shrine",
+
+      "song_uri": "https://getsongbpm.com/song/shrine/PyLYn",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "BNDo",
+
+        "name": "Muslimgauze",
+
+        "uri": "https://getsongbpm.com/artist/muslimgauze/BNDo",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b273385501d3b0f5c37e32827f01",
+
+        "genres": [
+
+          "electronic"
+
+        ],
+
+        "from": "GB",
+
+        "mbid": "06fc1189-d7cd-4344-b09a-51cd82cfefe5"
+
+      },
+
+      "album": {
+
+        "title": "Zuriff Moussa",
+
+        "uri": "https://getsongbpm.com/album/zuriff-moussa/W7BXo",
+
+        "img": "https://lastfm.freetls.fastly.net/i/u/300x300/c2902e0f2ed84553925011970fe29277.png",
+
+        "year": "1997"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "OryJg",
+
+      "song_title": "The Minstrel Boy to the War Has Gone / The Ash Grove",
+
+      "song_uri": "https://getsongbpm.com/song/the-minstrel-boy-to-the-war-has-gone-the-ash-grove/OryJg",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "Llqr",
+
+        "name": "Norman Blake",
+
+        "uri": "https://getsongbpm.com/artist/norman-blake/Llqr",
+
+        "img": "https://i.scdn.co/image/c9634a45f89d5fc1c4091a8c969a8ed2eb62c235",
+
+        "genres": [
+
+          "country",
+
+          "folk"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "c9605929-6b48-4991-bb96-0bf460df8ee1"
+
+      },
+
+      "album": {
+
+        "title": "Whiskey Before Breakfast",
+
+        "uri": "https://getsongbpm.com/album/whiskey-before-breakfast/pQD7y",
+
+        "img": "https://i.scdn.co/image/f15c414a90c3f48053c013d53bb06d799076b4bf",
+
+        "year": "1976"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "Pvnv4",
+
+      "song_title": "Blackwaterside",
+
+      "song_uri": "https://getsongbpm.com/song/blackwaterside/Pvnv4",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "M8pj1",
+
+        "name": "Orchis",
+
+        "uri": "https://getsongbpm.com/artist/orchis/M8pj1",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b2730827acd0bc0f891e90219c02",
+
+        "genres": [
+
+          "folk"
+
+        ],
+
+        "from": "GB",
+
+        "mbid": "b34aebbf-5579-4497-9e00-6e4a74083d3d"
+
+      },
+
+      "album": {
+
+        "title": "A Thousand Winters",
+
+        "uri": "https://getsongbpm.com/album/a-thousand-winters/ZVQlJ",
+
+        "img": "https://lastfm.freetls.fastly.net/i/u/300x300/0d6f060130d94d15910395aeb4661cd3.png",
+
+        "year": "1997"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "PjwYZ2",
+
+      "song_title": "Valse en la bémol majeur Op. 42",
+
+      "song_uri": "https://getsongbpm.com/song/valse-en-la-bemol-majeur-oppoint-42/PjwYZ2",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "68n",
+
+        "name": "Fryderyk Chopin",
+
+        "uri": "https://getsongbpm.com/artist/fryderyk-chopin/68n",
+
+        "img": null,
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "PL",
+
+        "mbid": "09ff1fe8-d61c-4b98-bb82-18487c74d7b7"
+
+      },
+
+      "album": {
+
+        "title": "17 valses",
+
+        "uri": "https://getsongbpm.com/album/17-valses/87LBg",
+
+        "img": null,
+
+        "year": "1991"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "o2AQ1N",
+
+      "song_title": "English Suite No. 3 in G minor, BWV 808: IV. Sarabande",
+
+      "song_uri": "https://getsongbpm.com/song/english-suite-nopoint-3-in-g-minor-bwv-808-ivpoint-sarabande/o2AQ1N",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "QWOY",
+
+        "name": "Johann Sebastian Bach",
+
+        "uri": "https://getsongbpm.com/artist/johann-sebastian-bach/QWOY",
+
+        "img": null,
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "DE",
+
+        "mbid": "24f1766e-9635-4d58-a4d4-9413f9f98a4c"
+
+      },
+
+      "album": {
+
+        "title": "English Suites, Nos. 2 & 3",
+
+        "uri": "https://getsongbpm.com/album/english-suites-nospoint-2-and-3/jYxQ4",
+
+        "img": "https://i.scdn.co/image/a8c54efbd29e96fd069dda2015dcb7d2a6ee6900",
+
+        "year": "1986"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "XQl7v5",
+
+      "song_title": "English Suite no. 3 in G minor, BWV 808: Sarabande",
+
+      "song_uri": "https://getsongbpm.com/song/english-suite-nopoint-3-in-g-minor-bwv-808-sarabande/XQl7v5",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "QWOY",
+
+        "name": "Johann Sebastian Bach",
+
+        "uri": "https://getsongbpm.com/artist/johann-sebastian-bach/QWOY",
+
+        "img": null,
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "DE",
+
+        "mbid": "24f1766e-9635-4d58-a4d4-9413f9f98a4c"
+
+      },
+
+      "album": {
+
+        "title": "The English Suites",
+
+        "uri": "https://getsongbpm.com/album/the-english-suites/XA07A",
+
+        "img": "https://i.scdn.co/image/e8ed7f098dd0bdd41583708ccd2e284c9eb728d5",
+
+        "year": "1996"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "lREZPj",
+
+      "song_title": "Lullaby",
+
+      "song_uri": "https://getsongbpm.com/song/lullaby/lREZPj",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "OYNwY",
+
+        "name": "Frank Bridge",
+
+        "uri": "https://getsongbpm.com/artist/frank-bridge/OYNwY",
+
+        "img": "https://i.scdn.co/image/981be453a1edf016a20badef6c6975724c503347",
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "GB",
+
+        "mbid": "9e42300c-959a-4f73-89cd-8003b71eb85a"
+
+      },
+
+      "album": {
+
+        "title": "Music for Viola",
+
+        "uri": "https://getsongbpm.com/album/music-for-viola/2r38W",
+
+        "img": "https://i.scdn.co/image/0dbdbae4822ed8f072358f5f4d4ca7ce674aeef1",
+
+        "year": "1999"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "QWDKj0",
+
+      "song_title": "I aquell jardí",
+
+      "song_uri": "https://getsongbpm.com/song/i-aquell-jardi/QWDKj0",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "6Rzmn",
+
+        "name": "Companyia Elèctrica Dharma",
+
+        "uri": "https://getsongbpm.com/artist/companyia-electrica-dharma/6Rzmn",
+
+        "img": "https://i.scdn.co/image/a3b462901c0e6d9fbc1430e70955aa8448646343",
+
+        "genres": [
+
+          "folk",
+
+          "jazz"
+
+        ],
+
+        "from": "ES",
+
+        "mbid": "35280cdb-bac2-4d28-84fb-77c9216a1e24"
+
+      },
+
+      "album": {
+
+        "title": "El ventre de la bèstia",
+
+        "uri": "https://getsongbpm.com/album/el-ventre-de-la-bestia/koLPN",
+
+        "img": "https://lastfm.freetls.fastly.net/i/u/300x300/b865827780864caeba41442e1d0aabfb.png",
+
+        "year": "1996"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "5QglOv",
+
+      "song_title": "Gabhaim Molta Bríde",
+
+      "song_uri": "https://getsongbpm.com/song/gabhaim-molta-bride/5QglOv",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "GxNK",
+
+        "name": "Pádraigín Ní Uallacháin",
+
+        "uri": "https://getsongbpm.com/artist/padraigin-ni-uallachain/GxNK",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b273321b91875f40ad209f80fe1a",
+
+        "genres": [
+
+          "folk"
+
+        ],
+
+        "from": "IE",
+
+        "mbid": "99210cb9-c22a-4b40-a571-f7d8352c938e"
+
+      },
+
+      "album": {
+
+        "title": "A Stór's A Stóirín",
+
+        "uri": "https://getsongbpm.com/album/a-stor-s-a-stoirin/jAmJz",
+
+        "img": "https://i.scdn.co/image/c7b21374c1f5e175f7cf879ffa07a4b19ba2f3f2",
+
+        "year": "1994"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "466VM0",
+
+      "song_title": "'a Gelusia",
+
+      "song_uri": "https://getsongbpm.com/song/a-gelusia/466VM0",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "Y5z2Y",
+
+        "name": "Gloria Christian",
+
+        "uri": "https://getsongbpm.com/artist/gloria-christian/Y5z2Y",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b27318dab1489bd67c35ac01b5bf",
+
+        "genres": [
+
+          "pop"
+
+        ],
+
+        "from": null,
+
+        "mbid": "75fee38f-a343-4766-8083-f3a5313ca215"
+
+      },
+
+      "album": {
+
+        "title": "La Granden Canzone Napoleana: Ricciulella: La Napoli die Gloria Christian",
+
+        "uri": "https://getsongbpm.com/album/la-granden-canzone-napoleana-ricciulella-la-napoli-die-gloria-christian/LDWgD",
+
+        "img": null,
+
+        "year": "2007"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "oY9v4K",
+
+      "song_title": "The Christmas Song",
+
+      "song_uri": "https://getsongbpm.com/song/the-christmas-song/oY9v4K",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "E5xm",
+
+        "name": "Mel Tormé",
+
+        "uri": "https://getsongbpm.com/artist/mel-torme/E5xm",
+
+        "img": "https://i.scdn.co/image/19f5cc26f6149a8864421acbd63fd34ecdf0bbd9",
+
+        "genres": [
+
+          "jazz"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "4439c2fd-a754-4f6a-b3a6-791b47726156"
+
+      },
+
+      "album": {
+
+        "title": "In the Studio and in Concert",
+
+        "uri": "https://getsongbpm.com/album/in-the-studio-and-in-concert/OJQwY",
+
+        "img": null,
+
+        "year": "2000"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "j2jBXR",
+
+      "song_title": "Trio Sonata in F minor, op. 1 no. 10: IV. Allegro",
+
+      "song_uri": "https://getsongbpm.com/song/trio-sonata-in-f-minor-oppoint-1-nopoint-10-ivpoint-allegro/j2jBXR",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "77Py",
+
+        "name": "Antonio Caldara",
+
+        "uri": "https://getsongbpm.com/artist/antonio-caldara/77Py",
+
+        "img": "https://i.scdn.co/image/3544e57bb908fb7fa167a01bcd28f94797b1ed68",
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "IT",
+
+        "mbid": "fb698413-0e4f-4e78-9ac2-f085bc4a2b2d"
+
+      },
+
+      "album": {
+
+        "title": "Trio Sonatas / Cello Sonatas",
+
+        "uri": "https://getsongbpm.com/album/trio-sonatas-cello-sonatas/0X7XL",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e02a25fbdaed8da6d482d9a18f0",
+
+        "year": "2004"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "48oxP7",
+
+      "song_title": "\"Manuel\" a",
+
+      "song_uri": "https://getsongbpm.com/song/manuel-a/48oxP7",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "91o9Y",
+
+        "name": "Orchestre National de Jazz",
+
+        "uri": "https://getsongbpm.com/artist/orchestre-national-de-jazz/91o9Y",
+
+        "img": "https://i.scdn.co/image/d8d5c77368883e263e5c65c5b1548588ca5fbe40",
+
+        "genres": [
+
+          "jazz",
+
+          "rock"
+
+        ],
+
+        "from": "FR",
+
+        "mbid": "ec92db75-3e12-4715-a839-45e069bff227"
+
+      },
+
+      "album": {
+
+        "title": "Jack-Line",
+
+        "uri": "https://getsongbpm.com/album/jack-line/yJWKw",
+
+        "img": "https://lastfm.freetls.fastly.net/i/u/300x300/d195eca7342542d8c21d3e6f025cd1fc.png",
+
+        "year": "1991"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "yoREM7",
+
+      "song_title": "English Suite No. 3 in G minor, BWV 808: IV. Sarabande",
+
+      "song_uri": "https://getsongbpm.com/song/english-suite-nopoint-3-in-g-minor-bwv-808-ivpoint-sarabande/yoREM7",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "QWOY",
+
+        "name": "Johann Sebastian Bach",
+
+        "uri": "https://getsongbpm.com/artist/johann-sebastian-bach/QWOY",
+
+        "img": null,
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "DE",
+
+        "mbid": "24f1766e-9635-4d58-a4d4-9413f9f98a4c"
+
+      },
+
+      "album": {
+
+        "title": "English Suites 1, 3 & 5",
+
+        "uri": "https://getsongbpm.com/album/english-suites-1-3-and-5/QXD7Y",
+
+        "img": "https://i.scdn.co/image/c7c5c11b208374888ac46f7140e15dbb9b9167f4",
+
+        "year": "2014"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "QkmoBZ",
+
+      "song_title": "Peter Grimes: Prologue. Peter Grimes",
+
+      "song_uri": "https://getsongbpm.com/song/peter-grimes-prologuepoint-peter-grimes/QkmoBZ",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "6ByQ",
+
+        "name": "Benjamin Britten",
+
+        "uri": "https://getsongbpm.com/artist/benjamin-britten/6ByQ",
+
+        "img": null,
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "GB",
+
+        "mbid": "49ae5227-605a-47a8-9b8e-cd89bf01a97c"
+
+      },
+
+      "album": {
+
+        "title": "Peter Grimes",
+
+        "uri": "https://getsongbpm.com/album/peter-grimes/jV89y",
+
+        "img": "https://i.scdn.co/image/765b829be0e4b7b12d9ff08d135d204d5edc696c",
+
+        "year": "2013"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "K8EE0l",
+
+      "song_title": "Valse op 42 en la bémol majeur",
+
+      "song_uri": "https://getsongbpm.com/song/valse-op-42-en-la-bemol-majeur/K8EE0l",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "68n",
+
+        "name": "Fryderyk Chopin",
+
+        "uri": "https://getsongbpm.com/artist/fryderyk-chopin/68n",
+
+        "img": null,
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "PL",
+
+        "mbid": "09ff1fe8-d61c-4b98-bb82-18487c74d7b7"
+
+      },
+
+      "album": {
+
+        "title": "Valses",
+
+        "uri": "https://getsongbpm.com/album/valses/2r6wK",
+
+        "img": null,
+
+        "year": "1999"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "LZvxBp",
+
+      "song_title": "I Thought About You",
+
+      "song_uri": "https://getsongbpm.com/song/i-thought-about-you/LZvxBp",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "PLWn",
+
+        "name": "Jackie Gleason",
+
+        "uri": "https://getsongbpm.com/artist/jackie-gleason/PLWn",
+
+        "img": "https://i.scdn.co/image/7877719f4df246eb3e43aabde4a48ba1118cfd63",
+
+        "genres": null,
+
+        "from": "US",
+
+        "mbid": "c6d1f982-ed7a-40a8-bfa2-5a1342376636"
+
+      },
+
+      "album": {
+
+        "title": "That Moment",
+
+        "uri": "https://getsongbpm.com/album/that-moment/3vvEQ",
+
+        "img": "https://i.scdn.co/image/cc41f5f8a2f6d5b3b881b5078b23308ed8cbee45",
+
+        "year": "1959"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "r2PNRW",
+
+      "song_title": "Wie Einem Der Gewissheit Hat",
+
+      "song_uri": "https://getsongbpm.com/song/wie-einem-der-gewissheit-hat/r2PNRW",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "53w8",
+
+        "name": "Stephan Eicher",
+
+        "uri": "https://getsongbpm.com/artist/stephan-eicher/53w8",
+
+        "img": "https://i.scdn.co/image/9db2e8fe6ad1b75e5a7774e631ecd41cfa0fe7e5",
+
+        "genres": [
+
+          "folk",
+
+          "pop",
+
+          "rock"
+
+        ],
+
+        "from": "CH",
+
+        "mbid": "34101668-3a6e-4fb7-8a8e-8f6130cb9127"
+
+      },
+
+      "album": {
+
+        "title": "Homeless Songs",
+
+        "uri": "https://getsongbpm.com/album/homeless-songs/xB57q",
+
+        "img": "https://i.scdn.co/image/6f628ccc18bb27699199de113f7eb03564f4af9f",
+
+        "year": "2019"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "6W5Y4R",
+
+      "song_title": "Invitation",
+
+      "song_uri": "https://getsongbpm.com/song/invitation/6W5Y4R",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "1po70",
+
+        "name": "Opéra De Nuit",
+
+        "uri": "https://getsongbpm.com/artist/opera-de-nuit/1po70",
+
+        "img": null,
+
+        "genres": null,
+
+        "from": null,
+
+        "mbid": "9b6a8e4d-242d-431b-ad42-ca143eae22c4"
+
+      },
+
+      "album": {
+
+        "title": "Opéra De Nuit",
+
+        "uri": "https://getsongbpm.com/album/opera-de-nuit/kl8ZE",
+
+        "img": "https://lastfm.freetls.fastly.net/i/u/c3af6fb1391653c2041909403ad304bb.png",
+
+        "year": "1988"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "995NED",
+
+      "song_title": "Бюджет",
+
+      "song_uri": "https://getsongbpm.com/song/byudzhet/995NED",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "3rgrr",
+
+        "name": "Жадан і Собаки",
+
+        "uri": "https://getsongbpm.com/artist/zhadan-i-sobaki/3rgrr",
+
+        "img": "https://i.scdn.co/image/d7e00c62796e91f48ec7ac4da67733cb6323f96c",
+
+        "genres": null,
+
+        "from": null,
+
+        "mbid": "f6946d24-328c-478a-bb63-cae6d3901eae"
+
+      },
+
+      "album": {
+
+        "title": "Бийся за неї",
+
+        "uri": "https://getsongbpm.com/album/biysya-za-neji/kl22N",
+
+        "img": "https://lastfm.freetls.fastly.net/i/u/300x300/4bc8403924e9c78de5571d08960f3e76.png",
+
+        "year": "2014"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "oVM76K",
+
+      "song_title": "English Suite No. 3 in G minor, BWV 808: Sarabande",
+
+      "song_uri": "https://getsongbpm.com/song/english-suite-nopoint-3-in-g-minor-bwv-808-sarabande/oVM76K",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "QWOY",
+
+        "name": "Johann Sebastian Bach",
+
+        "uri": "https://getsongbpm.com/artist/johann-sebastian-bach/QWOY",
+
+        "img": null,
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "DE",
+
+        "mbid": "24f1766e-9635-4d58-a4d4-9413f9f98a4c"
+
+      },
+
+      "album": {
+
+        "title": "Sviatoslav Richter: The Master, Volume 8",
+
+        "uri": "https://getsongbpm.com/album/sviatoslav-richter-the-master-volume-8/jBm1R",
+
+        "img": null,
+
+        "year": "2007"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "zXX6J2",
+
+      "song_title": "When She Smiles",
+
+      "song_uri": "https://getsongbpm.com/song/when-she-smiles/zXX6J2",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "92394",
+
+        "name": "Coconuts",
+
+        "uri": "https://getsongbpm.com/artist/coconuts/92394",
+
+        "img": null,
+
+        "genres": [
+
+          "pop",
+
+          "reggae",
+
+          "rock"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "0c05eafe-5b31-45d5-b854-529f791599f8"
+
+      },
+
+      "album": {
+
+        "title": "Coconuts",
+
+        "uri": "https://getsongbpm.com/album/coconuts/qMYlR",
+
+        "img": "https://lastfm.freetls.fastly.net/i/u/300x300/bce261dfdc464ea9af7701eb8f98dd3f.png",
+
+        "year": "2010"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "YWBqWY",
+
+      "song_title": "The Wake",
+
+      "song_uri": "https://getsongbpm.com/song/the-wake/YWBqWY",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "L7N1v",
+
+        "name": "Mr. Flash",
+
+        "uri": "https://getsongbpm.com/artist/mrpoint-flash/L7N1v",
+
+        "img": "https://i.scdn.co/image/bc05d81d613b5fbf85cc69030ae15a41294c02ee",
+
+        "genres": [
+
+          "electronic"
+
+        ],
+
+        "from": "FR",
+
+        "mbid": "792f877d-8c68-45db-871a-085643604b49"
+
+      },
+
+      "album": {
+
+        "title": "Sonic Crusader",
+
+        "uri": "https://getsongbpm.com/album/sonic-crusader/GXw6K",
+
+        "img": "https://i.scdn.co/image/384d22e726cd57a66e22d7d51776580128062aa4",
+
+        "year": "2014"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "GZ6J1y",
+
+      "song_title": "English Suite No. 3 in G minor, BWV 808: IV. Sarabande",
+
+      "song_uri": "https://getsongbpm.com/song/english-suite-nopoint-3-in-g-minor-bwv-808-ivpoint-sarabande/GZ6J1y",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "QWOY",
+
+        "name": "Johann Sebastian Bach",
+
+        "uri": "https://getsongbpm.com/artist/johann-sebastian-bach/QWOY",
+
+        "img": null,
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "DE",
+
+        "mbid": "24f1766e-9635-4d58-a4d4-9413f9f98a4c"
+
+      },
+
+      "album": {
+
+        "title": "Chromatic Fantasia & Fugue / 3 Preludes & Fuges / English Suite No. 3 / French Suite No. 5",
+
+        "uri": "https://getsongbpm.com/album/chromatic-fantasia-and-fugue-3-preludes-and-fuges-english-suite-nopoint-3-french-suite-nopoint-5/rEvZw",
+
+        "img": null,
+
+        "year": "1991"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "JQyL8K",
+
+      "song_title": "Orchids I",
+
+      "song_uri": "https://getsongbpm.com/song/orchids-i/JQyL8K",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "pQJq1",
+
+        "name": "David Tagg",
+
+        "uri": "https://getsongbpm.com/artist/david-tagg/pQJq1",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b273a9ec0d54c7dce63481189d0b",
+
+        "genres": [
+
+          "soul"
+
+        ],
+
+        "from": null,
+
+        "mbid": "fd05448c-2b36-4a14-ae00-5cce94406c6d"
+
+      },
+
+      "album": {
+
+        "title": "Fundamentals of Orchid Biology",
+
+        "uri": "https://getsongbpm.com/album/fundamentals-of-orchid-biology/0XK7G",
+
+        "img": "https://lastfm.freetls.fastly.net/i/u/300x300/3001d7d1496e4d5cbbd73a2a6aaba5f3.png",
+
+        "year": "2008"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "NYRRN",
+
+      "song_title": "I Feel Like I'm Not Out of Bed Yet",
+
+      "song_uri": "https://getsongbpm.com/song/i-feel-like-i-m-not-out-of-bed-yet/NYRRN",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "Ag5O",
+
+        "name": "Bernadette Peters",
+
+        "uri": "https://getsongbpm.com/artist/bernadette-peters/Ag5O",
+
+        "img": "https://i.scdn.co/image/730730df97947704dfa888e7a258992fa1036555",
+
+        "genres": [
+
+          "pop"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "87f63ba8-cbdd-49ee-a976-416778f51f43"
+
+      },
+
+      "album": {
+
+        "title": "I'll Be Your Baby Tonight",
+
+        "uri": "https://getsongbpm.com/album/i-ll-be-your-baby-tonight/Q329",
+
+        "img": "https://lastfm.freetls.fastly.net/i/u/300x300/d227d6ab9d9c966dc744afe353a92329.png",
+
+        "year": "1996"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "nm9jl",
+
+      "song_title": "Questo amore",
+
+      "song_uri": "https://getsongbpm.com/song/questo-amore/nm9jl",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "47wx",
+
+        "name": "Giorgia",
+
+        "uri": "https://getsongbpm.com/artist/giorgia/47wx",
+
+        "img": "https://i.scdn.co/image/64246316b152b92c0f3816f84e8a7a5db5b7bfa9",
+
+        "genres": [
+
+          "blues",
+
+          "jazz",
+
+          "pop",
+
+          "soul"
+
+        ],
+
+        "from": "IT",
+
+        "mbid": "4573d556-ce21-4d49-943d-4f1dde6198f6"
+
+      },
+
+      "album": {
+
+        "title": "Come Thelma & Louise",
+
+        "uri": "https://getsongbpm.com/album/come-thelma-and-louise/KrMBz",
+
+        "img": "https://i.scdn.co/image/437a7b393662296ed4a2de58e991d3a41ea1e76a",
+
+        "year": "1995"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "v59gg",
+
+      "song_title": "Cachimbo da Paz",
+
+      "song_uri": "https://getsongbpm.com/song/cachimbo-da-paz/v59gg",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "OY73B",
+
+        "name": "Da Weasel",
+
+        "uri": "https://getsongbpm.com/artist/da-weasel/OY73B",
+
+        "img": "https://i.scdn.co/image/42abf36e6982df7332f9b81a006afb17ad690641",
+
+        "genres": [
+
+          "funk",
+
+          "hip hop",
+
+          "rap",
+
+          "rock"
+
+        ],
+
+        "from": "PT",
+
+        "mbid": "d340a71c-4c25-4c1a-b03a-610b063b7ee3"
+
+      },
+
+      "album": {
+
+        "title": "3.º Capítulo",
+
+        "uri": "https://getsongbpm.com/album/3pointo-capitulo/Y6WwK",
+
+        "img": "https://lastfm.freetls.fastly.net/i/u/a557751a3a14429cc2dbd24ac89d9d36.png",
+
+        "year": "1997"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "QrwYG",
+
+      "song_title": "Singing Crocodile",
+
+      "song_uri": "https://getsongbpm.com/song/singing-crocodile/QrwYG",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "7nwEQ",
+
+        "name": "William Ackerman",
+
+        "uri": "https://getsongbpm.com/artist/william-ackerman/7nwEQ",
+
+        "img": "https://i.scdn.co/image/e4103bab344265f8939696b94d89cf012b4917fb",
+
+        "genres": [
+
+          "new age"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "5155c952-8353-4e75-a56e-12e67aefdcb3"
+
+      },
+
+      "album": {
+
+        "title": "Conferring With the Moon",
+
+        "uri": "https://getsongbpm.com/album/conferring-with-the-moon/MjLP3",
+
+        "img": "https://i.scdn.co/image/e439e0f1ac04971bee1bfce030c95ae18c166743",
+
+        "year": "1986"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "xA8nq",
+
+      "song_title": "Always",
+
+      "song_uri": "https://getsongbpm.com/song/always/xA8nq",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "q7BG3",
+
+        "name": "Harry Nilsson",
+
+        "uri": "https://getsongbpm.com/artist/harry-nilsson/q7BG3",
+
+        "img": "https://i.scdn.co/image/775f9134b3f1cf04551b7a666eb811b796f2ca8c",
+
+        "genres": [
+
+          "folk",
+
+          "pop",
+
+          "rock"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "e5963d26-01fa-40f5-b200-e0127f410a45"
+
+      },
+
+      "album": {
+
+        "title": "A Touch More Schmilsson in the Night",
+
+        "uri": "https://getsongbpm.com/album/a-touch-more-schmilsson-in-the-night/rRZ9L",
+
+        "img": "https://lastfm.freetls.fastly.net/i/u/300x300/4612d804ecff441d9011148998575a9f.png",
+
+        "year": "1988"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "JNLXzo",
+
+      "song_title": "Pigeons Get Murked",
+
+      "song_uri": "https://getsongbpm.com/song/pigeons-get-murked/JNLXzo",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "JPO89",
+
+        "name": "Hannibal",
+
+        "uri": "https://getsongbpm.com/artist/hannibal/JPO89",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b2736fe65d442b28ed4c1583a798",
+
+        "genres": [
+
+          "heavy metal",
+
+          "jazz",
+
+          "rock"
+
+        ],
+
+        "from": "GB",
+
+        "mbid": "a4182218-0ebe-46b9-8243-7051c5a960c8"
+
+      },
+
+      "album": {
+
+        "title": "Hannibal",
+
+        "uri": "https://getsongbpm.com/album/hannibal/o6GnL",
+
+        "img": "https://i.scdn.co/image/c625e3d695c3646e11b42e1213395b0af4a9c89e",
+
+        "year": "1994"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "G6wyxy",
+
+      "song_title": "Wide Open",
+
+      "song_uri": "https://getsongbpm.com/song/wide-open/G6wyxy",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "mM4n",
+
+        "name": "Darden Smith",
+
+        "uri": "https://getsongbpm.com/artist/darden-smith/mM4n",
+
+        "img": "https://i.scdn.co/image/f2c88332bbce6d1e507fef5f1c2bacec31a6cf7d",
+
+        "genres": [
+
+          "country",
+
+          "folk"
+
+        ],
+
+        "from": null,
+
+        "mbid": "ae2a2620-fac8-456b-b9ea-14b609879dca"
+
+      },
+
+      "album": {
+
+        "title": "Field of Crows",
+
+        "uri": "https://getsongbpm.com/album/field-of-crows/QkZoM",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e0243fc2375875468b429e57de0",
+
+        "year": "2006"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "Kr2q2x",
+
+      "song_title": "Peders Förlåt",
+
+      "song_uri": "https://getsongbpm.com/song/peders-foerlaat/Kr2q2x",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "kRLox",
+
+        "name": "The Bear Quartet",
+
+        "uri": "https://getsongbpm.com/artist/the-bear-quartet/kRLox",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b273d1b510fd4947fe49ad63c0d5",
+
+        "genres": [
+
+          "pop",
+
+          "rock"
+
+        ],
+
+        "from": "SE",
+
+        "mbid": "bfb9fdf6-743f-47fb-a87e-ea75833e714b"
+
+      },
+
+      "album": {
+
+        "title": "Eternity Now",
+
+        "uri": "https://getsongbpm.com/album/eternity-now/BPK9J",
+
+        "img": "https://i.scdn.co/image/1154357fb9c0e59ff5b5fd675d35344404ced137",
+
+        "year": "2006"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "mZpKjp",
+
+      "song_title": "Suite No. 3 in G minor, BWV 808: Sarabande",
+
+      "song_uri": "https://getsongbpm.com/song/suite-nopoint-3-in-g-minor-bwv-808-sarabande/mZpKjp",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "QWOY",
+
+        "name": "Johann Sebastian Bach",
+
+        "uri": "https://getsongbpm.com/artist/johann-sebastian-bach/QWOY",
+
+        "img": null,
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "DE",
+
+        "mbid": "24f1766e-9635-4d58-a4d4-9413f9f98a4c"
+
+      },
+
+      "album": {
+
+        "title": "English Suites Nos. 1 - 3 BWV 806 - 808",
+
+        "uri": "https://getsongbpm.com/album/english-suites-nospoint-1-3-bwv-806-808/O8rzp",
+
+        "img": "https://i.scdn.co/image/62061b7cdbe55d300ef142a60cad71333b71798d",
+
+        "year": "1995"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "G6lYE0",
+
+      "song_title": "English Suite No. 3 in G minor, BWV 808: IV. Sarabande",
+
+      "song_uri": "https://getsongbpm.com/song/english-suite-nopoint-3-in-g-minor-bwv-808-ivpoint-sarabande/G6lYE0",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "QWOY",
+
+        "name": "Johann Sebastian Bach",
+
+        "uri": "https://getsongbpm.com/artist/johann-sebastian-bach/QWOY",
+
+        "img": null,
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "DE",
+
+        "mbid": "24f1766e-9635-4d58-a4d4-9413f9f98a4c"
+
+      },
+
+      "album": {
+
+        "title": "English Suite / Piano Concerto, BWV 1052 / Concerto for 2 Pianos and Orchestra, BWV 1061",
+
+        "uri": "https://getsongbpm.com/album/english-suite-piano-concerto-bwv-1052-concerto-for-2-pianos-and-orchestra-bwv-1061/znv9Y",
+
+        "img": null,
+
+        "year": "1997"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "yPqgkn",
+
+      "song_title": "Waltz for Lavignia",
+
+      "song_uri": "https://getsongbpm.com/song/waltz-for-lavignia/yPqgkn",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "EqzPW",
+
+        "name": "David Becker Tribune",
+
+        "uri": "https://getsongbpm.com/artist/david-becker-tribune/EqzPW",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b27301e55f02353538ca7c2d8ace",
+
+        "genres": [
+
+          "jazz"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "6fe941d0-db42-43a7-b934-fdd500cb3689"
+
+      },
+
+      "album": {
+
+        "title": "Leaving Argentina",
+
+        "uri": "https://getsongbpm.com/album/leaving-argentina/q2Njk",
+
+        "img": "https://i.scdn.co/image/57f62c405cafed7f20b1fe8e87161dca083a6f31",
+
+        "year": "2007"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "xn5DGP",
+
+      "song_title": "Remains Of",
+
+      "song_uri": "https://getsongbpm.com/song/remains-of/xn5DGP",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "y69wn",
+
+        "name": "The Toy Library",
+
+        "uri": "https://getsongbpm.com/artist/the-toy-library/y69wn",
+
+        "img": "https://i.scdn.co/image/e3cea4f5189557fc73e6db92d4394cc0dbf81565",
+
+        "genres": [
+
+          "electronic",
+
+          "pop"
+
+        ],
+
+        "from": null,
+
+        "mbid": "c9ba81c8-2bfd-44cb-9d5e-04d6a51ed549"
+
+      },
+
+      "album": {
+
+        "title": "Haunted Woodland, Volume 1",
+
+        "uri": "https://getsongbpm.com/album/haunted-woodland-volume-1/2q9EN",
+
+        "img": null,
+
+        "year": "2010"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "YEjRmO",
+
+      "song_title": "Lullaby Overture",
+
+      "song_uri": "https://getsongbpm.com/song/lullaby-overture/YEjRmO",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "wypJ",
+
+        "name": "The Wiggles",
+
+        "uri": "https://getsongbpm.com/artist/the-wiggles/wypJ",
+
+        "img": "https://i.scdn.co/image/6fa8436b0b71bab55219ad671c7e1964f5f9b091",
+
+        "genres": [
+
+          "pop",
+
+          "rock"
+
+        ],
+
+        "from": "AU",
+
+        "mbid": "e684ed8b-bced-4e0f-bdfa-462861891409"
+
+      },
+
+      "album": {
+
+        "title": "Go to Sleep Jeff",
+
+        "uri": "https://getsongbpm.com/album/go-to-sleep-jeff/znW8q",
+
+        "img": "https://i.scdn.co/image/c719da67fce2e0c7cd19baf14e19cd408ceb5d23",
+
+        "year": "2003"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "El98vY",
+
+      "song_title": "Concerto no. 4 in G (BWV 1049): II. Andante",
+
+      "song_uri": "https://getsongbpm.com/song/concerto-nopoint-4-in-g-bwv-1049-iipoint-andante/El98vY",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "QWOY",
+
+        "name": "Johann Sebastian Bach",
+
+        "uri": "https://getsongbpm.com/artist/johann-sebastian-bach/QWOY",
+
+        "img": null,
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "DE",
+
+        "mbid": "24f1766e-9635-4d58-a4d4-9413f9f98a4c"
+
+      },
+
+      "album": {
+
+        "title": "Brandenburg Concertos 1 - 7",
+
+        "uri": "https://getsongbpm.com/album/brandenburg-concertos-1-7/5lv3x",
+
+        "img": null,
+
+        "year": "1997"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "O7MWzp",
+
+      "song_title": "Interlude I: On the Beach",
+
+      "song_uri": "https://getsongbpm.com/song/interlude-i-on-the-beach/O7MWzp",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "6ByQ",
+
+        "name": "Benjamin Britten",
+
+        "uri": "https://getsongbpm.com/artist/benjamin-britten/6ByQ",
+
+        "img": null,
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "GB",
+
+        "mbid": "49ae5227-605a-47a8-9b8e-cd89bf01a97c"
+
+      },
+
+      "album": {
+
+        "title": "Peter Grimes",
+
+        "uri": "https://getsongbpm.com/album/peter-grimes/B85Jx",
+
+        "img": "https://i.scdn.co/image/765b829be0e4b7b12d9ff08d135d204d5edc696c",
+
+        "year": "1999"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "RoQMjE",
+
+      "song_title": "Samagaltai",
+
+      "song_uri": "https://getsongbpm.com/song/samagaltai/RoQMjE",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "xGYr",
+
+        "name": "Huun‐Huur‐Tu",
+
+        "uri": "https://getsongbpm.com/artist/huun-huur-tu/xGYr",
+
+        "img": "https://i.scdn.co/image/52453c27cf4b56ec14d10ebe683105ecbfdc7853",
+
+        "genres": [
+
+          "electronic",
+
+          "folk",
+
+          "new age",
+
+          "world"
+
+        ],
+
+        "from": "RU",
+
+        "mbid": "6e3d75a2-b371-4156-a1c1-7b56e1c965a3"
+
+      },
+
+      "album": {
+
+        "title": "If I'd Been Born an Eagle",
+
+        "uri": "https://getsongbpm.com/album/if-i-d-been-born-an-eagle/ql47",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e02f4d5a9fbce3f07829a8bf6ec",
+
+        "year": "1997"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "Ro9m9K",
+
+      "song_title": "Belbo",
+
+      "song_uri": "https://getsongbpm.com/song/belbo/Ro9m9K",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "o601N",
+
+        "name": "Ifa y Xango",
+
+        "uri": "https://getsongbpm.com/artist/ifa-y-xango/o601N",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b2734355eedecbd6aa740514aeae",
+
+        "genres": null,
+
+        "from": null,
+
+        "mbid": "f950a788-8635-448a-b351-3fbedda426ae"
+
+      },
+
+      "album": {
+
+        "title": "Abraham",
+
+        "uri": "https://getsongbpm.com/album/abraham/9YEkB",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e024355eedecbd6aa740514aeae",
+
+        "year": "2012"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "oZD3XB",
+
+      "song_title": "Everybody Gangsta",
+
+      "song_uri": "https://getsongbpm.com/song/everybody-gangsta/oZD3XB",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "xv20q",
+
+        "name": "Blaq Poet",
+
+        "uri": "https://getsongbpm.com/artist/blaq-poet/xv20q",
+
+        "img": "https://i.scdn.co/image/f445de414b10269d24627e7808d3dfcaebf4d152",
+
+        "genres": [
+
+          "hip hop",
+
+          "rap"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "8ae916d8-c470-4103-a0e0-2d5aca4f719a"
+
+      },
+
+      "album": {
+
+        "title": "Simon Phoenix",
+
+        "uri": "https://getsongbpm.com/album/simon-phoenix/G2Ex3",
+
+        "img": "https://lastfm.freetls.fastly.net/i/u/300x300/bd63b57ce58e7f764b75c40ea3aec6a7.png",
+
+        "year": "2020"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "ZVO4Og",
+
+      "song_title": "Peter Grimes: Prologue. Interlude I: Dawn",
+
+      "song_uri": "https://getsongbpm.com/song/peter-grimes-prologuepoint-interlude-i-dawn/ZVO4Og",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "6ByQ",
+
+        "name": "Benjamin Britten",
+
+        "uri": "https://getsongbpm.com/artist/benjamin-britten/6ByQ",
+
+        "img": null,
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "GB",
+
+        "mbid": "49ae5227-605a-47a8-9b8e-cd89bf01a97c"
+
+      },
+
+      "album": {
+
+        "title": "Peter Grimes",
+
+        "uri": "https://getsongbpm.com/album/peter-grimes/mGAmG",
+
+        "img": "https://i.scdn.co/image/765b829be0e4b7b12d9ff08d135d204d5edc696c",
+
+        "year": "1993"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "gnYNNk",
+
+      "song_title": "Meisje, Meisje 4",
+
+      "song_uri": "https://getsongbpm.com/song/meisje-meisje-4/gnYNNk",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "XDx98",
+
+        "name": "Bert Visscher",
+
+        "uri": "https://getsongbpm.com/artist/bert-visscher/XDx98",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b273bf2e5f187e4adc1630f5771d",
+
+        "genres": null,
+
+        "from": "NL",
+
+        "mbid": "5f908d54-4b84-4e72-a659-05b78ffa2a4d"
+
+      },
+
+      "album": {
+
+        "title": "Fijne nuances",
+
+        "uri": "https://getsongbpm.com/album/fijne-nuances/92rAZ",
+
+        "img": "https://i.scdn.co/image/508c54b8075803092074ccb720ba63119bf9116d",
+
+        "year": "1994"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "zm3qpO",
+
+      "song_title": "Still in a Storm",
+
+      "song_uri": "https://getsongbpm.com/song/still-in-a-storm/zm3qpO",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "gLn36",
+
+        "name": "D_rradio",
+
+        "uri": "https://getsongbpm.com/artist/d-rradio/gLn36",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b2733eba1ca292786af438e39ecb",
+
+        "genres": [
+
+          "electronic"
+
+        ],
+
+        "from": null,
+
+        "mbid": "2a9fe452-ada3-4e86-ac47-53076e2cbe6d"
+
+      },
+
+      "album": {
+
+        "title": "Parts",
+
+        "uri": "https://getsongbpm.com/album/parts/R54Kz",
+
+        "img": "https://i.scdn.co/image/32f26ae994b7acde6ac33247745f73668e1898f1",
+
+        "year": "2010"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "vg6GKm",
+
+      "song_title": "28 Seconds",
+
+      "song_uri": "https://getsongbpm.com/song/28-seconds/vg6GKm",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "OyLLr",
+
+        "name": "John Schott",
+
+        "uri": "https://getsongbpm.com/artist/john-schott/OyLLr",
+
+        "img": "https://i.scdn.co/image/ceaaa2ce7cd0ba3fbdbc71acf0fc62115049da7c",
+
+        "genres": [
+
+          "jazz"
+
+        ],
+
+        "from": null,
+
+        "mbid": "e351612a-358c-4d03-816a-91015f0358ba"
+
+      },
+
+      "album": {
+
+        "title": "Shuffle Play: Elegies for the Recording Angel",
+
+        "uri": "https://getsongbpm.com/album/shuffle-play-elegies-for-the-recording-angel/E6X7g",
+
+        "img": "https://lastfm.freetls.fastly.net/i/u/300x300/87564bc4867e4fbe8888dba82533bde4.png",
+
+        "year": "2000"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "nZg2qY",
+
+      "song_title": "English Suite No. 3 in G minor: Sarabande",
+
+      "song_uri": "https://getsongbpm.com/song/english-suite-nopoint-3-in-g-minor-sarabande/nZg2qY",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "QWOY",
+
+        "name": "Johann Sebastian Bach",
+
+        "uri": "https://getsongbpm.com/artist/johann-sebastian-bach/QWOY",
+
+        "img": null,
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "DE",
+
+        "mbid": "24f1766e-9635-4d58-a4d4-9413f9f98a4c"
+
+      },
+
+      "album": {
+
+        "title": "Works For Harpsichord",
+
+        "uri": "https://getsongbpm.com/album/works-for-harpsichord/B8zMx",
+
+        "img": "https://i.scdn.co/image/8dc955cf9a7f47d695acdb5cc0d91ce73f662543",
+
+        "year": "2006"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "Y7jVP2",
+
+      "song_title": "Disappear",
+
+      "song_uri": "https://getsongbpm.com/song/disappear/Y7jVP2",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "OXxgp",
+
+        "name": "Diplegia",
+
+        "uri": "https://getsongbpm.com/artist/diplegia/OXxgp",
+
+        "img": "https://i.scdn.co/image/258579cec732b4b10f0784ad91b71a27f48d006b",
+
+        "genres": null,
+
+        "from": null,
+
+        "mbid": "206ba458-4c34-4c69-b224-8cd829f706bb"
+
+      },
+
+      "album": {
+
+        "title": "Abject Failure",
+
+        "uri": "https://getsongbpm.com/album/abject-failure/B2vAk",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e027c2893f0fed8fb61f7b5281e",
+
+        "year": "2018"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "pk3Vlm",
+
+      "song_title": "Presentación \"Telenovela\" - En Vivo",
+
+      "song_uri": "https://getsongbpm.com/song/presentacion-telenovela-en-vivo/pk3Vlm",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "vLV4V",
+
+        "name": "Ernesto Acher",
+
+        "uri": "https://getsongbpm.com/artist/ernesto-acher/vLV4V",
+
+        "img": "https://i.scdn.co/image/809b63f88e9e4fee6aaee0198c65846884aab327",
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "AR",
+
+        "mbid": "7d196464-a26d-43cc-a452-910dbd55b983"
+
+      },
+
+      "album": {
+
+        "title": "Juegos",
+
+        "uri": "https://getsongbpm.com/album/juegos/Aomy9",
+
+        "img": "https://i.scdn.co/image/809b63f88e9e4fee6aaee0198c65846884aab327",
+
+        "year": "1987"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "y9PwYn",
+
+      "song_title": "Quarantine Blues",
+
+      "song_uri": "https://getsongbpm.com/song/quarantine-blues/y9PwYn",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "lxymJ",
+
+        "name": "Keke Palmer",
+
+        "uri": "https://getsongbpm.com/artist/keke-palmer/lxymJ",
+
+        "img": "https://i.scdn.co/image/2168344e60279d3d272abc7f7f3bf238efa1f702",
+
+        "genres": [
+
+          "hip hop",
+
+          "pop",
+
+          "r&b",
+
+          "soul"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "58182588-b18f-4bc4-a7fd-3805c408b04b"
+
+      },
+
+      "album": {
+
+        "title": "Virgo Tendencies, Pt. I",
+
+        "uri": "https://getsongbpm.com/album/virgo-tendencies-ptpoint-i/1nN8q",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e02bdd9ac3ebdb149812e845bc2",
+
+        "year": "2020"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "Y7o669",
+
+      "song_title": "Violin Sonata in C Minor, RV 6: III. Grave",
+
+      "song_uri": "https://getsongbpm.com/song/violin-sonata-in-c-minor-rv-6-iiipoint-grave/Y7o669",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "Kmjr",
+
+        "name": "Antonio Vivaldi",
+
+        "uri": "https://getsongbpm.com/artist/antonio-vivaldi/Kmjr",
+
+        "img": "https://i.scdn.co/image/12caee0d8c2843b37e2b19da99e385010a2f8c5b",
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "IT",
+
+        "mbid": "ad79836d-9849-44df-8789-180bbc823f3c"
+
+      },
+
+      "album": {
+
+        "title": "XII Suonate à violino solo, e basso per il cembalo",
+
+        "uri": "https://getsongbpm.com/album/xii-suonate-a-violino-solo-e-basso-per-il-cembalo/omrqj",
+
+        "img": "https://i.scdn.co/image/435dc2de6d9973d831da95393eaeedf3e955cc42",
+
+        "year": "2010"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "OgQ0KG",
+
+      "song_title": "Silence before the storms",
+
+      "song_uri": "https://getsongbpm.com/song/silence-before-the-storms/OgQ0KG",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "QNq3Y",
+
+        "name": "DM DOKURO",
+
+        "uri": "https://getsongbpm.com/artist/dm-dokuro/QNq3Y",
+
+        "img": "https://i.scdn.co/image/e1ea6d16ef272cccf839496ee6b697c653d33c4c",
+
+        "genres": [
+
+          "electronic"
+
+        ],
+
+        "from": null,
+
+        "mbid": "6f4e8294-49b8-4ae8-91b5-cb9d644e90ff"
+
+      },
+
+      "album": {
+
+        "title": "The Tale of a Cruel World",
+
+        "uri": "https://getsongbpm.com/album/the-tale-of-a-cruel-world/rvq46",
+
+        "img": "https://lastfm.freetls.fastly.net/i/u/300x300/e422b6755797a3df5534cbf1d50fe819.png",
+
+        "year": "2019"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "AMr2PP",
+
+      "song_title": "The Storm",
+
+      "song_uri": "https://getsongbpm.com/song/the-storm/AMr2PP",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "pZ2r1",
+
+        "name": "The Two Tears",
+
+        "uri": "https://getsongbpm.com/artist/the-two-tears/pZ2r1",
+
+        "img": null,
+
+        "genres": [
+
+          "punk"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "2cff838a-ce31-4e00-81ce-56af3a394f79"
+
+      },
+
+      "album": {
+
+        "title": "\"Enjoy Yourself\"",
+
+        "uri": "https://getsongbpm.com/album/enjoy-yourself/Ex68l",
+
+        "img": null,
+
+        "year": "2004"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "79jWXj",
+
+      "song_title": "Marins",
+
+      "song_uri": "https://getsongbpm.com/song/marins/79jWXj",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "Z6YPR",
+
+        "name": "Yann‐Fañch Kemener",
+
+        "uri": "https://getsongbpm.com/artist/yann-fanch-kemener/Z6YPR",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b2736b930afc9a0b490c761dd0c8",
+
+        "genres": [
+
+          "folk"
+
+        ],
+
+        "from": "FR",
+
+        "mbid": "5a9788be-752a-43f2-be6d-3ee6ba340186"
+
+      },
+
+      "album": {
+
+        "title": "Roudennoù / Traces",
+
+        "uri": "https://getsongbpm.com/album/roudennou-traces/G22jQ",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e026b930afc9a0b490c761dd0c8",
+
+        "year": "2019"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "5RQB7B",
+
+      "song_title": "Gago Mare, Garke Zis— Arrange My Marriage",
+
+      "song_uri": "https://getsongbpm.com/song/gago-mare-garke-zis-arrange-my-marriage/5RQB7B",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "jJnkB",
+
+        "name": "Zulal",
+
+        "uri": "https://getsongbpm.com/artist/zulal/jJnkB",
+
+        "img": "https://i.scdn.co/image/a65703f38b1a3e01295f190ba09e7ed4fe3f6fef",
+
+        "genres": [
+
+          "folk",
+
+          "world"
+
+        ],
+
+        "from": null,
+
+        "mbid": "f84d9da4-7953-48a0-9430-29144d4379d8"
+
+      },
+
+      "album": {
+
+        "title": "Notes to a Crane",
+
+        "uri": "https://getsongbpm.com/album/notes-to-a-crane/PlkGn",
+
+        "img": "https://i.scdn.co/image/26f3a8550dac0a6497e6948a1bd6c4a3c4a02dff",
+
+        "year": "2007"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "3wlBM9",
+
+      "song_title": "Intro",
+
+      "song_uri": "https://getsongbpm.com/song/intro/3wlBM9",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "6xy27",
+
+        "name": "Ecosyn",
+
+        "uri": "https://getsongbpm.com/artist/ecosyn/6xy27",
+
+        "img": "https://i.scdn.co/image/084381fd727bdf794cd9f6cb720b776bfc041c84",
+
+        "genres": null,
+
+        "from": null,
+
+        "mbid": "aff5fad3-7700-43fc-8439-f8b75a7273fa"
+
+      },
+
+      "album": {
+
+        "title": "Negative Eugenics",
+
+        "uri": "https://getsongbpm.com/album/negative-eugenics/OoArp",
+
+        "img": "https://i.scdn.co/image/8f6173951fc1fcaa68612edd62ef61e646b897c5",
+
+        "year": "2016"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "WPkQgv",
+
+      "song_title": "Jungfrun i tornet (The Maiden in the tower): Scene 7",
+
+      "song_uri": "https://getsongbpm.com/song/jungfrun-i-tornet-the-maiden-in-the-tower-scene-7/WPkQgv",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "yp5w",
+
+        "name": "Jean Sibelius",
+
+        "uri": "https://getsongbpm.com/artist/jean-sibelius/yp5w",
+
+        "img": null,
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "FI",
+
+        "mbid": "691b0e9d-9e57-41cf-932d-a3d21b068e75"
+
+      },
+
+      "album": {
+
+        "title": "Lemminkäinen Suite",
+
+        "uri": "https://getsongbpm.com/album/lemminkaeinen-suite/nJ9BP",
+
+        "img": "https://i.scdn.co/image/52773fc5a066613f42d32217db1eb1eeab72c614",
+
+        "year": "2000"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "BNpZQ",
+
+      "song_title": "Twinkle",
+
+      "song_uri": "https://getsongbpm.com/song/twinkle/BNpZQ",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "lqx1",
+
+        "name": "Fleming & John",
+
+        "uri": "https://getsongbpm.com/artist/fleming-and-john/lqx1",
+
+        "img": "https://i.scdn.co/image/3087fbda094b6306b43894ffee04257ab0487284",
+
+        "genres": [
+
+          "folk",
+
+          "pop",
+
+          "rock"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "5bec721b-8cd0-4584-8b13-12a810f35ec2"
+
+      },
+
+      "album": {
+
+        "title": "The Way We Are",
+
+        "uri": "https://getsongbpm.com/album/the-way-we-are/Qzl0",
+
+        "img": "https://i.scdn.co/image/66f4abe11891f2622aecd4251c7166f7d972816d",
+
+        "year": "1999"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "nR2pEl",
+
+      "song_title": "Seeds of Revolution",
+
+      "song_uri": "https://getsongbpm.com/song/seeds-of-revolution/nR2pEl",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "YvOq0",
+
+        "name": "Ceschi",
+
+        "uri": "https://getsongbpm.com/artist/ceschi/YvOq0",
+
+        "img": "https://i.scdn.co/image/4c783a0d031f2b51553bc9b3a64ab507bf077443",
+
+        "genres": [
+
+          "hip hop",
+
+          "rap",
+
+          "rock"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "08ebf7c2-f65c-4d85-b746-1a926c36393d"
+
+      },
+
+      "album": {
+
+        "title": "Sans Soleil",
+
+        "uri": "https://getsongbpm.com/album/sans-soleil/vzxxn",
+
+        "img": "https://i.scdn.co/image/977af6cbba1cbcb9cf3b1b33578407a2d7635953",
+
+        "year": "2019"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "j2J855",
+
+      "song_title": "Phrase",
+
+      "song_uri": "https://getsongbpm.com/song/phrase/j2J855",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "6ByQ",
+
+        "name": "Benjamin Britten",
+
+        "uri": "https://getsongbpm.com/artist/benjamin-britten/6ByQ",
+
+        "img": null,
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "GB",
+
+        "mbid": "49ae5227-605a-47a8-9b8e-cd89bf01a97c"
+
+      },
+
+      "album": {
+
+        "title": "Unknown Britten",
+
+        "uri": "https://getsongbpm.com/album/unknown-britten/nGWp7",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e0246511d23c61ee2262f302009",
+
+        "year": "2009"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "L7QWA",
+
+      "song_title": "Nocturne, op. 28 no. 11 in B major: Vivace",
+
+      "song_uri": "https://getsongbpm.com/song/nocturne-oppoint-28-nopoint-11-in-b-major-vivace/L7QWA",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "68n",
+
+        "name": "Fryderyk Chopin",
+
+        "uri": "https://getsongbpm.com/artist/fryderyk-chopin/68n",
+
+        "img": null,
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "PL",
+
+        "mbid": "09ff1fe8-d61c-4b98-bb82-18487c74d7b7"
+
+      },
+
+      "album": {
+
+        "title": "Preludes & Nocturnes",
+
+        "uri": "https://getsongbpm.com/album/preludes-and-nocturnes/lnGV",
+
+        "img": null,
+
+        "year": "1999"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "mqEN9",
+
+      "song_title": "America the Beautiful",
+
+      "song_uri": "https://getsongbpm.com/song/america-the-beautiful/mqEN9",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "0P9v",
+
+        "name": "Daniel Rodriguez",
+
+        "uri": "https://getsongbpm.com/artist/daniel-rodriguez/0P9v",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b2735f4c91e308b6b2edb53374de",
+
+        "genres": [
+
+          "classical",
+
+          "jazz"
+
+        ],
+
+        "from": null,
+
+        "mbid": "50756b3f-7b68-415e-a5c7-34a756f96823"
+
+      },
+
+      "album": {
+
+        "title": "The Spirit of America",
+
+        "uri": "https://getsongbpm.com/album/the-spirit-of-america/QD1Z",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e02e2dce24421ac25c7f0bd3986",
+
+        "year": "2002"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "G6RlW3",
+
+      "song_title": "Legends, Op. 59 No. 6: Allegro con moto",
+
+      "song_uri": "https://getsongbpm.com/song/legends-oppoint-59-nopoint-6-allegro-con-moto/G6RlW3",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "VvjX",
+
+        "name": "Antonín Dvořák",
+
+        "uri": "https://getsongbpm.com/artist/antonin-dvorak/VvjX",
+
+        "img": "https://i.scdn.co/image/ca35ee805231ffda36289d7672239a868690d8b5",
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "CZ",
+
+        "mbid": "819eaeb2-8dd8-48a5-ad07-0bcd137985ef"
+
+      },
+
+      "album": {
+
+        "title": "Symphony no. 2 / Legends op. 59, nos. 6-10",
+
+        "uri": "https://getsongbpm.com/album/symphony-nopoint-2-legends-oppoint-59-nospoint-6-10/Ggkn7",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e02988e36d4ed13ab665001521a",
+
+        "year": "1990"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "31pGpx",
+
+      "song_title": "My Way",
+
+      "song_uri": "https://getsongbpm.com/song/my-way/31pGpx",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "EBY",
+
+        "name": "Marvin Gaye",
+
+        "uri": "https://getsongbpm.com/artist/marvin-gaye/EBY",
+
+        "img": "https://i.scdn.co/image/f69e669cd95c6008c6220fd060982ff9516ed636",
+
+        "genres": [
+
+          "funk",
+
+          "jazz",
+
+          "pop",
+
+          "r&b",
+
+          "soul"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "afdb7919-059d-43c1-b668-ba1d265e7e42"
+
+      },
+
+      "album": {
+
+        "title": "Hello Broadway",
+
+        "uri": "https://getsongbpm.com/album/hello-broadway/mYBV3",
+
+        "img": "https://i.scdn.co/image/04a8d4e91cac67c2c788670bbd7d8fcd05fa4c9d",
+
+        "year": "1964"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "Dkgor6",
+
+      "song_title": "De bromvlieg",
+
+      "song_uri": "https://getsongbpm.com/song/de-bromvlieg/Dkgor6",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "k2YY",
+
+        "name": "Herman van Veen",
+
+        "uri": "https://getsongbpm.com/artist/herman-van-veen/k2YY",
+
+        "img": "https://i.scdn.co/image/203066f2590441d385ff2e546404b367b38ee05d",
+
+        "genres": [
+
+          "folk",
+
+          "pop"
+
+        ],
+
+        "from": "NL",
+
+        "mbid": "d4826092-a96d-4505-93ee-605137105ae4"
+
+      },
+
+      "album": {
+
+        "title": "Carré V",
+
+        "uri": "https://getsongbpm.com/album/carre-v/ko23v",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e0259512f34ee21871c3d028c3a",
+
+        "year": "1987"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "k56koE",
+
+      "song_title": "L'Ultima Canzone",
+
+      "song_uri": "https://getsongbpm.com/song/l-ultima-canzone/k56koE",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "k5q8J",
+
+        "name": "Ruggero Raimondi",
+
+        "uri": "https://getsongbpm.com/artist/ruggero-raimondi/k5q8J",
+
+        "img": "https://i.scdn.co/image/2549a4352e8d77b4997b878c0d51500e2b271d58",
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "IT",
+
+        "mbid": "04914eea-7c19-4f31-8606-6331d0f2d494"
+
+      },
+
+      "album": {
+
+        "title": "Chansons Italiennes",
+
+        "uri": "https://getsongbpm.com/album/chansons-italiennes/R8kY0",
+
+        "img": null,
+
+        "year": "1985"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "Y685pA",
+
+      "song_title": "מחילה",
+
+      "song_uri": "https://getsongbpm.com/song//Y685pA",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "XMglm",
+
+        "name": "אורי דרור",
+
+        "uri": "https://getsongbpm.com/artist//XMglm",
+
+        "img": null,
+
+        "genres": [
+
+          "rock"
+
+        ],
+
+        "from": null,
+
+        "mbid": "4d0c260b-ce2c-4d4c-a3b7-edd275dd5337"
+
+      },
+
+      "album": {
+
+        "title": "נול",
+
+        "uri": "https://getsongbpm.com/album//0XW53",
+
+        "img": "https://lastfm.freetls.fastly.net/i/u/300x300/0c418f8f050a4f8fba6971ddfb2c8f1d.png",
+
+        "year": "2010"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "jYKv6z",
+
+      "song_title": "Dead Horse",
+
+      "song_uri": "https://getsongbpm.com/song/dead-horse/jYKv6z",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "AMKD1",
+
+        "name": "Amanda Rheaume",
+
+        "uri": "https://getsongbpm.com/artist/amanda-rheaume/AMKD1",
+
+        "img": "https://i.scdn.co/image/ce2449b8f42d19269a162aa01be87668ee45fd55",
+
+        "genres": null,
+
+        "from": "CA",
+
+        "mbid": "0a3b4e85-f056-49ac-a290-245f4562f594"
+
+      },
+
+      "album": {
+
+        "title": "Holding Patterns",
+
+        "uri": "https://getsongbpm.com/album/holding-patterns/gVGk3",
+
+        "img": "https://i.scdn.co/image/d64fb323513c43a282b2ff81999be06852305646",
+
+        "year": "2016"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "qjvq0G",
+
+      "song_title": "Introduction",
+
+      "song_uri": "https://getsongbpm.com/song/introduction/qjvq0G",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "rE8v4",
+
+        "name": "Joseph Birdsong",
+
+        "uri": "https://getsongbpm.com/artist/joseph-birdsong/rE8v4",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b273e5623d2af529fc5db7d3aaea",
+
+        "genres": [
+
+          "electronic"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "ecc6799f-5409-4312-9cc5-650f3f00f2c0"
+
+      },
+
+      "album": {
+
+        "title": "Young & Free, Part 1",
+
+        "uri": "https://getsongbpm.com/album/young-and-free-part-1/9OQ5B",
+
+        "img": null,
+
+        "year": "2010"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "6Ro287",
+
+      "song_title": "Sibylle",
+
+      "song_uri": "https://getsongbpm.com/song/sibylle/6Ro287",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "k2mNx",
+
+        "name": "Promise and the Monster",
+
+        "uri": "https://getsongbpm.com/artist/promise-and-the-monster/k2mNx",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b273a509db808759529c921886fe",
+
+        "genres": [
+
+          "folk"
+
+        ],
+
+        "from": null,
+
+        "mbid": "08689a9d-1845-4ee1-bdb7-731e789cac63"
+
+      },
+
+      "album": {
+
+        "title": "Red Tide",
+
+        "uri": "https://getsongbpm.com/album/red-tide/o7E83",
+
+        "img": "https://i.scdn.co/image/484b366b924d7396aa8111d678268ae3a0fd25f8",
+
+        "year": "2011"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "PZ5JGw",
+
+      "song_title": "Lute: Toccata VI",
+
+      "song_uri": "https://getsongbpm.com/song/lute-toccata-vi/PZ5JGw",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "A93l",
+
+        "name": "Paul O'Dette",
+
+        "uri": "https://getsongbpm.com/artist/paul-o-dette/A93l",
+
+        "img": "https://i.scdn.co/image/b6898d47e574ac49576cbf9bb3da79989b928488",
+
+        "genres": [
+
+          "classical"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "b4f8e022-16e0-4ed3-8ef9-7d22691340c2"
+
+      },
+
+      "album": {
+
+        "title": "Il Tedesco della Tiorba: Pieces for Lute",
+
+        "uri": "https://getsongbpm.com/album/il-tedesco-della-tiorba-pieces-for-lute/oVJyA",
+
+        "img": null,
+
+        "year": "1990"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "voy1vM",
+
+      "song_title": "Lincolnshire Posy: V. Lord Melbourne",
+
+      "song_uri": "https://getsongbpm.com/song/lincolnshire-posy-vpoint-lord-melbourne/voy1vM",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "o6Q6L",
+
+        "name": "The United States Air Force Band",
+
+        "uri": "https://getsongbpm.com/artist/the-united-states-air-force-band/o6Q6L",
+
+        "img": "https://i.scdn.co/image/ae7cebd794b9713507bce2e56ac089ceb7614a4a",
+
+        "genres": null,
+
+        "from": "US",
+
+        "mbid": "c7b70847-0520-4b78-ad91-214daeaee92c"
+
+      },
+
+      "album": {
+
+        "title": "Songs of the Earth",
+
+        "uri": "https://getsongbpm.com/album/songs-of-the-earth/oXAV3",
+
+        "img": null,
+
+        "year": "2006"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "wmD7Jg",
+
+      "song_title": "Mellemspil",
+
+      "song_uri": "https://getsongbpm.com/song/mellemspil/wmD7Jg",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "OY26g",
+
+        "name": "Tue West",
+
+        "uri": "https://getsongbpm.com/artist/tue-west/OY26g",
+
+        "img": "https://i.scdn.co/image/1db6220abbf9555689f11256259994975e25edfd",
+
+        "genres": [
+
+          "pop",
+
+          "rock"
+
+        ],
+
+        "from": "DK",
+
+        "mbid": "5d6e7b42-0309-4b0f-80a9-ed8e90b637dd"
+
+      },
+
+      "album": {
+
+        "title": "Vi Er Nået Hertil",
+
+        "uri": "https://getsongbpm.com/album/vi-er-naaet-hertil/pLXo6",
+
+        "img": "https://i.scdn.co/image/97e36e7cb6ec092336e98db7d8faf63e96facba4",
+
+        "year": "2008"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "gZJ6Vk",
+
+      "song_title": "Seven Autumns Away",
+
+      "song_uri": "https://getsongbpm.com/song/seven-autumns-away/gZJ6Vk",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "PMnoW",
+
+        "name": "Endless Melancholy",
+
+        "uri": "https://getsongbpm.com/artist/endless-melancholy/PMnoW",
+
+        "img": "https://i.scdn.co/image/d039d0b5b61e61188a4b07fd7b00f3de789332b8",
+
+        "genres": null,
+
+        "from": "UA",
+
+        "mbid": "b66983dd-f5de-4eef-8a4d-9c05f26a5353"
+
+      },
+
+      "album": {
+
+        "title": "Epilogue",
+
+        "uri": "https://getsongbpm.com/album/epilogue/03gjX",
+
+        "img": "https://lastfm.freetls.fastly.net/i/u/300x300/5fdeadbe8bb8491e992d594de148fb7d.png",
+
+        "year": "2013"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "ANj6mp",
+
+      "song_title": "Day 110",
+
+      "song_uri": "https://getsongbpm.com/song/day-110/ANj6mp",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "GWEg5",
+
+        "name": "Dr. Yen Lo",
+
+        "uri": "https://getsongbpm.com/artist/drpoint-yen-lo/GWEg5",
+
+        "img": "https://i.scdn.co/image/cdb1705e41f1eb3d32bb092a31e8b9d12c7d8c24",
+
+        "genres": [
+
+          "hip hop",
+
+          "rap"
+
+        ],
+
+        "from": "US",
+
+        "mbid": "98d7f672-db71-49be-b650-a6ed8db0c067"
+
+      },
+
+      "album": {
+
+        "title": "Days With Dr. Yen Lo",
+
+        "uri": "https://getsongbpm.com/album/days-with-drpoint-yen-lo/pnE82",
+
+        "img": "https://i.scdn.co/image/ab67616d00001e02e8b46034f82ba436969d0508",
+
+        "year": "2015"
+
+      }
+
+    },
+
+    {
+
+      "song_id": "ZV61m8",
+
+      "song_title": "Ney-Kemençe Müşterek Taksim",
+
+      "song_uri": "https://getsongbpm.com/song/ney-kemence-muesterek-taksim/ZV61m8",
+
+      "tempo": "43",
+
+      "artist": {
+
+        "id": "QNPBL",
+
+        "name": "İstanbul Sazendeleri",
+
+        "uri": "https://getsongbpm.com/artist/istanbul-sazendeleri/QNPBL",
+
+        "img": "https://i.scdn.co/image/ab67616d0000b273765339e41d2ed685a9ce9066",
+
+        "genres": null,
+
+        "from": "TR",
+
+        "mbid": "7a39ab7b-9240-43d2-9d6b-5b35b54d0e67"
+
+      },
+
+      "album": {
+
+        "title": "Sazende Faslı 1",
+
+        "uri": "https://getsongbpm.com/album/sazende-fasli-1/0ERj3",
+
+        "img": "https://i.scdn.co/image/9b9cb9c5993c88653cee2a24a5d532fb9a8e00f9",
+
+        "year": "2008"
+
+      }
+
+    }
+
+  ]
+
+}
