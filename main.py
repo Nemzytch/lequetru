@@ -1167,6 +1167,7 @@ def statuscheck():
             if QueueLockout or AtemptToJoin != None:
                 
                 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract'
+                SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
                 QueueLockout = pyautogui.locateOnScreen('images/QueueLockout.png')
 
                 while(True):
