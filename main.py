@@ -1172,7 +1172,7 @@ def statuscheck():
 
                 while(True):
                     
-                    cord = (QueueLockout[0]+145, QueueLockout[1]+80, QueueLockout[0]+230, QueueLockout[1]+120)
+                    cord = (QueueLockout[0]+125, QueueLockout[1]+62, QueueLockout[0]+230, QueueLockout[1]+120)
                     cap = ImageGrab.grab(bbox =(cord))
 
                     BanTime = pytesseract.image_to_string(
