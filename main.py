@@ -38,6 +38,7 @@ from base64 import b64encode
 from time import sleep
 from colorama import Fore, Back, Style
 import pyautogui
+import subprocess
 
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -63,6 +64,11 @@ BASE_ID = "appHnr7cu8j1HlMC2"
 table = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'YUUMI')
 
 def restart():
+    
+    subprocess.call(["git", "reset", "--hard", "HEAD"])
+    subprocess.call(["git", "pull"])
+    print('Updating')
+    
     print("argv was",sys.argv)
     print("sys.executable was", sys.executable)
     print("restart now")
