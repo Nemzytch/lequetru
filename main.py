@@ -1,43 +1,39 @@
-from logging import info
 import os
 import re
 import sys 
+import cv2
 import time
-import datetime
 import json
 import math
-import random
 import mouse 
-import termcolor
-import cv2
-from cv2 import validateDisparity
+import random
+import urllib3
+import datetime
 import win32api
 import win32con
-import requests
-import pyautogui
-import pytesseract
-import pyscreeze
 import keyboard
+import requests
+import termcolor
+import pyautogui
+import pyscreeze
+import pytesseract
 import pytesseract
 import numpy as nm
 import pydirectinput
 from time import sleep
+from logging import info
 from PIL import ImageGrab
 from random import randrange
-from pyairtable import Table 
+from pyairtable import Table
+from base64 import b64encode 
+from cv2 import validateDisparity
 from pyairtable.formulas import match
+from colorama import Fore, Back, Style
 from requests.adapters import HTTPAdapter
 from requests.exceptions import HTTPError
 from requests.exceptions import ConnectionError
 from requests.packages.urllib3.util.retry import Retry
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
-import requests
-import urllib3
-import json
-from base64 import b64encode
-from time import sleep
-from colorama import Fore, Back, Style
-import pyautogui
 import subprocess
 
 
