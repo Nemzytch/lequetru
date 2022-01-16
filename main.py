@@ -51,7 +51,7 @@ print(NumberGamesToPlay)
 #surrend
 OneMinute= 900
 #Number Dudge Singed
-NumberSinged= 1
+NumberSinged= 0
 print('Number For Max Dudge With Singed is', NumberSinged)
 
 #Account Status Check
