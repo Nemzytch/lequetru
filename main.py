@@ -1,6 +1,7 @@
 import os
 import re
-import sys 
+import sys
+from tkinter import N 
 import cv2
 import time
 import json
@@ -81,6 +82,9 @@ def MouseClick():
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0,0)
 
 class Personnage:
+    #Rspell
+    Ennemies = [500, 500]
+    
     # Yuumi    
     team = None
     index = None
@@ -549,6 +553,7 @@ class Personnage:
 
         x =0
         ennemy = pyautogui.locateOnScreen("images/1.png", confidence=0.95)
+        self.Ennemies = ennemy
         for pos in pyautogui.locateAllOnScreen('images/minions.png'):
             x = x+1
             self.qX = pos[0]
@@ -578,14 +583,14 @@ class Personnage:
     def ultimateCast(self):
         if time.time() > (self.ultimateCooldown +70):
             try:
-                Ennemies = pyautogui.locateOnScreen(r"images/1.png", grayscale=False,confidence=0.95)
-                pyautogui.moveTo(Ennemies[0]+40, Ennemies[1]+100)
+                self.Ennemies = pyautogui.locateOnScreen(r"images/1.png", grayscale=False,confidence=0.95)
+                pyautogui.moveTo(self.Ennemies[0]+40, self.Ennemies[1]+100)
                 time.sleep(0.2)
                 pydirectinput.press('r')
                 self.ultimateCooldown = time.time()
             except TypeError:
                 print("No ennemies found")
-                pyautogui.moveTo(self.BaseX,self.BaseY)
+                pyautogui.moveTo(self.Ennemies[0]+40, self.Ennemies[1]+100)
                 pydirectinput.press('r')
                 self.ultimateCooldown = time.time()
 
@@ -593,9 +598,9 @@ class Personnage:
     def procPassive(self) : 
         if time.time() > (self.passiveCooldown +10):
             try:
-                Ennemies = pyautogui.locateOnScreen(r"images/1.png", grayscale=False,confidence=0.95)
+                self.Ennemies = pyautogui.locateOnScreen(r"images/1.png", grayscale=False,confidence=0.95)
                 # pydirectinput.press('y')
-                pyautogui.moveTo(Ennemies[0]+40, Ennemies[1]+100)
+                pyautogui.moveTo(self.Ennemies[0]+40, self.Ennemies[1]+100)
                 pydirectinput.press('w')
                 MouseClick()      
                 pyautogui.moveTo(1861,603)
