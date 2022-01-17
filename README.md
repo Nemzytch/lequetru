@@ -18,7 +18,7 @@ A.      Apres avoir tous installer ouvrez un cmd et clonez directement "lequetru
 B.      Apres que le fichier soit clonez deplacez le dans le bureau et Lancez le script.
 
 
-
+5. Kevin nice il est trop bebenkssssss
 
 
 
