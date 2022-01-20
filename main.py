@@ -1167,7 +1167,7 @@ def statuscheck():
             except: 
                 print('No I Agree')
                 
-            if QueueLockout or AtemptToJoin != None:
+            if QueueLockout != None:
                 
                 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract'
                 SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
@@ -1214,6 +1214,16 @@ def statuscheck():
                     SignOutt()
             else:
                 print('No QueueLockout detected')
+            
+            if AtemptToJoin != None:
+                
+                    pyautogui.click(OKEND)
+                    time.sleep(1)
+                    pyautogui.click(OKEND)
+                    time.sleep(1)
+                    pyautogui.click(OKEND)
+                    time.sleep(1)
+                    SignOutt()
 
         if phase != 'ChampSelect':
             championIdx = 0
