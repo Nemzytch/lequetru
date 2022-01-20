@@ -1092,7 +1092,7 @@ def statuscheck():
                     table.update(recordId, {"WIN/LOSS": str(wins)+'W/'+str(losses)+'L'})
             
             #Iron4 0Lp stop account
-            if tier == 'IRON' and division == 'IV' and leaguepoints == 0:
+            if tier == 'IRON' and division == 'IV' and leaguepoints <= 0:
                 print('One more account readyyyyy')
                 table.update(recordId, {"PcName": "Finish"})
                 SignOutt()
