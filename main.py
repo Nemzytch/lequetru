@@ -1224,6 +1224,8 @@ def statuscheck():
                     pyautogui.click(OKEND)
                     time.sleep(1)
                     SignOutt()
+            else:
+                print('No AtemptToJoin detected')
 
         if phase != 'ChampSelect':
             championIdx = 0
