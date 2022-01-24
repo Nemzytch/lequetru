@@ -7,6 +7,7 @@ import time
 import json
 import math
 import mouse 
+import socket
 import random
 import urllib3
 import datetime
@@ -36,6 +37,7 @@ from requests.exceptions import ConnectionError
 from requests.packages.urllib3.util.retry import Retry
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 import subprocess
+
 
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -771,9 +773,7 @@ class Personnage:
 
 def Connexion():
     
-    with open("config.json") as json_data_file:
-        config = json.load(json_data_file)
-    PcName = config["info"]["PcName"]
+    PcName = socket.gethostname()
     print(PcName)
         
     table = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'YUUMI')
