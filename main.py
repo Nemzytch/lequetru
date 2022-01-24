@@ -780,6 +780,7 @@ def Connexion():
             
     Play = pyautogui.locateOnScreen("images/Play.png", grayscale=False,confidence=0.90)    
     Connexion = pyautogui.locateOnScreen("images/Connexion.png", grayscale=False,confidence=0.90)
+    TermsOfServices = pyautogui.locateOnScreen("images/TermsOfServices.png", grayscale=False,confidence=0.90)
     try:
         if Connexion!=None:
             
@@ -802,6 +803,13 @@ def Connexion():
             pyautogui.typewrite(password, interval=0.10)
             time.sleep(0.1)
             print('Pwd Write')
+            
+            if TermsOfServices != None:
+                pyautogui.moveTo(TermsOfServices[0],TermsOfServices[1])
+                time.sleep(1)
+                pyautogui.scroll(-100000)
+                time.sleep(1)
+                pyautogui.click(TermsOfServices[0],TermsOfServices[1]+600)
                 
             #Press connexion button
             pyautogui.moveTo(Connexion[0]+60,Connexion[1]+520)
