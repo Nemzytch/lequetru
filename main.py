@@ -84,6 +84,9 @@ def MouseClick():
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0,0)
 
 class Personnage:
+    
+    account = None
+    
     # Yuumi    
     team = None
     index = None
@@ -785,14 +788,14 @@ def Connexion():
         if Connexion!=None:
             
             formula = match({"PcName": PcName})
-            account = table.first(formula=formula, sort=["Unban"])['fields']['Account']
+            Personnage.account = table.first(formula=formula, sort=["Unban"])['fields']['Account']
             password = table.first(formula=formula, sort=["Unban"])['fields']['Password']
             
             #LogDesired
             pyautogui.moveTo(Connexion[0],Connexion[1]+80)
             time.sleep(0.1)
             MouseClick()
-            pyautogui.typewrite(account, interval=0.10)
+            pyautogui.typewrite(Personnage.account, interval=0.10)
             time.sleep(0.1)
             print('Log Write')
                 
@@ -1125,12 +1128,17 @@ def statuscheck():
             time.sleep(3)
             
             SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
-
+            
+            for records in table.all():
+                if records['fields']['account'] == Personnage.account:
+                    recordId = records['id']
+                    table.update(recordId, {"IngameName": SummonerName})
+                    
             for records in table.all():
                 if records['fields']['IngameName'] == SummonerName:
                     recordId = records['id']
                     table.update(recordId, {"Unban": str(datetime.datetime.now())})
-            
+
             for _ in range(10):
                 PopUpClose()
             
