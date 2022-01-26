@@ -1175,102 +1175,105 @@ def statuscheck():
             except: 
                 print('No I Agree')
                 
-            if QueueLockout != None:
-                
-                pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract'
-                SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
-                QueueLockout = pyautogui.locateOnScreen('images/QueueLockout.png')
+            try:
+                if QueueLockout != None:
+                    
+                    pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract'
+                    SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
+                    QueueLockout = pyautogui.locateOnScreen('images/QueueLockout.png')
 
-                while(True):
-                    
-                    cord = (QueueLockout[0]+125, QueueLockout[1]+62, QueueLockout[0]+230, QueueLockout[1]+120)
-                    cap = ImageGrab.grab(bbox =(cord))
+                    while(True):
+                        
+                        cord = (QueueLockout[0]+125, QueueLockout[1]+62, QueueLockout[0]+230, QueueLockout[1]+120)
+                        cap = ImageGrab.grab(bbox =(cord))
 
-                    BanTime = pytesseract.image_to_string(
-                            cv2.cvtColor(nm.array(cap), cv2.COLOR_BGR2GRAY), 
-                            lang ='eng')
-                    
-                    numbers = re.findall(r'\d+', BanTime)
-                    
-                    Seconde = 0
-                    Minutes = 0
-                    Hours = 0
-                    Day = 0
-                    
-                    try:
-                        Seconde = numbers[-1]
-                        Minutes = numbers[-2]
-                        Hours = numbers[-3]
-                        Day = numbers[-4]
-                    except:
-                        pass
-                    
-                    time_change = datetime. timedelta(days=int(Day), hours=int(Hours), minutes=int(Minutes), seconds=int(Seconde))
-                    
-                    for records in table.all():
-                        if records['fields']['IngameName'] == SummonerName:
-                            recordId = records['id']
-                            table.update(recordId, {"Unban": str(datetime.datetime.now()+time_change)})
-                            
+                        BanTime = pytesseract.image_to_string(
+                                cv2.cvtColor(nm.array(cap), cv2.COLOR_BGR2GRAY), 
+                                lang ='eng')
+                        
+                        numbers = re.findall(r'\d+', BanTime)
+                        
+                        Seconde = 0
+                        Minutes = 0
+                        Hours = 0
+                        Day = 0
+                        
+                        try:
+                            Seconde = numbers[-1]
+                            Minutes = numbers[-2]
+                            Hours = numbers[-3]
+                            Day = numbers[-4]
+                        except:
+                            pass
+                        
+                        time_change = datetime. timedelta(days=int(Day), hours=int(Hours), minutes=int(Minutes), seconds=int(Seconde))
+                        
+                        for records in table.all():
+                            if records['fields']['IngameName'] == SummonerName:
+                                recordId = records['id']
+                                table.update(recordId, {"Unban": str(datetime.datetime.now()+time_change)})
                                 
-                    pyautogui.click(OKEND)
-                    time.sleep(1)
-                    pyautogui.click(OKEND)
-                    time.sleep(1)
-                    pyautogui.click(OKEND)
-                    time.sleep(1)
-                    SignOutt()
-            else:
-                print('No QueueLockout detected')
-            
-            if AtemptToJoin != None:
+                                    
+                        pyautogui.click(OKEND)
+                        time.sleep(1)
+                        pyautogui.click(OKEND)
+                        time.sleep(1)
+                        pyautogui.click(OKEND)
+                        time.sleep(1)
+                        SignOutt()
+                else:
+                    print('No QueueLockout detected')
                 
-                pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract'
-                SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
-                AtemptToJoin = pyautogui.locateOnScreen('images/AtemptToJoin.png')
+                if AtemptToJoin != None:
+                    
+                    pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract'
+                    SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
+                    AtemptToJoin = pyautogui.locateOnScreen('images/AtemptToJoin.png')
 
-                while(True):
-                    
-                    cord = (AtemptToJoin[0]+120, AtemptToJoin[1]+85, AtemptToJoin[0]+210, AtemptToJoin[1]+120)
-                    cap = ImageGrab.grab(bbox =(cord))
+                    while(True):
+                        
+                        cord = (AtemptToJoin[0]+120, AtemptToJoin[1]+85, AtemptToJoin[0]+210, AtemptToJoin[1]+120)
+                        cap = ImageGrab.grab(bbox =(cord))
 
-                    BanTime = pytesseract.image_to_string(
-                            cv2.cvtColor(nm.array(cap), cv2.COLOR_BGR2GRAY), 
-                            lang ='eng')
-                    
-                    numbers = re.findall(r'\d+', BanTime)
-                    
-                    Seconde = 0
-                    Minutes = 0
-                    Hours = 0
-                    Day = 0
-                    
-                    try:
-                        Seconde = numbers[-1]
-                        Minutes = numbers[-2]
-                        Hours = numbers[-3]
-                        Day = numbers[-4]
-                    except:
-                        pass
-                    
-                    time_change = datetime. timedelta(days=int(Day), hours=int(Hours), minutes=int(Minutes), seconds=int(Seconde))
-                    
-                    for records in table.all():
-                        if records['fields']['IngameName'] == SummonerName:
-                            recordId = records['id']
-                            table.update(recordId, {"Unban": str(datetime.datetime.now()+time_change)})
-                            
+                        BanTime = pytesseract.image_to_string(
+                                cv2.cvtColor(nm.array(cap), cv2.COLOR_BGR2GRAY), 
+                                lang ='eng')
+                        
+                        numbers = re.findall(r'\d+', BanTime)
+                        
+                        Seconde = 0
+                        Minutes = 0
+                        Hours = 0
+                        Day = 0
+                        
+                        try:
+                            Seconde = numbers[-1]
+                            Minutes = numbers[-2]
+                            Hours = numbers[-3]
+                            Day = numbers[-4]
+                        except:
+                            pass
+                        
+                        time_change = datetime. timedelta(days=int(Day), hours=int(Hours), minutes=int(Minutes), seconds=int(Seconde))
+                        
+                        for records in table.all():
+                            if records['fields']['IngameName'] == SummonerName:
+                                recordId = records['id']
+                                table.update(recordId, {"Unban": str(datetime.datetime.now()+time_change)})
                                 
-                    pyautogui.click(OKEND)
-                    time.sleep(1)
-                    pyautogui.click(OKEND)
-                    time.sleep(1)
-                    pyautogui.click(OKEND)
-                    time.sleep(1)
-                    SignOutt()
-            else:
-                print('No AtemptToJoin detected')
-
+                                    
+                        pyautogui.click(OKEND)
+                        time.sleep(1)
+                        pyautogui.click(OKEND)
+                        time.sleep(1)
+                        pyautogui.click(OKEND)
+                        time.sleep(1)
+                        SignOutt()
+                else:
+                    print('No AtemptToJoin detected')
+            except:
+                pass
+                
         if phase != 'ChampSelect':
             championIdx = 0
 
