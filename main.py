@@ -1315,39 +1315,41 @@ def statuscheck():
 
             banchamp= pyautogui.locateOnScreen("images/banchamp.jpg", grayscale=False,confidence=0.90)
             PhaseDeBan = pyautogui.locateOnScreen("images/PhaseDeBan.png", grayscale=False,confidence=0.90)
-            if PhaseDeBan != None:
-                print("Time to ban some champs")
-                SearchChamp = pyautogui.locateOnScreen("images/search.png", grayscale=False,confidence=0.90)
-                pyautogui.click(SearchChamp[0],SearchChamp[1])
-                pyautogui.write('Alistar', interval=0.25)
-                Alistar = pyautogui.locateOnScreen("images/FaceDeAlistar.png", grayscale=False,confidence=0.90)
-                Bannissement = pyautogui.locateOnScreen("images/Bannissement.jpg", grayscale=False,confidence=0.70)
-                Ghost= pyautogui.locateOnScreen("images/Ghost.png", grayscale=False,confidence=0.70)
+            try:
+                if PhaseDeBan != None:
+                    print("Time to ban some champs")
+                    SearchChamp = pyautogui.locateOnScreen("images/search.png", grayscale=False,confidence=0.90)
+                    pyautogui.click(SearchChamp[0],SearchChamp[1])
+                    pyautogui.write('Alistar', interval=0.25)
+                    Alistar = pyautogui.locateOnScreen("images/FaceDeAlistar.png", grayscale=False,confidence=0.90)
+                    Bannissement = pyautogui.locateOnScreen("images/Bannissement.jpg", grayscale=False,confidence=0.70)
+                    Ghost= pyautogui.locateOnScreen("images/Ghost.png", grayscale=False,confidence=0.70)
+                        
+                    if Alistar != None:
+                        pyautogui.click(Alistar[0],Alistar[1])
+                        sleep(3)
+                        if Bannissement != None:
+                            pyautogui.click(Bannissement[0],Bannissement[1])
+                        else: 
+                            print("cant find ban button")
                     
-                if Alistar != None:
-                    pyautogui.click(Alistar[0],Alistar[1])
-                    sleep(3)
-                    if Bannissement != None:
-                        pyautogui.click(Bannissement[0],Bannissement[1])
-                    else: 
-                        print("cant find ban button")
-                
-                    if Ghost != None:
-                        print("I am going to switch Summoners and Runes")
-                        #summoner change
-                        pyautogui.click(Ghost[0],Ghost[1])
-                        time.sleep(0.5)
-                        pyautogui.click(Ghost[0]-50,Ghost[1]-140)
-                        time.sleep(0.5)
-                        pyautogui.click(Ghost[0]+60,Ghost[1])
-                        time.sleep(0.5)
-                        pyautogui.click(Ghost[0]+120,Ghost[1]-140)
-                        #rune change
-                        time.sleep(0.5)
-                        pyautogui.click(Ghost[0]-120,Ghost[1])
-                        time.sleep(0.5)
-                        pyautogui.click(Ghost[0]-120,Ghost[1]-140)
-                    
+                        if Ghost != None:
+                            print("I am going to switch Summoners and Runes")
+                            #summoner change
+                            pyautogui.click(Ghost[0],Ghost[1])
+                            time.sleep(0.5)
+                            pyautogui.click(Ghost[0]-50,Ghost[1]-140)
+                            time.sleep(0.5)
+                            pyautogui.click(Ghost[0]+60,Ghost[1])
+                            time.sleep(0.5)
+                            pyautogui.click(Ghost[0]+120,Ghost[1]-140)
+                            #rune change
+                            time.sleep(0.5)
+                            pyautogui.click(Ghost[0]-120,Ghost[1])
+                            time.sleep(0.5)
+                            pyautogui.click(Ghost[0]-120,Ghost[1]-140)
+            except:
+                print("No Alistar detected")
                         
                 
 
