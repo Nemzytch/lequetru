@@ -1299,11 +1299,14 @@ def statuscheck():
             if cs["timer"]["phase"] == "PLANNING":
                 print('Looking to prepick yuumi')
                 SearchChamp = pyautogui.locateOnScreen("images/search.png", grayscale=False,confidence=0.90)
-                if SearchChamp != None:
-                    pyautogui.click(SearchChamp[0],SearchChamp[1])
-                    print("I am going to search Yuumi")
-                    pyautogui.write('Yuumi', interval=0.25)
-                    Yuumy = pyautogui.locateOnScreen("images/FaceDeYuumi.png", grayscale=False,confidence=0.90)
+                try:
+                    if SearchChamp != None:
+                        pyautogui.click(SearchChamp[0],SearchChamp[1])
+                        print("I am going to search Yuumi")
+                        pyautogui.write('Yuumi', interval=0.25)
+                        Yuumy = pyautogui.locateOnScreen("images/FaceDeYuumi.png", grayscale=False,confidence=0.90)
+                except:
+                    print('')
                     try:
                         if Yuumy[0] != None:
                             pyautogui.click(Yuumy[0],Yuumy[1])
