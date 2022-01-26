@@ -884,24 +884,24 @@ def Store():
         #store
         pyautogui.moveTo(store[0]+5,store[1]+20)
         MouseClick()
-        time.sleep(1.5)
+        time.sleep(3)
         #champions
         pyautogui.moveTo(store[0]-700,store[1]+80)
         time.sleep(0.1)
         MouseClick()
         time.sleep(1.5)
         MouseClick()
-        time.sleep(1)
+        time.sleep(3)
         #Price 
         pyautogui.moveTo(store[0]-700,store[1]+350)
         time.sleep(0.1)
         MouseClick()
-        time.sleep(1)
+        time.sleep(3)
         #Price selection
         pyautogui.moveTo(store[0]-700,store[1]+550)
         time.sleep(0.1)
         MouseClick()
-        time.sleep(1)
+        time.sleep(3)
         
         def BoughtChamp():
             #Champ selection

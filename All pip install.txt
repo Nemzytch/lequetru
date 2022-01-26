@@ -8,3 +8,4 @@ pip install keyboard
 pip install pydirectinput
 pip install pyairtable
 pip install colorama
+pip install termcolor
