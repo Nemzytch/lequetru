@@ -1130,7 +1130,7 @@ def statuscheck():
             SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
             
             for records in table.all():
-                if records['fields']['account'] == Personnage.account:
+                if records['fields']['Account'] == Personnage.account:
                     recordId = records['id']
                     table.update(recordId, {"IngameName": SummonerName})
                     
