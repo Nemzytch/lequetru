@@ -1307,11 +1307,11 @@ def statuscheck():
                         Yuumy = pyautogui.locateOnScreen("images/FaceDeYuumi.png", grayscale=False,confidence=0.90)
                 except:
                     print('')
-                    try:
-                        if Yuumy[0] != None:
-                            pyautogui.click(Yuumy[0],Yuumy[1])
-                    except:
-                        print('No Yuumi detected')
+                try:
+                    if Yuumy[0] != None:
+                        pyautogui.click(Yuumy[0],Yuumy[1])
+                except:
+                    print('No Yuumi detected')
 
             banchamp= pyautogui.locateOnScreen("images/banchamp.jpg", grayscale=False,confidence=0.90)
             PhaseDeBan = pyautogui.locateOnScreen("images/PhaseDeBan.png", grayscale=False,confidence=0.90)
