@@ -1111,7 +1111,7 @@ def statuscheck():
             if NumberGamesToPlay == 0:
                 print('No more game to play, bye')
                 SignOutt()
-                    
+            
             time.sleep(60)
 
         if phase =='None':
@@ -1288,6 +1288,7 @@ def statuscheck():
         # Auto accept match
         if phase == 'ReadyCheck':
             r = request('post', '/lol-matchmaking/v1/ready-check/accept') 
+            restart()
 
         # Pick/lock champion
         elif phase == 'ChampSelect':
