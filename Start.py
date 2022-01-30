@@ -26,7 +26,7 @@ def start_script():
     except:
         # Script crashed, lets restart it!
         handle_crash()
-
+os.system("taskkill /f /im cmd.exe")
 def handle_crash():
     sleep(restart_timer)  # Restarts the script after 2 seconds
     start_script()
