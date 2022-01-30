@@ -15,8 +15,9 @@ print('Updating')
 def start_script():
     try:
         # Make sure 'python' command is available
-        Popen(['python', 'Main.py'])
-        # os.system('cmd /k "python main.py"')
+        os.system("start /B start cmd.exe @cmd /k python Main.py")
+        # Popen(['python', 'Main.py'])
+        # # os.system('cmd /k "python main.py"')
     except:
         # Script crashed, lets restart it!
         handle_crash()
