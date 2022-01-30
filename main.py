@@ -1281,14 +1281,15 @@ def statuscheck():
                     print('No AtemptToJoin detected')
             except:
                 pass
-                
+        
+            restart()
+        
         if phase != 'ChampSelect':
             championIdx = 0
 
         # Auto accept match
         if phase == 'ReadyCheck':
             r = request('post', '/lol-matchmaking/v1/ready-check/accept') 
-            restart()
 
         # Pick/lock champion
         elif phase == 'ChampSelect':
