@@ -1181,7 +1181,7 @@ def statuscheck():
                 if OKEND != None:
                     print('OKEND')
                     pyautogui.click(OKEND)
-                PopUpClose()
+                
             except: 
                 print('No I Agree')
                 
