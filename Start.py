@@ -1,6 +1,7 @@
 from subprocess import run
 from time import sleep
 import subprocess
+import os
 
 
 # Path and name to the script you are trying to start
@@ -14,7 +15,8 @@ print('Updating')
 def start_script():
     try:
         # Make sure 'python' command is available
-        subprocess.CREATE_NEW_CONSOLE("python "+file_path, check=True) 
+        # subprocess.CREATE_NEW_CONSOLE("python "+file_path, check=True) 
+        os.system('cmd /k "python main.py"')
     except:
         # Script crashed, lets restart it!
         handle_crash()
