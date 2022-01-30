@@ -1,10 +1,6 @@
-from subprocess import *
+from subprocess import run
 from time import sleep
 import subprocess
-import os
-import sys
-import time
-
 
 
 # Path and name to the script you are trying to start
@@ -18,15 +14,11 @@ print('Updating')
 def start_script():
     try:
         # Make sure 'python' command is available
-        os.system("start /B start cmd.exe @cmd /k python Main.py")
-        # Popen(['python', 'Main.py'])
-        # # os.system('cmd /k "python main.py"')
-        time.sleep(1)
-        sys.exit()
+        run("python "+file_path, check=True) 
     except:
         # Script crashed, lets restart it!
         handle_crash()
-os.system("taskkill /f /im cmd.exe")
+
 def handle_crash():
     sleep(restart_timer)  # Restarts the script after 2 seconds
     start_script()
