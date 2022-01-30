@@ -15,7 +15,7 @@ print('Updating')
 def start_script():
     try:
         # Make sure 'python' command is available
-        subprocess.Popen("python "+file_path, check=True) 
+        subprocess.Popen(['python', 'Main.py']) 
         # os.system('cmd /k "python main.py"')
     except:
         # Script crashed, lets restart it!
