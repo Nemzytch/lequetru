@@ -2,6 +2,8 @@ from subprocess import *
 from time import sleep
 import subprocess
 import os
+import sys
+
 
 
 # Path and name to the script you are trying to start
@@ -18,6 +20,7 @@ def start_script():
         os.system("start /B start cmd.exe @cmd /k python Main.py")
         # Popen(['python', 'Main.py'])
         # # os.system('cmd /k "python main.py"')
+        sys.exit()
     except:
         # Script crashed, lets restart it!
         handle_crash()
