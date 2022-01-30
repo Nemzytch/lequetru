@@ -1,4 +1,4 @@
-from subprocess import run
+from subprocess import *
 from time import sleep
 import subprocess
 import os
@@ -15,7 +15,7 @@ print('Updating')
 def start_script():
     try:
         # Make sure 'python' command is available
-        subprocess.Popen(['python', 'Main.py']) 
+        Popen(['python', 'Main.py'])
         # os.system('cmd /k "python main.py"')
     except:
         # Script crashed, lets restart it!
