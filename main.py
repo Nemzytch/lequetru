@@ -834,7 +834,7 @@ def PopUpClose():
     GG = pyautogui.locateOnScreen('images/GG.png', grayscale=False,confidence=0.90)
     ok = pyautogui.locateOnScreen('images/ok.jpg', grayscale=False,confidence=0.90)
     list1 =list(pyautogui.locateAllOnScreen('images/CroixM.png', grayscale=False,confidence=0.90))
-    list2 =list(pyautogui.locateAllOnScreen('images/CroixM.png',region=(list1[0][0]-1200,list1[0][1], list1[0][0]-250,list1[0][1]+450),grayscale=False,confidence=0.90))
+    list2 =list(pyautogui.locateAllOnScreen('images/CroixM.png',region=(list1[0][0]-1200,list1[0][1], list1[0][0],list1[0][1]+450),grayscale=False,confidence=0.90))
 
     try:
         pyautogui.moveTo(list2[1])
@@ -1181,7 +1181,8 @@ def statuscheck():
                 if OKEND != None:
                     print('OKEND')
                     pyautogui.click(OKEND)
-                
+                PopUpClose()
+                time.sleep(1)
             except: 
                 print('No I Agree')
                 
