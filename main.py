@@ -1182,7 +1182,7 @@ def statuscheck():
                     print('OKEND')
                     pyautogui.click(OKEND)
                 PopUpClose()
-                time.sleep(1)
+                time.sleep(2)
             except: 
                 print('No I Agree')
                 
