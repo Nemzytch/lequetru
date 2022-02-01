@@ -1106,7 +1106,7 @@ def statuscheck():
             #Iron4 0Lp stop account
             if tier == 'IRON' and division == 'IV' and leaguepoints <= 0:
                 print('One more account readyyyyy')
-                table.update(recordId, {"PcName": "Finish"})
+                table.update(recordId, {"FinishedAcc": "Finish"})
                 SignOutt()
                 
             if NumberGamesToPlay == 0:
@@ -1124,7 +1124,7 @@ def statuscheck():
             #    for records in table.all():
             #        if records['fields']['IngameName'] == SummonerName:
             #            recordId = records['id']
-            #            table.update(recordId, {"PcName": "子供は死んでいます"})
+            #            table.update(recordId, {"FinishedAcc": "子供は死んでいます"})
             
             time.sleep(3)
             
