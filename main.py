@@ -1107,6 +1107,7 @@ def statuscheck():
             if tier == 'IRON' and division == 'IV' and leaguepoints <= 0:
                 print('One more account readyyyyy')
                 table.update(recordId, {"FinishedAcc": "Finish"})
+                table.update(recordId,{"PcName": " "})
                 SignOutt()
                 
             if NumberGamesToPlay == 0:
