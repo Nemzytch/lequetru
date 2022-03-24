@@ -824,9 +824,9 @@ def Connexion():
             pyautogui.moveTo(Connexion[0],Connexion[1]+650)
             time.sleep(0.1)
             MouseClick()
-            time.sleep(20)   
+            time.sleep(20)
         else:
-            print('No connexion detected')       
+            print('No connexion detected')
     except:
         print('No more accounts')
                
@@ -949,8 +949,11 @@ class lobby():
     champion = 350 
     host = '127.0.0.1'
     protocol = 'https'
-    gamedirs = [r'C:\Riot Games\League of Legends',
-            r'D:\Games\League of Legends']
+    gamedirs = [
+        r'C:\Riot Games\League of Legends',
+        r'D:\Games\League of Legends',
+        r'D:\Riot Games\League of Legends',
+    ]
     lockfile = None
     print('Waiting for League of Legends to start ..')
     print('Trying to connect')
