@@ -845,9 +845,8 @@ def PopUpClose():
         print('PopUp Close')
         time.sleep(0.5)
         
-        if GG != None:
-            pyautogui.moveTo(GG)
-            pyautogui.click(GG)
+        pyautogui.moveTo(GG)
+        pyautogui.click(GG)
 
         if ok != None:
             pyautogui.moveTo(ok)
