@@ -832,19 +832,18 @@ def Connexion():
                
 def PopUpClose():
     try:
-        Checkpoint = pyautogui.locateOnScreen("images/Checkpoint.png", grayscale=False,confidence=0.90)
         GG = pyautogui.locateOnScreen('images/GG.png', grayscale=False,confidence=0.90)
         ok = pyautogui.locateOnScreen('images/ok.jpg', grayscale=False,confidence=0.90)
         list1 =list(pyautogui.locateAllOnScreen('images/CroixM.png', grayscale=False,confidence=0.90))
         list2 =list(pyautogui.locateAllOnScreen('images/CroixM.png',region=(list1[0][0]-1200,list1[0][1], list1[0][0],list1[0][1]+450),grayscale=False,confidence=0.90))
-
-        if Checkpoint != None:
-            pyautogui.moveTo(Checkpoint)
-            pyautogui.click(Checkpoint)
+        print(GG)
+        if GG != None:
+            pyautogui.moveTo(GG)
+            pyautogui.click(GG)
 
         if ok != None:
             pyautogui.moveTo(ok)
-            pyautogui.click(GG)
+            pyautogui.click(ok)
     
         pyautogui.moveTo(list2[1])
         time.sleep(0.1)
