@@ -1,3 +1,4 @@
+from ast import If
 import os
 import re
 import sys
@@ -625,15 +626,16 @@ class Personnage:
             try:
                 #pyautogui.moveTo(Surrend[0],Surrend[1]+77)
                 #time.sleep(0.1)
-                pydirectinput.press('enter')
-                time.sleep(0.1)
-                pyautogui.write('/ff')
-                time.sleep(0.1)
-                pydirectinput.press('enter')
-                #time.sleep(0.5)
-                #MouseClick()
-                #time.sleep(0.1)
-                print('I am surrending')
+                if Surrend != None:
+                    pydirectinput.press('enter')
+                    time.sleep(0.1)
+                    pyautogui.write('/ff')
+                    time.sleep(0.1)
+                    pydirectinput.press('enter')
+                    #time.sleep(0.5)
+                    #MouseClick()
+                    #time.sleep(0.1)
+                    print('I am surrending')
             except :
                 print('No surrend detected')
         else:
