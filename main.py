@@ -625,11 +625,11 @@ class Personnage:
             try:
                 #pyautogui.moveTo(Surrend[0],Surrend[1]+77)
                 #time.sleep(0.1)
-                pyautogui.press('enter')
+                pydirectinput.press('enter')
                 time.sleep(0.1)
                 pyautogui.write('/ff')
                 time.sleep(0.1)
-                pyautogui.press('enter')
+                pydirectinput.press('enter')
                 #time.sleep(0.5)
                 #MouseClick()
                 #time.sleep(0.1)
