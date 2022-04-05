@@ -237,7 +237,7 @@
                         },
                         {
                             "name": "CfgVersion",
-                            "value": "11.24.414.4003"
+                            "value": "12.6.432.1258"
                         },
                         {
                             "name": "CursorOverride",
@@ -883,11 +883,11 @@
                         },
                         {
                             "name": "evtPlayerMoveClick",
-                            "value": "[Button 2],[Shift][Button 2]"
+                            "value": "[Button 2],[h]"
                         },
                         {
                             "name": "evtPlayerPingAreaIsWarded",
-                            "value": "[h]"
+                            "value": "[<Unbound>]"
                         },
                         {
                             "name": "evtPlayerPingComeHere",

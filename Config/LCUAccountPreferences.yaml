@@ -1,29 +1,40 @@
 champ-select:
     data:
         skins:
-            102: 102000
-            103: 103000
-            106: 106000
-            119: 119000
-            12: 12000
-            126: 126000
-            143: 143000
-            145: 145000
+            10: 10000
+            101: 101000
+            104: 104000
+            107: 107000
+            111: 111000
+            120: 120000
+            13: 13000
+            15: 15000
+            16: 16000
             17: 17000
             18: 18000
-            203: 203000
             21: 21000
+            22: 22000
+            221: 221000
             222: 222000
-            27: 27000
+            235: 235000
+            236: 236000
+            28: 28000
             350: 350000
-            38: 38000
+            40: 40000
             42: 42000
-            429: 429000
-            516: 516000
-            57: 57000
-            62: 62000
+            427: 427000
+            432: 432000
+            498: 498000
+            518: 518000
+            64: 64000
+            67: 67000
             74: 74000
-            876: 876000
+            8: 8000
+            85: 85000
+            86: 86000
+            875: 875000
+            887: 887000
+            89: 89000
         spells:
             420:
             - 7
@@ -31,6 +42,11 @@ champ-select:
             830:
             - 4
             - 7
+    schemaVersion: 1
+emotes:
+    data:
+        newEmotes:
+        - 3772
     schemaVersion: 1
 lol-champ-select:
     data:
@@ -46,14 +62,26 @@ lol-general:
     schemaVersion: 0
 lol-home-hubs:
     data:
+        anima-squad-hub-2022:
+            watchedIntro: true
+        lunar-revel-hub-2022:
+            currentTheme: "fire"
         sentinels-hub-2021:
             clickedSkip: true
             skipAll: true
             watchedIntro: true
     schemaVersion: 1
+lol-leagues:
+    data:
+        last-split-start-modal: 12.100000
+    schemaVersion: 1
+lol-loot:
+    data:
+        mythicEssenceNavigationTooltipSeen: true
+    schemaVersion: 1
 lol-notifications:
     data:
-        rgmNotificationTimestamp: 1639670661111
+        rgmNotificationTimestamp: 1648751053570
     schemaVersion: 1
 lol-npe-first-touch:
     data: null
@@ -64,9 +92,9 @@ lol-npe-rewards:
             allMissionsCompleted: false
             totalCount: 8
         login:
-            allRewardsClaimed: false
-            lastCompletedMissionDate: 1639885481000
-            lastCompletedMissionInternalName: "npe_rewards_login_v1_step4"
+            allRewardsClaimed: true
+            lastCompletedMissionDate: 1643983774000
+            lastCompletedMissionInternalName: "npe_rewards_login_v1_step7"
     schemaVersion: 1
 lol-npe-tutorial-path:
     data:
@@ -94,11 +122,11 @@ lol-premade-voice:
     schemaVersion: 1
 lol-profiles:
     data:
-        ranked-reference-modal-login-seen-for-season: 11
+        ranked-reference-modal-login-seen-for-season: 12
     schemaVersion: 0
 lol-tft:
     data:
-        previouslySeenSeasons: "TFT6_Series"
+        previouslySeenSeasons: "TFT6_Series,TFT6_Act2_Series"
     schemaVersion: 1
 lol-tutorial:
     data:
