@@ -623,12 +623,16 @@ class Personnage:
             OneMinute=OneMinute+20
             print(OneMinute)
             try:
-                pyautogui.moveTo(Surrend[0],Surrend[1]+77)
+                #pyautogui.moveTo(Surrend[0],Surrend[1]+77)
+                #time.sleep(0.1)
+                pyautogui.press('enter')
                 time.sleep(0.1)
-                MouseClick()
-                time.sleep(0.5)
-                MouseClick()
+                pyautogui.write('/ff')
                 time.sleep(0.1)
+                pyautogui.press('enter')
+                #time.sleep(0.5)
+                #MouseClick()
+                #time.sleep(0.1)
                 print('I am surrending')
             except :
                 print('No surrend detected')
