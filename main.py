@@ -1166,6 +1166,9 @@ def statuscheck():
             #DudgeTimer = pyautogui.locateOnScreen("images/DudgeTimer.JPG", confidence=0.90)
             
             PopUpClose()
+            PopUpClose()
+            PopUpClose()
+            
             print('need to pick lanes')
             r = request('put', '/lol-lobby/v2/lobby/members/localMember/position-preferences', data ={"firstPreference": "UTILITY","secondPreference":"MIDDLE",})
             sleep(2)
