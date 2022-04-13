@@ -1,5 +1,4 @@
 from ast import If
-from distutils.log import error
 import os
 import re
 import sys
@@ -1139,11 +1138,9 @@ def statuscheck():
             #            table.update(recordId, {"FinishedAcc": "子供は死んでいます"})
             
             time.sleep(3)
-            try:
-                SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
-            except:
-                print('error')
-                
+            
+            SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
+            
             for records in table.all():
                 if records['fields']['Account'] == Personnage.account:
                     recordId = records['id']
