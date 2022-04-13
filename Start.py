@@ -14,10 +14,13 @@ print('Updating')
 def start_script():
     try:
         # Make sure 'python' command is available
-        run("python "+file_path, check=True) 
+        run("python "+file_path, check=True)
+    except KeyError:
+        print("KeyError")
     except:
         # Script crashed, lets restart it!
         handle_crash()
+    
 
 def handle_crash():
     sleep(restart_timer)  # Restarts the script after 2 seconds
