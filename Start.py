@@ -15,11 +15,9 @@ def start_script():
     try:
         # Make sure 'python' command is available
         run("python "+file_path, check=True)
-    except KeyError as err:
-        print("KeyError")
-    #except:
+    except:
         # Script crashed, lets restart it!
-        #handle_crash()
+        handle_crash()
     
 
 def handle_crash():
