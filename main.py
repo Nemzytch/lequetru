@@ -868,7 +868,7 @@ def PopUpClose():
             
     except:
         print('No PopUp')
-        time.sleep(0.5)
+        time.sleep(0.2)
     
 def SignOutt():
     CroixM = pyautogui.locateOnScreen("images/CroixM.png", grayscale=False,confidence=0.90)
