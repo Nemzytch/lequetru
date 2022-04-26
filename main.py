@@ -819,7 +819,7 @@ def Connexion():
             time.sleep(0.1)
             print('Pwd Write')
             for records in table.all():
-                if records['fields']['IngameName'] == Personnage.account:
+                if records['fields']['Account'] == Personnage.account:
                     recordId = records['id']
                     table.update(recordId, {"Unban": str(datetime.datetime.now())})
             
