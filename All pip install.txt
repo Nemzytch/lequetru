@@ -9,3 +9,4 @@ pip install pydirectinput
 pip install pyairtable
 pip install colorama
 pip install termcolor
+pip install pyperclip

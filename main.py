@@ -818,6 +818,10 @@ def Connexion():
             pyautogui.hotkey('ctrl', 'v')
             time.sleep(0.1)
             print('Pwd Write')
+            for records in table.all():
+                if records['fields']['IngameName'] == Personnage.account:
+                    recordId = records['id']
+                    table.update(recordId, {"Unban": str(datetime.datetime.now())})
             
             if TermsOfServices != None:
                 pyautogui.moveTo(TermsOfServices[0],TermsOfServices[1])
