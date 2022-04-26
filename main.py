@@ -38,6 +38,7 @@ from requests.exceptions import ConnectionError
 from requests.packages.urllib3.util.retry import Retry
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 import subprocess
+import pyperclip
 
 
 
@@ -812,7 +813,9 @@ def Connexion():
             pyautogui.moveTo(Connexion[0],Connexion[1]+140)
             time.sleep(0.1)
             MouseClick()
-            pyautogui.typewrite(password, interval=0.10)
+            # pyautogui.typewrite(password, interval=0.10)
+            pyperclip.copy(password)
+            pyautogui.hotkey('ctrl', 'v')
             time.sleep(0.1)
             print('Pwd Write')
             
