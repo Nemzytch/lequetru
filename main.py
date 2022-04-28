@@ -1132,7 +1132,7 @@ def statuscheck():
                 print('No more game to play, bye')
                 SignOutt()
             
-            time.sleep(60)
+            time.sleep(10)
 
         if phase =='None':
             #AccountSuspended = pyautogui.locateOnScreen("images/AccountSuspended.png", confidence=0.90)
