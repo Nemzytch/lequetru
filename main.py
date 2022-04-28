@@ -1319,87 +1319,189 @@ def statuscheck():
             r = request('get', '/lol-champ-select/v1/session')
             if r.status_code != 200:
                 continue
-
             cs = r.json()
             if cs["timer"]["phase"] == "PLANNING":
-                print('Looking to prepick yuumi')
-                SearchChamp = pyautogui.locateOnScreen("images/search.png", grayscale=False,confidence=0.90)
-                try:
-                    if SearchChamp != None:
-                        pyautogui.click(SearchChamp[0],SearchChamp[1])
-                        print("I am going to search Yuumi")
-                        pyautogui.write('Yuumi', interval=0.25)
-                        Yuumy = pyautogui.locateOnScreen("images/FaceDeYuumi.png", grayscale=False,confidence=0.90)
-                except:
-                    print('')
-                try:
-                    if Yuumy[0] != None:
-                        pyautogui.click(Yuumy[0],Yuumy[1])
-                except:
-                    print('No Yuumi detected')
-
-            banchamp= pyautogui.locateOnScreen("images/banchamp.jpg", grayscale=False,confidence=0.90)
-            PhaseDeBan = pyautogui.locateOnScreen("images/PhaseDeBan.png", grayscale=False,confidence=0.90)
-            try:
-                if PhaseDeBan != None:
-                    print("Time to ban some champs")
-                    SearchChamp = pyautogui.locateOnScreen("images/search.png", grayscale=False,confidence=0.90)
-                    pyautogui.click(SearchChamp[0],SearchChamp[1])
-                    pyautogui.write('Alistar', interval=0.25)
-                    Alistar = pyautogui.locateOnScreen("images/FaceDeAlistar.png", grayscale=False,confidence=0.90)
-                    Bannissement = pyautogui.locateOnScreen("images/Bannissement.jpg", grayscale=False,confidence=0.70)
-                    Ghost= pyautogui.locateOnScreen("images/Ghost.png", grayscale=False,confidence=0.70)
-                        
-                    if Alistar != None:
-                        pyautogui.click(Alistar[0],Alistar[1])
-                        sleep(3)
-                        if Bannissement != None:
-                            pyautogui.click(Bannissement[0],Bannissement[1])
-                        else: 
-                            print("cant find ban button")
+                print('planning')
+                # print('Looking to prepick yuumi')
+                # SearchChamp = pyautogui.locateOnScreen("images/search.png", grayscale=False,confidence=0.90)
+                # if SearchChamp != None:
+                #     pyautogui.click(SearchChamp[0],SearchChamp[1])
+                #     print("I am going to search Yuumi")
+                #     pyautogui.write('Yuumi', interval=0.25)
+                #     Yuumy = pyautogui.locateOnScreen("images/FaceDeYuumi.png", grayscale=False,confidence=0.90)
+                #     try:
+                #         if Yuumy[0] != None:
+                #             pyautogui.click(Yuumy[0],Yuumy[1])
+                #     except:
+                #         print('No Yuumi detected')
+            if cs["timer"]["phase"] == "BAN_PICK":
+                global lastMessageChampSelect
+                print(" you are in ban/pick")
+                SummonerID = request('get', '/lol-summoner/v1/current-summoner').json()["summonerId"]
+                print(SummonerID)
+                cellID = -1
+                
+                actions = cs["actions"]
+                chatRoomName = (cs["chatDetails"]["chatRoomName"]).split('@')[0] # récupérer l'identifiant de la room, seule la partie avant le @ est utile
+                url = '/lol-chat/v1/conversations/'+chatRoomName+'/messages'
+                messageList = ['Hello guys :D', "Hi there ! :)",'Hello team how you doing ? :D']
+                
+                data = { "body": messageList[random.randint(0,len(messageList)-1)],"type": "chat"}
+                
+                #message 2 minute cooldown
+                if (datetime.datetime.now() - lastMessageChampSelect).total_seconds() > 240:
+                    r = request('post', url, data = data)
+                    lastMessageChampSelect = datetime.datetime.now()
+                
+                
+                
+                # print(request('get', url, '', data).json()) get the chat message
+                runesPages = request('get', '/lol-perks/v1/pages').json()
+                print(runesPages)
+                for _ in runesPages:
+                    id = _["id"]
+                    if id not in [50,51,52,53,54] and _["selectedPerkIds"][0] !=8214: #si la page de rune ne fait par partie des runes de base et que sa rune principale n'est pas aery
+                        request('delete', '/lol-perks/v1/pages/'+str(id))
+                        data = {"autoModifiedSelections": [0],"current": True,"isActive": True,"isDeletable": True,"isEditable": True,"isValid": True,"lastModified": time.time(),"name": "Zoomies !!","order": 0,"primaryStyleId": 8200,"selectedPerkIds": [8214, 8224, 8210, 8237, 8451, 8401, 5008, 5008, 5002],"subStyleId": 8400}    
+                        url = '/lol-perks/v1/pages/'
+                        request('post', url, '', data)
+                        time.sleep(2)
+                if len(runesPages) == 5: # check si les pages de runes sont juste celles du jeu
+                    data = {"autoModifiedSelections": [0],"current": True,"isActive": True,"isDeletable": True,"isEditable": True,"isValid": True,"lastModified": time.time(),"name": "Zoomies !!","order": 0,"primaryStyleId": 8200,"selectedPerkIds": [8214, 8224, 8210, 8237, 8451, 8401, 5008, 5008, 5002],"subStyleId": 8400}    
+                    url = '/lol-perks/v1/pages/'
+                    request('post', url, '', data)
+                    time.sleep(2)
                     
-                        if Ghost != None:
-                            print("I am going to switch Summoners and Runes")
-                            #summoner change
-                            pyautogui.click(Ghost[0],Ghost[1])
+                    
+                for _ in range(0,9):
+                    summonersInfo = request('get', '/lol-champ-select/v1/summoners/'+str(_)).json()
+                    if SummonerID == summonersInfo["summonerId"]:
+                        cellId = summonersInfo["cellId"]
+                        if summonersInfo["spell1IconPath"] != "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_heal.png" or summonersInfo["spell2IconPath"] != "/lol-game-data/assets/DATA/Spells/Icons2D/SummonerIgnite.png":
+                            print("wrong summoner spells")
+                            url = '/lol-champ-select/v1/session/my-selection'
+                            data = {"spell1Id": 7, "spell2Id": 14}
+                            r = request('patch', url, '', data)
                             time.sleep(0.5)
-                            pyautogui.click(Ghost[0]-50,Ghost[1]-140)
-                            time.sleep(0.5)
-                            pyautogui.click(Ghost[0]+60,Ghost[1])
-                            time.sleep(0.5)
-                            pyautogui.click(Ghost[0]+120,Ghost[1]-140)
-                            #rune change
-                            time.sleep(0.5)
-                            pyautogui.click(Ghost[0]-120,Ghost[1])
-                            time.sleep(0.5)
-                            pyautogui.click(Ghost[0]-120,Ghost[1]-140)
-            except:
-                print("No Alistar detected")
+                        else:
+                            print("Correct Summoner spells")
+                        
+                            
+                        for _ in actions : # double boucle car liste d'actions est une liste de dictionnaire
+                            for _ in _ :
+                                if _["actorCellId"] == cellId:
+                                    if _["isInProgress"]== True:
+                                        print('you are in action '+_["type"])
+                                        if _['type'] == "ban":
+                                            print('you are in cell '+str(cellId))
+                                            url = '/lol-champ-select/v1/session/actions/%d' % _['id']
+                                            data = {'championId': 12}
+                                            print('annie')
+                                            r = request('patch', url, '', data)
+                                            time.sleep(0.5)
+                                            r = request('post', url+'/complete', '', data)
+                                            time.sleep(0.5)
+
+
+                                        if _['type'] == "pick":
+                                            print('you are in cell '+str(cellId))
+                                            url = '/lol-champ-select/v1/session/actions/%d' % _['id']
+                                            data = {'championId': 350}
+                                            print('annie')
+                                            r = request('patch', url, '', data)
+                                            time.sleep(0.5)
+                                            r = request('post', url+'/complete', '', data)
+                                            time.sleep(0.5)
+                                            
+                                    else : 
+                                        print("you finished action "+_["type"])          
+            
+
+            
+        #     r = request('get', '/lol-champ-select/v1/session')
+        #     if r.status_code != 200:
+        #         continue
+
+        #     cs = r.json()
+        #     if cs["timer"]["phase"] == "PLANNING":
+        #         print('Looking to prepick yuumi')
+        #         SearchChamp = pyautogui.locateOnScreen("images/search.png", grayscale=False,confidence=0.90)
+        #         try:
+        #             if SearchChamp != None:
+        #                 pyautogui.click(SearchChamp[0],SearchChamp[1])
+        #                 print("I am going to search Yuumi")
+        #                 pyautogui.write('Yuumi', interval=0.25)
+        #                 Yuumy = pyautogui.locateOnScreen("images/FaceDeYuumi.png", grayscale=False,confidence=0.90)
+        #         except:
+        #             print('')
+        #         try:
+        #             if Yuumy[0] != None:
+        #                 pyautogui.click(Yuumy[0],Yuumy[1])
+        #         except:
+        #             print('No Yuumi detected')
+
+        #     banchamp= pyautogui.locateOnScreen("images/banchamp.jpg", grayscale=False,confidence=0.90)
+        #     PhaseDeBan = pyautogui.locateOnScreen("images/PhaseDeBan.png", grayscale=False,confidence=0.90)
+        #     try:
+        #         if PhaseDeBan != None:
+        #             print("Time to ban some champs")
+        #             SearchChamp = pyautogui.locateOnScreen("images/search.png", grayscale=False,confidence=0.90)
+        #             pyautogui.click(SearchChamp[0],SearchChamp[1])
+        #             pyautogui.write('Alistar', interval=0.25)
+        #             Alistar = pyautogui.locateOnScreen("images/FaceDeAlistar.png", grayscale=False,confidence=0.90)
+        #             Bannissement = pyautogui.locateOnScreen("images/Bannissement.jpg", grayscale=False,confidence=0.70)
+        #             Ghost= pyautogui.locateOnScreen("images/Ghost.png", grayscale=False,confidence=0.70)
+                        
+        #             if Alistar != None:
+        #                 pyautogui.click(Alistar[0],Alistar[1])
+        #                 sleep(3)
+        #                 if Bannissement != None:
+        #                     pyautogui.click(Bannissement[0],Bannissement[1])
+        #                 else: 
+        #                     print("cant find ban button")
+                    
+        #                 if Ghost != None:
+        #                     print("I am going to switch Summoners and Runes")
+        #                     #summoner change
+        #                     pyautogui.click(Ghost[0],Ghost[1])
+        #                     time.sleep(0.5)
+        #                     pyautogui.click(Ghost[0]-50,Ghost[1]-140)
+        #                     time.sleep(0.5)
+        #                     pyautogui.click(Ghost[0]+60,Ghost[1])
+        #                     time.sleep(0.5)
+        #                     pyautogui.click(Ghost[0]+120,Ghost[1]-140)
+        #                     #rune change
+        #                     time.sleep(0.5)
+        #                     pyautogui.click(Ghost[0]-120,Ghost[1])
+        #                     time.sleep(0.5)
+        #                     pyautogui.click(Ghost[0]-120,Ghost[1]-140)
+        #     except:
+        #         print("No Alistar detected")
                         
                 
 
-            Lockin = pyautogui.locateOnScreen("images/Lockin.jpg", grayscale=False,confidence=0.99)
-            Singed = pyautogui.locateOnScreen("images/FaceDeSinged.jpg", grayscale=False,confidence=0.90)
-            LockinOff = pyautogui.locateOnScreen("images/LockinOff.jpg", grayscale=False,confidence=0.90)
+        #     Lockin = pyautogui.locateOnScreen("images/Lockin.jpg", grayscale=False,confidence=0.99)
+        #     Singed = pyautogui.locateOnScreen("images/FaceDeSinged.jpg", grayscale=False,confidence=0.90)
+        #     LockinOff = pyautogui.locateOnScreen("images/LockinOff.jpg", grayscale=False,confidence=0.90)
                 
-            if Lockin != None:
-                pyautogui.click(Lockin[0],Lockin[1])
-                print("Champion Lock bro!")
+        #     if Lockin != None:
+        #         pyautogui.click(Lockin[0],Lockin[1])
+        #         print("Champion Lock bro!")
                     
-            if LockinOff != None:
-                SearchChamp = pyautogui.locateOnScreen("images/search.png", grayscale=False,confidence=0.90)
-                try:
-                    print('Pick another champ for dudge')
-                    pyautogui.click(SearchChamp[0],SearchChamp[1])
-                    pyautogui.write('Singed', interval=0.25)
-                    print('Singed Found')
-                except TypeError:
-                    print('failed to search')
+        #     if LockinOff != None:
+        #         SearchChamp = pyautogui.locateOnScreen("images/search.png", grayscale=False,confidence=0.90)
+        #         try:
+        #             print('Pick another champ for dudge')
+        #             pyautogui.click(SearchChamp[0],SearchChamp[1])
+        #             pyautogui.write('Singed', interval=0.25)
+        #             print('Singed Found')
+        #         except TypeError:
+        #             print('failed to search')
                         
-            if NumberSinged > 0:
-                if Singed != None:
-                    pyautogui.click(Singed[0],Singed[1])
-                    print('Singed locked')
+        #     if NumberSinged > 0:
+        #         if Singed != None:
+        #             pyautogui.click(Singed[0],Singed[1])
+        #             print('Singed locked')
 
         elif phase == 'InProgress':
             print('in progress')
