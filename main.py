@@ -364,7 +364,6 @@ class Personnage:
                 pyautogui.moveTo(960,480)
                 MouseClick()
                 pydirectinput.press('space')   
-                pydirectinput.press("enter")
 
             if self.adcDead == False:
                 if self.attached == False:

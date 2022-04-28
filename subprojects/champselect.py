@@ -47,6 +47,8 @@ gamedirs = [r'C:\Games\Garena\32787\LeagueClient',
             r'D:\Games\League of Legends']
 os.system("")
 
+lastMessageChampSelect = datetime.datetime.now() - datetime.timedelta(minutes=4)
+
 
 #NuberGamesToPlay
 NumberGamesToPlay = random.randint(10, 15)
@@ -414,19 +416,21 @@ def statuscheck():
 
             cs = r.json()
             if cs["timer"]["phase"] == "PLANNING":
-                print('Looking to prepick yuumi')
-                SearchChamp = pyautogui.locateOnScreen("images/search.png", grayscale=False,confidence=0.90)
-                if SearchChamp != None:
-                    pyautogui.click(SearchChamp[0],SearchChamp[1])
-                    print("I am going to search Yuumi")
-                    pyautogui.write('Yuumi', interval=0.25)
-                    Yuumy = pyautogui.locateOnScreen("images/FaceDeYuumi.png", grayscale=False,confidence=0.90)
-                    try:
-                        if Yuumy[0] != None:
-                            pyautogui.click(Yuumy[0],Yuumy[1])
-                    except:
-                        print('No Yuumi detected')
+                print('planning')
+                # print('Looking to prepick yuumi')
+                # SearchChamp = pyautogui.locateOnScreen("images/search.png", grayscale=False,confidence=0.90)
+                # if SearchChamp != None:
+                #     pyautogui.click(SearchChamp[0],SearchChamp[1])
+                #     print("I am going to search Yuumi")
+                #     pyautogui.write('Yuumi', interval=0.25)
+                #     Yuumy = pyautogui.locateOnScreen("images/FaceDeYuumi.png", grayscale=False,confidence=0.90)
+                #     try:
+                #         if Yuumy[0] != None:
+                #             pyautogui.click(Yuumy[0],Yuumy[1])
+                #     except:
+                #         print('No Yuumi detected')
             if cs["timer"]["phase"] == "BAN_PICK":
+                global lastMessageChampSelect
                 print(" you are in ban/pick")
                 SummonerID = request('get', '/lol-summoner/v1/current-summoner').json()["summonerId"]
                 print(SummonerID)
@@ -438,7 +442,14 @@ def statuscheck():
                 messageList = ['Hello guys :D', "Hi there ! :)",'Hello team how you doing ? :D']
                 
                 data = { "body": messageList[random.randint(0,len(messageList)-1)],"type": "chat"}
-                r = request('post', url, '', data)
+                
+                #message 2 minute cooldown
+                if (datetime.datetime.now() - lastMessageChampSelect).total_seconds() > 240:
+                    r = request('post', url, data = data)
+                    lastMessageChampSelect = datetime.datetime.now()
+                
+                
+                
                 # print(request('get', url, '', data).json()) get the chat message
                 runesPages = request('get', '/lol-perks/v1/pages').json()
                 print(runesPages)
