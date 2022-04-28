@@ -1158,7 +1158,7 @@ def statuscheck():
                     recordId = records['id']
                     table.update(recordId, {"Unban": str(datetime.datetime.now())})
 
-            for _ in range(10):
+            for _ in range(4):
                 PopUpClose()
             
             print('need to create lobby')
