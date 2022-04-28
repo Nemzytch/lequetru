@@ -48,7 +48,7 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 gamedirs = [r'C:\Games\Garena\32787\LeagueClient',
             r'D:\Games\League of Legends']
 os.system("")
-
+lastMessageChampSelect = datetime.datetime.now() - datetime.timedelta(minutes=4)
 
 #NuberGamesToPlay
 NumberGamesToPlay = random.randint(10, 15)
