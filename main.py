@@ -118,6 +118,8 @@ class Personnage:
     yuumiMana = None
     resourceMax = None
     passiveCooldown = None
+    
+    ennemyPosition = [400,400]
 
     atHome = None
     ultimateCooldown = 1
@@ -390,6 +392,7 @@ class Personnage:
                         if self.datas["gameData"]["gameTime"] > 90:
                             pydirectinput.press('f')
                             self.healCooldown = time.time()
+                    pyautogui.moveTo(self.ennemyPosition[0],self.ennemyPosition[1])
                     self.ultimateCast()
                     print('send R')
                     ennemy = pyautogui.locateOnScreen("images/1.png", grayscale=False,confidence=0.90)
@@ -611,6 +614,7 @@ class Personnage:
                 Ennemies = pyautogui.locateOnScreen(r"images/1.png", grayscale=False,confidence=0.95)
                 # pydirectinput.press('y')
                 pyautogui.moveTo(Ennemies[0]+40, Ennemies[1]+100)
+                self.ennemyPosition = [Ennemies[0], Ennemies[1]]
                 pydirectinput.press('w')
                 MouseClick()
                 pydirectinput.press('h')      
