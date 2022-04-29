@@ -267,6 +267,7 @@ class Personnage:
         if eCast[1] > 250:
             print('adc needs healing')
             pydirectinput.press('e')
+            # doubleCheck = screen.
         else:
             print('cant heal yet')
         
@@ -504,9 +505,12 @@ class Personnage:
         for i in range(69):
             rgb_values=screen.getpixel((x,y))
             if rgb_values[1] == 19:
-                x = x+1
-                self.carryHP = i*1.42
-                break
+                #doublecheck the pixel color
+                bgr_values=screen.getpixel((x,y))
+                if bgr_values[1] == 19:
+                    x = x+1
+                    self.carryHP = i*1.42
+                    break
             if rgb_values[1] != 19:
                 x = x+1
         else:
