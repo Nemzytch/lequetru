@@ -387,8 +387,9 @@ class Personnage:
                 if self.carryHP<50:
                     print(' Mon adc a '+str(self.carryHP)+'%HP')
                     if time.time()> (self.healCooldown+240):
-                        pydirectinput.press('f')
-                        self.healCooldown = time.time()
+                        if self.datas["gameData"]["gameTime"] > 90:
+                            pydirectinput.press('f')
+                            self.healCooldown = time.time()
                     self.ultimateCast()
                     print('send R')
                     ennemy = pyautogui.locateOnScreen("images/1.png", grayscale=False,confidence=0.90)
