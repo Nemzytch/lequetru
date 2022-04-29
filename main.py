@@ -63,6 +63,7 @@ print('Number For Max Dudge With Singed is', NumberSinged)
 API_KEY= "key181wgNDrYM2bms"
 BASE_ID = "appHnr7cu8j1HlMC2"
 table = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'YUUMI')
+table2 = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'ADMIN')
 
 def restart():
     
@@ -75,6 +76,17 @@ def restart():
     print("restart now")
 
     os.execv(sys.executable, ['python'] + sys.argv)
+
+def Pause():
+    table2 = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'ADMIN')
+    for records in table2.all():
+        if records['fields']['PcName'] == socket.gethostname():
+            recordId = records['id']
+            #check status
+            if records['fields']['Status'] == 'Pause':
+                print('Pause')
+                time.sleep(60)
+                Pause()
 
 def fetchDatas():
     response = requests.get("https://127.0.0.1:2999/liveclientdata/allgamedata", verify = False).text
@@ -1166,9 +1178,6 @@ def statuscheck():
                 if records['fields']['IngameName'] == SummonerName:
                     recordId = records['id']
                     table.update(recordId, {"Unban": str(datetime.datetime.now())})
-
-            for _ in range(4):
-                PopUpClose()
             
             print('need to create lobby')
             r =request('post','/lol-lobby/v2/lobby',data={"queueId": 420})
@@ -1181,9 +1190,7 @@ def statuscheck():
             GG = pyautogui.locateOnScreen('images/GG.png', grayscale=False,confidence=0.90)
             #DudgeTimer = pyautogui.locateOnScreen("images/DudgeTimer.JPG", confidence=0.90)
             
-            PopUpClose()
-            PopUpClose()
-            PopUpClose()
+            Pause()
             
             print('need to pick lanes')
             r = request('put', '/lol-lobby/v2/lobby/members/localMember/position-preferences', data ={"firstPreference": "UTILITY","secondPreference":"MIDDLE",})
