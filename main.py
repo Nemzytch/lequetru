@@ -820,7 +820,7 @@ def Connexion():
     try:
         if Connexion!=None:
             
-            formula = match({"PcName": PcName})
+            formula = match({"PcName": PcName[:3]})
             Personnage.account = table.first(formula=formula, sort=["Unban"])['fields']['Account']
             password = table.first(formula=formula, sort=["Unban"])['fields']['Password']
             
