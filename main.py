@@ -219,7 +219,9 @@ class Personnage:
                 #Start of the game 
                 self.toplanerTimer = random.randint(900, 1300)
                 print('will go to toplaner at '+ str(self.toplanerTimer))
-                self.cameraLock()
+                # self.cameraLock()
+                pydirectinput.press('space')
+                time.sleep(0.5)
                 pydirectinput.press('p')
                 time.sleep(0.2)
                 pydirectinput.keyDown('ctrl')
@@ -818,7 +820,7 @@ def Connexion():
     try:
         if Connexion!=None:
             
-            formula = match({"PcName": PcName})
+            formula = match({"PcName": PcName[:3]})
             Personnage.account = table.first(formula=formula, sort=["Unban"])['fields']['Account']
             password = table.first(formula=formula, sort=["Unban"])['fields']['Password']
             
