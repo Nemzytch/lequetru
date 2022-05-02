@@ -7,6 +7,7 @@ import cv2
 import time
 import json
 import math
+from cv2 import phase
 import mouse 
 import socket
 import random
@@ -58,6 +59,8 @@ OneMinute= 900
 #Number Dudge Singed
 NumberSinged= 0
 print('Number For Max Dudge With Singed is', NumberSinged)
+# saved time
+saved_time = datetime.datetime.now()
 
 #Account Status Check
 API_KEY= "key181wgNDrYM2bms"
@@ -93,7 +96,7 @@ def Pause():
                 print("Pause :(")
                 time.sleep(10)
                 Pause()
-
+                       
 def fetchDatas():
     response = requests.get("https://127.0.0.1:2999/liveclientdata/allgamedata", verify = False).text
     return json.loads(response)
@@ -1092,8 +1095,23 @@ def statuscheck():
         print(Back.BLACK + Fore.GREEN + str(r.status_code) + Style.RESET_ALL, r.text)
 
         phase = r.json()
-                  
+        
+        def LastAction():
+            
+            global saved_time
+            current_time = datetime.datetime.now()
+            if (current_time - saved_time).seconds >= 2:
+                for records in table2.all():
+                    if records['fields']['PcName'] == socket.gethostname():
+                        recordId = records['id']
+                        now = datetime.datetime.now()
+                        table2.update(recordId, {"LastAction": phase})
+                        table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y") })
+                        saved_time = datetime.datetime.now()
+                    
         if phase =='PreEndOfGame':
+            LastAction()
+            
             okPreEndOfGame = pyautogui.locateOnScreen("images/okPreEndOfGame.png")
             pyautogui.click(900,500)
             if okPreEndOfGame !=None:
@@ -1104,6 +1122,7 @@ def statuscheck():
                 print('no SystemSettings.exe')
             
         if phase =='EndOfGame':
+            LastAction()
             
             global NumberGamesToPlay
             #get the summoner name
@@ -1184,6 +1203,7 @@ def statuscheck():
             time.sleep(10)
 
         if phase =='None':
+            LastAction()
             
             #AccountSuspended = pyautogui.locateOnScreen("images/AccountSuspended.png", confidence=0.90)
             
@@ -1212,7 +1232,9 @@ def statuscheck():
             print('need to create lobby')
             r =request('post','/lol-lobby/v2/lobby',data={"queueId": 420})
 
-        if phase =='Lobby':   
+        if phase =='Lobby': 
+            LastAction()
+              
             QueueLockout = pyautogui.locateOnScreen("images/QueueLockout.png", confidence=0.90)
             AtemptToJoin = pyautogui.locateOnScreen("images/AtemptToJoin.png", confidence=0.90)
             OKEND = pyautogui.locateOnScreen("images/OKEND.JPG", confidence=0.90)
@@ -1354,19 +1376,24 @@ def statuscheck():
             restart()
         
         if phase != 'ChampSelect':
+            LastAction()
             championIdx = 0
 
         # Auto accept match
         if phase == 'ReadyCheck':
+            
             r = request('post', '/lol-matchmaking/v1/ready-check/accept') 
 
         # Pick/lock champion
         elif phase == 'ChampSelect':
+            LastAction()
+            
             r = request('get', '/lol-champ-select/v1/session')
             if r.status_code != 200:
                 continue
             cs = r.json()
             if cs["timer"]["phase"] == "PLANNING":
+                
                 print('planning')
                 # print('Looking to prepick yuumi')
                 # SearchChamp = pyautogui.locateOnScreen("images/search.png", grayscale=False,confidence=0.90)
@@ -1381,6 +1408,7 @@ def statuscheck():
                 #     except:
                 #         print('No Yuumi detected')
             if cs["timer"]["phase"] == "BAN_PICK":
+                
                 global lastMessageChampSelect
                 print(" you are in ban/pick")
                 SummonerID = request('get', '/lol-summoner/v1/current-summoner').json()["summonerId"]
@@ -1550,6 +1578,8 @@ def statuscheck():
         #             print('Singed locked')
 
         elif phase == 'InProgress':
+            LastAction()
+            
             print('in progress')
             statuscheck()
         else:
