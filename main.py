@@ -1194,12 +1194,7 @@ def statuscheck():
                     recordId = records['id']
                     table.update(recordId, {"GamesToPlay": str(NumberGamesToPlay)})
             
-            for records in table2.all():
-                if records['fields']['PcName'] == socket.gethostname():
-                    recordId = records['id']
-                    #add 1 to the number of games played
-                    table2.update(recordId, {"GamePlayed": int(+1)})
-                    print('GamePlayed +1')
+
                     
             #Thanking Mates
             playAgain = pyautogui.locateOnScreen("images/playagian.JPG", confidence=0.90)
@@ -1234,6 +1229,14 @@ def statuscheck():
             time.sleep(10)
 
         if phase =='None':
+            
+            for records in table2.all():
+                if records['fields']['PcName'] == socket.gethostname():
+                    recordId = records['id']
+                    #add 1 to the number of games played
+                    table2.update(recordId, {"GamePlayed": int(records['fields']['GamePlayed'])+1})
+                    print('GamePlayed +1')
+                    
             LastAction()
             
             #AccountSuspended = pyautogui.locateOnScreen("images/AccountSuspended.png", confidence=0.90)
