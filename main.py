@@ -1135,9 +1135,9 @@ def statuscheck():
                 for records in table2.all():
                     if records['fields']['PcName'] == socket.gethostname():
                         recordId = records['id']
-                        now = datetime.datetime.now()
+                        now = datetime.datetime.now() - datetime.timedelta(hours=2)
                         table2.update(recordId, {"LastAction": phase})
-                        table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y") })
+                        table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y")})
                         saved_time = datetime.datetime.now()
                     
         if phase =='PreEndOfGame':
