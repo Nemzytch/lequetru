@@ -78,14 +78,20 @@ def restart():
     os.execv(sys.executable, ['python'] + sys.argv)
 
 def Pause():
-    table2 = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'ADMIN')
+
     for records in table2.all():
         if records['fields']['PcName'] == socket.gethostname():
             recordId = records['id']
-            #check status
-            if records['fields']['Status'] == 'Pause':
-                print('Pause')
-                time.sleep(60)
+            # print( records['fields']['Jouer'])
+            # list record fields
+            # for field in records['fields']:
+            #     print(field)
+            if "Status" in records['fields']:
+                print("Play")
+
+            else:
+                print("Pause :(")
+                time.sleep(10)
                 Pause()
 
 def fetchDatas():
