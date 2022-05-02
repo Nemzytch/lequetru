@@ -1100,7 +1100,7 @@ def statuscheck():
             
             global saved_time
             current_time = datetime.datetime.now()
-            if (current_time - saved_time).seconds >= 2:
+            if (current_time - saved_time).seconds >= 10:
                 for records in table2.all():
                     if records['fields']['PcName'] == socket.gethostname():
                         recordId = records['id']
