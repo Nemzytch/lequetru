@@ -861,6 +861,14 @@ def Connexion():
             pyautogui.moveTo(Connexion[0],Connexion[1]+650)
             time.sleep(0.1)
             MouseClick()
+            time.sleep(0.1)
+            
+            for records in table2.all():
+                if records['fields']['PcName'] == socket.gethostname():
+                    recordId = records['id']
+                    #add 1 to the number of games played
+                    table2.update(recordId, {"ConnectedOn": Personnage.account})
+            
             time.sleep(20)
         else:
             print('No connexion detected')
@@ -1117,6 +1125,12 @@ def statuscheck():
             NumberGamesToPlay =NumberGamesToPlay -1
             print(NumberGamesToPlay,'avec le -1')
             
+            # for records in table2.all():
+            #     if records['fields']['PcName'] == socket.gethostname():
+            #         recordId = records['id']
+            #         #add 1 to the number of games played
+            #         table2.update(recordId, {"GamePlayed": str(int(records['fields']['GamePlayed'])+1)})
+                    
             for records in table.all():
                 if records['fields']['IngameName'] == SummonerName:
                     recordId = records['id']
@@ -1155,6 +1169,14 @@ def statuscheck():
             time.sleep(10)
 
         if phase =='None':
+            
+            table2 = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'ADMIN')
+            for records in table2.all():
+                if records['fields']['PcName'] == socket.gethostname():
+                    recordId = records['id']
+                    #add 1 to the number of games played
+                    table2.update(recordId, {"GamePlayed": str(int(records['fields']['GamePlayed'])+1)})
+                    print('GamePlayed +1')
             #AccountSuspended = pyautogui.locateOnScreen("images/AccountSuspended.png", confidence=0.90)
             
             
