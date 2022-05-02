@@ -185,6 +185,13 @@ class Personnage:
             self.updateDatas()
             print("Loading Screen")
         print("Game just started")
+        for records in table2.all():
+            if records['fields']['PcName'] == socket.gethostname():
+                recordId = records['id']
+                now = datetime.datetime.now()
+                table2.update(recordId, {"LastAction": "InGame"})
+                table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y") })
+
         f = open('stuff.json',)
         self.stuff = json.load(f)
         f.close()
