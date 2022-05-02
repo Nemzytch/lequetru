@@ -61,6 +61,7 @@ NumberSinged= 0
 print('Number For Max Dudge With Singed is', NumberSinged)
 # saved time
 saved_time = datetime.datetime.now()
+Action = "Waiting"
 
 #Account Status Check
 API_KEY= "key181wgNDrYM2bms"
@@ -189,7 +190,7 @@ class Personnage:
             if records['fields']['PcName'] == socket.gethostname():
                 recordId = records['id']
                 now = datetime.datetime.now()
-                table2.update(recordId, {"LastAction": "InGame"})
+                table2.update(recordId, {"-Status-": "InGame"})
                 table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y") })
 
         f = open('stuff.json',)
@@ -385,6 +386,20 @@ class Personnage:
         self.datas = fetchDatas()
 
     def start(self):
+        
+        def LastAction():
+            
+            global saved_time
+            current_time = datetime.datetime.now()
+            if (current_time - saved_time).seconds >= 10:
+                for records in table2.all():
+                    if records['fields']['PcName'] == socket.gethostname():
+                        recordId = records['id']
+                        now = datetime.datetime.now()
+                        table2.update(recordId, {"LastAction": Action})
+                        table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y") })
+                        saved_time = datetime.datetime.now()
+                        
         while self.datas["gameData"]["gameTime"] < 3600:
             self.updateDatas()
             self.updatePerso()
@@ -412,6 +427,9 @@ class Personnage:
                     pyautogui.click(1861,603)                    
                     pydirectinput.press('w')  
                     print('goin to adc')
+                    #LastAction
+                    Action = "Going to adc"
+                    LastAction()
 
             if self.attached == True:
                 print('yuumi is attached')
@@ -421,6 +439,9 @@ class Personnage:
                     if time.time()> (self.healCooldown+240):
                         if self.datas["gameData"]["gameTime"] > 90:
                             pydirectinput.press('f')
+                            #LastAction
+                            Action = "Healing"
+                            LastAction()
                             self.healCooldown = time.time()
                     pyautogui.moveTo(self.ennemyPosition[0],self.ennemyPosition[1])
                     self.ultimateCast()
@@ -493,6 +514,9 @@ class Personnage:
                                 print('going back to base')  
             
                 if time.time()> (self.backCooldown+50):
+                    #LastAction
+                    Action = "Going back"
+                    LastAction()
                     pyautogui.moveTo(self.BaseX,self.BaseY)
                     print('adc is not alive')
                     time.sleep(0.2)
@@ -1112,7 +1136,7 @@ def statuscheck():
                     if records['fields']['PcName'] == socket.gethostname():
                         recordId = records['id']
                         now = datetime.datetime.now()
-                        table2.update(recordId, {"LastAction": phase})
+                        table2.update(recordId, {"-Status-": phase})
                         table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y") })
                         saved_time = datetime.datetime.now()
                     
