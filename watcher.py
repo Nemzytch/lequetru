@@ -6,15 +6,10 @@ import psutil
 
 for proc in psutil.process_iter():
     print(proc)
-    if proc.name() == "RiotClientUxRender.exe":
-        print("found riot client ux render.exe")
-    if proc.name() == "RiotClientUx.exe":
-        print("found riot client ux.exe")
-    if proc.name() == "RiotClient.exe":
-        print("found riot client.exe")
-    if proc.name() == "RiotClientCrashHandler.exe":
-        print("found riot client crash handler.exe")
-    
+    if "Riot" or "riot" in proc.name():
+        print("found " + proc.name())
+
+        
 
     #find league of legends , or riot games in process list
 
