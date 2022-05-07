@@ -97,7 +97,18 @@ def Pause():
                 print("Pause :(")
                 time.sleep(10)
                 Pause()
-                       
+                
+def ConfigSetup():
+    #Change permissions to be safe
+    for f in os.listdir("C:\Riot Games\League of Legends\Config"):
+        os.chmod(os.path.join("C:\Riot Games\League of Legends\Config", f), 0o777)
+        
+    #replace file in Our "Config" with file in LOL "Config"
+    for filename in os.listdir("Config"):
+        src = os.path.join("Config", filename)
+        dst = os.path.join("C:\Riot Games\League of Legends\Config", filename)
+        os.replace(src, dst)
+            
 def fetchDatas():
     response = requests.get("https://127.0.0.1:2999/liveclientdata/allgamedata", verify = False).text
     return json.loads(response)
@@ -1235,6 +1246,7 @@ def statuscheck():
 
         if phase =='None':
             LastAction()
+            ConfigSetup()
             
             #AccountSuspended = pyautogui.locateOnScreen("images/AccountSuspended.png", confidence=0.90)
             
