@@ -107,7 +107,9 @@ def ConfigSetup():
     for filename in os.listdir("Config"):
         src = os.path.join("Config", filename)
         dst = os.path.join("C:\Riot Games\League of Legends\Config", filename)
-        os.replace(src, dst)
+        os.replace(src, dst) 
+        
+    print('Config Set')
             
 def fetchDatas():
     response = requests.get("https://127.0.0.1:2999/liveclientdata/allgamedata", verify = False).text
