@@ -89,11 +89,11 @@ def checker():
                 table2.update(recordId, {'Crashed': 'Depuis ' +str(difference)+ ' minutes'})
                 print("Difference: " + str(difference))
                 print("PussyDestroyer is not needed")
+                time.sleep(60)
                 checker()
             else:
                 table2.update(recordId, {'Crashed': 'PussyDestroyer IS ON THE WAY'})
                 print("PussyDestroyer IS ON THE WAY")
                 PussyDestroyer()
-    time.sleep(60)
 
 checker()
