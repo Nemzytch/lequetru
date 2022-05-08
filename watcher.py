@@ -70,7 +70,6 @@ def PussyDestroyer():
 
 
 def checker():
-    time.sleep(60)
     for records in table2.all():
         if records['fields']['PcName'] == socket.gethostname():
             recordId = records['id']
@@ -93,5 +92,6 @@ def checker():
                 table2.update(recordId, {'Crashed': 'PussyDestroyer IS ON THE WAY'})
                 print("PussyDestroyer IS ON THE WAY")
                 PussyDestroyer()
+    time.sleep(60)
 
 checker()
