@@ -78,7 +78,7 @@ def checker():
             now = datetime.datetime.now()
             
             LastActionTime = str(records['fields']['LastActionTime'])
-
+            print("LastActionTime: " + LastActionTime)
             #Recuperation de l'heure et minutes de Lastactiontime
             LastActionTimeHour = int(LastActionTime[11:13])
             LastActionTimeMinute = int(LastActionTime[14:16])
@@ -93,6 +93,7 @@ def checker():
                 checker()
             else:
                 table2.update(recordId, {'Crashed': 'PussyDestroyer IS ON THE WAY'})
+                print("Difference: " + str(difference))
                 print("PussyDestroyer IS ON THE WAY")
                 PussyDestroyer()
 
