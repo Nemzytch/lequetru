@@ -61,7 +61,7 @@ def PussyDestroyer():
 
 
     #start cmd.exe and run the script "watch.py"
-    p = subprocess.Popen(["start", "cmd", "/k", "python start.py"], cwd=r'C:\Users\32487\Desktop\lequetru', shell = True)
+    p = subprocess.Popen(["start", "cmd", "/k", "python start.py"], cwd=r'C:\Users\Desktop\lequetru', shell = True)
 
     os.startfile("C:\\Riot Games\\League of Legends\\LeagueClient.exe")
     print("Starting League of Legends..")
