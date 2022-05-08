@@ -868,17 +868,17 @@ def Connexion():
     table = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'YUUMI')
             
     Play = pyautogui.locateOnScreen("images/Play.png", grayscale=False,confidence=0.90)    
-    Connexion = pyautogui.locateOnScreen("images/Connexion.png", grayscale=False,confidence=0.90)
+    Connexion_image = pyautogui.locateOnScreen("images/Connexion.png", grayscale=False,confidence=0.90)
     TermsOfServices = pyautogui.locateOnScreen("images/TermsOfServices.png", grayscale=False,confidence=0.90)
     try:
-        if Connexion!=None:
+        if Connexion_image!=None:
             
             formula = match({"PcName": PcName[:3]})
             Personnage.account = table.first(formula=formula, sort=["Unban"])['fields']['Account']
             password = table.first(formula=formula, sort=["Unban"])['fields']['Password']
             
             #LogDesired
-            pyautogui.moveTo(Connexion[0],Connexion[1]+80)
+            pyautogui.moveTo(Connexion_image[0],Connexion_image[1]+80)
             time.sleep(0.1)
             MouseClick()
             pyautogui.typewrite(Personnage.account, interval=0.10)
@@ -886,7 +886,7 @@ def Connexion():
             print('Log Write')
                 
             #PwdDesired
-            pyautogui.moveTo(Connexion[0],Connexion[1]+140)
+            pyautogui.moveTo(Connexion_image[0],Connexion_image[1]+140)
             time.sleep(0.1)
             MouseClick()
             # pyautogui.typewrite(password, interval=0.10)
@@ -907,13 +907,13 @@ def Connexion():
                 pyautogui.click(TermsOfServices[0],TermsOfServices[1]+600)
                 
             #Press connexion button
-            pyautogui.moveTo(Connexion[0]+60,Connexion[1]+520)
+            pyautogui.moveTo(Connexion_image[0]+60,Connexion_image[1]+520)
             time.sleep(0.1)
             MouseClick()
             time.sleep(6)
             
             #Press Play button
-            pyautogui.moveTo(Connexion[0],Connexion[1]+650)
+            pyautogui.moveTo(Connexion_image[0],Connexion_image[1]+650)
             time.sleep(0.1)
             MouseClick()
             time.sleep(0.1)
@@ -921,14 +921,21 @@ def Connexion():
             for records in table2.all():
                 if records['fields']['PcName'] == socket.gethostname():
                     recordId = records['id']
-                    #add 1 to the number of games played
                     table2.update(recordId, {"ConnectedOn": Personnage.account})
+                    #LastAction update
+                    now = datetime.datetime.now()
+                    table2.update(recordId, {"LastAction": 'Connexion'})
+                    table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y") })
             
             time.sleep(20)
         else:
-            print('No connexion detected')
+            print('No connexion detected, waiting 10 seconds')
+            time.sleep(10)
+            Connexion()
     except:
         print('No more accounts')
+        time.sleep(10)
+        Connexion()
                
 def PopUpClose():
     try:
