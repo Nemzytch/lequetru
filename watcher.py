@@ -83,7 +83,7 @@ def checker():
             LastActionTimeHour = int(LastActionTime[11:13])
             LastActionTimeMinute = int(LastActionTime[14:16])
             
-            if (now.hour - LastActionTimeHour) < 1 and (now.minute - LastActionTimeMinute) < 10:
+            if (now.hour - LastActionTimeHour) < 1 and (now.minute - LastActionTimeMinute) <= 10:
                 #difference between now and last action time
                 difference = (now.hour - LastActionTimeHour) * 60 + (now.minute - LastActionTimeMinute)
                 table2.update(recordId, {'Crashed': 'Depuis ' +str(difference)+ ' minutes'})
