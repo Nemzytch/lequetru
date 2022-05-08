@@ -83,8 +83,7 @@ def checker():
             LastActionTimeHour = int(LastActionTime[11:13])
             LastActionTimeMinute = int(LastActionTime[14:16])
             
-            if (now.hour - LastActionTimeHour) < 1 and (now.minute - LastActionTimeMinute) <= 10:
-                #difference between now and last action time
+            if (now.hour - LastActionTimeHour) < 1 and (now.minute - LastActionTimeMinute) <= 10 :
                 difference = (now.hour - LastActionTimeHour) * 60 + (now.minute - LastActionTimeMinute)
                 table2.update(recordId, {'Crashed': 'Depuis ' +str(difference)+ ' minutes'})
                 print("Difference: " + str(difference))
@@ -92,10 +91,18 @@ def checker():
                 time.sleep(60)
                 checker()
             else:
-                table2.update(recordId, {'Crashed': 'PussyDestroyer IS ON THE WAY'})
                 difference = (now.hour - LastActionTimeHour) * 60 + (now.minute - LastActionTimeMinute)
-                print("Difference: " + str(difference))
-                print("PussyDestroyer IS ON THE WAY")
-                PussyDestroyer()
+                if difference >= 119 and difference <= 130:
+                    table2.update(recordId, {'Crashed': 'Depuis ' +str(difference)+ ' minutes'})
+                    print("Difference: " + str(difference))
+                    print("PussyDestroyer is not needed")
+                    time.sleep(60)
+                    checker()
+                else:
+                    table2.update(recordId, {'Crashed': 'PussyDestroyer IS ON THE WAY'})
+                    difference = (now.hour - LastActionTimeHour) * 60 + (now.minute - LastActionTimeMinute)
+                    print("Difference: " + str(difference))
+                    print("PussyDestroyer IS ON THE WAY")
+                    PussyDestroyer()
 
 checker()
