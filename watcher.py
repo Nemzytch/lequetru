@@ -67,7 +67,7 @@ def PussyDestroyer():
 
     os.startfile("C:\\Riot Games\\League of Legends\\LeagueClient.exe")
     print("Starting League of Legends..")
-    time.sleep(125)
+    time.sleep(65)
     checker()
 
 
