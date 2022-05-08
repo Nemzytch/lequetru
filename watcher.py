@@ -93,6 +93,7 @@ def checker():
                 checker()
             else:
                 table2.update(recordId, {'Crashed': 'PussyDestroyer IS ON THE WAY'})
+                difference = (now.hour - LastActionTimeHour) * 60 + (now.minute - LastActionTimeMinute)
                 print("Difference: " + str(difference))
                 print("PussyDestroyer IS ON THE WAY")
                 PussyDestroyer()
