@@ -1173,7 +1173,7 @@ def statuscheck():
                 print('no SystemSettings.exe')
             
         if phase =='EndOfGame':
-            LastAction()
+            #LastAction()
             
             global NumberGamesToPlay
             #get the summoner name
