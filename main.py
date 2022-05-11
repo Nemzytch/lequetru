@@ -41,8 +41,6 @@ from requests.packages.urllib3.exceptions import InsecureRequestWarning
 import subprocess
 import pyperclip
 
-
-
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
@@ -50,6 +48,8 @@ gamedirs = [r'C:\Games\Garena\32787\LeagueClient',
             r'D:\Games\League of Legends']
 os.system("")
 lastMessageChampSelect = datetime.datetime.now() - datetime.timedelta(minutes=4)
+
+time.sleep(5)
 
 #NuberGamesToPlay
 NumberGamesToPlay = random.randint(10, 15)
@@ -68,6 +68,7 @@ API_KEY= "key181wgNDrYM2bms"
 BASE_ID = "appHnr7cu8j1HlMC2"
 table = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'YUUMI')
 table2 = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'ADMIN')
+
 
 def restart():
     
