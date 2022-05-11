@@ -83,20 +83,39 @@ def checker():
             LastActionTimeHour = int(LastActionTime[11:13])
             LastActionTimeMinute = int(LastActionTime[14:16])
             
+            #LastGameRun
+            LastGameRun = str(records['fields']['LastGameRun'])
+            print("LastGameRun: " + LastGameRun)
+            #Recuperation de l'heure et minutes de LastGameRun
+            LastGameRunHour = int(LastGameRun[11:13])
+            LastGameRunMinute = int(LastGameRun[14:16])
+            
             if (now.hour - LastActionTimeHour) < 1 and (now.minute - LastActionTimeMinute) <= 10 :
                 difference = (now.hour - LastActionTimeHour) * 60 + (now.minute - LastActionTimeMinute)
                 table2.update(recordId, {'Crashed': 'Depuis ' +str(difference)+ ' minutes'})
                 print("Difference: " + str(difference))
                 print("PussyDestroyer is not needed")
-                time.sleep(60)
+                time.sleep(30)
+                checker()
+            if (now.hour - LastGameRunHour) < 1 and (now.minute - LastGameRunMinute) <= 70 :
+                difference2 = (now.hour - LastGameRunHour) * 60 + (now.minute - LastGameRunMinute)
+                print("Difference2: " + str(difference2))
+                print("PussyDestroyer is not needed")
+                time.sleep(30)
                 checker()
             else:
                 difference = (now.hour - LastActionTimeHour) * 60 + (now.minute - LastActionTimeMinute)
+                difference2 = (now.hour - LastGameRunHour) * 60 + (now.minute - LastGameRunMinute)
                 if difference >= 119 and difference <= 130:
                     table2.update(recordId, {'Crashed': 'Depuis ' +str(difference)+ ' minutes'})
                     print("Difference: " + str(difference))
                     print("PussyDestroyer is not needed")
-                    time.sleep(60)
+                    time.sleep(30)
+                    checker()
+                if difference2 >= 119 and difference2 <= 190:
+                    print("Difference2: " + str(difference2))
+                    print("PussyDestroyer is not needed")
+                    time.sleep(30)
                     checker()
                 else:
                     table2.update(recordId, {'Crashed': 'PussyDestroyer IS ON THE WAY'})

@@ -1631,6 +1631,12 @@ def statuscheck():
         #             print('Singed locked')
 
         elif phase == 'InProgress':
+            for records in table2.all():
+                if records['fields']['PcName'] == socket.gethostname():
+                    recordId = records['id']
+                    #LastGameRun update
+                    now = datetime.datetime.now()
+                    table2.update(recordId, {"LastGameRun": now.strftime("%H:%M %m-%d-%Y") })
             LastAction()
             
             print('in progress')
