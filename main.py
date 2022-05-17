@@ -49,8 +49,6 @@ gamedirs = [r'C:\Games\Garena\32787\LeagueClient',
 os.system("")
 lastMessageChampSelect = datetime.datetime.now() - datetime.timedelta(minutes=4)
 
-time.sleep(10)
-
 #NuberGamesToPlay
 NumberGamesToPlay = random.randint(10, 15)
 print(NumberGamesToPlay)
