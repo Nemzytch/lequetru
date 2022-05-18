@@ -17,7 +17,6 @@ import win32api
 import win32con
 import keyboard
 import requests
-import termcolor
 import pyautogui
 import pyscreeze
 import pytesseract
@@ -85,10 +84,6 @@ def Pause():
     for records in table2.all():
         if records['fields']['PcName'] == socket.gethostname():
             recordId = records['id']
-            # print( records['fields']['Jouer'])
-            # list record fields
-            # for field in records['fields']:
-            #     print(field)
             if "Status" in records['fields']:
                 print("Play")
 
@@ -212,28 +207,6 @@ class Personnage:
         i=0
         
         for x in self.datas["allPlayers"]:
-            # if x["championName"] == "Singed":
-            #     self.yuumiState = self.datas["activePlayer"]
-            #     self.WName = self.yuumiState["abilities"]["W"]["displayName"]
-            #     if self.WName == "Mega Adhesive":
-            #         print('fling')
-            #         global NumberSinged
-            #         print('Going to dudge')
-            #         time.sleep(5)
-            #         pyautogui.moveTo(1000,500)
-            #         time.sleep(1)
-            #         MouseClick()
-            #         time.sleep(1)
-            #         pydirectinput.press('enter')
-            #         time.sleep(0.2)
-            #         pyautogui.write('Sorry guys need to go, pls dudge at 3min', interval=0.15)
-            #         time.sleep(0.2)
-            #         pydirectinput.press('enter')
-            #         time.sleep(8)
-            #         os.system('taskkill /f /im "League of Legends.exe"')
-            #         time.sleep(0.2)
-            #         NumberSinged=NumberSinged-1
-            #         print('Number For Max Dudge With Singed Now is', NumberSinged)
                 
             if x["championName"] == "Yuumi":
                 print('Found it in the '+str(i)+" th index")
@@ -276,8 +249,7 @@ class Personnage:
                 time.sleep(0.2)
                 pydirectinput.press('enter')
                 
-                # if gameTime > self.toplanerTimer:
-                #     self.adcIndex = i-4
+
                 self.passiveCooldown = time.time()
                 
                 if team ==1:
@@ -700,17 +672,12 @@ class Personnage:
             OneMinute=OneMinute+20
             print(OneMinute)
             try:
-                #pyautogui.moveTo(Surrend[0],Surrend[1]+77)
-                #time.sleep(0.1)
                 if Surrend != None:
                     pydirectinput.press('enter')
                     time.sleep(0.1)
                     pyautogui.write('/ff')
                     time.sleep(0.1)
                     pydirectinput.press('enter')
-                    #time.sleep(0.5)
-                    #MouseClick()
-                    #time.sleep(0.1)
                     print('I am surrending')
             except :
                 print('No surrend detected')
@@ -1198,15 +1165,9 @@ def statuscheck():
                 
             print('thanking the mates and going next')
             
-            #NumberGamesToPlay -1 + Integrations
+
             NumberGamesToPlay =NumberGamesToPlay -1
             print(NumberGamesToPlay,'avec le -1')
-            
-            # for records in table2.all():
-            #     if records['fields']['PcName'] == socket.gethostname():
-            #         recordId = records['id']
-            #         #add 1 to the number of games played
-            #         table2.update(recordId, {"GamePlayed": str(int(records['fields']['GamePlayed'])+1)})
             
             for records in table.all():
                 if records['fields']['IngameName'] == SummonerName:
@@ -1255,16 +1216,6 @@ def statuscheck():
         if phase =='None':
             LastAction()
             ConfigSetup()
-            
-            #AccountSuspended = pyautogui.locateOnScreen("images/AccountSuspended.png", confidence=0.90)
-            
-            
-            #Banned Account 
-            #if AccountSuspended != None:
-            #    for records in table.all():
-            #        if records['fields']['IngameName'] == SummonerName:
-            #            recordId = records['id']
-            #            table.update(recordId, {"FinishedAcc": "子供は死んでいます"})
             
             time.sleep(3)
             
@@ -1446,18 +1397,7 @@ def statuscheck():
             if cs["timer"]["phase"] == "PLANNING":
                 
                 print('planning')
-                # print('Looking to prepick yuumi')
-                # SearchChamp = pyautogui.locateOnScreen("images/search.png", grayscale=False,confidence=0.90)
-                # if SearchChamp != None:
-                #     pyautogui.click(SearchChamp[0],SearchChamp[1])
-                #     print("I am going to search Yuumi")
-                #     pyautogui.write('Yuumi', interval=0.25)
-                #     Yuumy = pyautogui.locateOnScreen("images/FaceDeYuumi.png", grayscale=False,confidence=0.90)
-                #     try:
-                #         if Yuumy[0] != None:
-                #             pyautogui.click(Yuumy[0],Yuumy[1])
-                #     except:
-                #         print('No Yuumi detected')
+
             if cs["timer"]["phase"] == "BAN_PICK":
                 
                 global lastMessageChampSelect
@@ -1542,91 +1482,6 @@ def statuscheck():
                                         print("you finished action "+_["type"])          
             
 
-            
-        #     r = request('get', '/lol-champ-select/v1/session')
-        #     if r.status_code != 200:
-        #         continue
-
-        #     cs = r.json()
-        #     if cs["timer"]["phase"] == "PLANNING":
-        #         print('Looking to prepick yuumi')
-        #         SearchChamp = pyautogui.locateOnScreen("images/search.png", grayscale=False,confidence=0.90)
-        #         try:
-        #             if SearchChamp != None:
-        #                 pyautogui.click(SearchChamp[0],SearchChamp[1])
-        #                 print("I am going to search Yuumi")
-        #                 pyautogui.write('Yuumi', interval=0.25)
-        #                 Yuumy = pyautogui.locateOnScreen("images/FaceDeYuumi.png", grayscale=False,confidence=0.90)
-        #         except:
-        #             print('')
-        #         try:
-        #             if Yuumy[0] != None:
-        #                 pyautogui.click(Yuumy[0],Yuumy[1])
-        #         except:
-        #             print('No Yuumi detected')
-
-        #     banchamp= pyautogui.locateOnScreen("images/banchamp.jpg", grayscale=False,confidence=0.90)
-        #     PhaseDeBan = pyautogui.locateOnScreen("images/PhaseDeBan.png", grayscale=False,confidence=0.90)
-        #     try:
-        #         if PhaseDeBan != None:
-        #             print("Time to ban some champs")
-        #             SearchChamp = pyautogui.locateOnScreen("images/search.png", grayscale=False,confidence=0.90)
-        #             pyautogui.click(SearchChamp[0],SearchChamp[1])
-        #             pyautogui.write('Alistar', interval=0.25)
-        #             Alistar = pyautogui.locateOnScreen("images/FaceDeAlistar.png", grayscale=False,confidence=0.90)
-        #             Bannissement = pyautogui.locateOnScreen("images/Bannissement.jpg", grayscale=False,confidence=0.70)
-        #             Ghost= pyautogui.locateOnScreen("images/Ghost.png", grayscale=False,confidence=0.70)
-                        
-        #             if Alistar != None:
-        #                 pyautogui.click(Alistar[0],Alistar[1])
-        #                 sleep(3)
-        #                 if Bannissement != None:
-        #                     pyautogui.click(Bannissement[0],Bannissement[1])
-        #                 else: 
-        #                     print("cant find ban button")
-                    
-        #                 if Ghost != None:
-        #                     print("I am going to switch Summoners and Runes")
-        #                     #summoner change
-        #                     pyautogui.click(Ghost[0],Ghost[1])
-        #                     time.sleep(0.5)
-        #                     pyautogui.click(Ghost[0]-50,Ghost[1]-140)
-        #                     time.sleep(0.5)
-        #                     pyautogui.click(Ghost[0]+60,Ghost[1])
-        #                     time.sleep(0.5)
-        #                     pyautogui.click(Ghost[0]+120,Ghost[1]-140)
-        #                     #rune change
-        #                     time.sleep(0.5)
-        #                     pyautogui.click(Ghost[0]-120,Ghost[1])
-        #                     time.sleep(0.5)
-        #                     pyautogui.click(Ghost[0]-120,Ghost[1]-140)
-        #     except:
-        #         print("No Alistar detected")
-                        
-                
-
-        #     Lockin = pyautogui.locateOnScreen("images/Lockin.jpg", grayscale=False,confidence=0.99)
-        #     Singed = pyautogui.locateOnScreen("images/FaceDeSinged.jpg", grayscale=False,confidence=0.90)
-        #     LockinOff = pyautogui.locateOnScreen("images/LockinOff.jpg", grayscale=False,confidence=0.90)
-                
-        #     if Lockin != None:
-        #         pyautogui.click(Lockin[0],Lockin[1])
-        #         print("Champion Lock bro!")
-                    
-        #     if LockinOff != None:
-        #         SearchChamp = pyautogui.locateOnScreen("images/search.png", grayscale=False,confidence=0.90)
-        #         try:
-        #             print('Pick another champ for dudge')
-        #             pyautogui.click(SearchChamp[0],SearchChamp[1])
-        #             pyautogui.write('Singed', interval=0.25)
-        #             print('Singed Found')
-        #         except TypeError:
-        #             print('failed to search')
-                        
-        #     if NumberSinged > 0:
-        #         if Singed != None:
-        #             pyautogui.click(Singed[0],Singed[1])
-        #             print('Singed locked')
 
         elif phase == 'InProgress':
             for records in table2.all():
