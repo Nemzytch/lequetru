@@ -1247,6 +1247,7 @@ def statuscheck():
             r = request('post', '/lol-lobby/v2/lobby/matchmaking/search')
             sleep(2)
             r = request('get', '/lol-matchmaking/v1/search')
+            print("modified")
             print(r.json())
             sleep(5)
             
