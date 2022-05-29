@@ -455,8 +455,10 @@ class Personnage:
                     print('send R')
                     ennemy = pyautogui.locateOnScreen("images/1.png", grayscale=False,confidence=0.90)
                     if ennemy!=None:
-                        pyautogui.moveTo(ennemy[0]+40,ennemy[1]+100)
-                        pydirectinput.press('d')
+                        if ennemy[0]+40 >0 and ennemy[0]+40<1920:
+                            if ennemy[1]+100 >0 and ennemy[1]+100<1080:
+                                pyautogui.moveTo(ennemy[0]+40,ennemy[1]+100)
+                                pydirectinput.press('d')
                     self.manacheckE()
                     print('Healed ADC')
                 if self.carryHP<85:
@@ -649,8 +651,9 @@ class Personnage:
             try:
                 ennemy = pyautogui.locateOnScreen("images/1.png", confidence=0.95)
                 time.sleep(0.3)
-                pyautogui.moveTo(ennemy[0]+40,ennemy[1]+70)
-                print('hello')
+                if ennemy[0]+40 >0 and ennemy[0]+40<1920:
+                    if ennemy[1]+70 >0 and ennemy[1]+100<1080:
+                        pyautogui.moveTo(ennemy[0]+40,ennemy[1]+70)
             except TypeError:
                 print('failed q spell')
 
