@@ -1246,7 +1246,7 @@ def statuscheck():
             sleep(2)
             r = request('post', '/lol-lobby/v2/lobby/matchmaking/search')
             sleep(2)
-            r = request('get', '/lol-matchmaking/v1/search/status')
+            r = request('get', '/lol-matchmaking/v1/search')
             print(r.json())
             sleep(5)
             
