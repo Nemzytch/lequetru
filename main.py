@@ -1232,7 +1232,7 @@ def statuscheck():
         if phase =='Lobby': 
             LastAction()
               
-            QueueLockout = pyautogui.locateOnScreen("images/QueueLockout.png", confidence=0.90)
+            QueueLockout = None
             AtemptToJoin = pyautogui.locateOnScreen("images/AtemptToJoin.png", confidence=0.90)
             OKEND = pyautogui.locateOnScreen("images/OKEND.JPG", confidence=0.90)
             IUnderstand = pyautogui.locateOnScreen("images/IUnderstand.JPG", confidence=0.70)
@@ -1249,9 +1249,16 @@ def statuscheck():
             r = request('get', '/lol-matchmaking/v1/search')
             print(r.json())
             errors = r.json()["errors"]
-            print(errors)
-            for error in errors:
-                print(error["penaltyTimeRemaining"])
+            if errors == []:
+                print(errors)
+                for error in errors:
+                    print(error["penaltyTimeRemaining"])
+                    if error["penaltyTimeRemaining"] > 900:
+                        QueueLockout = True
+                        print('QueueLockout')
+                        lockoutTime = error["penaltyTimeRemaining"]
+                        
+
             sleep(5)
             
             try:
@@ -1282,49 +1289,49 @@ def statuscheck():
             try:
                 if QueueLockout != None:
                     
-                    pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract'
+                    # pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract'
                     SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
-                    QueueLockout = pyautogui.locateOnScreen('images/QueueLockout.png')
+                    # QueueLockout = pyautogui.locateOnScreen('images/QueueLockout.png')
 
-                    while(True):
+                    # while(True):
                         
-                        cord = (QueueLockout[0]+125, QueueLockout[1]+62, QueueLockout[0]+230, QueueLockout[1]+120)
-                        cap = ImageGrab.grab(bbox =(cord))
+                    #     cord = (QueueLockout[0]+125, QueueLockout[1]+62, QueueLockout[0]+230, QueueLockout[1]+120)
+                    #     cap = ImageGrab.grab(bbox =(cord))
 
-                        BanTime = pytesseract.image_to_string(
-                                cv2.cvtColor(nm.array(cap), cv2.COLOR_BGR2GRAY), 
-                                lang ='eng')
+                    #     BanTime = pytesseract.image_to_string(
+                    #             cv2.cvtColor(nm.array(cap), cv2.COLOR_BGR2GRAY), 
+                    #             lang ='eng')
                         
-                        numbers = re.findall(r'\d+', BanTime)
+                    #     numbers = re.findall(r'\d+', BanTime)
                         
-                        Seconde = 0
-                        Minutes = 0
-                        Hours = 0
-                        Day = 0
+                    #     Seconde = 0
+                    #     Minutes = 0
+                    #     Hours = 0
+                    #     Day = 0
                         
-                        try:
-                            Seconde = numbers[-1]
-                            Minutes = numbers[-2]
-                            Hours = numbers[-3]
-                            Day = numbers[-4]
-                        except:
-                            pass
+                    #     try:
+                    #         Seconde = numbers[-1]
+                    #         Minutes = numbers[-2]
+                    #         Hours = numbers[-3]
+                    #         Day = numbers[-4]
+                    #     except:
+                    #         pass
                         
-                        time_change = datetime. timedelta(days=int(Day), hours=int(Hours), minutes=int(Minutes), seconds=int(Seconde))
-                        
-                        for records in table.all():
-                            if records['fields']['IngameName'] == SummonerName:
-                                recordId = records['id']
-                                table.update(recordId, {"Unban": str(datetime.datetime.now()+time_change)})
+                    time_change = datetime. timedelta(seconds=int(lockoutTime))
+                    
+                    for records in table.all():
+                        if records['fields']['IngameName'] == SummonerName:
+                            recordId = records['id']
+                            table.update(recordId, {"Unban": str(datetime.datetime.now()+time_change)})
+                            
                                 
-                                    
-                        pyautogui.click(OKEND)
-                        time.sleep(1)
-                        pyautogui.click(OKEND)
-                        time.sleep(1)
-                        pyautogui.click(OKEND)
-                        time.sleep(1)
-                        SignOutt()
+                    pyautogui.click(OKEND)
+                    time.sleep(1)
+                    pyautogui.click(OKEND)
+                    time.sleep(1)
+                    pyautogui.click(OKEND)
+                    time.sleep(1)
+                    SignOutt()
                 else:
                     print('No QueueLockout detected')
                 
