@@ -1247,9 +1247,9 @@ def statuscheck():
             r = request('post', '/lol-lobby/v2/lobby/matchmaking/search')
             sleep(2)
             r = request('get', '/lol-matchmaking/v1/search')
-            print(r.json())
+            # print(r.json())
             errors = r.json()["errors"]
-            if errors == []:
+            if errors != []:
                 print(errors)
                 for error in errors:
                     print(error["penaltyTimeRemaining"])
@@ -1261,30 +1261,30 @@ def statuscheck():
 
             sleep(5)
             
-            try:
-                Alarme = pyautogui.locateOnScreen("images/Alarme.png", confidence=0.80)
-                if Alarme != None:
-                    print('New Account Detected, going to pick some champs')
-                    Store()
-                IAgree = pyautogui.locateOnScreen("images/IAgree.JPG", grayscale=False,confidence=0.90)
-                if IAgree != None:
-                    print('I Agree')
-                    pyautogui.click(IAgree[0]+80,IAgree[1]-20)
-                    pyautogui.write('I Agree', interval=0.25)
-                    time.sleep(2)
-                    OKEND = pyautogui.locateOnScreen("images/OKEND.JPG", confidence=0.90)
-                    pyautogui.click(OKEND)
-                if IUnderstand != None:
-                    print('I Understand')
-                    pyautogui.click(IUnderstand)
-                if GG != None:
-                    print('GG')
-                    pyautogui.click(GG)
-                if OKEND != None:
-                    print('OKEND')
-                    pyautogui.click(OKEND)
-            except: 
-                print('No I Agree')
+            # try:
+            #     Alarme = pyautogui.locateOnScreen("images/Alarme.png", confidence=0.80)
+            #     if Alarme != None:
+            #         print('New Account Detected, going to pick some champs')
+            #         Store()
+            #     IAgree = pyautogui.locateOnScreen("images/IAgree.JPG", grayscale=False,confidence=0.90)
+            #     if IAgree != None:
+            #         print('I Agree')
+            #         pyautogui.click(IAgree[0]+80,IAgree[1]-20)
+            #         pyautogui.write('I Agree', interval=0.25)
+            #         time.sleep(2)
+            #         OKEND = pyautogui.locateOnScreen("images/OKEND.JPG", confidence=0.90)
+            #         pyautogui.click(OKEND)
+            #     if IUnderstand != None:
+            #         print('I Understand')
+            #         pyautogui.click(IUnderstand)
+            #     if GG != None:
+            #         print('GG')
+            #         pyautogui.click(GG)
+            #     if OKEND != None:
+            #         print('OKEND')
+            #         pyautogui.click(OKEND)
+            # except: 
+            #     print('No I Agree')
                 
             try:
                 if QueueLockout != None:
