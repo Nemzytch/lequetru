@@ -1166,6 +1166,7 @@ def statuscheck():
             #get the summoner name
             SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
             time.sleep(2)
+            print("sending play again")
             r = request('post', '/lol-lobby/v2/play-again')
             
             
