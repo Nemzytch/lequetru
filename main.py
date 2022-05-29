@@ -1105,7 +1105,6 @@ def statuscheck():
     # # Main worker loop
     while True:
         r = request('get', '/lol-gameflow/v1/gameflow-phase')
-
         if r.status_code != 200:
             print(Back.BLACK + Fore.RED + str(r.status_code) + Style.RESET_ALL, r.text)
             continue
@@ -1114,7 +1113,6 @@ def statuscheck():
         phase = r.json()
         
         def LastAction():
-            
             global saved_time
             current_time = datetime.datetime.now()
             if (current_time - saved_time).seconds >= 10:
@@ -1207,9 +1205,6 @@ def statuscheck():
                 table.update(recordId,{"PcName":  socket.gethostname()+" STOP"})
                 SignOutt()
                 
-            if NumberGamesToPlay == 0:
-                print('No more game to play, bye')
-                SignOutt()
             
             time.sleep(10)
 
@@ -1250,6 +1245,10 @@ def statuscheck():
             r = request('put', '/lol-lobby/v2/lobby/members/localMember/position-preferences', data ={"firstPreference": "UTILITY","secondPreference":"MIDDLE",})
             sleep(2)
             r = request('post', '/lol-lobby/v2/lobby/matchmaking/search')
+            sleep(2)
+            r = request('get', '/lol-lobby/v2/lobby/matchmaking/search')
+            print(r.json())
+            sleep(5)
             
             try:
                 Alarme = pyautogui.locateOnScreen("images/Alarme.png", confidence=0.80)
@@ -1381,7 +1380,6 @@ def statuscheck():
             LastAction()
             championIdx = 0
 
-        # Auto accept match
         if phase == 'ReadyCheck':
             
             r = request('post', '/lol-matchmaking/v1/ready-check/accept') 
