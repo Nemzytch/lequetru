@@ -1171,8 +1171,6 @@ def statuscheck():
             
             
             try:
-                os.system('taskkill /f /im "SystemSettings.exe"')
-            
                 OKEND2 = pyautogui.locateOnScreen("images/ok.JPG", confidence=0.90)
                 pyautogui.click(OKEND2)                
                 OKEND = pyautogui.locateOnScreen("images/OKEND.JPG", confidence=0.90)
@@ -1205,7 +1203,6 @@ def statuscheck():
                     table2.update(recordId, {"GamePlayed": int(records['fields']['GamePlayed'])+1})
                     print('GamePlayed +1')
                     
-            #Thanking Mates
             
             puuid = request('get', '/lol-summoner/v1/current-summoner').json()['puuid']
 
@@ -1237,21 +1234,24 @@ def statuscheck():
             ConfigSetup()
             
             time.sleep(3)
-            
-            SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
-            
-            for records in table.all():
-                if records['fields']['Account'] == Personnage.account:
-                    recordId = records['id']
-                    table.update(recordId, {"IngameName": SummonerName})
-                    
-            for records in table.all():
-                if records['fields']['IngameName'] == SummonerName:
-                    recordId = records['id']
-                    table.update(recordId, {"Unban": str(datetime.datetime.now())})
-            
-            print('need to create lobby')
-            r =request('post','/lol-lobby/v2/lobby',data={"queueId": 420})
+            SummonerName = None
+            try:
+                SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
+                
+                for records in table.all():
+                    if records['fields']['Account'] == Personnage.account:
+                        recordId = records['id']
+                        table.update(recordId, {"IngameName": SummonerName})
+                        
+                for records in table.all():
+                    if records['fields']['IngameName'] == SummonerName:
+                        recordId = records['id']
+                        table.update(recordId, {"Unban": str(datetime.datetime.now())})
+                
+                print('need to create lobby')
+                r =request('post','/lol-lobby/v2/lobby',data={"queueId": 420})
+            except:
+                print("no summoner name, account already logged out")
 
         if phase =='Lobby': 
             LastAction()
@@ -1283,7 +1283,7 @@ def statuscheck():
                         lockoutTime = error["penaltyTimeRemaining"]
                         
 
-            sleep(5)
+            sleep(2)
             
             # try:
             #     Alarme = pyautogui.locateOnScreen("images/Alarme.png", confidence=0.80)
@@ -1481,7 +1481,6 @@ def statuscheck():
                                             
                                     else : 
                                         print("you finished action "+_["type"])          
-            
 
 
         elif phase == 'InProgress':
