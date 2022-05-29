@@ -39,6 +39,7 @@ from requests.packages.urllib3.util.retry import Retry
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 import subprocess
 import pyperclip
+import psutil
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
@@ -67,6 +68,8 @@ table = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'YUUMI')
 table2 = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'ADMIN')
 
 
+
+
 def restart():
     
     subprocess.call(["git", "reset", "--hard", "HEAD"])
@@ -78,6 +81,26 @@ def restart():
     print("restart now")
 
     os.execv(sys.executable, ['python'] + sys.argv)
+
+def PussyDestroyer():
+    
+    procList = []
+
+    for proc in psutil.process_iter():
+        if "Riot" in proc.name():
+            procList.append(proc.name())
+    for proc in psutil.process_iter():
+        if "League" in proc.name():
+            procList.append(proc.name())
+            
+    for _ in procList:
+        subprocess.call(["taskkill", "/F", "/IM", _])
+        time.sleep(0.1)
+    time.sleep(3)
+    os.startfile("C:\\Riot Games\\League of Legends\\LeagueClient.exe")
+    print("Starting League of Legends..")
+    time.sleep(40)
+    restart()
 
 def Pause():
 
@@ -1253,7 +1276,7 @@ def statuscheck():
                 print(errors)
                 for error in errors:
                     print(error["penaltyTimeRemaining"])
-                    if error["penaltyTimeRemaining"] > 900:
+                    if error["penaltyTimeRemaining"] > 901:
                         QueueLockout = True
                         print('QueueLockout')
                         lockoutTime = error["penaltyTimeRemaining"]
@@ -1289,51 +1312,21 @@ def statuscheck():
             try:
                 if QueueLockout != None:
                     
-                    # pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract'
-                    SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
-                    # QueueLockout = pyautogui.locateOnScreen('images/QueueLockout.png')
-
-                    # while(True):
-                        
-                    #     cord = (QueueLockout[0]+125, QueueLockout[1]+62, QueueLockout[0]+230, QueueLockout[1]+120)
-                    #     cap = ImageGrab.grab(bbox =(cord))
-
-                    #     BanTime = pytesseract.image_to_string(
-                    #             cv2.cvtColor(nm.array(cap), cv2.COLOR_BGR2GRAY), 
-                    #             lang ='eng')
-                        
-                    #     numbers = re.findall(r'\d+', BanTime)
-                        
-                    #     Seconde = 0
-                    #     Minutes = 0
-                    #     Hours = 0
-                    #     Day = 0
-                        
-                    #     try:
-                    #         Seconde = numbers[-1]
-                    #         Minutes = numbers[-2]
-                    #         Hours = numbers[-3]
-                    #         Day = numbers[-4]
-                    #     except:
-                    #         pass
-                        
+                    SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]                   
                     time_change = datetime. timedelta(seconds=int(lockoutTime))
                     
                     for records in table.all():
                         if records['fields']['IngameName'] == SummonerName:
                             recordId = records['id']
                             table.update(recordId, {"Unban": str(datetime.datetime.now()+time_change)})
-                            
-                                
-                    pyautogui.click(OKEND)
-                    time.sleep(1)
-                    pyautogui.click(OKEND)
-                    time.sleep(1)
-                    pyautogui.click(OKEND)
-                    time.sleep(1)
-                    SignOutt()
+                    
+                    print("Starting Pussy Destroyer")
+                    sleep(2)
+                    PussyDestroyer()    
+
                 else:
                     print('No QueueLockout detected')
+                    QueueLockout = None
                 
                 if AtemptToJoin != None:
                     
@@ -1389,13 +1382,11 @@ def statuscheck():
         
         if phase != 'ChampSelect':
             LastAction()
-            championIdx = 0
 
         if phase == 'ReadyCheck':
             
             r = request('post', '/lol-matchmaking/v1/ready-check/accept') 
 
-        # Pick/lock champion
         elif phase == 'ChampSelect':
             LastAction()
             
