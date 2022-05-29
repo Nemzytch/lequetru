@@ -1166,6 +1166,8 @@ def statuscheck():
             #get the summoner name
             SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
             time.sleep(2)
+            r = request('post', '/lol-lobby/v2/play-again')
+            
             
             try:
                 os.system('taskkill /f /im "SystemSettings.exe"')
