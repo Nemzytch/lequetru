@@ -1172,7 +1172,7 @@ def statuscheck():
             
             try:
                 os.system('taskkill /f /im "SystemSettings.exe"')
-                PopUpClose()
+            
                 OKEND2 = pyautogui.locateOnScreen("images/ok.JPG", confidence=0.90)
                 pyautogui.click(OKEND2)                
                 OKEND = pyautogui.locateOnScreen("images/OKEND.JPG", confidence=0.90)
