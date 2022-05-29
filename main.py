@@ -1252,6 +1252,8 @@ def statuscheck():
                 r =request('post','/lol-lobby/v2/lobby',data={"queueId": 420})
             except:
                 print("no summoner name, account already logged out")
+                print("we send the magical pussy destroyer")
+                PussyDestroyer()
 
         if phase =='Lobby': 
             LastAction()
