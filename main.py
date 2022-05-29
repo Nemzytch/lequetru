@@ -1206,8 +1206,6 @@ def statuscheck():
                     print('GamePlayed +1')
                     
             #Thanking Mates
-            playAgain = pyautogui.locateOnScreen("images/playagian.JPG", confidence=0.90)
-            pyautogui.click(playAgain)
             
             puuid = request('get', '/lol-summoner/v1/current-summoner').json()['puuid']
 
@@ -1232,7 +1230,7 @@ def statuscheck():
                 SignOutt()
                 
             
-            time.sleep(10)
+            time.sleep(2)
 
         if phase =='None':
             LastAction()
