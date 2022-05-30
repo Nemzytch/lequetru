@@ -677,7 +677,9 @@ class Personnage:
             try:
                 Ennemies = pyautogui.locateOnScreen(r"images/1.png", grayscale=False,confidence=0.95)
                 # pydirectinput.press('y')
-                pyautogui.moveTo(Ennemies[0]+40, Ennemies[1]+100)
+                if Ennemies[0]+40 >0 and Ennemies[0]+40<1920:
+                    if Ennemies[1]+100 >0 and Ennemies[1]+100<1080:
+                        pyautogui.moveTo(Ennemies[0]+40, Ennemies[1]+100)
                 self.ennemyPosition = [Ennemies[0], Ennemies[1]]
                 pydirectinput.press('w')
                 MouseClick()
@@ -857,9 +859,7 @@ def Connexion():
     PcName = socket.gethostname()
     print(PcName)
         
-    table = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'YUUMI')
-            
-    Play = pyautogui.locateOnScreen("images/Play.png", grayscale=False,confidence=0.90)    
+    table = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'YUUMI') 
     Connexion_image = pyautogui.locateOnScreen("images/Connexion.png", grayscale=False,confidence=0.90)
     TermsOfServices = pyautogui.locateOnScreen("images/TermsOfServices.png", grayscale=False,confidence=0.90)
     try:
@@ -1161,7 +1161,7 @@ def statuscheck():
                 os.system('taskkill /f /im "SystemSettings.exe"')
             except:
                 print('no SystemSettings.exe')
-            
+            r = request('post', '/lol-lobby/v2/play-again')
         if phase =='EndOfGame':
             #LastAction()
             
