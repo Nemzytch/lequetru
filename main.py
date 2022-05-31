@@ -56,7 +56,6 @@ print(NumberGamesToPlay)
 OneMinute= 900
 #Number Dudge Singed
 NumberSinged= 0
-print('Number For Max Dudge With Singed is', NumberSinged)
 # saved time
 saved_time = datetime.datetime.now()
 Action = "Waiting"
@@ -99,7 +98,7 @@ def PussyDestroyer():
     time.sleep(3)
     os.startfile("C:\\Riot Games\\League of Legends\\LeagueClient.exe")
     print("Starting League of Legends..")
-    time.sleep(40)
+    time.sleep(25)
     restart()
 
 def Pause():
@@ -1227,7 +1226,7 @@ def statuscheck():
                 print('One more account readyyyyy')
                 table.update(recordId, {"FinishedAcc": "Finish"})
                 table.update(recordId,{"PcName":  socket.gethostname()+" STOP"})
-                SignOutt()
+                PussyDestroyer()
                 
             
             time.sleep(2)
