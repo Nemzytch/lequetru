@@ -917,7 +917,7 @@ def Connexion():
             time.sleep(20)
         else:
             print('No connexion detected, waiting 1 seconds')
-            time.sleep(1)
+            time.sleep(10)
             
     except:
         print('No more accounts')
