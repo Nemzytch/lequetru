@@ -70,11 +70,9 @@ table2 = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'ADMIN')
 
 
 def restart():
-    
     subprocess.call(["git", "reset", "--hard", "HEAD"])
     subprocess.call(["git", "pull"])
     print('Updating')
-    
     print("argv was",sys.argv)
     print("sys.executable was", sys.executable)
     print("restart now")
@@ -100,7 +98,6 @@ def PussyDestroyer():
     print("Starting League of Legends..")
     time.sleep(25)
     restart()
-
 def Pause():
 
     for records in table2.all():
@@ -113,12 +110,10 @@ def Pause():
                 print("Pause :(")
                 time.sleep(10)
                 Pause()
-                
 def ConfigSetup():
     #Change permissions to be safe
     for f in os.listdir("C:\Riot Games\League of Legends\Config"):
         os.chmod(os.path.join("C:\Riot Games\League of Legends\Config", f), 0o777)
-        
     #replace file in Our "Config" with file in LOL "Config"
     for filename in os.listdir("Config"):
         src = os.path.join("Config", filename)
@@ -394,6 +389,7 @@ class Personnage:
     def start(self):
         
         def LastAction():
+            # nouveau last action : last action since ....
             
             global saved_time
             current_time = datetime.datetime.now()
@@ -920,8 +916,8 @@ def Connexion():
             
             time.sleep(20)
         else:
-            print('No connexion detected, waiting 10 seconds')
-            time.sleep(10)
+            print('No connexion detected, waiting 1 seconds')
+            time.sleep(1)
             
     except:
         print('No more accounts')
@@ -1259,13 +1255,34 @@ def statuscheck():
 
         if phase =='Lobby': 
             LastAction()
-              
+            SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
+            puuid = request('get', '/lol-summoner/v1/current-summoner').json()['puuid']
+
+            r = request('get', '/lol-ranked/v1/ranked-stats/'+puuid)
+            tier = r.json()["queues"][0]["tier"]
+            division =r.json()["queues"][0]["division"]
+            leaguepoints= r.json()["queues"][0]["leaguePoints"]
+            wins = r.json()["queues"][0]["wins"]
+            losses= r.json()["queues"][0]["losses"]
+
+            for records in table.all(sort=["Unban"]):
+                if records['fields']['IngameName'] == SummonerName:
+                    print("Updating ELO")
+                    recordId = records['id']
+                    table.update(recordId, {"Rank": str(tier) +' '+ str(division) +' '+ str(leaguepoints)+"LP"})
+                    table.update(recordId, {"WIN/LOSS": str(wins)+'W/'+str(losses)+'L'})
+            
+            #Iron4 0Lp stop account
+            if tier == 'IRON' and division == 'IV' and leaguepoints <= 0:
+                print('One more account readyyyyy')
+                table.update(recordId, {"FinishedAcc": "Finish"})
+                table.update(recordId,{"PcName":  socket.gethostname()+" STOP"})
+                PussyDestroyer()
             QueueLockout = None
             AtemptToJoin = pyautogui.locateOnScreen("images/AtemptToJoin.png", confidence=0.90)
             OKEND = pyautogui.locateOnScreen("images/OKEND.JPG", confidence=0.90)
             IUnderstand = pyautogui.locateOnScreen("images/IUnderstand.JPG", confidence=0.70)
             GG = pyautogui.locateOnScreen('images/GG.png', grayscale=False,confidence=0.90)
-            #DudgeTimer = pyautogui.locateOnScreen("images/DudgeTimer.JPG", confidence=0.90)
             
             Pause()
             
@@ -1289,30 +1306,6 @@ def statuscheck():
 
             sleep(2)
             
-            # try:
-            #     Alarme = pyautogui.locateOnScreen("images/Alarme.png", confidence=0.80)
-            #     if Alarme != None:
-            #         print('New Account Detected, going to pick some champs')
-            #         Store()
-            #     IAgree = pyautogui.locateOnScreen("images/IAgree.JPG", grayscale=False,confidence=0.90)
-            #     if IAgree != None:
-            #         print('I Agree')
-            #         pyautogui.click(IAgree[0]+80,IAgree[1]-20)
-            #         pyautogui.write('I Agree', interval=0.25)
-            #         time.sleep(2)
-            #         OKEND = pyautogui.locateOnScreen("images/OKEND.JPG", confidence=0.90)
-            #         pyautogui.click(OKEND)
-            #     if IUnderstand != None:
-            #         print('I Understand')
-            #         pyautogui.click(IUnderstand)
-            #     if GG != None:
-            #         print('GG')
-            #         pyautogui.click(GG)
-            #     if OKEND != None:
-            #         print('OKEND')
-            #         pyautogui.click(OKEND)
-            # except: 
-            #     print('No I Agree')
                 
             try:
                 if QueueLockout != None:
