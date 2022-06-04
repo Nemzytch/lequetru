@@ -1150,9 +1150,10 @@ def statuscheck():
                 
                 PhaseNumber = PhaseNumber + 1 # Rajoute 1 pour chaque meme phase
                 if PhaseNumber >= 10: 
-                    # PussyDestroyer()
+                    
                     print(phase+ " phase time to run pussy destroyer")
                     print(PhaseNumber)
+                    PussyDestroyer()
                 else :
                     print(phase+ "  phase tout est ok pour l'instant")
                     print(PhaseNumber)
