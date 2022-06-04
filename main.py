@@ -1408,7 +1408,6 @@ def statuscheck():
                 chatRoomName = (cs["chatDetails"]["chatRoomName"]).split('@')[0] # récupérer l'identifiant de la room, seule la partie avant le @ est utile
                 url = '/lol-chat/v1/conversations/'+chatRoomName+'/messages'
                 messageList = ['Hello guys :D', "Hi there ! :)",'Hello team how you doing ? :D']
-                
                 data = { "body": messageList[random.randint(0,len(messageList)-1)],"type": "chat"}
                 
                 #message 2 minute cooldown
