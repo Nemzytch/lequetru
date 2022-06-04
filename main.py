@@ -66,6 +66,10 @@ BASE_ID = "appHnr7cu8j1HlMC2"
 table = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'YUUMI')
 table2 = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'ADMIN')
 
+PhaseNumber = 0
+Lastphase = "Nothing"
+
+
 
 
 
@@ -1132,6 +1136,27 @@ def statuscheck():
         print(Back.BLACK + Fore.GREEN + str(r.status_code) + Style.RESET_ALL, r.text)
 
         phase = r.json()
+        def PhaseBlock():
+            global PhaseNumber # Vaut 0 a la base 
+            global Lastphase # Vaut "Nothing" a la base
+
+            if phase != Lastphase: # si c'est pas la meme Phase que la derniere fois ca veut dire que c'est passée à autre chose
+
+                Lastphase = phase 
+                PhaseNumber = 0 
+                print('reset Lastphase to phase and reset PhaseNumber to 0')
+                
+            else: # si c'est la meme Phase que la derniere fois ca veut dire que c'est pas passée à autre chose et on check si ca recommence plus de 10 fois
+                
+                PhaseNumber = PhaseNumber + 1 # Rajoute 1 pour chaque meme phase
+                if PhaseNumber >= 10: 
+                    # PussyDestroyer()
+                    print(phase+ " phase time to run pussy destroyer")
+                    print(PhaseNumber)
+                else :
+                    print(phase+ "  phase tout est ok pour l'instant")
+                    print(PhaseNumber)
+
         
         def LastAction():
             global saved_time
@@ -1144,8 +1169,13 @@ def statuscheck():
                         table2.update(recordId, {"LastAction": phase})
                         table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y")})
                         saved_time = datetime.datetime.now()
-                    
+        
+        if phase =='WaitingForStats':
+            print("you are in WaitingForStats phase")
+            PhaseBlock()
         if phase =='PreEndOfGame':
+            PhaseBlock()
+            
             LastAction()
             
             okPreEndOfGame = pyautogui.locateOnScreen("images/okPreEndOfGame.png")
@@ -1228,6 +1258,7 @@ def statuscheck():
             time.sleep(2)
 
         if phase =='None':
+            PhaseBlock()
             LastAction()
             ConfigSetup()
             
@@ -1254,6 +1285,7 @@ def statuscheck():
                 PussyDestroyer()
 
         if phase =='Lobby': 
+            PhaseBlock()
             LastAction()
             SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
             puuid = request('get', '/lol-summoner/v1/current-summoner').json()['puuid']
