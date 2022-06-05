@@ -977,68 +977,6 @@ def SignOutt():
     else:
         print('No CroixM')
         
-def Store():
-    store = pyautogui.locateOnScreen("images/store.png", grayscale=False,confidence=0.90)
-    Alarme = pyautogui.locateOnScreen("images/Alarme.png", confidence=0.80)
-    if store != None:
-        #store
-        pyautogui.moveTo(store[0]+5,store[1]+20)
-        MouseClick()
-        time.sleep(3)
-        #champions
-        pyautogui.moveTo(store[0]-700,store[1]+80)
-        time.sleep(0.1)
-        MouseClick()
-        time.sleep(1.5)
-        MouseClick()
-        time.sleep(3)
-        #Price 
-        pyautogui.moveTo(store[0]-700,store[1]+350)
-        time.sleep(0.1)
-        MouseClick()
-        time.sleep(3)
-        #Price selection
-        pyautogui.moveTo(store[0]-700,store[1]+550)
-        time.sleep(0.1)
-        MouseClick()
-        time.sleep(3)
-        
-        def BoughtChamp():
-            #Champ selection
-            pyautogui.moveTo(store[0]-530,store[1]+200)
-            time.sleep(0.1)
-            MouseClick()
-            time.sleep(1)
-            #Champ Buy
-            pyautogui.moveTo(store[0]-250,store[1]+440)
-            time.sleep(0.1)
-            MouseClick()
-            time.sleep(1)
-            pyautogui.moveTo(store[0]-530,store[1]+200)
-            time.sleep(0.1)
-            MouseClick()
-            time.sleep(1)
-        
-        for _ in range(18):
-            BoughtChamp()
-            
-        #Yummi store
-        pyautogui.moveTo(store[0]-700,store[1]+260)
-        time.sleep(0.1)
-        MouseClick()
-        time.sleep(1)
-        pyautogui.write('yuumi', interval=0.1)
-        time.sleep(1)
-        BoughtChamp()
-        
-        pyautogui.moveTo(store[0]-750,store[1]+20)
-        MouseClick()
-        time.sleep(2)
-        
-        if Alarme != None:
-            SignOutt()
-        else:
-            print('No Alarme')
         
 class lobby():
     username = 'riot'
