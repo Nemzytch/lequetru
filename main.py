@@ -1254,15 +1254,18 @@ def statuscheck():
             r = request('post', '/lol-lobby/v2/lobby/matchmaking/search')
             sleep(2)
             r = request('get', '/lol-matchmaking/v1/search')
-            errors = r.json()["errors"]
-            if errors != []:
-                print(errors)
-                for error in errors:
-                    print(error["penaltyTimeRemaining"])
-                    if error["penaltyTimeRemaining"] > 901:
-                        QueueLockout = True
-                        print('QueueLockout')
-                        lockoutTime = error["penaltyTimeRemaining"]
+            try : 
+                errors = r.json()["errors"]
+                if errors != []:
+                    print(errors)
+                    for error in errors:
+                        print(error["penaltyTimeRemaining"])
+                        if error["penaltyTimeRemaining"] > 901:
+                            QueueLockout = True
+                            print('QueueLockout')
+                            lockoutTime = error["penaltyTimeRemaining"]
+            except:
+                pass
                         
 
             sleep(2)
