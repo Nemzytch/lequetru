@@ -41,6 +41,7 @@ import subprocess
 import pyperclip
 import psutil
 
+
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
@@ -49,18 +50,10 @@ gamedirs = [r'C:\Games\Garena\32787\LeagueClient',
 os.system("")
 lastMessageChampSelect = datetime.datetime.now() - datetime.timedelta(minutes=4)
 
-#NuberGamesToPlay
-NumberGamesToPlay = random.randint(10, 15)
-print(NumberGamesToPlay)
-#surrend
+
 OneMinute= 900
-#Number Dudge Singed
-NumberSinged= 0
-# saved time
 saved_time = datetime.datetime.now()
 Action = "Waiting"
-
-#Account Status Check
 API_KEY= "key181wgNDrYM2bms"
 BASE_ID = "appHnr7cu8j1HlMC2"
 table = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'YUUMI')
@@ -522,7 +515,6 @@ class Personnage:
                                 print('going back to base')  
             
                 if time.time()> (self.backCooldown+50):
-                    #LastAction
                     Action = "Going back"
                     LastAction()
                     pyautogui.moveTo(self.BaseX,self.BaseY)
@@ -540,11 +532,9 @@ class Personnage:
                     self.shop()
                     self.backCooldown = time.time()
 
-            # sleep(randrange([0.3, 0.7]))
             time.sleep(0.5)
 
 
-    # UPDATES            
 
     def updatePosition(self):
         self.position = [self.datas.posX, self.datas.posY]
@@ -927,56 +917,8 @@ def Connexion():
         print('No more accounts')
         time.sleep(10)
         Connexion()
-               
-def PopUpClose():
-    try:
-        Exclamation = pyautogui.locateOnScreen("images/Exclamation.png", grayscale=False,confidence=0.90)
-        GG = pyautogui.locateOnScreen('images/GG.png', grayscale=False,confidence=0.90)
-        ok = pyautogui.locateOnScreen('images/ok.jpg', grayscale=False,confidence=0.90)
-        list1 =list(pyautogui.locateAllOnScreen('images/CroixM.png', grayscale=False,confidence=0.90))
-        list2 =list(pyautogui.locateAllOnScreen('images/CroixM.png',region=(list1[0][0]-1200,list1[0][1], list1[0][0],list1[0][1]+450),grayscale=False,confidence=0.90))
 
-        if Exclamation != None:
-            pyautogui.moveTo(Exclamation[0],Exclamation[1])
-            pyautogui.click(Exclamation[0],Exclamation[1])
-            
-        if GG != None:
-            pyautogui.moveTo(GG)
-            pyautogui.click(GG)
 
-        if ok != None:
-            pyautogui.moveTo(ok)
-            pyautogui.click(ok)
-    
-        pyautogui.moveTo(list2[1])
-        time.sleep(0.1)
-        MouseClick()
-        time.sleep(0.1)
-        print('PopUp Close')
-        time.sleep(0.5)
-            
-    except:
-        print('No PopUp')
-        time.sleep(0.2)
-    
-def SignOutt():
-    CroixM = pyautogui.locateOnScreen("images/CroixM.png", grayscale=False,confidence=0.90)
-    
-    if CroixM!=None:
-        pyautogui.moveTo(CroixM[0]+5,CroixM[1]+5)
-        time.sleep(0.1)
-        MouseClick()
-        time.sleep(3)
-        pyautogui.moveTo(CroixM[0]-600,CroixM[1]+400)
-        time.sleep(0.1)
-        MouseClick()
-        time.sleep(0.1)
-        print('SignOut')
-        time.sleep(10)
-        restart()
-    else:
-        print('No CroixM')
-        
         
 class lobby():
     username = 'riot'
@@ -1114,16 +1056,12 @@ def statuscheck():
             idtoken = request('get', '/lol-login/v1/session').json()['idToken']     
              
             def getrequest(url):
-                        
                 auth = 'Bearer %s' % idtoken
-        
                 headers = {
                     'Content-Type': 'application/json',
                     'Authorization': auth
                 }
-                
-                r = requests.get(url, headers=headers)
-                return r
+                return requests.get(url, headers=headers)
             
             def PostRequest(url, data):
                 auth = 'Bearer %s' % idtoken
@@ -1132,9 +1070,7 @@ def statuscheck():
                     'Content-Type': 'application/json',
                     'Authorization': auth
                 }
-                r = requests.post(url, data=json.dumps(data), headers=headers, verify=False)
-                return r
-            
+                return requests.post(url, data=json.dumps(data), headers=headers, verify=False)
             accid = request('get', '/lol-login/v1/session').json()['accountId']
             StoreUrl = request('get', '/lol-store/v1/getStoreUrl').json()
             transactions = getrequest('https://euw.store.leagueoflegends.com/storefront/v3/history/purchase').json()['transactions']
@@ -1204,34 +1140,12 @@ def statuscheck():
         if phase =='EndOfGame':
             #LastAction()
             
-            global NumberGamesToPlay
             #get the summoner name
             SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
             time.sleep(2)
             print("sending play again")
             r = request('post', '/lol-lobby/v2/play-again')
             
-            
-            try:
-                OKEND2 = pyautogui.locateOnScreen("images/ok.JPG", confidence=0.90)
-                pyautogui.click(OKEND2)                
-                OKEND = pyautogui.locateOnScreen("images/OKEND.JPG", confidence=0.90)
-                pyautogui.click(OKEND)
-                IUnderstand = pyautogui.locateOnScreen("images/IUnderstand.JPG", confidence=0.70)
-                pyautogui.click(IUnderstand)
-                IAgree = pyautogui.locateOnScreen("images/IAgree.JPG", grayscale=False,confidence=0.90)
-                if IAgree != None:
-                    print('I Agree')
-                    pyautogui.click(IAgree[0]+80,IAgree[1]-20)
-                    pyautogui.write('I Agree', interval=0.25)
-            except:
-                print('Nice')
-                
-            print('thanking the mates and going next')
-            
-
-            NumberGamesToPlay =NumberGamesToPlay -1
-            print(NumberGamesToPlay,'avec le -1')
             
             for records in table.all():
                 if records['fields']['IngameName'] == SummonerName:
@@ -1331,21 +1245,15 @@ def statuscheck():
                 table.update(recordId, {"FinishedAcc": "Finish"})
                 table.update(recordId,{"PcName":  socket.gethostname()+" STOP"})
                 PussyDestroyer()
+                
             QueueLockout = None
-            AtemptToJoin = pyautogui.locateOnScreen("images/AtemptToJoin.png", confidence=0.90)
-            OKEND = pyautogui.locateOnScreen("images/OKEND.JPG", confidence=0.90)
-            IUnderstand = pyautogui.locateOnScreen("images/IUnderstand.JPG", confidence=0.70)
-            GG = pyautogui.locateOnScreen('images/GG.png', grayscale=False,confidence=0.90)
-            
             Pause()
-            
             print('need to pick lanes')
             r = request('put', '/lol-lobby/v2/lobby/members/localMember/position-preferences', data ={"firstPreference": "UTILITY","secondPreference":"MIDDLE",})
             sleep(2)
             r = request('post', '/lol-lobby/v2/lobby/matchmaking/search')
             sleep(2)
             r = request('get', '/lol-matchmaking/v1/search')
-            # print(r.json())
             errors = r.json()["errors"]
             if errors != []:
                 print(errors)
@@ -1378,54 +1286,7 @@ def statuscheck():
                 else:
                     print('No QueueLockout detected')
                     QueueLockout = None
-                
-                if AtemptToJoin != None:
-                    
-                    pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract'
-                    SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
-                    AtemptToJoin = pyautogui.locateOnScreen('images/AtemptToJoin.png')
-
-                    while(True):
-                        
-                        cord = (AtemptToJoin[0]+120, AtemptToJoin[1]+85, AtemptToJoin[0]+210, AtemptToJoin[1]+120)
-                        cap = ImageGrab.grab(bbox =(cord))
-
-                        BanTime = pytesseract.image_to_string(
-                                cv2.cvtColor(nm.array(cap), cv2.COLOR_BGR2GRAY), 
-                                lang ='eng')
-                        
-                        numbers = re.findall(r'\d+', BanTime)
-                        
-                        Seconde = 0
-                        Minutes = 0
-                        Hours = 0
-                        Day = 0
-                        
-                        try:
-                            Seconde = numbers[-1]
-                            Minutes = numbers[-2]
-                            Hours = numbers[-3]
-                            Day = numbers[-4]
-                        except:
-                            pass
-                        
-                        time_change = datetime. timedelta(days=int(Day), hours=int(Hours), minutes=int(Minutes), seconds=int(Seconde))
-                        
-                        for records in table.all():
-                            if records['fields']['IngameName'] == SummonerName:
-                                recordId = records['id']
-                                table.update(recordId, {"Unban": str(datetime.datetime.now()+time_change)})
-                                
-                                    
-                        pyautogui.click(OKEND)
-                        time.sleep(1)
-                        pyautogui.click(OKEND)
-                        time.sleep(1)
-                        pyautogui.click(OKEND)
-                        time.sleep(1)
-                        SignOutt()
-                else:
-                    print('No AtemptToJoin detected')
+                                  
             except:
                 pass
         
@@ -1547,16 +1408,12 @@ def statuscheck():
                 sleep(1)
 
         sleep(0.5)
-        
-          
+            
 def main():
     statuscheck()
     return True
-
 if __name__ == "__main__":
     main()
-
-
 
 # https://ddragon.leagueoflegends.com/cdn/11.16.1/data/en_US/champion/Yuumi.json
 # http://ddragon.leagueoflegends.com/cdn/6.8.1/img/map/map11.png
