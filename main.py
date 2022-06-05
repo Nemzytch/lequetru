@@ -1129,6 +1129,7 @@ def statuscheck():
 
     # # Main worker loop
     while True:
+        accid = request('get', '/lol-login/v1/session').json()['accountId']
         r = request('get', '/lol-gameflow/v1/gameflow-phase')
         if r.status_code != 200:
             print(Back.BLACK + Fore.RED + str(r.status_code) + Style.RESET_ALL, r.text)
@@ -1158,7 +1159,7 @@ def statuscheck():
                     print(phase+ "  phase tout est ok pour l'instant")
                     print(PhaseNumber)
 
-        
+
         def LastAction():
             global saved_time
             current_time = datetime.datetime.now()
@@ -1170,6 +1171,44 @@ def statuscheck():
                         table2.update(recordId, {"LastAction": phase})
                         table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y")})
                         saved_time = datetime.datetime.now()
+                        
+        def Store():
+
+            idtoken = request('get', '/lol-login/v1/session').json()['idToken']
+            accid = request('get', '/lol-login/v1/session').json()['accountId']
+            StoreUrl = request('get', '/lol-store/v1/getStoreUrl').json()
+            TransacHistory = request('get', '/lol-store/v1/transaction/history').json()
+
+            ChampionsCollection = request('get', '/lol-champions/v1/inventories/' + str(accid) + '/champions-playable-count').json()['championsOwned']
+            print(ChampionsCollection)
+                                        
+            def PostRequest(url, data):
+                auth = 'Bearer %s' % idtoken
+            
+                headers = {
+                    'Content-Type': 'application/json',
+                    'Authorization': auth
+                }
+                r = requests.post(url, data=json.dumps(data), headers=headers, verify=False)
+                return r
+    
+            champsCheap = ["Amumu","Annie","Ashe,","Dr. Mundo","Garen","Kayle","Master Yi","Nunu","Poppy","Ryze","Singed","Sivir","Soraka","Warwick"]
+            champIDListCheap = [32,1,22,36,86,10,11,20,78,13,27,15,16,19]
+
+            champsLessCheap = ["Taric","Teemo","Tristana","Tryndamere","Twisted Fate"]
+            ChampIDListLessCheap = [44,17,18,23]
+            Yuumi = "350"
+
+            for champID in champIDListCheap: 
+                BoughtChampion = PostRequest( str(StoreUrl)+'/storefront/v3/purchase', data=({"accountId":accid,"items":[{"inventoryType":"CHAMPION","itemId":champID,"ipCost":450,"quantity":1}]}))
+                print(BoughtChampion.json())
+                time.sleep(1)
+                
+            for champID in ChampIDListLessCheap:
+                BoughtChampion = PostRequest( str(StoreUrl)+'/storefront/v3/purchase', data=({"accountId":accid,"items":[{"inventoryType":"CHAMPION","itemId":champID,"ipCost":1350,"quantity":1}]}))
+                print(BoughtChampion.json())
+                time.sleep(1)
+            BoughtChampion = PostRequest( str(StoreUrl)+'/storefront/v3/purchase', data=({"accountId":accid,"items":[{"inventoryType":"CHAMPION","itemId":350,"ipCost":6300,"quantity":1}]}))
         
         if phase =='WaitingForStats':
             print("you are in WaitingForStats phase")
@@ -1263,6 +1302,13 @@ def statuscheck():
             LastAction()
             ConfigSetup()
             
+            ChampionsCollection = request('get', '/lol-champions/v1/inventories/' + str(accid) + '/champions-playable-count').json()['championsOwned']
+            
+            if ChampionsCollection < 20:
+                Store() #buy champs
+            else:
+                print('champs ok')
+                
             time.sleep(3)
             SummonerName = None
             try:
