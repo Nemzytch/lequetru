@@ -967,6 +967,14 @@ def statuscheck():
     try:
         session.get('https://127.0.0.1:2999/liveclientdata/allgamedata', verify = False)
         print("Avant Chargement")
+        
+        
+        accid = request('get', '/lol-login/v1/session').json()['accountId']
+        r = request('get', '/lol-gameflow/v1/gameflow-phase')
+        if r.status_code != 200:
+            print(Back.BLACK + Fore.RED + str(r.status_code) + Style.RESET_ALL, r.text)
+        print(Back.BLACK + Fore.GREEN + str(r.status_code) + Style.RESET_ALL, r.text)
+        phase = r.json()
         time.sleep(1)
         perso = Personnage()
     except ConnectionError as ce:
