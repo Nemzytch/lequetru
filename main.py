@@ -1110,6 +1110,42 @@ def statuscheck():
                         table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y")})
                         saved_time = datetime.datetime.now()
                         
+        def Refund():
+            idtoken = request('get', '/lol-login/v1/session').json()['idToken']     
+             
+            def getrequest(url):
+                        
+                auth = 'Bearer %s' % idtoken
+        
+                headers = {
+                    'Content-Type': 'application/json',
+                    'Authorization': auth
+                }
+                
+                r = requests.get(url, headers=headers)
+                return r
+            
+            def PostRequest(url, data):
+                auth = 'Bearer %s' % idtoken
+
+                headers = {
+                    'Content-Type': 'application/json',
+                    'Authorization': auth
+                }
+                r = requests.post(url, data=json.dumps(data), headers=headers, verify=False)
+                return r
+            
+            accid = request('get', '/lol-login/v1/session').json()['accountId']
+            StoreUrl = request('get', '/lol-store/v1/getStoreUrl').json()
+            transactions = getrequest('https://euw.store.leagueoflegends.com/storefront/v3/history/purchase').json()['transactions']
+            
+            for champs in transactions:
+                if champs['itemId'] == 350:
+                    if champs['refundable'] == True:
+                        TransacID = champs['transactionId']
+                        print(TransacID)
+                        Refund = PostRequest( str(StoreUrl)+'/storefront/v3/refund', data=({"accountId":accid ,"transactionId":TransacID ,"inventoryType":"CHAMPION","language":"en_GB"})) 
+                                       
         def Store():
 
             idtoken = request('get', '/lol-login/v1/session').json()['idToken']
