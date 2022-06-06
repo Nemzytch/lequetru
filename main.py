@@ -914,7 +914,19 @@ def Connexion():
             time.sleep(0.1)
             MouseClick()
             time.sleep(0.1)
-            time.sleep(10)            
+            gamedirs = [r'C:\Riot Games\League of Legends',r'D:\Games\League of Legends',r'D:\Riot Games\League of Legends',] 
+            lockfile = None
+            while not lockfile:
+                for gamedir in gamedirs:
+                    lockpath = r'%s\lockfile' % gamedir
+
+                    if not os.path.isfile(lockpath):
+                        print("Waiting League to start")
+                        continue
+                        
+
+                    print('Found running League of Legends, dir', gamedir)
+                    lockfile = open(r'%s\lockfile' % gamedir, 'r')
             for records in table2.all():
                 if records['fields']['PcName'] == socket.gethostname():
                     recordId = records['id']
