@@ -1139,6 +1139,7 @@ def statuscheck():
             r = request('post', '/lol-lobby/v2/play-again')
         if phase =='EndOfGame':
             #LastAction()
+            PhaseBlock()
             
             #get the summoner name
             SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
