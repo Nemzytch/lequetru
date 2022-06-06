@@ -1235,6 +1235,7 @@ def statuscheck():
                         table.update(recordId, {"IngameName": SummonerName})
                         
                 for records in table.all():
+                    print(records)
                     if records['fields']['IngameName'] == SummonerName:
                         recordId = records['id']
                         table.update(recordId, {"Unban": str(datetime.datetime.now())})
