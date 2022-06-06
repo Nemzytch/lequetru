@@ -847,15 +847,31 @@ def Connexion():
     
     PcName = socket.gethostname()
     print(PcName)
-        
+    hwid = str(subprocess.check_output(
+    'wmic csproduct get uuid')).split('\\r\\n')[1].strip('\\r').strip()
+    
     table = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'YUUMI') 
     Connexion_image = pyautogui.locateOnScreen("images/Connexion.png", grayscale=False,confidence=0.90)
     TermsOfServices = pyautogui.locateOnScreen("images/TermsOfServices.png", grayscale=False,confidence=0.90)
     try:
         if Connexion_image!=None:
+            formula = match({"HWID": hwid})
+            formula2 = match({"HWID": "None"})
+            listOfNone = table.all(formula=formula2)
+            listOfAcc = table.all(formula=formula)
+            print(listOfNone)
             
-            formula = match({"PcName": PcName[:3]})
-            Personnage.account = table.first(formula=formula, sort=["Unban"])['fields']['Account']
+            print("Number of acc for the HWID : " + str(len(listOfAcc)))
+            if len(listOfAcc) <4:
+                print("You need more accounts")
+                for i in range(4-len(listOfAcc)):
+                    print("Adding account")
+                    table.update(listOfNone[i]['id'], {"HWID": hwid})
+            if len(listOfAcc) >= 4:
+                print("You have enough accounts")
+                Personnage.account = table.first(formula=formula, sort=["Unban"])['fields']['Account']
+    
+
             password = table.first(formula=formula, sort=["Unban"])['fields']['Password']
             
             #LogDesired
@@ -907,15 +923,13 @@ def Connexion():
                     now = datetime.datetime.now()
                     table2.update(recordId, {"LastAction": 'Connexion'})
                     table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y") })
-            
-            time.sleep(20)
         else:
             print('No connexion detected, waiting 1 seconds')
-            time.sleep(10)
+            
             
     except:
         print('No more accounts')
-        time.sleep(10)
+    
         Connexion()
 
 
