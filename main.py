@@ -1223,6 +1223,7 @@ def statuscheck():
                 except:
                     print("can't get champs yet")
                     Personnage.fullApiAccess = False
+                    time.sleep(1)
                     
             SummonerName = None
             try:
@@ -1247,7 +1248,7 @@ def statuscheck():
                 pass
                 # print('no summoner name')
                 # 
-                
+            time.sleep(2)
         if phase == 'Reconnect':
             PhaseBlock()
         
