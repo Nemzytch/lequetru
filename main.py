@@ -1147,11 +1147,6 @@ def statuscheck():
             r = request('post', '/lol-lobby/v2/play-again')
             
             
-            for records in table.all():
-                if records['fields']['IngameName'] == SummonerName:
-                    recordId = records['id']
-                    table.update(recordId, {"GamesToPlay": str(NumberGamesToPlay)})
-            
             for records in table2.all():
                 if records['fields']['PcName'] == socket.gethostname():
                     recordId = records['id']
