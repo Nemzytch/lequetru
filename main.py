@@ -1242,9 +1242,10 @@ def statuscheck():
                 print('need to create lobby')
                 r =request('post','/lol-lobby/v2/lobby',data={"queueId": 420})
             except:
+                r = request('post', '/lol-lobby/v2/lobby',data={"queueId": 420})
                 pass
                 # print('no summoner name')
-                # r = request('post', '/lol-lobby/v2/lobby',data={"queueId": 420})
+                # 
                 
         if phase == 'Reconnect':
             PhaseBlock()
