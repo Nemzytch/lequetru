@@ -1,12 +1,20 @@
+from pyairtable import Table
 import os
-import sys
+import time
 
-#add bes.exe to path
+API_KEY= "key181wgNDrYM2bms"
+table = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'YUUMI')
 
 
-fileToAdd = 'BES_1.7.8/BES.exe'
-variableName = 'PATH'
+#open account.txt each line is a account split by ":"
 
-#add file to path
-os.environ[variableName] = f'{os.environ[variableName]};{fileToAdd}'
+
+with open('accounts.txt', 'r') as f:
+    lines = f.readlines()
+    for line in lines:
+        account = line.split(':')
+        print(account)
+        table.create({'Account': account[0], 'Password': account[1],'HWID':"None"})
+        time.sleep(0.5)
+
 

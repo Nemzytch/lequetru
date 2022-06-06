@@ -131,7 +131,7 @@ def MouseClick():
 class Personnage:
     
     account = None
-    
+    fullApiAccess = False
     # Yuumi    
     team = None
     index = None
@@ -984,7 +984,7 @@ class lobby():
     print(port,password)
 
 def statuscheck():
-
+    
     Riot_adapter = HTTPAdapter(max_retries=1)   
     session = requests.Session()
     session.mount('https://127.0.0.1:2999/liveclientdata/allgamedata', Riot_adapter)
@@ -1031,7 +1031,7 @@ def statuscheck():
     # Create Request session
     s = requests.session()
 
-
+    
 
     # # Main worker loop
     while True:
@@ -1212,17 +1212,19 @@ def statuscheck():
             LastAction()
             ConfigSetup()
             
-            try :
-                ChampionsCollection = request('get', '/lol-champions/v1/inventories/' + str(accid) + '/champions-playable-count').json()['championsOwned']
-            
-                if ChampionsCollection < 20:
-                    Store() #buy champs
-                else:
-                    print('champs ok')
-            except:
-                print("can't get champs yet")
+            while Personnage.fullApiAccess == False:
+                try :
+                    ChampionsCollection = request('get', '/lol-champions/v1/inventories/' + str(accid) + '/champions-playable-count').json()['championsOwned']
+                
+                    if ChampionsCollection < 20:
+                        Store() #buy champs
+                    else:
+                        print('champs ok')
+                    Personnage.fullApiAccess = True
+                except:
+                    print("can't get champs yet")
+                    Personnage.fullApiAccess = False
                     
-            time.sleep(3)
             SummonerName = None
             try:
                 SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
