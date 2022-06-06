@@ -1034,14 +1034,18 @@ def statuscheck():
 
     # # Main worker loop
     while True:
-        accid = request('get', '/lol-login/v1/session').json()['accountId']
-        r = request('get', '/lol-gameflow/v1/gameflow-phase')
-        if r.status_code != 200:
-            print(Back.BLACK + Fore.RED + str(r.status_code) + Style.RESET_ALL, r.text)
-            continue
-        print(Back.BLACK + Fore.GREEN + str(r.status_code) + Style.RESET_ALL, r.text)
-
+        try :
+            accid = request('get', '/lol-login/v1/session').json()['accountId']
+            r = request('get', '/lol-gameflow/v1/gameflow-phase')
+            if r.status_code != 200:
+                print(Back.BLACK + Fore.RED + str(r.status_code) + Style.RESET_ALL, r.text)
+                continue
+            print(Back.BLACK + Fore.GREEN + str(r.status_code) + Style.RESET_ALL, r.text)
+        except:
+            print('cant get phase yes')
+            time.sleep(3)
         phase = r.json()
+        
         def PhaseBlock():
             global PhaseNumber # Vaut 0 a la base 
             global Lastphase # Vaut "Nothing" a la base
@@ -1279,6 +1283,7 @@ def statuscheck():
                 print('One more account readyyyyy')
                 table.update(recordId, {"FinishedAcc": "Finish"})
                 table.update(recordId,{"PcName":  socket.gethostname()+" STOP"})
+                table.update(recordId,{"HWID":  socket.gethostname()+" STOP"})
                 PussyDestroyer()
                 
             QueueLockout = None
