@@ -1111,6 +1111,7 @@ def statuscheck():
 
             idtoken = request('get', '/lol-login/v1/session').json()['idToken']
             accid = request('get', '/lol-login/v1/session').json()['accountId']
+            print(accid, "acc id is here")
             StoreUrl = request('get', '/lol-store/v1/getStoreUrl').json()
             TransacHistory = request('get', '/lol-store/v1/transaction/history').json()
 
