@@ -1244,7 +1244,7 @@ def statuscheck():
             except:
                 print("no summoner name, account already logged out")
                 print("we send the magical pussy destroyer")
-                PussyDestroyer()
+                
         if phase == 'Reconnect':
             PhaseBlock()
         
