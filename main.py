@@ -847,8 +847,7 @@ def Connexion():
     
     PcName = socket.gethostname()
     print(PcName)
-    hwid = str(subprocess.check_output(
-    'wmic csproduct get uuid')).split('\\r\\n')[1].strip('\\r').strip()
+    hwid = str(subprocess.check_output('wmic csproduct get uuid')).split('\\r\\n')[1].strip('\\r').strip()
     
     table = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'YUUMI') 
     Connexion_image = pyautogui.locateOnScreen("images/Connexion.png", grayscale=False,confidence=0.90)
@@ -1228,6 +1227,7 @@ def statuscheck():
             SummonerName = None
             try:
                 SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
+                print(SummonerName)
                 
                 for records in table.all():
                     if records['fields']['Account'] == Personnage.account:
@@ -1242,8 +1242,9 @@ def statuscheck():
                 print('need to create lobby')
                 r =request('post','/lol-lobby/v2/lobby',data={"queueId": 420})
             except:
-                print("no summoner name, account already logged out")
-                print("we send the magical pussy destroyer")
+                pass
+                # print('no summoner name')
+                # r = request('post', '/lol-lobby/v2/lobby',data={"queueId": 420})
                 
         if phase == 'Reconnect':
             PhaseBlock()
