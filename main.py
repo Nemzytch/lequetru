@@ -1212,13 +1212,16 @@ def statuscheck():
             LastAction()
             ConfigSetup()
             
-            ChampionsCollection = request('get', '/lol-champions/v1/inventories/' + str(accid) + '/champions-playable-count').json()['championsOwned']
+            try :
+                ChampionsCollection = request('get', '/lol-champions/v1/inventories/' + str(accid) + '/champions-playable-count').json()['championsOwned']
             
-            if ChampionsCollection < 20:
-                Store() #buy champs
-            else:
-                print('champs ok')
-                
+                if ChampionsCollection < 20:
+                    Store() #buy champs
+                else:
+                    print('champs ok')
+            except:
+                print("can't get champs yet")
+                    
             time.sleep(3)
             SummonerName = None
             try:
