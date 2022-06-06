@@ -914,7 +914,7 @@ def Connexion():
             time.sleep(0.1)
             MouseClick()
             time.sleep(0.1)
-            time.sleept(10)            
+            time.sleep(10)            
             for records in table2.all():
                 if records['fields']['PcName'] == socket.gethostname():
                     recordId = records['id']
