@@ -924,6 +924,7 @@ def Connexion():
 
                 if not os.path.isfile(lockpath):
                     print("Waiting League to start")
+                    time.sleep(1)
                     continue
 
 
