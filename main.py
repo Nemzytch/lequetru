@@ -1262,6 +1262,7 @@ def statuscheck():
         
         
         if phase =='Lobby': 
+            ConfigSetup()
             PhaseBlock()
             LastAction()
             SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
