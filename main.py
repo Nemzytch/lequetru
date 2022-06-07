@@ -42,8 +42,7 @@ import pyperclip
 import psutil
 
 
-#nos fonctions :
-import clientConnect
+#nos fonctions
 
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -852,95 +851,99 @@ def Connexion():
     PcName = socket.gethostname()
     print(PcName)
     hwid = str(subprocess.check_output('wmic csproduct get uuid')).split('\\r\\n')[1].strip('\\r').strip()
-    table = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'YUUMI')
-    # Connexion_image = pyautogui.locateOnScreen("images/Connexion.png", grayscale=False,confidence=0.90)
-    # TermsOfServices = pyautogui.locateOnScreen("images/TermsOfServices.png", grayscale=False,confidence=0.90)
+    
+    table = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'YUUMI') 
+    Connexion_image = pyautogui.locateOnScreen("images/Connexion.png", grayscale=False,confidence=0.90)
+    TermsOfServices = pyautogui.locateOnScreen("images/TermsOfServices.png", grayscale=False,confidence=0.90)
     try:
-    # if Connexion_image!=None:
-        formula = match({"HWID": hwid})
-        formula2 = match({"HWID": "None"})
-        listOfNone = table.all(formula=formula2)
-        listOfAcc = table.all(formula=formula)
-        print(listOfNone)
-        print(f"Number of acc for the HWID : {len(listOfAcc)}")
-        if len(listOfAcc) <4:
-            print("You need more accounts")
-            for i in range(4-len(listOfAcc)):
-                print("Adding account")
-                table.update(listOfNone[i]['id'], {"HWID": hwid})
-        if len(listOfAcc) >= 4:
-            print("You have enough accounts")
-            Personnage.account = table.first(formula=formula, sort=["Unban"])['fields']['Account']
+        if Connexion_image!=None:
+            formula = match({"HWID": hwid})
+            formula2 = match({"HWID": "None"})
+            listOfNone = table.all(formula=formula2)
+            listOfAcc = table.all(formula=formula)
+            print(listOfNone)
+            
+            print("Number of acc for the HWID : " + str(len(listOfAcc)))
+            if len(listOfAcc) <4:
+                print("You need more accounts")
+                for i in range(4-len(listOfAcc)):
+                    print("Adding account")
+                    table.update(listOfNone[i]['id'], {"HWID": hwid})
+            if len(listOfAcc) >= 4:
+                print("You have enough accounts")
+                Personnage.account = table.first(formula=formula, sort=["Unban"])['fields']['Account']
+    
 
+            password = table.first(formula=formula, sort=["Unban"])['fields']['Password']
+            
+            #LogDesired
+            pyautogui.moveTo(Connexion_image[0],Connexion_image[1]+80)
+            time.sleep(0.1)
+            MouseClick()
+            pyautogui.typewrite(Personnage.account, interval=0.10)
+            time.sleep(0.1)
+            print('Log Write')
+                
+            #PwdDesired
+            pyautogui.moveTo(Connexion_image[0],Connexion_image[1]+140)
+            time.sleep(0.1)
+            MouseClick()
+            # pyautogui.typewrite(password, interval=0.10)
+            pyperclip.copy(password)
+            pyautogui.hotkey('ctrl', 'v')
+            time.sleep(0.1)
+            print('Pwd Write')
+            for records in table.all():
+                if records['fields']['Account'] == Personnage.account:
+                    recordId = records['id']
+                    table.update(recordId, {"Unban": str(datetime.datetime.now())})
+            
+            if TermsOfServices != None:
+                pyautogui.moveTo(TermsOfServices[0],TermsOfServices[1])
+                time.sleep(1)
+                pyautogui.scroll(-100000)
+                time.sleep(1)
+                pyautogui.click(TermsOfServices[0],TermsOfServices[1]+600)
+                
+            #Press connexion button
+            pyautogui.moveTo(Connexion_image[0]+60,Connexion_image[1]+520)
+            time.sleep(0.1)
+            MouseClick()
+            time.sleep(6)
+            
+            #Press Play button
+            pyautogui.moveTo(Connexion_image[0],Connexion_image[1]+650)
+            time.sleep(0.1)
+            MouseClick()
+            time.sleep(0.1)
+            gamedirs = [r'C:\Riot Games\League of Legends',r'D:\Games\League of Legends',r'D:\Riot Games\League of Legends',] 
+            lockfile = None
+            while not lockfile:
+                for gamedir in gamedirs:
+                    lockpath = r'%s\lockfile' % gamedir
 
-        password = table.first(formula=formula, sort=["Unban"])['fields']['Password']
-        clientConnect.get_lcu_info(Personnage.account,password)
-        # #LogDesired
-        # pyautogui.moveTo(Connexion_image[0],Connexion_image[1]+80)
-        # time.sleep(0.1)
-        # MouseClick()
-        # pyautogui.typewrite(Personnage.account, interval=0.10)
-        # time.sleep(0.1)
-        # print('Log Write')
+                    if not os.path.isfile(lockpath):
+                        print("Waiting League to start")
+                        continue
+                        
 
-        # #PwdDesired
-        # pyautogui.moveTo(Connexion_image[0],Connexion_image[1]+140)
-        # time.sleep(0.1)
-        # MouseClick()
-        # # pyautogui.typewrite(password, interval=0.10)
-        # pyperclip.copy(password)
-        # pyautogui.hotkey('ctrl', 'v')
-        # time.sleep(0.1)
-        # print('Pwd Write')
-        for records in table.all():
-            if records['fields']['Account'] == Personnage.account:
-                recordId = records['id']
-                table.update(recordId, {"Unban": str(datetime.datetime.now())})
-
-        # if TermsOfServices != None:
-        #     pyautogui.moveTo(TermsOfServices[0],TermsOfServices[1])
-        #     time.sleep(1)
-        #     pyautogui.scroll(-100000)
-        #     time.sleep(1)
-        #     pyautogui.click(TermsOfServices[0],TermsOfServices[1]+600)
-
-        # #Press connexion button
-        # pyautogui.moveTo(Connexion_image[0]+60,Connexion_image[1]+520)
-        # time.sleep(0.1)
-        # MouseClick()
-        # time.sleep(6)
-
-        # #Press Play button
-        # pyautogui.moveTo(Connexion_image[0],Connexion_image[1]+650)
-        # time.sleep(0.1)
-        # MouseClick()
-        # time.sleep(0.1)
-
-        gamedirs = [r'C:\Riot Games\League of Legends',r'D:\Games\League of Legends',r'D:\Riot Games\League of Legends',]
-        lockfile = None
-        while not lockfile:
-            for gamedir in gamedirs:
-                lockpath = r'%s\lockfile' % gamedir
-
-                if not os.path.isfile(lockpath):
-                    print("Waiting League to start")
-                    time.sleep(1)
-                    continue
-
-
-                print('Found running League of Legends, dir', gamedir)
-                lockfile = open(r'%s\lockfile' % gamedir, 'r')
-        for records in table2.all():
-            if records['fields']['PcName'] == socket.gethostname():
-                recordId = records['id']
-                table2.update(recordId, {"ConnectedOn": Personnage.account})
-                #LastAction update
-                now = datetime.datetime.now()
-                table2.update(recordId, {"LastAction": 'Connexion'})
-                table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y") })
+                    print('Found running League of Legends, dir', gamedir)
+                    lockfile = open(r'%s\lockfile' % gamedir, 'r')
+            for records in table2.all():
+                if records['fields']['PcName'] == socket.gethostname():
+                    recordId = records['id']
+                    table2.update(recordId, {"ConnectedOn": Personnage.account})
+                    #LastAction update
+                    now = datetime.datetime.now()
+                    table2.update(recordId, {"LastAction": 'Connexion'})
+                    table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y") })
+        else:
+            print('No connexion detected, waiting 1 seconds')
+            
+            
     except:
         print('No more accounts')
-
+    
         Connexion()
 
 

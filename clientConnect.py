@@ -1,3 +1,4 @@
+from operator import contains
 import requests
 from lcu import LcuInfo
 import psutil
@@ -7,16 +8,28 @@ import urllib3
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-# for proc in psutil.process_iter():
-#     # check whether the process name contains the given string
-#     if "LeagueClientUx.exe" in proc.name() or "Riot" in proc.name() or "League" in proc.name():
-#       print(proc.name())
-#       proc.kill()
-# #start league of legends
 
-# os.startfile("C:\\Riot Games\\League of Legends\\LeagueClient.exe")
-# print("Starting League of Legends..")
-# time.sleep(5)
+
+def Started_Client():
+  ClientStarted = False
+  ClientUXStarted = False
+  for proc in psutil.process_iter():
+    if "LeagueClientUx.exe" in proc.name():
+      ClientUXStarted = True
+      print(f'Process: {proc.name()}')
+    if "Riot" in proc.name():
+      print(f'Process: {proc.name()}')
+      ClientStarted = True
+  if ClientStarted and ClientUXStarted == True:
+    print('Connected to LCU.')
+  if ClientStarted == False:
+    os.startfile("C:\\Riot Games\\League of Legends\\LeagueClient.exe")
+    print("Starting League of Legends..")
+    time.sleep(5)
+
+Started_Client()
+
+
 def get_lcu_info(username,password):
   lcu_info = LcuInfo()
   lcu_port = lcu_info.access_port
@@ -28,8 +41,8 @@ def get_lcu_info(username,password):
   print(f'LCU Token Access: {lcu_password}.')
   print(f'LCU Port: {lcu_port}.')
 
-  user_nickname = username
-  user_password = password
+  user_nickname = 'Erenamur3'
+  user_password = '!DonOtEaTtheYe11OwSnow'
 
   payload = {
     'username': user_nickname,
