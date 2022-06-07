@@ -986,7 +986,7 @@ class lobby():
     print(port,password)
 
 def statuscheck():
-    
+    phase = False
     Riot_adapter = HTTPAdapter(max_retries=1)   
     session = requests.Session()
     session.mount('https://127.0.0.1:2999/liveclientdata/allgamedata', Riot_adapter)
@@ -1034,7 +1034,7 @@ def statuscheck():
     s = requests.session()
 
     
-
+    
     # # Main worker loop
     while True:
         try :
@@ -1047,7 +1047,11 @@ def statuscheck():
         except:
             print('cant get phase yes')
             time.sleep(3)
-        phase = r.json()
+        if phase != False:
+            print( "cant get phase yet, restarting")
+            phase = r.json()
+        else :
+            break
         
         def PhaseBlock():
             global PhaseNumber # Vaut 0 a la base 
@@ -1218,7 +1222,6 @@ def statuscheck():
             PhaseBlock()
             LastAction()
             ConfigSetup()
-            
             while Personnage.fullApiAccess == False:
                 try :
                     ChampionsCollection = request('get', '/lol-champions/v1/inventories/' + str(accid) + '/champions-playable-count').json()['championsOwned']
