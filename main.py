@@ -926,8 +926,10 @@ def Connexion():
                         print("Waiting League to start")
                         continue
                         
-
+                    
                     print('Found running League of Legends, dir', gamedir)
+                    print("sleeping 30 sec to make sure everything loaded")
+                    time.sleep(30)
                     lockfile = open(r'%s\lockfile' % gamedir, 'r')
             for records in table2.all():
                 if records['fields']['PcName'] == socket.gethostname():
