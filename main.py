@@ -882,7 +882,7 @@ def Connexion():
             MouseClick()
             pyautogui.typewrite(Personnage.account, interval=0.10)
             time.sleep(0.1)
-            print('Log Write')
+            print(f'Log Write : {Personnage.account}')
                 
             #PwdDesired
             pyautogui.moveTo(Connexion_image[0],Connexion_image[1]+140)
