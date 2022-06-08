@@ -40,13 +40,22 @@ from requests.packages.urllib3.exceptions import InsecureRequestWarning
 import subprocess
 import pyperclip
 import psutil
-
+import sentry_sdk
 
 #nos fonctions
 
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+
+sentry_sdk.init(
+    "https://95328d7bc1984ece956c6a3212c8b1df@o1279727.ingest.sentry.io/6481901",
+
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    # We recommend adjusting this value in production.
+    traces_sample_rate=1.0
+)
 
 gamedirs = [r'C:\Games\Garena\32787\LeagueClient',
             r'D:\Games\League of Legends']
