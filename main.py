@@ -1052,6 +1052,11 @@ def statuscheck():
                             QueueLockout = True
                             print('QueueLockout')
                             lockoutTime = error["penaltyTimeRemaining"]
+                            for records in table.all():
+                                print(records)
+                                if records['fields']['IngameName'] == SummonerName:
+                                    recordId = records['id']
+                                    table.update(recordId, {"Unban": str(datetime.datetime.now()+datetime.timedelta(seconds=lockoutTime))})
             except:
                 pass
             sleep(2)
