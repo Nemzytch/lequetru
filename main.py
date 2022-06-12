@@ -629,7 +629,7 @@ class Personnage:
         return False
 
 def Connexion():
-    
+    ConfigSetup()
     PcName = socket.gethostname()
     print(PcName)
     hwid = str(subprocess.check_output('wmic csproduct get uuid')).split('\\r\\n')[1].strip('\\r').strip()
