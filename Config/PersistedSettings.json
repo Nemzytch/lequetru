@@ -84,7 +84,7 @@
                         },
                         {
                             "name": "Damage_Enabled",
-                            "value": "1"
+                            "value": "0"
                         },
                         {
                             "name": "Debug_Enabled",
@@ -96,11 +96,11 @@
                         },
                         {
                             "name": "Dodge_Enabled",
-                            "value": "1"
+                            "value": "0"
                         },
                         {
                             "name": "EnemyDamage_Enabled",
-                            "value": "1"
+                            "value": "0"
                         },
                         {
                             "name": "EnemyMagicalDamageCritical_Enabled",
@@ -128,23 +128,23 @@
                         },
                         {
                             "name": "Experience_Enabled",
-                            "value": "1"
+                            "value": "0"
                         },
                         {
                             "name": "Gold_Enabled",
-                            "value": "1"
+                            "value": "0"
                         },
                         {
                             "name": "Heal_Enabled",
-                            "value": "1"
+                            "value": "0"
                         },
                         {
                             "name": "Invulnerable_Enabled",
-                            "value": "1"
+                            "value": "0"
                         },
                         {
                             "name": "Level_Enabled",
-                            "value": "1"
+                            "value": "0"
                         },
                         {
                             "name": "MagicalDamageCritical_Enabled",
@@ -156,7 +156,7 @@
                         },
                         {
                             "name": "ManaDamage_Enabled",
-                            "value": "1"
+                            "value": "0"
                         },
                         {
                             "name": "ManaHeal_Enabled",
@@ -192,7 +192,7 @@
                         },
                         {
                             "name": "QuestReceived_Enabled",
-                            "value": "1"
+                            "value": "0"
                         },
                         {
                             "name": "ScoreDarkStar_Enabled",
@@ -208,7 +208,7 @@
                         },
                         {
                             "name": "Score_Enabled",
-                            "value": "1"
+                            "value": "0"
                         },
                         {
                             "name": "ShieldBonusDamage_Enabled",
@@ -216,7 +216,7 @@
                         },
                         {
                             "name": "Special_Enabled",
-                            "value": "1"
+                            "value": "0"
                         },
                         {
                             "name": "TrueDamageCritical_Enabled",
@@ -237,7 +237,7 @@
                         },
                         {
                             "name": "CfgVersion",
-                            "value": "12.8.437.6765"
+                            "value": "12.11.446.9344"
                         },
                         {
                             "name": "CursorOverride",
@@ -249,7 +249,7 @@
                         },
                         {
                             "name": "EnableAudio",
-                            "value": "1"
+                            "value": "0"
                         },
                         {
                             "name": "EnableLeftMouseButtonAttackMove",
@@ -302,7 +302,7 @@
                     "settings": [
                         {
                             "name": "AutoDisplayTarget",
-                            "value": "1"
+                            "value": "0"
                         },
                         {
                             "name": "CameraLockMode",
@@ -310,7 +310,7 @@
                         },
                         {
                             "name": "ChatScale",
-                            "value": "49"
+                            "value": "0"
                         },
                         {
                             "name": "DeathRecapScale",
@@ -330,15 +330,15 @@
                         },
                         {
                             "name": "EmotePopupUIDisplayMode",
-                            "value": "0"
+                            "value": "2"
                         },
                         {
                             "name": "EmoteSize",
-                            "value": "0"
+                            "value": "1"
                         },
                         {
                             "name": "EnableLineMissileVis",
-                            "value": "1"
+                            "value": "0"
                         },
                         {
                             "name": "EternalsMilestoneDisplayMode",
@@ -366,7 +366,7 @@
                         },
                         {
                             "name": "HideEnemySummonerEmotes",
-                            "value": "0"
+                            "value": "1"
                         },
                         {
                             "name": "ItemShopItemDisplayMode",
@@ -442,7 +442,7 @@
                         },
                         {
                             "name": "ObjectTooltips",
-                            "value": "1"
+                            "value": "0"
                         },
                         {
                             "name": "PracticeToolScale",
@@ -478,7 +478,7 @@
                         },
                         {
                             "name": "ShowAttackRadius",
-                            "value": "1"
+                            "value": "0"
                         },
                         {
                             "name": "ShowChampionIndicator",
@@ -490,11 +490,11 @@
                         },
                         {
                             "name": "ShowHealthBarShake",
-                            "value": "1"
+                            "value": "0"
                         },
                         {
                             "name": "ShowNeutralCamps",
-                            "value": "1"
+                            "value": "0"
                         },
                         {
                             "name": "ShowPlayerPerks",
@@ -506,7 +506,7 @@
                         },
                         {
                             "name": "ShowSpellCosts",
-                            "value": "1"
+                            "value": "0"
                         },
                         {
                             "name": "ShowStatsPanel_StatStones",
@@ -576,7 +576,7 @@
                     "settings": [
                         {
                             "name": "LossOfControlEnabled",
-                            "value": "1"
+                            "value": "0"
                         },
                         {
                             "name": "ShowSlows",
@@ -589,7 +589,7 @@
                     "settings": [
                         {
                             "name": "EnableHUDAnimations",
-                            "value": "1"
+                            "value": "0"
                         }
                     ]
                 },
@@ -633,59 +633,59 @@
                     "settings": [
                         {
                             "name": "AmbienceMute",
-                            "value": "0"
+                            "value": "1"
                         },
                         {
                             "name": "AmbienceVolume",
-                            "value": "0.3400"
+                            "value": "0.0000"
                         },
                         {
                             "name": "AnnouncerMute",
-                            "value": "0"
+                            "value": "1"
                         },
                         {
                             "name": "AnnouncerVolume",
-                            "value": "0.3200"
+                            "value": "0.0000"
                         },
                         {
                             "name": "MasterMute",
-                            "value": "0"
+                            "value": "1"
                         },
                         {
                             "name": "MasterVolume",
-                            "value": "0.0500"
+                            "value": "0.0000"
                         },
                         {
                             "name": "MusicMute",
-                            "value": "0"
+                            "value": "1"
                         },
                         {
                             "name": "MusicVolume",
-                            "value": "0.0900"
+                            "value": "0.0000"
                         },
                         {
                             "name": "PingsMute",
-                            "value": "0"
+                            "value": "1"
                         },
                         {
                             "name": "PingsVolume",
-                            "value": "0.3500"
+                            "value": "0.0000"
                         },
                         {
                             "name": "SfxMute",
-                            "value": "0"
+                            "value": "1"
                         },
                         {
                             "name": "SfxVolume",
-                            "value": "0.2600"
+                            "value": "0.0000"
                         },
                         {
                             "name": "VoiceMute",
-                            "value": "0"
+                            "value": "1"
                         },
                         {
                             "name": "VoiceVolume",
-                            "value": "0.4700"
+                            "value": "0.0000"
                         }
                     ]
                 }

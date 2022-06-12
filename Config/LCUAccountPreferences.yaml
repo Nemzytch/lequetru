@@ -71,8 +71,13 @@ lol-home-hubs:
             skipAll: true
             watchedIntro: true
     schemaVersion: 1
+lol-honor:
+    data:
+        recallReleaseNotified: true
+    schemaVersion: 1
 lol-leagues:
     data:
+        hasSeenFlexRestrictionModal: true
         last-split-start-modal: 12.100000
     schemaVersion: 1
 lol-loot:
@@ -113,7 +118,7 @@ lol-player-behavior:
     schemaVersion: 0
 lol-premade-voice:
     data:
-        autoJoin: true
+        autoJoin: false
         inputMode: "voiceActivity"
         muteOnConnect: false
         pushToTalkKey: "[<Unbound>]"
@@ -126,7 +131,7 @@ lol-profiles:
     schemaVersion: 0
 lol-tft:
     data:
-        previouslySeenSeasons: "TFT6_Series,TFT6_Act2_Series"
+        previouslySeenSeasons: "TFT6_Series,TFT6_Act2_Series,TFT7_Series"
     schemaVersion: 1
 lol-tutorial:
     data:

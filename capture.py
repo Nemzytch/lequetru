@@ -1,0 +1,55 @@
+from timeit import timeit
+
+import mss
+import numpy as np
+import cv2
+from PIL import Image
+import time
+from mss import mss
+import time
+import pyautogui
+import ctypes
+import win32api    
+# import pyautogui
+    
+    
+user32 = ctypes.windll.user32
+screenWidth = user32.GetSystemMetrics(0)
+screenHeight = user32.GetSystemMetrics(1)
+
+height = 768
+width = 1024
+top =int((screenHeight-height)/2)
+left = int((screenWidth-width)/2)
+
+
+
+mon = {'top': top, 'left':left, 'width':width, 'height':height}
+
+sct = mss()
+sct_img = sct.grab(mon)
+offset =[left,top]
+
+def locate_img(imgPath):
+    global offset
+    image_to_find = cv2.imread(imgPath)
+    sct_img = sct.grab(mon)
+    
+    img = Image.frombytes('RGB', (sct_img.size.width, sct_img.size.height), sct_img.rgb)
+    img_bgr = cv2.cvtColor(np.array(img), cv2.COLOR_RGB2BGR)
+    match = cv2.matchTemplate(img_bgr, image_to_find, cv2.TM_CCOEFF_NORMED)
+    min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(match)
+    
+    if max_val > 0.95:
+        x = max_loc[0]
+        y = max_loc[1]
+        print(f"found in {x+offset[0]},{y+offset[1]}")
+        return [x+offset[0],y+offset[1]]
+
+
+# pyautogui.screenshot('screenshot.png',region=(left,top,width,height))
+
+# image = 'ennemi.png'
+# ennemi =locate_img(image)
+# print(ennemi)
+

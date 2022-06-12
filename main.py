@@ -1,8 +1,5 @@
-from ast import If
 import os
-import re
 import sys
-from tkinter import N 
 import cv2
 import time
 import json
@@ -15,18 +12,13 @@ import urllib3
 import datetime
 import win32api
 import win32con
-import keyboard
 import requests
 import pyautogui
-import pyscreeze
-import pytesseract
-import pytesseract
 import numpy as nm
 import pydirectinput
 from time import sleep
 from logging import info
 from PIL import ImageGrab
-from random import randrange
 from pyairtable import Table
 from base64 import b64encode 
 from cv2 import validateDisparity
@@ -41,9 +33,14 @@ import subprocess
 import pyperclip
 import psutil
 import sentry_sdk
-
-#nos fonctions
-
+import capture
+import mss
+from PIL import Image
+from PIL import ImageGrab
+from mss import mss
+import mouse
+import ctypes
+import inGameChecks
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
@@ -56,6 +53,28 @@ sentry_sdk.init(
     # We recommend adjusting this value in production.
     traces_sample_rate=1.0
 )
+
+#__________ SCREEN ELEMENT __________________
+user32 = ctypes.windll.user32
+screenWidth = user32.GetSystemMetrics(0)
+screenHeight = user32.GetSystemMetrics(1)
+height = 768
+width = 1024
+top =int((screenHeight-height)/2)
+left = int((screenWidth-width)/2)
+mon = {'top': top, 'left':left, 'width':width, 'height':height}
+sct = mss()
+sct_img = sct.grab(mon)
+
+
+
+#___________ UI ELEMENTS ____________________
+adcHp75Pixel =[1005+left,447+top]
+adcHp50Pixel = [991+left,447+top]
+ePosition = [481+left,724+top]
+
+
+
 
 gamedirs = [r'C:\Games\Garena\32787\LeagueClient',
             r'D:\Games\League of Legends']
@@ -73,9 +92,6 @@ table2 = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'ADMIN')
 
 PhaseNumber = 0
 Lastphase = "Nothing"
-
-
-
 
 
 def restart():
@@ -139,8 +155,18 @@ def MouseClick():
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0,0)
     time.sleep(0.1)
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0,0)
+    
+
 
 class Personnage:
+    user32 = ctypes.windll.user32
+    screenWidth = user32.GetSystemMetrics(0)
+    screenHeight = user32.GetSystemMetrics(1)
+
+    height = 768
+    width = 1024
+    top =int((screenHeight-height)/2)
+    left = int((screenWidth-width)/2)
     
     account = None
     fullApiAccess = False
@@ -152,11 +178,6 @@ class Personnage:
     WName = None
     attached = None
 
-    #spell levels
-    QLevel = None
-    WLevel = None
-    ELevel = None
-    RLevel = None
 
     YuumiLevel = None
     datas = None
@@ -198,13 +219,14 @@ class Personnage:
     carryHP =None
     adcName = None
 
-    adcPicture = [1870,600]
-    midPicture = [1770,600]
-    junglePicture = [1670,600]
-    topPicture = [1570,600]
-
+    adcPicture = [1005+left,447+top]
+    midHp75pixel = [928+left,448+top]
+    jungleHp75Pixel = [858+left,448+top]
+    topHp75Pixel = [1001+left,493+top]
+    redBase = [1001+left,493+top]
+    blueBase = [754+left,740+top]
+        
     randx = random.random()
-
 
 
     # GENERIC FUNCTIONS      
@@ -226,14 +248,13 @@ class Personnage:
                 table2.update(recordId, {"LastAction": "InGame"})
                 table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y") })
 
-        f = open('stuff.json',)
-        self.stuff = json.load(f)
-        f.close()
+        with open('stuff.json',) as f:
+            self.stuff = json.load(f)
         print('stuff loaded')
         i=0
-        
+
         for x in self.datas["allPlayers"]:
-                
+
             if x["championName"] == "Yuumi":
                 print('Found it in the '+str(i)+" th index")
                 self.yuumiIndex = i
@@ -246,7 +267,6 @@ class Personnage:
 
                 #Start of the game 
                 self.toplanerTimer = random.randint(900, 1300)
-                print('will go to toplaner at '+ str(self.toplanerTimer))
                 # self.cameraLock()
                 pydirectinput.press('space')
                 time.sleep(0.5)
@@ -274,21 +294,21 @@ class Personnage:
                 pydirectinput.write(random.choice(list1))
                 time.sleep(0.2)
                 pydirectinput.press('enter')
-                
+
 
                 self.passiveCooldown = time.time()
-                
+
                 if team ==1:
                     self.Team = 'Blue'
-                    self.BaseX = 1539
-                    self.BaseY = 1042
+                    self.BaseX = self.blueBase[0]
+                    self.BaseY = self.blueBase[1]
                     self.qX = 1250
                     self.qY = 100
                     print(self.Team)
                 if team ==2:
                     self.team = 'Red'
-                    self.BaseX = 1888
-                    self.BaseY = 691
+                    self.BaseX = self.redBase[0]
+                    self.BaseY = self.redBase[1]
                     self.qX = 450
                     self.qY = 350
                     print(self.Team)
@@ -298,29 +318,7 @@ class Personnage:
             else:
                 i=i+1
 
-    def manacheckE(self):
-    # if Mana < 0.15*(MaxMana)+40:
-    #     print('not enough mana to cast E')
-    # else:
-    #     pressE()
-    #     print(' can cast E')
-    # time.sleep(5)
-        screen=pyscreeze.screenshot()
-        eCast=screen.getpixel((920,1012))
-        if eCast[1] > 250:
-            print('adc needs healing')
-            pydirectinput.press('e')
-            # doubleCheck = screen.
-        else:
-            print('cant heal yet')
-        
-    def cameraLock(self):
-        camera = pyautogui.locateOnScreen("images/camera.png", grayscale=False,confidence=0.90)
-        if camera!=None:
-            pyautogui.click(camera[0],camera[1])
-        else:
-            print('Cant start queue yet')
-
+    
     def shop(self):
         A = self.nombreItems -1
         desiredItem = self.stuff["items"][A-1]["displayName"]
@@ -397,9 +395,7 @@ class Personnage:
 
     def start(self):
         
-        def LastAction():
-            # nouveau last action : last action since ....
-            
+        def LastAction():            
             global saved_time
             current_time = datetime.datetime.now()
             if (current_time - saved_time).seconds >= 10:
@@ -407,22 +403,20 @@ class Personnage:
                     if records['fields']['PcName'] == socket.gethostname():
                         recordId = records['id']
                         now = datetime.datetime.now()
-                        table2.update(recordId, {"LastAction": Action})
-                        table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y") })
+                        table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y"), "LastAction": Action })
                         saved_time = datetime.datetime.now()
                         
         while self.datas["gameData"]["gameTime"] < 3600:
             self.updateDatas()
             self.updatePerso()
             self.LevelUP()
-            self.Surrender()
+            # self.Surrender()
             self.randx = random.random()
-            print(self.randx)
+            print(f'Random X ={self.randx}')
             
-            if self.randx >0.80:
-                pyautogui.moveTo(960,480)
+            if self.randx >0.90:
+                mouse.move(960,480)
                 MouseClick()
-                pydirectinput.press('space')   
 
             if self.adcDead == False:
                 if self.attached == False:
@@ -430,65 +424,33 @@ class Personnage:
                         self.baseCheck()
                         self.updateDatas()
                         self.updatePerso()
-                        self.Surrender()     
+                        self.Surrender() 
 
             if self.adcDead == False:
                 if self.attached == False:
-                    print('going to adc')
-                    pyautogui.click(1861,603)                    
-                    pydirectinput.press('w')  
-                    print('goin to adc')
+                    print('Going to adc')
+                    mouse.move(self.adcPicture[0],self.adcPicture[1])               
+                    pydirectinput.press('w')
                     #LastAction
                     Action = "Going to adc"
                     LastAction()
 
             if self.attached == True:
-                print('yuumi is attached')
-                self.hpCheck()
-                if self.carryHP<50:
-                    print(' Mon adc a '+str(self.carryHP)+'%HP')
-                    if time.time()> (self.healCooldown+240):
-                        if self.datas["gameData"]["gameTime"] > 90:
-                            pydirectinput.press('f')
-                            #LastAction
-                            Action = "Healing"
-                            LastAction()
-                            self.healCooldown = time.time()
-                    pyautogui.moveTo(self.ennemyPosition[0],self.ennemyPosition[1])
-                    self.ultimateCast()
-                    print('send R')
-                    ennemy = pyautogui.locateOnScreen("images/1.png", grayscale=False,confidence=0.90)
-                    if ennemy!=None:
-                        if ennemy[0]+40 >0 and ennemy[0]+40<1920:
-                            if ennemy[1]+100 >0 and ennemy[1]+100<1080:
-                                pyautogui.moveTo(ennemy[0]+40,ennemy[1]+100)
-                                pydirectinput.press('d')
-                    self.manacheckE()
-                    print('Healed ADC')
-                if self.carryHP<85:
-                    print(' Mon adc a '+str(self.carryHP)+'%HP')
-                    self.manacheckE()
-                    print('Healed ADC')
+                print('Attached')
+                inGameChecks.attached()
 
-                if self.carryHP>85:
-                    if time.time() > (self.qspellCooldown+25):
-                        ennemy = pyautogui.locateOnScreen("images/1.png", grayscale=False,confidence=0.90)
-                        if ennemy!=None:
-                            self.qSpell()
-                            self.qspellCooldown = time.time()
 
                 if self.yuumiMana < (15*(self.resourceMax)/100):
                     print('you got '+ str(self.yuumiMana))
                     self.procPassive()
 
-                else:
-                    print('HP > 85%, no need to heal ')
+
             
 
             if self.adcDead == True:
                 if self.datas["gameData"]["gameTime"] > 600:
                     if self.jungleDead == False:
-                        pyautogui.click(self.junglePicture[0],self.junglePicture[1]) 
+                        pyautogui.click(self.jungleHp75Pixel[0],self.jungleHp75Pixel[1]) 
                         time.sleep(0.2)                   
                         pydirectinput.press('w')  
                         print('going to jungler')
@@ -496,12 +458,12 @@ class Personnage:
                         pydirectinput.press('e')
                         time.sleep(9)
                         pydirectinput.press('e')
-                        pyautogui.moveTo(400,400)
+                        mouse.move(400,400)
                         pydirectinput.press('w')
 
                     if self.jungleDead == True:
                         if self.midDead == False:
-                            pyautogui.click(self.midPicture[0],self.midPicture[1])
+                            pyautogui.click(self.midHp75pixel[0],self.midHp75pixel[1])
                             time.sleep(0.2)                     
                             pydirectinput.press('w')  
                             print('going to midlaner')
@@ -509,11 +471,11 @@ class Personnage:
                             pydirectinput.press('e')
                             time.sleep(9)
                             pydirectinput.press('e')
-                            pyautogui.moveTo(400,400)
+                            mouse.move(400,400)
                             pydirectinput.press('w')
                         if self.midDead == True:
                             if self.topDead == False:
-                                pyautogui.click(self.topPicture[0],self.topPicture[1])
+                                pyautogui.click(self.topHp75Pixel[0],self.topHp75Pixel[1])
                                 time.sleep(0.2)                     
                                 pydirectinput.press('w')  
                                 print('going to toplaner')
@@ -521,7 +483,7 @@ class Personnage:
                                 pydirectinput.press('e')
                                 time.sleep(9)
                                 pydirectinput.press('e')
-                                pyautogui.moveTo(400,400)
+                                mouse.move(400,400)
                                 pydirectinput.press('w')
                             if self.topDead == True:
                                 print('going back to base')  
@@ -529,7 +491,7 @@ class Personnage:
                 if time.time()> (self.backCooldown+50):
                     Action = "Going back"
                     LastAction()
-                    pyautogui.moveTo(self.BaseX,self.BaseY)
+                    mouse.move(self.BaseX,self.BaseY)
                     print('adc is not alive')
                     time.sleep(0.2)
                     MouseClick()
@@ -551,57 +513,11 @@ class Personnage:
     def updatePosition(self):
         self.position = [self.datas.posX, self.datas.posY]
 
-    def hpCheck(self):
-        screen=pyscreeze.screenshot()
-        i=0
-        x = None
-        y = 635
-        if self.adcDead == False:
-            x = 1835
-        if self.adcDead == True:
-            if self.jungleDead== False:
-                print('check jungle hp')  
-                x = 1738
-            if self.jungleDead== True: 
-                if self.midDead == False:
-                    print('check mid hp') 
-                    x = 1641
-                if self.midDead == True:
-                    print('check top hp') 
-                    x = 1544
 
-        for i in range(69):
-            rgb_values=screen.getpixel((x,y))
-            if rgb_values[1] == 19:
-                #doublecheck the pixel color
-                bgr_values=screen.getpixel((x,y))
-                if bgr_values[1] == 19:
-                    x = x+1
-                    self.carryHP = i*1.42
-                    break
-            if rgb_values[1] != 19:
-                x = x+1
-        else:
-            self.carryHP = 100
-        
-    
-    def ctrlq(self): 
+    def ctrlt(key):
         pydirectinput.keyDown('ctrl')
-        pydirectinput.press('q')
+        pydirectinput.press(key)
         pydirectinput.keyUp('ctrl')
-    def ctrlw(self): 
-        pydirectinput.keyDown('ctrl')
-        pydirectinput.press('w')
-        pydirectinput.keyUp('ctrl')
-    def ctrle(self):    
-        pydirectinput.keyDown('ctrl')
-        pydirectinput.press('e')
-        pydirectinput.keyUp('ctrl')
-    def ctrlr(self): 
-        pydirectinput.keyDown('ctrl')
-        pydirectinput.press('r')
-        pydirectinput.keyUp('ctrl')
-        
 
 
     def baseCheck(self):
@@ -618,7 +534,6 @@ class Personnage:
         print(RegenMana)
 
         if ManaActuel > 4*(RegenMana)+ManaPrecedent:
-            #open shop()
             print('At Home')
             self.shop()
             time.sleep(3)
@@ -627,68 +542,33 @@ class Personnage:
             print('Not at Home')
 
 
-    def qSpell(self):
-
-        x =0
-        ennemy = pyautogui.locateOnScreen("images/1.png", confidence=0.95)
-        for pos in pyautogui.locateAllOnScreen('images/minions.png'):
-            x = x+1
-            self.qX = pos[0]
-            self.qY = pos[1]
-            if pos[0] < self.qX:
-                self.qX = pos[0]
-            if pos[1] < self.qY:
-                self.qY = pos[1]
-            if pos[0] == None:
-                print('no minions')
-                self.qX = ennemy[0]
-                self.qY = ennemy[1]
-        
-        if self.qX != None:
-            offsetx = self.qX -100
-            offsety = self.qY -40
-            pyautogui.moveTo(offsetx, offsety)
-            pydirectinput.press('q') 
-            try:
-                ennemy = pyautogui.locateOnScreen("images/1.png", confidence=0.95)
-                time.sleep(0.3)
-                if ennemy[0]+40 >0 and ennemy[0]+40<1920:
-                    if ennemy[1]+70 >0 and ennemy[1]+100<1080:
-                        pyautogui.moveTo(ennemy[0]+40,ennemy[1]+70)
-            except TypeError:
-                print('failed q spell')
-
-    def ultimateCast(self):
-        if time.time() > (self.ultimateCooldown +70):
-            try:
-                Ennemies = pyautogui.locateOnScreen(r"images/1.png", grayscale=False,confidence=0.95)
-                pyautogui.moveTo(Ennemies[0]+40, Ennemies[1]+100)
-                time.sleep(0.2)
-                pydirectinput.press('r')
-                self.ultimateCooldown = time.time()
-            except TypeError:
-                print("No ennemies found")
-                pyautogui.moveTo(self.BaseX,self.BaseY)
-                pydirectinput.press('r')
-                self.ultimateCooldown = time.time()
-
-
     def procPassive(self) : 
+        user32 = ctypes.windll.user32
+        screenWidth = user32.GetSystemMetrics(0)
+        screenHeight = user32.GetSystemMetrics(1)
+        height = 768
+        width = 1024
+        top =int((screenHeight-height)/2)
+        left = int((screenWidth-width)/2)
+
+        mon = {'top': top, 'left':left, 'width':width, 'height':height}
+        sct = mss()
+        sct_img = sct.grab(mon)
         if time.time() > (self.passiveCooldown +10):
             try:
-                Ennemies = pyautogui.locateOnScreen(r"images/1.png", grayscale=False,confidence=0.95)
-                # pydirectinput.press('y')
+                Ennemies = capture.locate_img("ennemi.png")
                 if Ennemies[0]+40 >0 and Ennemies[0]+40<1920:
                     if Ennemies[1]+100 >0 and Ennemies[1]+100<1080:
-                        pyautogui.moveTo(Ennemies[0]+40, Ennemies[1]+100)
+                        mouse.move(Ennemies[0]+40, Ennemies[1]+100)
                 self.ennemyPosition = [Ennemies[0], Ennemies[1]]
                 pydirectinput.press('w')
                 MouseClick()
-                pydirectinput.press('h')      
-                pyautogui.moveTo(1861,603)
-                time.sleep(0.3)
+                pydirectinput.press('h')    
+                 
+                mouse.move(self.adcPicture[0],self.adcPicture[1])
+                time.sleep(0.2)
+                time.sleep(0.1)
                 pydirectinput.press('w')
-                # pydirectinput.press('y')
                 self.passiveCooldown = time.time()
             except TypeError:
                 print("No ennemies found")
@@ -699,7 +579,6 @@ class Personnage:
         if self.datas["gameData"]["gameTime"] > OneMinute:
             Surrend = pyautogui.locateOnScreen("images/Surrend.png", grayscale=False,confidence=0.80)
             OneMinute=OneMinute+20
-            print(OneMinute)
             try:
                 if Surrend != None:
                     pydirectinput.press('enter')
@@ -714,115 +593,15 @@ class Personnage:
             print('Not Time to Surrender')
                     
     def LevelUP(self):
-        if self.YuumiLevel == 1:
-            if self.ELevel < 1:
-                self.ctrle()
-                print('level up E')
-            else:
-                print('Nothing To Level Up')
-        if self.YuumiLevel == 2:
-            if self.QLevel < 1:
-                self.ctrlq()
-                print('level up Q')
-            else:
-                print('Nothing To Level Up')
-        if self.YuumiLevel == 3:
-            if self.ELevel < 2:
-                self.ctrle()
-                print('level up E')
-            else:
-                print('Nothing To Level Up')
-        if self.YuumiLevel == 4:
-            if self.WLevel < 2:
-                self.ctrlw()
-                print('level up W')
-            else:
-                print('Nothing To Level Up')
-        if self.YuumiLevel == 5:
-            if self.ELevel < 3:
-                self.ctrle()
-                print('level up E')
-            else:
-                print('Nothing To Level Up')
-        if self.YuumiLevel == 6:
-            if self.RLevel < 1:
-                self.ctrlr()
-                print('level up R')
-            else:
-                print('Nothing To Level Up')
-        if self.YuumiLevel == 7:
-            if self.ELevel < 4:
-                self.ctrle()
-                print('level up E')
-            else:
-                print('Nothing To Level Up')
-        if self.YuumiLevel == 8:
-            if self.WLevel < 3:
-                self.ctrlw()
-                print('level up W')
-            else:
-                print('Nothing To Level Up')
-        if self.YuumiLevel == 9:
-            if self.ELevel < 5:
-                self.ctrle()
-                print('level up E')
-            else:
-                print('Nothing To Level Up')
-        if self.YuumiLevel == 10:
-            if self.WLevel < 4:
-                self.ctrlw()
-                print('level up W')
-            else:
-                print('Nothing To Level Up')
-        if self.YuumiLevel == 11:
-            if self.RLevel < 2:
-                self.ctrlr()
-                print('level up R')
-            else:
-                print('Nothing To Level Up')
-        if self.YuumiLevel == 12:
-            if self.WLevel < 5:
-                self.ctrlw()
-                print('level up W')
-            else:
-                print('Nothing To Level Up')
-        if self.YuumiLevel == 13:
-            if self.QLevel < 2:
-                self.ctrlq()
-                print('level up Q')
-            else:
-                print('Nothing To Level Up')
-        if self.YuumiLevel == 14:
-            if self.QLevel < 3:
-                self.ctrlq()
-                print('level up Q')
-            else:
-                print('Nothing To Level Up')
-        if self.YuumiLevel == 15:
-            if self.QLevel < 4:
-                self.ctrlq()
-                print('level up Q')
-            else:
-                print('Nothing To Level Up')
-        if self.YuumiLevel == 16:
-            if self.RLevel < 3:
-                self.ctrlr()
-                print('level up R')
-            else:
-                print('Nothing To Level Up')
-        if self.YuumiLevel == 17:
-            if self.QLevel < 5:
-                self.ctrlq()
-                print('level up Q')
-            else:
-                print('Nothing To Level Up')
-        if self.YuumiLevel == 18:
-            if self.QLevel < 6:
-                self.ctrlq()
-                print('level up Q')
-            else:
-                print('Nothing To Level Up')
-        print("Yuumi is level  "+str(self.YuumiLevel))
+            # MaxA = ["Z","A","E","A","E","A","R","E","A","E","A","R","E","E","Z","Z","R","Z","Z"]
+        levelUpOrder = ["W","E","Q","E","Q","E","R","E","Q","E","Q","R","Q","Q","W","W","R","W","W"]
+        spellToUp = levelUpOrder[self.YuumiLevel]
+        desiredSpellLevel = levelUpOrder[:self.YuumiLevel+1].count(spellToUp)
+        if self.yuumiState["abilities"][spellToUp]["abilityLevel"] < desiredSpellLevel:
+            keyTo_Press = spellToUp
+            pydirectinput.keyDown('ctrl')
+            pydirectinput.press(keyTo_Press.lower())
+            pydirectinput.keyUp('ctrl')
 
     def updatePerso(self):
         self.yuumiState = self.datas["activePlayer"]
@@ -832,10 +611,6 @@ class Personnage:
             self.attached = True
         else: 
             self.attached = False
-        self.QLevel = self.yuumiState["abilities"]["Q"]["abilityLevel"]
-        self.WLevel = self.yuumiState["abilities"]["W"]["abilityLevel"]
-        self.ELevel = self.yuumiState["abilities"]["E"]["abilityLevel"]
-        self.RLevel = self.yuumiState["abilities"]["R"]["abilityLevel"]
         self.YuumiLevel = self.yuumiState["level"]
         self.adcName = self.teamState[self.adcIndex]["championName"]
         self.adcDead = self.teamState[self.adcIndex]["isDead"]
@@ -848,12 +623,10 @@ class Personnage:
         self.yuumiMana = self.yuumiState["championStats"]["resourceValue"]
         self.resourceMax = self.yuumiState["championStats"]["resourceMax"]
 
-
         self.action()
 
     def action(self):
         return False
-
 
 def Connexion():
     
@@ -886,7 +659,7 @@ def Connexion():
             password = table.first(formula=formula, sort=["Unban"])['fields']['Password']
             
             #LogDesired
-            pyautogui.moveTo(Connexion_image[0],Connexion_image[1]+80)
+            mouse.move(Connexion_image[0],Connexion_image[1]+80)
             time.sleep(0.1)
             MouseClick()
             pyautogui.typewrite(Personnage.account, interval=0.10)
@@ -894,7 +667,7 @@ def Connexion():
             print(f'Log Write : {Personnage.account}')
                 
             #PwdDesired
-            pyautogui.moveTo(Connexion_image[0],Connexion_image[1]+140)
+            mouse.move(Connexion_image[0],Connexion_image[1]+140)
             time.sleep(0.1)
             MouseClick()
             # pyautogui.typewrite(password, interval=0.10)
@@ -908,20 +681,20 @@ def Connexion():
                     table.update(recordId, {"Unban": str(datetime.datetime.now())})
             
             if TermsOfServices != None:
-                pyautogui.moveTo(TermsOfServices[0],TermsOfServices[1])
+                mouse.move(TermsOfServices[0],TermsOfServices[1])
                 time.sleep(1)
                 pyautogui.scroll(-100000)
                 time.sleep(1)
                 pyautogui.click(TermsOfServices[0],TermsOfServices[1]+600)
                 
             #Press connexion button
-            pyautogui.moveTo(Connexion_image[0]+60,Connexion_image[1]+520)
+            mouse.move(Connexion_image[0]+60,Connexion_image[1]+520)
             time.sleep(0.1)
             MouseClick()
             time.sleep(6)
             
             #Press Play button
-            pyautogui.moveTo(Connexion_image[0],Connexion_image[1]+650)
+            mouse.move(Connexion_image[0],Connexion_image[1]+650)
             time.sleep(0.1)
             MouseClick()
             time.sleep(0.1)
@@ -935,9 +708,7 @@ def Connexion():
                         print("Waiting League to start")
                         continue
                         
-                    
-                    print('Found running League of Legends, dir', gamedir)
-                    print("sleeping 30 sec to make sure everything loaded")
+                    print('Found running League of Legends, dir', gamedir, "sleeping 30 sec to make sure everything loaded")
                     time.sleep(30)
                     lockfile = open(r'%s\lockfile' % gamedir, 'r')
             for records in table2.all():
@@ -954,11 +725,8 @@ def Connexion():
             
     except:
         print('No more accounts')
-    
         Connexion()
 
-
-        
 class lobby():
     username = 'riot'
     champion = 350 
@@ -971,15 +739,12 @@ class lobby():
     ]
     lockfile = None
     print('Waiting for League of Legends to start ..')
-    print('Trying to connect')
     Connexion()
     while not lockfile:
         for gamedir in gamedirs:
             lockpath = r'%s\lockfile' % gamedir
-
             if not os.path.isfile(lockpath):
                 continue
-
             print('Found running League of Legends, dir', gamedir)
             lockfile = open(r'%s\lockfile' % gamedir, 'r')
 
@@ -991,7 +756,6 @@ class lobby():
     protocol = lock[4]
     host = '127.0.0.1'
     port = lock[2]
-
     username = 'riot'
     password = lock[3]
     print(port,password)
@@ -1010,8 +774,6 @@ def statuscheck():
         perso = Personnage()
     except ConnectionError as ce:
         print("you aren't in game")
-
-
 
     print(' connecting to port '+str(lobby.port)+' with the password' +str(lobby.password)+ ' we will lock champ #'+ str(lobby.champion))
 
@@ -1035,19 +797,13 @@ def statuscheck():
 
         return r
 
-
-
     userpass = b64encode(bytes('%s:%s' % (lobby.username, lobby.password), 'utf-8')).decode('ascii')
     headers = { 'Authorization': 'Basic %s' % userpass }
     print(headers['Authorization'])
 
-    # Create Request session
-    s = requests.session()
+    s = requests.session()# Create Request session
 
-    
-
-    # # Main worker loop
-    while True:
+    while True: # # Main worker loop
         try :
             accid = request('get', '/lol-login/v1/session').json()['accountId']
             r = request('get', '/lol-gameflow/v1/gameflow-phase')
@@ -1145,13 +901,9 @@ def statuscheck():
                 }
                 r = requests.post(url, data=json.dumps(data), headers=headers, verify=False)
                 return r
-    
-            champsCheap = ["Amumu","Annie","Ashe,","Dr. Mundo","Garen","Kayle","Master Yi","Nunu","Poppy","Ryze","Singed","Sivir","Soraka","Warwick"]
+            
             champIDListCheap = [32,1,22,36,86,10,11,20,78,13,27,15,16,19]
-
-            champsLessCheap = ["Taric","Teemo","Tristana","Tryndamere","Twisted Fate"]
             ChampIDListLessCheap = [44,17,18,23]
-            Yuumi = "350"
 
             for champID in champIDListCheap: 
                 BoughtChampion = PostRequest( str(StoreUrl)+'/storefront/v3/purchase', data=({"accountId":accid,"items":[{"inventoryType":"CHAMPION","itemId":champID,"ipCost":450,"quantity":1}]}))
@@ -1169,20 +921,10 @@ def statuscheck():
             PhaseBlock()
         if phase =='PreEndOfGame':
             PhaseBlock()
-            
             LastAction()
             
-            okPreEndOfGame = pyautogui.locateOnScreen("images/okPreEndOfGame.png")
-            pyautogui.click(900,500)
-            if okPreEndOfGame !=None:
-                pyautogui.click(okPreEndOfGame[0],okPreEndOfGame[1])
-            try:
-                os.system('taskkill /f /im "SystemSettings.exe"')
-            except:
-                print('no SystemSettings.exe')
             r = request('post', '/lol-lobby/v2/play-again')
         if phase =='EndOfGame':
-            #LastAction()
             PhaseBlock()
             
             #get the summoner name
@@ -1221,8 +963,7 @@ def statuscheck():
                 table.update(recordId, {"FinishedAcc": "Finish"})
                 table.update(recordId,{"PcName":  socket.gethostname()+" STOP"})
                 PussyDestroyer()
-                
-            
+        
             time.sleep(2)
 
         if phase =='None':
@@ -1264,12 +1005,9 @@ def statuscheck():
             except:
                 r = request('post', '/lol-lobby/v2/lobby',data={"queueId": 420})
                 pass
-                # print('no summoner name')
-                # 
             time.sleep(2)
         if phase == 'Reconnect':
             PhaseBlock()
-        
         
         if phase =='Lobby': 
             ConfigSetup()
@@ -1289,15 +1027,11 @@ def statuscheck():
                 if records['fields']['IngameName'] == SummonerName:
                     print("Updating ELO")
                     recordId = records['id']
-                    table.update(recordId, {"Rank": str(tier) +' '+ str(division) +' '+ str(leaguepoints)+"LP"})
-                    table.update(recordId, {"WIN/LOSS": str(wins)+'W/'+str(losses)+'L'})
+                    table.update(recordId, {"Rank": str(tier) +' '+ str(division) +' '+ str(leaguepoints)+"LP","WIN/LOSS": str(wins)+'W/'+str(losses)+'L'})
             
-            #Iron4 0Lp stop account
             if tier == 'IRON' and division == 'IV' and leaguepoints <= 0:
                 print('One more account readyyyyy')
-                table.update(recordId, {"FinishedAcc": "Finish"})
-                table.update(recordId,{"PcName":  socket.gethostname()+" STOP"})
-                table.update(recordId,{"HWID":  socket.gethostname()+" STOP"})
+                table.update(recordId,{"PcName":  socket.gethostname()+" STOP","HWID":  socket.gethostname()+" STOP","FinishedAcc": "Finish"})
                 PussyDestroyer()
                 
             QueueLockout = None
@@ -1320,11 +1054,8 @@ def statuscheck():
                             lockoutTime = error["penaltyTimeRemaining"]
             except:
                 pass
-                        
-
             sleep(2)
             
-                
             try:
                 if QueueLockout != None:
                     
@@ -1353,10 +1084,11 @@ def statuscheck():
             LastAction()
 
         if phase == 'ReadyCheck':
-            
-            r = request('post', '/lol-matchmaking/v1/ready-check/accept') 
+            r = request('post', '/lol-matchmaking/v1/ready-check/accept')
+            time.sleep(3)
 
         elif phase == 'ChampSelect':
+            time.sleep(3)
             LastAction()
             
             r = request('get', '/lol-champ-select/v1/session')
@@ -1364,11 +1096,9 @@ def statuscheck():
                 continue
             cs = r.json()
             if cs["timer"]["phase"] == "PLANNING":
-                
                 print('planning')
 
             if cs["timer"]["phase"] == "BAN_PICK":
-                
                 global lastMessageChampSelect
                 print(" you are in ban/pick")
                 SummonerID = request('get', '/lol-summoner/v1/current-summoner').json()["summonerId"]
@@ -1380,15 +1110,11 @@ def statuscheck():
                 url = '/lol-chat/v1/conversations/'+chatRoomName+'/messages'
                 messageList = ['Hello guys :D', "Hi there ! :)",'Hello team how you doing ? :D']
                 data = { "body": messageList[random.randint(0,len(messageList)-1)],"type": "chat"}
-                
-                #message 2 minute cooldown
                 if (datetime.datetime.now() - lastMessageChampSelect).total_seconds() > 240:
                     r = request('post', url, data = data)
                     lastMessageChampSelect = datetime.datetime.now()
                 
                 
-                
-                # print(request('get', url, '', data).json()) get the chat message
                 runesPages = request('get', '/lol-perks/v1/pages').json()
                 print(runesPages)
                 for _ in runesPages:
@@ -1429,7 +1155,6 @@ def statuscheck():
                                             print('you are in cell '+str(cellId))
                                             url = '/lol-champ-select/v1/session/actions/%d' % _['id']
                                             data = {'championId': 12}
-                                            print('annie')
                                             r = request('patch', url, '', data)
                                             time.sleep(0.5)
                                             r = request('post', url+'/complete', '', data)
@@ -1440,7 +1165,6 @@ def statuscheck():
                                             print('you are in cell '+str(cellId))
                                             url = '/lol-champ-select/v1/session/actions/%d' % _['id']
                                             data = {'championId': 350}
-                                            print('annie')
                                             r = request('patch', url, '', data)
                                             time.sleep(0.5)
                                             r = request('post', url+'/complete', '', data)

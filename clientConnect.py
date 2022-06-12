@@ -53,3 +53,8 @@ def get_lcu_info(username,password):
   response = requests.put(lcu_endpoint, json=payload, verify=False, auth=(lcu_user, lcu_password))
 
   print(response.json())
+
+
+
+
+
