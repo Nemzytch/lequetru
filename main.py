@@ -1,3 +1,4 @@
+import logging
 import os
 import sys
 import cv2
@@ -44,7 +45,7 @@ import inGameChecks
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
-
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 #__________ SCREEN ELEMENT __________________
 user32 = ctypes.windll.user32
@@ -85,10 +86,10 @@ Lastphase = "Nothing"
 def restart():
     subprocess.call(["git", "reset", "--hard", "HEAD"])
     subprocess.call(["git", "pull"])
-    print('Updating')
-    print("argv was",sys.argv)
-    print("sys.executable was", sys.executable)
-    print("restart now")
+    logging.info("Restarting")
+    logging.info("argv was",sys.argv)
+    logging.info("sys.executable was", sys.executable)
+
 
     os.execv(sys.executable, ['python'] + sys.argv)
 
@@ -108,7 +109,7 @@ def PussyDestroyer():
         time.sleep(0.1)
     time.sleep(3)
     os.startfile("C:\\Riot Games\\League of Legends\\LeagueClient.exe")
-    print("Starting League of Legends..")
+    logging.info("Starting League of Legends..")
     time.sleep(25)
     restart()
 def Pause():
@@ -117,10 +118,10 @@ def Pause():
         if records['fields']['PcName'] == socket.gethostname():
             recordId = records['id']
             if "Status" in records['fields']:
-                print("Play")
+                logging.info("Play")
 
             else:
-                print("Pause :(")
+                logging.info("Pause :(")
                 time.sleep(10)
                 Pause()
 def ConfigSetup():
@@ -133,7 +134,7 @@ def ConfigSetup():
         dst = os.path.join("C:\Riot Games\League of Legends\Config", filename)
         os.replace(src, dst) 
         
-    print('Config Set')
+    logging.info('Config Set')
             
 def fetchDatas():
     response = requests.get("https://127.0.0.1:2999/liveclientdata/allgamedata", verify = False).text
@@ -227,8 +228,8 @@ class Personnage:
         while self.datas["gameData"]["gameTime"] < 1:
             time.sleep(0.2)
             self.updateDatas()
-            print("Loading Screen")
-        print("Game just started")
+            logging.info("Loading Screen")
+        logging.info("Game just started")
         for records in table2.all():
             if records['fields']['PcName'] == socket.gethostname():
                 recordId = records['id']
@@ -237,19 +238,19 @@ class Personnage:
 
         with open('stuff.json',) as f:
             self.stuff = json.load(f)
-        print('stuff loaded')
+        logging.info('stuff loaded')
         i=0
 
         for x in self.datas["allPlayers"]:
 
             if x["championName"] == "Yuumi":
-                print(f'Found it in the {str(i)} th index')
+                logging.info(f'Found it in the {str(i)} th index')
                 self.yuumiIndex = i
                 self.adcIndex = i-1
                 self.midIndex = i-2
                 self.jungleIndex = i-3
                 self.topIndex = i-4
-                print(self.adcIndex)
+                logging.info(self.adcIndex)
                 team= math.ceil((i+1)/(len(self.datas["allPlayers"])/2))
 
                 #Start of the game 
@@ -291,16 +292,16 @@ class Personnage:
                     self.BaseY = self.blueBase[1]
                     self.qX = 1250
                     self.qY = 100
-                    print(self.Team)
+                    logging.info(self.Team)
                 if team ==2:
                     self.team = 'Red'
                     self.BaseX = self.redBase[0]
                     self.BaseY = self.redBase[1]
                     self.qX = 450
                     self.qY = 350
-                    print(self.Team)
+                    logging.info(self.Team)
                 else:
-                    print(str(i))
+                    logging.info(str(i))
                 break
             else:
                 i=i+1
@@ -339,9 +340,9 @@ class Personnage:
 
             if self.gold > self.stuff["items"][A]["price"]:
                 if itemInTheSlot != desiredItem:
-                    print("intem in the slot "+itemInTheSlot)
-                    print("desired item"+desiredItem)
-                    print('Item precedent not completed')
+                    logging.info("intem in the slot "+itemInTheSlot)
+                    logging.info("desired item"+desiredItem)
+                    logging.info('Item precedent not completed')
                     pydirectinput.press('p')
                     time.sleep(0.2)
                     pydirectinput.keyDown('ctrl')
@@ -351,12 +352,12 @@ class Personnage:
                     time.sleep(0.2)
                     pydirectinput.press('enter')
                     pydirectinput.press('p')
-                    print(self.stuff["items"][A-1]["displayName"]+" was bought")
+                    logging.info(self.stuff["items"][A-1]["displayName"]+" was bought")
                 else:
                     
-                    print(self.stuff["items"][A-1]["displayName"])
-                    print(self.stuff["items"][A]["displayName"])
-                    print('On achete bien le prochain item')
+                    logging.info(self.stuff["items"][A-1]["displayName"])
+                    logging.info(self.stuff["items"][A]["displayName"])
+                    logging.info('On achete bien le prochain item')
                     pydirectinput.press('p')
                     time.sleep(0.2)
                     pydirectinput.keyDown('ctrl')
@@ -366,11 +367,11 @@ class Personnage:
                     time.sleep(0.2)
                     pydirectinput.press('enter')
                     pydirectinput.press('p')
-                    print(self.stuff["items"][A]["displayName"]+" was bought")
+                    logging.info(self.stuff["items"][A]["displayName"]+" was bought")
             else:
-                print('sorry no money to buy'+ (self.stuff["items"][A]["displayName"]).lower())
+                logging.info('sorry no money to buy'+ (self.stuff["items"][A]["displayName"]).lower())
         else:
-            print('nothing to buy, you are full stuff buddy')
+            logging.info('nothing to buy, you are full stuff buddy')
 
 
     def __init__(self):
@@ -399,7 +400,7 @@ class Personnage:
             self.LevelUP()
             # self.Surrender()
             self.randx = random.random()
-            print(f'Random X ={self.randx}')
+            logging.info(f'Random X ={self.randx}')
             
             if self.randx >0.96:
                 mouse.move(960,480)
@@ -415,7 +416,7 @@ class Personnage:
 
             if self.adcDead == False:
                 if self.attached == False:
-                    print('Going to adc')
+                    logging.info('Going to adc')
                     mouse.move(self.adcPicture[0],self.adcPicture[1])               
                     pydirectinput.press('w')
                     #LastAction
@@ -423,12 +424,12 @@ class Personnage:
                     LastAction()
 
             if self.attached == True:
-                print('Attached')
+                logging.info('Attached')
                 inGameChecks.attached()
                 self.Surrender()
 
                 if self.yuumiMana < (15*(self.resourceMax)/100):
-                    print('you got '+ str(self.yuumiMana))
+                    logging.info('you got '+ str(self.yuumiMana))
                     self.procPassive()
 
 
@@ -439,7 +440,7 @@ class Personnage:
                         pyautogui.click(self.jungleHp75Pixel[0],self.jungleHp75Pixel[1]) 
                         time.sleep(0.2)                   
                         pydirectinput.press('w')  
-                        print('going to jungler')
+                        logging.info('going to jungler')
                         time.sleep(5)
                         pydirectinput.press('e')
                         time.sleep(9)
@@ -452,7 +453,7 @@ class Personnage:
                             pyautogui.click(self.midHp75pixel[0],self.midHp75pixel[1])
                             time.sleep(0.2)                     
                             pydirectinput.press('w')  
-                            print('going to midlaner')
+                            logging.info('going to midlaner')
                             time.sleep(5)
                             pydirectinput.press('e')
                             time.sleep(9)
@@ -464,7 +465,7 @@ class Personnage:
                                 pyautogui.click(self.topHp75Pixel[0],self.topHp75Pixel[1])
                                 time.sleep(0.2)                     
                                 pydirectinput.press('w')  
-                                print('going to toplaner')
+                                logging.info('going to toplaner')
                                 time.sleep(5)
                                 pydirectinput.press('e')
                                 time.sleep(9)
@@ -472,17 +473,17 @@ class Personnage:
                                 mouse.move(400,400)
                                 pydirectinput.press('w')
                             if self.topDead == True:
-                                print('going back to base')  
+                                logging.info('going back to base')  
             
                 if time.time()> (self.backCooldown+50):
                     Action = "Going back"
                     LastAction()
                     mouse.move(self.BaseX,self.BaseY)
-                    print('adc is not alive')
+                    logging.info('adc is not alive')
                     time.sleep(0.2)
                     MouseClick()
                     pydirectinput.press('h')
-                    print('going back to base')
+                    logging.info('going back to base')
                     time.sleep(1.5)
                     MouseClick()
                     pydirectinput.press('h')
@@ -534,7 +535,7 @@ class Personnage:
                 pydirectinput.press('w')
                 self.passiveCooldown = time.time()
             except TypeError:
-                print("No ennemies found")
+                logging.info("No ennemies found")
 
     def Surrender(self):    
         global OneMinute
@@ -548,11 +549,11 @@ class Personnage:
                     pyautogui.write('/ff')
                     time.sleep(0.1)
                     pydirectinput.press('enter')
-                    print('I am surrending')
+                    logging.info('I am surrending')
             except :
-                print('No surrend detected')
+                logging.info('No surrend detected')
         else:
-            print('Not Time to Surrender')
+            logging.info('Not Time to Surrender')
                     
     def LevelUP(self):
             # MaxA = ["Z","A","E","A","E","A","R","E","A","E","A","R","E","E","Z","Z","R","Z","Z"]
@@ -593,7 +594,7 @@ class Personnage:
 def Connexion():
     ConfigSetup()
     PcName = socket.gethostname()
-    print(PcName)
+    logging.info(PcName)
     hwid = str(subprocess.check_output('wmic csproduct get uuid')).split('\\r\\n')[1].strip('\\r').strip()
     
     table = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'YUUMI') 
@@ -605,16 +606,16 @@ def Connexion():
             formula2 = match({"HWID": "None"})
             listOfNone = table.all(formula=formula2)
             listOfAcc = table.all(formula=formula)
-            print(listOfNone)
+            logging.info(listOfNone)
             
-            print("Number of acc for the HWID : " + str(len(listOfAcc)))
+            logging.info("Number of acc for the HWID : " + str(len(listOfAcc)))
             if len(listOfAcc) <4:
-                print("You need more accounts")
+                logging.info("You need more accounts")
                 for i in range(4-len(listOfAcc)):
-                    print("Adding account")
+                    logging.info("Adding account")
                     table.update(listOfNone[i]['id'], {"HWID": hwid})
             if len(listOfAcc) >= 4:
-                print("You have enough accounts")
+                logging.info("You have enough accounts")
                 Personnage.account = table.first(formula=formula, sort=["Unban"])['fields']['Account']
     
             password = table.first(formula=formula, sort=["Unban"])['fields']['Password']
@@ -625,7 +626,7 @@ def Connexion():
             MouseClick()
             pyautogui.typewrite(Personnage.account, interval=0.10)
             time.sleep(0.1)
-            print(f'Log Write : {Personnage.account}')
+            logging.info(f'Log Write : {Personnage.account}')
                 
             #PwdDesired
             mouse.move(Connexion_image[0],Connexion_image[1]+140)
@@ -635,7 +636,7 @@ def Connexion():
             pyperclip.copy(password)
             pyautogui.hotkey('ctrl', 'v')
             time.sleep(0.1)
-            print('Pwd Write')
+            logging.info('Pwd Write')
             for records in table.all():
                 if records['fields']['Account'] == Personnage.account:
                     recordId = records['id']
@@ -666,10 +667,10 @@ def Connexion():
                     lockpath = r'%s\lockfile' % gamedir
 
                     if not os.path.isfile(lockpath):
-                        print("Waiting League to start")
+                        logging.info("Waiting League to start")
                         continue
                         
-                    print('Found running League of Legends, dir', gamedir, "sleeping 30 sec to make sure everything loaded")
+                    logging.info('Found running League of Legends, dir', gamedir, "sleeping 30 sec to make sure everything loaded")
                     time.sleep(30)
                     lockfile = open(r'%s\lockfile' % gamedir, 'r')
             for records in table2.all():
@@ -681,11 +682,11 @@ def Connexion():
                     table2.update(recordId, {"LastAction": 'Connexion'})
                     table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y") })
         else:
-            print('No connexion detected, waiting 1 seconds')
+            logging.info('No connexion detected, waiting 1 seconds')
             
             
     except:
-        print('No more accounts')
+        logging.info('No more accounts')
         Connexion()
 
 class lobby():
@@ -695,14 +696,14 @@ class lobby():
     protocol = 'https'
     gamedirs = [r'C:\Riot Games\League of Legends',r'D:\Games\League of Legends',r'D:\Riot Games\League of Legends',]
     lockfile = None
-    print('Waiting for League of Legends to start ..')
+    logging.info('Waiting for League of Legends to start ..')
     Connexion()
     while not lockfile:
         for gamedir in gamedirs:
             lockpath = r'%s\lockfile' % gamedir
             if not os.path.isfile(lockpath):
                 continue
-            print('Found running League of Legends, dir', gamedir)
+            logging.info('Found running League of Legends, dir', gamedir)
             lockfile = open(r'%s\lockfile' % gamedir, 'r')
 
     lockdata = lockfile.read()
@@ -715,7 +716,7 @@ class lobby():
     port = lock[2]
     username = 'riot'
     password = lock[3]
-    print(port,password)
+    logging.info(port,password)
 
 def statuscheck():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -723,16 +724,16 @@ def statuscheck():
     session = requests.Session()
     session.mount('https://127.0.0.1:2999/liveclientdata/allgamedata', Riot_adapter)
 
-    print('status check')
+    logging.info('status check')
     try:
         session.get('https://127.0.0.1:2999/liveclientdata/allgamedata', verify = False)
-        print("Avant Chargement")
+        logging.info("Avant Chargement")
         time.sleep(1)
         perso = Personnage()
     except ConnectionError as ce:
-        print("you aren't in game")
+        logging.info("you aren't in game")
 
-    print(' connecting to port '+str(lobby.port)+' with the password' +str(lobby.password)+ ' we will lock champ #'+ str(lobby.champion))
+    logging.info(' connecting to port '+str(lobby.port)+' with the password' +str(lobby.password)+ ' we will lock champ #'+ str(lobby.champion))
 
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -743,7 +744,7 @@ def statuscheck():
         else:
             url = '%s://%s:%s%s?%s' % (lobby.protocol, lobby.host, lobby.port, path, query)
 
-        print('%s %s %s' % (method.upper().ljust(7, ' '), url, data))
+        logging.info('%s %s %s' % (method.upper().ljust(7, ' '), url, data))
 
         fn = getattr(s, method)
 
@@ -756,7 +757,7 @@ def statuscheck():
 
     userpass = b64encode(bytes('%s:%s' % (lobby.username, lobby.password), 'utf-8')).decode('ascii')
     headers = { 'Authorization': 'Basic %s' % userpass }
-    print(headers['Authorization'])
+    logging.info(headers['Authorization'])
 
     s = requests.session()# Create Request session
 
@@ -765,11 +766,11 @@ def statuscheck():
             accid = request('get', '/lol-login/v1/session').json()['accountId']
             r = request('get', '/lol-gameflow/v1/gameflow-phase')
             if r.status_code != 200:
-                print(Back.BLACK + Fore.RED + str(r.status_code) + Style.RESET_ALL, r.text)
+                logging.info(Back.BLACK + Fore.RED + str(r.status_code) + Style.RESET_ALL, r.text)
                 continue
-            print(Back.BLACK + Fore.GREEN + str(r.status_code) + Style.RESET_ALL, r.text)
+            logging.info(Back.BLACK + Fore.GREEN + str(r.status_code) + Style.RESET_ALL, r.text)
         except:
-            print('cant get phase yes')
+            logging.info('cant get phase yes')
             time.sleep(3)
         phase = r.json()
         
@@ -781,18 +782,18 @@ def statuscheck():
 
                 Lastphase = phase 
                 PhaseNumber = 0 
-                print('reset Lastphase to phase and reset PhaseNumber to 0')
+                logging.info('reset Lastphase to phase and reset PhaseNumber to 0')
                 
             else: # si c'est la meme Phase que la derniere fois ca veut dire que c'est pas passée à autre chose et on check si ca recommence plus de 10 fois
                 
                 PhaseNumber = PhaseNumber + 1 # Rajoute 1 pour chaque meme phase
                 if PhaseNumber >= 10: 
-                    print(phase+ " phase time to run pussy destroyer")
-                    print(PhaseNumber)
+                    logging.info(phase+ " phase time to run pussy destroyer")
+                    logging.info(PhaseNumber)
                     PussyDestroyer()
                 else :
-                    print(phase+ "  phase tout est ok pour l'instant")
-                    print(PhaseNumber)
+                    logging.info(phase+ "  phase tout est ok pour l'instant")
+                    logging.info(PhaseNumber)
 
 
         def LastAction():
@@ -834,19 +835,19 @@ def statuscheck():
                 if champs['itemId'] == 350:
                     if champs['refundable'] == True:
                         TransacID = champs['transactionId']
-                        print(TransacID)
+                        logging.info(TransacID)
                         Refund = PostRequest( str(StoreUrl)+'/storefront/v3/refund', data=({"accountId":accid ,"transactionId":TransacID ,"inventoryType":"CHAMPION","language":"en_GB"})) 
                                        
         def Store():
 
             idtoken = request('get', '/lol-login/v1/session').json()['idToken']
             accid = request('get', '/lol-login/v1/session').json()['accountId']
-            print(accid, "acc id is here")
+            logging.info(accid, "acc id is here")
             StoreUrl = request('get', '/lol-store/v1/getStoreUrl').json()
             TransacHistory = request('get', '/lol-store/v1/transaction/history').json()
 
             ChampionsCollection = request('get', '/lol-champions/v1/inventories/' + str(accid) + '/champions-playable-count').json()['championsOwned']
-            print(ChampionsCollection)
+            logging.info(ChampionsCollection)
                                         
             def PostRequest(url, data):
                 auth = 'Bearer %s' % idtoken
@@ -863,17 +864,17 @@ def statuscheck():
 
             for champID in champIDListCheap: 
                 BoughtChampion = PostRequest( str(StoreUrl)+'/storefront/v3/purchase', data=({"accountId":accid,"items":[{"inventoryType":"CHAMPION","itemId":champID,"ipCost":450,"quantity":1}]}))
-                print(BoughtChampion.json())
+                logging.info(BoughtChampion.json())
                 time.sleep(1)
                 
             for champID in ChampIDListLessCheap:
                 BoughtChampion = PostRequest( str(StoreUrl)+'/storefront/v3/purchase', data=({"accountId":accid,"items":[{"inventoryType":"CHAMPION","itemId":champID,"ipCost":1350,"quantity":1}]}))
-                print(BoughtChampion.json())
+                logging.info(BoughtChampion.json())
                 time.sleep(1)
             BoughtChampion = PostRequest( str(StoreUrl)+'/storefront/v3/purchase', data=({"accountId":accid,"items":[{"inventoryType":"CHAMPION","itemId":350,"ipCost":6300,"quantity":1}]}))
         
         if phase =='WaitingForStats':
-            print("you are in WaitingForStats phase")
+            logging.info("you are in WaitingForStats phase")
             PhaseBlock()
         if phase =='PreEndOfGame':
             PhaseBlock()
@@ -886,7 +887,7 @@ def statuscheck():
             #get the summoner name
             SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
             time.sleep(2)
-            print("sending play again")
+            logging.info("sending play again")
             r = request('post', '/lol-lobby/v2/play-again')
             
             
@@ -895,7 +896,7 @@ def statuscheck():
                     recordId = records['id']
                     #add 1 to the number of games played
                     table2.update(recordId, {"GamePlayed": int(records['fields']['GamePlayed'])+1})
-                    print('GamePlayed +1')
+                    logging.info('GamePlayed +1')
                     
             
             puuid = request('get', '/lol-summoner/v1/current-summoner').json()['puuid']
@@ -915,7 +916,7 @@ def statuscheck():
             
             #Iron4 0Lp stop account
             if tier == 'IRON' and division == 'IV' and leaguepoints <= 0:
-                print('One more account readyyyyy')
+                logging.info('One more account readyyyyy')
                 table.update(recordId, {"FinishedAcc": "Finish"})
                 table.update(recordId,{"PcName":  socket.gethostname()+" STOP"})
                 PussyDestroyer()
@@ -933,17 +934,17 @@ def statuscheck():
                     if ChampionsCollection < 20:
                         Store() #buy champs
                     else:
-                        print('champs ok')
+                        logging.info('champs ok')
                     Personnage.fullApiAccess = True
                 except:
-                    print("can't get champs yet")
+                    logging.info("can't get champs yet")
                     Personnage.fullApiAccess = False
                     time.sleep(1)
                     
             SummonerName = None
             try:
                 SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
-                print(SummonerName)
+                logging.info(SummonerName)
                 
                 for records in table.all():
                     if records['fields']['Account'] == Personnage.account:
@@ -951,12 +952,12 @@ def statuscheck():
                         table.update(recordId, {"IngameName": SummonerName})
                         
                 for records in table.all():
-                    print(records)
+                    logging.info(records)
                     if records['fields']['IngameName'] == SummonerName:
                         recordId = records['id']
                         table.update(recordId, {"Unban": str(datetime.datetime.now())})
                 
-                print('need to create lobby')
+                logging.info('need to create lobby')
                 r =request('post','/lol-lobby/v2/lobby',data={"queueId": 420})
             except:
                 r = request('post', '/lol-lobby/v2/lobby',data={"queueId": 420})
@@ -981,18 +982,18 @@ def statuscheck():
 
             for records in table.all(sort=["Unban"]):
                 if records['fields']['IngameName'] == SummonerName:
-                    print("Updating ELO")
+                    logging.info("Updating ELO")
                     recordId = records['id']
                     table.update(recordId, {"Rank": str(tier) +' '+ str(division) +' '+ str(leaguepoints)+"LP","WIN/LOSS": str(wins)+'W/'+str(losses)+'L'})
             
             if tier == 'IRON' and division == 'IV' and leaguepoints <= 0:
-                print('One more account readyyyyy')
+                logging.info('One more account readyyyyy')
                 table.update(recordId,{"PcName":  socket.gethostname()+" STOP","HWID":  socket.gethostname()+" STOP","FinishedAcc": "Finish"})
                 PussyDestroyer()
                 
             QueueLockout = None
             Pause()
-            print('need to pick lanes')
+            logging.info('need to pick lanes')
             r = request('put', '/lol-lobby/v2/lobby/members/localMember/position-preferences', data ={"firstPreference": "UTILITY","secondPreference":"MIDDLE",})
             sleep(2)
             r = request('post', '/lol-lobby/v2/lobby/matchmaking/search')
@@ -1001,15 +1002,15 @@ def statuscheck():
             try : 
                 errors = r.json()["errors"]
                 if errors != []:
-                    print(errors)
+                    logging.info(errors)
                     for error in errors:
-                        print(error["penaltyTimeRemaining"])
+                        logging.info(error["penaltyTimeRemaining"])
                         if error["penaltyTimeRemaining"] > 901:
                             QueueLockout = True
-                            print('QueueLockout')
+                            logging.info('QueueLockout')
                             lockoutTime = error["penaltyTimeRemaining"]
                             for records in table.all():
-                                print(records)
+                                logging.info(records)
                                 if records['fields']['IngameName'] == SummonerName:
                                     recordId = records['id']
                                     table.update(recordId, {"Unban": str(datetime.datetime.now()+datetime.timedelta(seconds=lockoutTime))})
@@ -1028,12 +1029,12 @@ def statuscheck():
                             recordId = records['id']
                             table.update(recordId, {"Unban": str(datetime.datetime.now()+time_change)})
                     
-                    print("Starting Pussy Destroyer")
+                    logging.info("Starting Pussy Destroyer")
                     sleep(2)
                     PussyDestroyer()    
 
                 else:
-                    print('No QueueLockout detected')
+                    logging.info('No QueueLockout detected')
                     QueueLockout = None
                                   
             except:
@@ -1057,13 +1058,13 @@ def statuscheck():
                 continue
             cs = r.json()
             if cs["timer"]["phase"] == "PLANNING":
-                print('planning')
+                logging.info('planning')
 
             if cs["timer"]["phase"] == "BAN_PICK":
                 global lastMessageChampSelect
-                print(" you are in ban/pick")
+                logging.info(" you are in ban/pick")
                 SummonerID = request('get', '/lol-summoner/v1/current-summoner').json()["summonerId"]
-                print(SummonerID)
+                logging.info(SummonerID)
                 cellID = -1
                 
                 actions = cs["actions"]
@@ -1077,7 +1078,7 @@ def statuscheck():
                 
                 
                 runesPages = request('get', '/lol-perks/v1/pages').json()
-                print(runesPages)
+                logging.info(runesPages)
                 for _ in runesPages:
                     id = _["id"]
                     if id not in [50,51,52,53,54] and _["selectedPerkIds"][0] !=8214: #si la page de rune ne fait par partie des runes de base et que sa rune principale n'est pas aery
@@ -1097,22 +1098,22 @@ def statuscheck():
                     if SummonerID == summonersInfo["summonerId"]:
                         cellId = summonersInfo["cellId"]
                         if summonersInfo["spell1IconPath"] != "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_heal.png" or summonersInfo["spell2IconPath"] != "/lol-game-data/assets/DATA/Spells/Icons2D/SummonerIgnite.png":
-                            print("wrong summoner spells")
+                            logging.info("wrong summoner spells")
                             url = '/lol-champ-select/v1/session/my-selection'
                             data = {"spell1Id": 7, "spell2Id": 14}
                             r = request('patch', url, '', data)
                             time.sleep(0.5)
                         else:
-                            print("Correct Summoner spells")
+                            logging.info("Correct Summoner spells")
                         
                             
                         for _ in actions : # double boucle car liste d'actions est une liste de dictionnaire
                             for _ in _ :
                                 if _["actorCellId"] == cellId:
                                     if _["isInProgress"]== True:
-                                        print('you are in action '+_["type"])
+                                        logging.info('you are in action '+_["type"])
                                         if _['type'] == "ban":
-                                            print('you are in cell '+str(cellId))
+                                            logging.info('you are in cell '+str(cellId))
                                             url = '/lol-champ-select/v1/session/actions/%d' % _['id']
                                             data = {'championId': 12}
                                             r = request('patch', url, '', data)
@@ -1122,7 +1123,7 @@ def statuscheck():
 
 
                                         if _['type'] == "pick":
-                                            print('you are in cell '+str(cellId))
+                                            logging.info('you are in cell '+str(cellId))
                                             url = '/lol-champ-select/v1/session/actions/%d' % _['id']
                                             data = {'championId': 350}
                                             r = request('patch', url, '', data)
@@ -1131,7 +1132,7 @@ def statuscheck():
                                             time.sleep(0.5)
                                             
                                     else : 
-                                        print("you finished action "+_["type"])          
+                                        logging.info("you finished action "+_["type"])          
 
 
         elif phase == 'InProgress':
@@ -1143,7 +1144,7 @@ def statuscheck():
                     table2.update(recordId, {"LastGameRun": now.strftime("%H:%M %m-%d-%Y") })
             LastAction()
             
-            print('in progress')
+            logging.info('in progress')
             statuscheck()
         else:
                 sleep(1)
