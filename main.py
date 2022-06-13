@@ -718,7 +718,7 @@ class lobby():
     print(port,password)
 
 def statuscheck():
-    
+    os.system('cls' if os.name == 'nt' else 'clear')
     Riot_adapter = HTTPAdapter(max_retries=1)   
     session = requests.Session()
     session.mount('https://127.0.0.1:2999/liveclientdata/allgamedata', Riot_adapter)
@@ -1155,6 +1155,8 @@ def main():
     return True
 if __name__ == "__main__":
     main()
+
+
 
 # https://ddragon.leagueoflegends.com/cdn/11.16.1/data/en_US/champion/Yuumi.json
 # http://ddragon.leagueoflegends.com/cdn/6.8.1/img/map/map11.png

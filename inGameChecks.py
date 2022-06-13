@@ -164,7 +164,6 @@ def inBase():
     FullLife = sct.grab({'mon':1, 'top':759+top, 'left':665+left, 'width':1, 'height':1})
     g = FullLife.pixel(0,0)
     if g[0] and g[1] and g[2] > 31:
-        
         return True
     else:
         return False
