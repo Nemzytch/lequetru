@@ -760,8 +760,11 @@ def statuscheck():
 
     s = requests.session()# Create Request session
 
+    #clear the cms with cls command
+    
+    
     while True: # # Main worker loop
-        os().system('cls')
+        os.system('cls' if os.name == 'nt' else 'clear') 
         try :
             accid = request('get', '/lol-login/v1/session').json()['accountId']
             r = request('get', '/lol-gameflow/v1/gameflow-phase')
