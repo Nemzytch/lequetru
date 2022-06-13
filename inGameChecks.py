@@ -10,7 +10,9 @@ import win32api
 import pydirectinput
 import capture
 import mouse
+import keyboard
 # import pyautogui
+
 
 user32 = ctypes.windll.user32
 screenWidth = user32.GetSystemMetrics(0)
@@ -33,36 +35,10 @@ offset =[left,top]
 lastQSpell = time.time()
 lastUltimate = time.time()
 lastHeal = time.time()
+lastIgnite = time.time()
 qX = 1
 qY = 1
 
-# adc_sub_75, adc_sub_50 = inGameChecks.hpAmount()
-# print('yuumi is attached')
-
-# if adc_sub_50 == True:
-#     print("adc under 50% hp")
-#     if time.time()> (healCooldown+240):
-#         if datas["gameData"]["gameTime"] > 90:
-#             pydirectinput.press('f')
-#             Action = "Healing"
-#             LastAction()
-#             healCooldown = time.time()
-#     mouse.move(ennemyPosition[0],ennemyPosition[1])
-#     # ultimateCast()
-#     print('send R')
-#     ennemy = capture.locate_img("ennemi.png")
-#     if ennemy!=None:
-#         if ennemy[0]+40 >0 and ennemy[0]+40<1920:
-#             if ennemy[1]+100 >0 and ennemy[1]+100<1080:
-#                 mouse.move(ennemy[0]+40,ennemy[1]+100)
-#                 pydirectinput.press('d')
-#     inGameChecks.sendEcheck()
-#     print('Healed ADC')
-# if adc_sub_75 == True:
-#     print("adc sub 85%")
-#     inGameChecks.sendEcheck()
-        
-#     print('Healed ADC')
 
 def qSpell():
     global mon
@@ -112,7 +88,7 @@ def ultimateCast():
     if time.time() > (lastUltimate +70):
         try:
             ennemy = capture.locate_img("ennemi.png")
-            mouse.move(ennemy[0]+40,ennemy[1]+40)
+            mouse.move(ennemy[0]+100,ennemy[1]+40)
             pydirectinput.press('r')
             lastUltimate = time.time()
             print('ultimate casted')
@@ -145,16 +121,26 @@ def sendEcheck():
     else:
         print("Need to E but can't press it")
 
+
 def ignite():
-    global mon
-    sct_img = sct.grab(mon)
-    ennemy = capture.locate_img("ennemi.png")
-    if ennemy!=None:
-        mouse.move(ennemy[0]+40,ennemy[1]+100)
-        pydirectinput.press('d')
-        print("tried ignite")
-
-
+    global lastIgnite
+    if time.time() > (lastIgnite + 180):
+        global mon
+        sct_img = sct.grab(mon)
+        ennemy = capture.locate_img("ennemi.png")
+        if ennemy!=None:
+            print("Try ignite")
+            mouse.move(ennemy[0]+40,ennemy[1]+100)
+            pydirectinput.press('d')
+            ignitePixel = sct.grab({'mon':1, 'top':708+top, 'left':564+left, 'width':1, 'height':1})
+            g = ignitePixel.pixel(0,0)
+            if g[2] > 100:
+                print("ignite has been used")
+                lastIgnite = time.time()
+    else:
+        print(f"ignite is on cooldown for {str(time.time()-lastIgnite)}")
+                
+                
 def attached():
     global lastQSpell
     global lastHeal
@@ -173,9 +159,12 @@ def attached():
     if adc_sub_75 == False and time.time() > (lastQSpell + 25):
         qSpell()
 
+
+def inBase():
+    FullLife = sct.grab({'mon':1, 'top':759+top, 'left':665+left, 'width':1, 'height':1})
+    g = FullLife.pixel(0,0)
+    if g[0] and g[1] and g[2] > 31:
         
-# while True:
-#     adc_sub_75, adc_sub_50 = hpAmount()
-#     if adc_sub_75 == True:
-#         sendEcheck()
-    # time.sleep(1)
+        return True
+    else:
+        return False

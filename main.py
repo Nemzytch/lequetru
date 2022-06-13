@@ -32,7 +32,6 @@ from requests.packages.urllib3.exceptions import InsecureRequestWarning
 import subprocess
 import pyperclip
 import psutil
-import sentry_sdk
 import capture
 import mss
 from PIL import Image
@@ -45,14 +44,7 @@ import inGameChecks
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
-sentry_sdk.init(
-    "https://95328d7bc1984ece956c6a3212c8b1df@o1279727.ingest.sentry.io/6481901",
 
-    # Set traces_sample_rate to 1.0 to capture 100%
-    # of transactions for performance monitoring.
-    # We recommend adjusting this value in production.
-    traces_sample_rate=1.0
-)
 
 #__________ SCREEN ELEMENT __________________
 user32 = ctypes.windll.user32
@@ -73,11 +65,7 @@ adcHp75Pixel =[1005+left,447+top]
 adcHp50Pixel = [991+left,447+top]
 ePosition = [481+left,724+top]
 
-
-
-
-gamedirs = [r'C:\Games\Garena\32787\LeagueClient',
-            r'D:\Games\League of Legends']
+gamedirs = [r'C:\Games\Garena\32787\LeagueClient',r'D:\Games\League of Legends',r'C:\Riot Games\League of Legends']
 os.system("")
 lastMessageChampSelect = datetime.datetime.now() - datetime.timedelta(minutes=4)
 
@@ -245,8 +233,7 @@ class Personnage:
             if records['fields']['PcName'] == socket.gethostname():
                 recordId = records['id']
                 now = datetime.datetime.now()
-                table2.update(recordId, {"LastAction": "InGame"})
-                table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y") })
+                table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y"),"LastAction": "InGame" })
 
         with open('stuff.json',) as f:
             self.stuff = json.load(f)
@@ -256,7 +243,7 @@ class Personnage:
         for x in self.datas["allPlayers"]:
 
             if x["championName"] == "Yuumi":
-                print('Found it in the '+str(i)+" th index")
+                print(f'Found it in the {str(i)} th index')
                 self.yuumiIndex = i
                 self.adcIndex = i-1
                 self.midIndex = i-2
@@ -414,17 +401,17 @@ class Personnage:
             self.randx = random.random()
             print(f'Random X ={self.randx}')
             
-            if self.randx >0.90:
+            if self.randx >0.96:
                 mouse.move(960,480)
                 MouseClick()
 
             if self.adcDead == False:
                 if self.attached == False:
                     if self.yuumiMana < self.resourceMax:
-                        self.baseCheck()
+                        if inGameChecks.inBase() == True:
+                            self.shop()
                         self.updateDatas()
                         self.updatePerso()
-                        self.Surrender() 
 
             if self.adcDead == False:
                 if self.attached == False:
@@ -438,7 +425,7 @@ class Personnage:
             if self.attached == True:
                 print('Attached')
                 inGameChecks.attached()
-
+                self.Surrender()
 
                 if self.yuumiMana < (15*(self.resourceMax)/100):
                     print('you got '+ str(self.yuumiMana))
@@ -446,7 +433,6 @@ class Personnage:
 
 
             
-
             if self.adcDead == True:
                 if self.datas["gameData"]["gameTime"] > 600:
                     if self.jungleDead == False:
@@ -503,7 +489,6 @@ class Personnage:
                     time.sleep(4)
                     pydirectinput.press('b')
                     time.sleep(9)
-                    self.shop()
                     self.backCooldown = time.time()
 
             time.sleep(0.5)
@@ -518,28 +503,6 @@ class Personnage:
         pydirectinput.keyDown('ctrl')
         pydirectinput.press(key)
         pydirectinput.keyUp('ctrl')
-
-
-    def baseCheck(self):
-        ManaPrecedent = self.yuumiMana
-        print("You got "+ str(ManaPrecedent)+ " mana")
-        time.sleep(3)
-
-        response = requests.get("https://127.0.0.1:2999/liveclientdata/allgamedata", verify = False).text
-        datas = json.loads(response)
-
-        ManaActuel = datas["activePlayer"]["championStats"]["resourceValue"]
-        print(ManaActuel)
-        RegenMana = datas["activePlayer"]["championStats"]["resourceRegenRate"]
-        print(RegenMana)
-
-        if ManaActuel > 4*(RegenMana)+ManaPrecedent:
-            print('At Home')
-            self.shop()
-            time.sleep(3)
-
-        else:
-            print('Not at Home')
 
 
     def procPassive(self) : 
@@ -573,8 +536,7 @@ class Personnage:
             except TypeError:
                 print("No ennemies found")
 
-    def Surrender(self):
-        
+    def Surrender(self):    
         global OneMinute
         if self.datas["gameData"]["gameTime"] > OneMinute:
             Surrend = pyautogui.locateOnScreen("images/Surrend.png", grayscale=False,confidence=0.80)
@@ -655,7 +617,6 @@ def Connexion():
                 print("You have enough accounts")
                 Personnage.account = table.first(formula=formula, sort=["Unban"])['fields']['Account']
     
-
             password = table.first(formula=formula, sort=["Unban"])['fields']['Password']
             
             #LogDesired
@@ -732,11 +693,7 @@ class lobby():
     champion = 350 
     host = '127.0.0.1'
     protocol = 'https'
-    gamedirs = [
-        r'C:\Riot Games\League of Legends',
-        r'D:\Games\League of Legends',
-        r'D:\Riot Games\League of Legends',
-    ]
+    gamedirs = [r'C:\Riot Games\League of Legends',r'D:\Games\League of Legends',r'D:\Riot Games\League of Legends',]
     lockfile = None
     print('Waiting for League of Legends to start ..')
     Connexion()
@@ -830,7 +787,6 @@ def statuscheck():
                 
                 PhaseNumber = PhaseNumber + 1 # Rajoute 1 pour chaque meme phase
                 if PhaseNumber >= 10: 
-                    
                     print(phase+ " phase time to run pussy destroyer")
                     print(PhaseNumber)
                     PussyDestroyer()
@@ -1135,8 +1091,7 @@ def statuscheck():
                     url = '/lol-perks/v1/pages/'
                     request('post', url, '', data)
                     time.sleep(2)
-                    
-                    
+                                        
                 for _ in range(0,9):
                     summonersInfo = request('get', '/lol-champ-select/v1/summoners/'+str(_)).json()
                     if SummonerID == summonersInfo["summonerId"]:
