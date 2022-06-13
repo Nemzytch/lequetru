@@ -761,6 +761,7 @@ def statuscheck():
     s = requests.session()# Create Request session
 
     while True: # # Main worker loop
+        os().system('cls')
         try :
             accid = request('get', '/lol-login/v1/session').json()['accountId']
             r = request('get', '/lol-gameflow/v1/gameflow-phase')
@@ -871,6 +872,9 @@ def statuscheck():
                 print(BoughtChampion.json())
                 time.sleep(1)
             BoughtChampion = PostRequest( str(StoreUrl)+'/storefront/v3/purchase', data=({"accountId":accid,"items":[{"inventoryType":"CHAMPION","itemId":350,"ipCost":6300,"quantity":1}]}))
+        
+        #clear the cmd window
+        
         
         if phase =='WaitingForStats':
             print("you are in WaitingForStats phase")
