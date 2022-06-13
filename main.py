@@ -400,11 +400,10 @@ class Personnage:
             self.LevelUP()
             # self.Surrender()
             self.randx = random.random()
-            print(f'Random X ={self.randx}')
             
-            if self.randx >0.96:
-                mouse.move(960,480)
-                MouseClick()
+            # if self.randx >0.96:
+            #     mouse.move(960,480)
+            #     MouseClick()
 
             if self.adcDead == False:
                 if self.attached == False:
@@ -429,7 +428,7 @@ class Personnage:
                 self.Surrender()
 
                 if self.yuumiMana < (15*(self.resourceMax)/100):
-                    print('you got '+ str(self.yuumiMana))
+                    print('You got '+ str(self.yuumiMana))
                     self.procPassive()
 
 
@@ -440,7 +439,7 @@ class Personnage:
                         pyautogui.click(self.jungleHp75Pixel[0],self.jungleHp75Pixel[1]) 
                         time.sleep(0.2)                   
                         pydirectinput.press('w')  
-                        print('going to jungler')
+                        print('Going to jungler')
                         time.sleep(5)
                         pydirectinput.press('e')
                         time.sleep(9)
@@ -453,7 +452,7 @@ class Personnage:
                             pyautogui.click(self.midHp75pixel[0],self.midHp75pixel[1])
                             time.sleep(0.2)                     
                             pydirectinput.press('w')  
-                            print('going to midlaner')
+                            print('Going to midlaner')
                             time.sleep(5)
                             pydirectinput.press('e')
                             time.sleep(9)
@@ -465,7 +464,7 @@ class Personnage:
                                 pyautogui.click(self.topHp75Pixel[0],self.topHp75Pixel[1])
                                 time.sleep(0.2)                     
                                 pydirectinput.press('w')  
-                                print('going to toplaner')
+                                print('Going to toplaner')
                                 time.sleep(5)
                                 pydirectinput.press('e')
                                 time.sleep(9)
@@ -473,7 +472,7 @@ class Personnage:
                                 mouse.move(400,400)
                                 pydirectinput.press('w')
                             if self.topDead == True:
-                                print('going back to base')  
+                                print('Going back to base')  
             
                 if time.time()> (self.backCooldown+50):
                     Action = "Going back"
@@ -494,10 +493,6 @@ class Personnage:
 
             time.sleep(0.5)
 
-
-
-    def updatePosition(self):
-        self.position = [self.datas.posX, self.datas.posY]
 
 
     def ctrlt(key):
