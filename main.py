@@ -394,6 +394,7 @@ class Personnage:
                         saved_time = datetime.datetime.now()
                         
         while self.datas["gameData"]["gameTime"] < 3600:
+            os.system('cls' if os.name == 'nt' else 'clear')
             self.updateDatas()
             self.updatePerso()
             self.LevelUP()
