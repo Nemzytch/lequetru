@@ -47,7 +47,7 @@ import logging
 logging.basicConfig(
         format='%(asctime)s %(levelname)-8s %(message)s',
         level=logging.INFO,
-        datefmt=Back.BLACK + Fore.GREEN +'%H:%M:%S'+ Style.RESET_ALL) 
+        datefmt='%H:%M:%S') 
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
