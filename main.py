@@ -394,16 +394,16 @@ class Personnage:
                         saved_time = datetime.datetime.now()
                         
         while self.datas["gameData"]["gameTime"] < 3600:
-            os.system('cls' if os.name == 'nt' else 'clear')
             self.updateDatas()
             self.updatePerso()
             self.LevelUP()
             # self.Surrender()
             self.randx = random.random()
+            print(f'Random X ={self.randx}')
             
-            # if self.randx >0.96:
-            #     mouse.move(960,480)
-            #     MouseClick()
+            if self.randx >0.96:
+                mouse.move(960,480)
+                MouseClick()
 
             if self.adcDead == False:
                 if self.attached == False:
@@ -428,7 +428,7 @@ class Personnage:
                 self.Surrender()
 
                 if self.yuumiMana < (15*(self.resourceMax)/100):
-                    print('You got '+ str(self.yuumiMana))
+                    print('you got '+ str(self.yuumiMana))
                     self.procPassive()
 
 
@@ -439,7 +439,7 @@ class Personnage:
                         pyautogui.click(self.jungleHp75Pixel[0],self.jungleHp75Pixel[1]) 
                         time.sleep(0.2)                   
                         pydirectinput.press('w')  
-                        print('Going to jungler')
+                        print('going to jungler')
                         time.sleep(5)
                         pydirectinput.press('e')
                         time.sleep(9)
@@ -452,7 +452,7 @@ class Personnage:
                             pyautogui.click(self.midHp75pixel[0],self.midHp75pixel[1])
                             time.sleep(0.2)                     
                             pydirectinput.press('w')  
-                            print('Going to midlaner')
+                            print('going to midlaner')
                             time.sleep(5)
                             pydirectinput.press('e')
                             time.sleep(9)
@@ -464,7 +464,7 @@ class Personnage:
                                 pyautogui.click(self.topHp75Pixel[0],self.topHp75Pixel[1])
                                 time.sleep(0.2)                     
                                 pydirectinput.press('w')  
-                                print('Going to toplaner')
+                                print('going to toplaner')
                                 time.sleep(5)
                                 pydirectinput.press('e')
                                 time.sleep(9)
@@ -472,7 +472,7 @@ class Personnage:
                                 mouse.move(400,400)
                                 pydirectinput.press('w')
                             if self.topDead == True:
-                                print('Going back to base')  
+                                print('going back to base')  
             
                 if time.time()> (self.backCooldown+50):
                     Action = "Going back"
@@ -493,6 +493,10 @@ class Personnage:
 
             time.sleep(0.5)
 
+
+
+    def updatePosition(self):
+        self.position = [self.datas.posX, self.datas.posY]
 
 
     def ctrlt(key):
@@ -714,7 +718,7 @@ class lobby():
     print(port,password)
 
 def statuscheck():
-    
+    os.system('cls' if os.name == 'nt' else 'clear')
     Riot_adapter = HTTPAdapter(max_retries=1)   
     session = requests.Session()
     session.mount('https://127.0.0.1:2999/liveclientdata/allgamedata', Riot_adapter)
@@ -756,11 +760,7 @@ def statuscheck():
 
     s = requests.session()# Create Request session
 
-    #clear the cms with cls command
-    
-    
     while True: # # Main worker loop
-        os.system('cls' if os.name == 'nt' else 'clear') 
         try :
             accid = request('get', '/lol-login/v1/session').json()['accountId']
             r = request('get', '/lol-gameflow/v1/gameflow-phase')
@@ -871,9 +871,6 @@ def statuscheck():
                 print(BoughtChampion.json())
                 time.sleep(1)
             BoughtChampion = PostRequest( str(StoreUrl)+'/storefront/v3/purchase', data=({"accountId":accid,"items":[{"inventoryType":"CHAMPION","itemId":350,"ipCost":6300,"quantity":1}]}))
-        
-        #clear the cmd window
-        
         
         if phase =='WaitingForStats':
             print("you are in WaitingForStats phase")
@@ -1158,6 +1155,8 @@ def main():
     return True
 if __name__ == "__main__":
     main()
+
+
 
 # https://ddragon.leagueoflegends.com/cdn/11.16.1/data/en_US/champion/Yuumi.json
 # http://ddragon.leagueoflegends.com/cdn/6.8.1/img/map/map11.png
