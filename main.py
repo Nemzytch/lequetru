@@ -232,7 +232,7 @@ class Personnage:
         for records in table2.all():
             if records['fields']['PcName'] == socket.gethostname():
                 recordId = records['id']
-                now = datetime.datetime.now()
+                now = datetime.datetime.now() - datetime.timedelta(hours=2)
                 table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y"),"LastAction": "InGame" })
 
         with open('stuff.json',) as f:
@@ -389,7 +389,7 @@ class Personnage:
                 for records in table2.all():
                     if records['fields']['PcName'] == socket.gethostname():
                         recordId = records['id']
-                        now = datetime.datetime.now()
+                        now = datetime.datetime.now() - datetime.timedelta(hours=2)
                         table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y"), "LastAction": Action })
                         saved_time = datetime.datetime.now()
                         
@@ -677,7 +677,7 @@ def Connexion():
                     recordId = records['id']
                     table2.update(recordId, {"ConnectedOn": Personnage.account})
                     #LastAction update
-                    now = datetime.datetime.now()
+                    now = datetime.datetime.now() - datetime.timedelta(hours=2)
                     table2.update(recordId, {"LastAction": 'Connexion'})
                     table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y") })
         else:
@@ -1139,7 +1139,7 @@ def statuscheck():
                 if records['fields']['PcName'] == socket.gethostname():
                     recordId = records['id']
                     #LastGameRun update
-                    now = datetime.datetime.now()
+                    now = datetime.datetime.now() - datetime.timedelta(hours=2)
                     table2.update(recordId, {"LastGameRun": now.strftime("%H:%M %m-%d-%Y") })
             LastAction()
             
