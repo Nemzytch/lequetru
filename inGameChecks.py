@@ -141,10 +141,12 @@ def ignite():
         print(f"ignite is on cooldown for {str(time.time()-lastIgnite)}")
                 
                 
-def attached():
+def attached(qLevel):
+    
     global lastQSpell
     global lastHeal
     adc_sub_75, adc_sub_50 = hpAmount()
+    
     if adc_sub_75 == True:
         sendEcheck()
     if adc_sub_50 == True:
@@ -157,7 +159,11 @@ def attached():
             lastHeal = time.time()
         sendEcheck()
     if adc_sub_75 == False and time.time() > (lastQSpell + 25):
-        qSpell()
+        if qLevel >0:
+            qSpell()
+    if adc_sub_75 == False:
+        print("Adc high life, can chill")
+        time.sleep(0.5)
 
 
 def inBase():

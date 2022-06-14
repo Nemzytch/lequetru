@@ -41,6 +41,7 @@ from mss import mss
 import mouse
 import ctypes
 import inGameChecks
+import shop_actions
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
@@ -253,29 +254,12 @@ class Personnage:
                 print(self.adcIndex)
                 team= math.ceil((i+1)/(len(self.datas["allPlayers"])/2))
 
-                #Start of the game 
                 self.toplanerTimer = random.randint(900, 1300)
-                # self.cameraLock()
                 pydirectinput.press('space')
                 time.sleep(0.5)
-                pydirectinput.press('p')
-                time.sleep(0.2)
-                pydirectinput.keyDown('ctrl')
-                time.sleep(0.1)
-                pydirectinput.press('l')
-                pydirectinput.keyUp('ctrl')
-                pyautogui.write('spellt', interval=0.15)
-                time.sleep(0.2)
-                pydirectinput.press('enter')
-                pydirectinput.keyDown('ctrl')
-                pydirectinput.press('l')
-                pydirectinput.keyUp('ctrl')
-                time.sleep(0.1)
-                pyautogui.write('oracle', interval=0.15)
-                time.sleep(0.2)
-                pydirectinput.press('enter')
-                pydirectinput.press('p')
-                time.sleep(0.2)
+                if inGameChecks.inBase() == True:
+                    shop_actions.updateItemList()
+                    shop_actions.updateItemList()
                 list1 = [('glhf'), ('have fun'), ('good luck'), ('')]
                 pydirectinput.press('enter')
                 time.sleep(0.2)
@@ -308,70 +292,8 @@ class Personnage:
 
     
     def shop(self):
-        A = self.nombreItems -1
-        desiredItem = self.stuff["items"][A-1]["displayName"]
-        itemInTheSlot = self.yuumiItems[A-1]["displayName"]
-        if self.nombreItems<7:
-            if self.nombreItems <4:
-                if self.gold > 950:
-                    pydirectinput.press('p')
-                    time.sleep(0.2)
-                    pydirectinput.keyDown('ctrl')
-                    pydirectinput.press('l')
-                    pydirectinput.keyUp('ctrl')
-                    pyautogui.write(("Bandleglass Mirror").lower(), interval=0.15)
-                    time.sleep(0.2)
-                    pydirectinput.press('enter')
-                    pydirectinput.press('p')
+        shop_actions.updateItemList()
 
-            if self.nombreItems ==4:
-                if self.gold > 1550:
-                    if self.yuumiItems[2]["displayName"] != ["Moonstone Renewer"]:
-                        pydirectinput.press('p')
-                        time.sleep(0.2)
-                        pydirectinput.keyDown('ctrl')
-                        pydirectinput.press('l')
-                        pydirectinput.keyUp('ctrl')
-                        pyautogui.write(("Moonstone Renewer").lower(), interval=0.15)
-                        time.sleep(0.2)
-                        pydirectinput.press('enter')
-                        pydirectinput.press('p')
-
-
-            if self.gold > self.stuff["items"][A]["price"]:
-                if itemInTheSlot != desiredItem:
-                    print("intem in the slot "+itemInTheSlot)
-                    print("desired item"+desiredItem)
-                    print('Item precedent not completed')
-                    pydirectinput.press('p')
-                    time.sleep(0.2)
-                    pydirectinput.keyDown('ctrl')
-                    pydirectinput.press('l')
-                    pydirectinput.keyUp('ctrl')
-                    pyautogui.write((desiredItem).lower(), interval=0.15)
-                    time.sleep(0.2)
-                    pydirectinput.press('enter')
-                    pydirectinput.press('p')
-                    print(self.stuff["items"][A-1]["displayName"]+" was bought")
-                else:
-                    
-                    print(self.stuff["items"][A-1]["displayName"])
-                    print(self.stuff["items"][A]["displayName"])
-                    print('On achete bien le prochain item')
-                    pydirectinput.press('p')
-                    time.sleep(0.2)
-                    pydirectinput.keyDown('ctrl')
-                    pydirectinput.press('l')
-                    pydirectinput.keyUp('ctrl')
-                    pyautogui.write((self.stuff["items"][A]["displayName"]).lower(), interval=0.15)
-                    time.sleep(0.2)
-                    pydirectinput.press('enter')
-                    pydirectinput.press('p')
-                    print(self.stuff["items"][A]["displayName"]+" was bought")
-            else:
-                print('sorry no money to buy'+ (self.stuff["items"][A]["displayName"]).lower())
-        else:
-            print('nothing to buy, you are full stuff buddy')
 
 
     def __init__(self):
@@ -425,7 +347,7 @@ class Personnage:
 
             if self.attached == True:
                 print('Attached')
-                inGameChecks.attached()
+                inGameChecks.attached(self.yuumiState["abilities"]["Q"]["abilityLevel"])
                 self.Surrender()
 
                 if self.yuumiMana < (15*(self.resourceMax)/100):
@@ -491,6 +413,8 @@ class Personnage:
                     pydirectinput.press('b')
                     time.sleep(9)
                     self.backCooldown = time.time()
+                    if inGameChecks.inBase() == True:
+                        self.shop()
 
             time.sleep(0.5)
 
@@ -537,10 +461,11 @@ class Personnage:
             except TypeError:
                 print("No ennemies found")
 
-    def Surrender(self):    
+    def Surrender(self):  
         global OneMinute
         if self.datas["gameData"]["gameTime"] > OneMinute:
-            Surrend = pyautogui.locateOnScreen("images/Surrend.png", grayscale=False,confidence=0.80)
+            shop_actions.checkShopClosed()
+            Surrend = pyautogui.locateOnScreen("images/Surrend.png", grayscale=False,confidence=0.80, region =())
             OneMinute=OneMinute+20
             try:
                 if Surrend != None:
@@ -550,7 +475,7 @@ class Personnage:
                     time.sleep(0.1)
                     pydirectinput.press('enter')
                     print('I am surrending')
-            except :
+            except Exception:
                 print('No surrend detected')
         else:
             print('Not Time to Surrender')
@@ -679,8 +604,7 @@ def Connexion():
                     table2.update(recordId, {"ConnectedOn": Personnage.account})
                     #LastAction update
                     now = datetime.datetime.now() - datetime.timedelta(hours=2)
-                    table2.update(recordId, {"LastAction": 'Connexion'})
-                    table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y") })
+                    table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y") ,"LastAction": 'Connexion'})
         else:
             print('No connexion detected, waiting 1 seconds')
             
@@ -799,13 +723,12 @@ def statuscheck():
         def LastAction():
             global saved_time
             current_time = datetime.datetime.now()
-            if (current_time - saved_time).seconds >= 10:
+            if (current_time - saved_time).seconds >= 25:
                 for records in table2.all():
                     if records['fields']['PcName'] == socket.gethostname():
                         recordId = records['id']
                         now = datetime.datetime.now() - datetime.timedelta(hours=2)
-                        table2.update(recordId, {"LastAction": phase})
-                        table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y")})
+                        table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y"),"LastAction": phase})
                         saved_time = datetime.datetime.now()
                         
         def Refund():
@@ -911,8 +834,7 @@ def statuscheck():
             for records in table.all(sort=["Unban"]):
                 if records['fields']['IngameName'] == SummonerName:
                     recordId = records['id']
-                    table.update(recordId, {"Rank": str(tier) +' '+ str(division) +' '+ str(leaguepoints)+"LP"})
-                    table.update(recordId, {"WIN/LOSS": str(wins)+'W/'+str(losses)+'L'})
+                    table.update(recordId, {"WIN/LOSS": str(wins)+'W/'+str(losses)+'L',"Rank": str(tier) +' '+ str(division) +' '+ str(leaguepoints)+"LP"})
             
             #Iron4 0Lp stop account
             if tier == 'IRON' and division == 'IV' and leaguepoints <= 0:
