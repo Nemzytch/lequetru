@@ -114,7 +114,6 @@ def PussyDestroyer():
     time.sleep(25)
     restart()
 def Pause():
-
     for records in table2.all():
         if records['fields']['PcName'] == socket.gethostname():
             recordId = records['id']
@@ -146,8 +145,6 @@ def MouseClick():
     time.sleep(0.1)
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0,0)
     
-
-
 class Personnage:
     user32 = ctypes.windll.user32
     screenWidth = user32.GetSystemMetrics(0)
@@ -289,12 +286,9 @@ class Personnage:
                 break
             else:
                 i=i+1
-
     
     def shop(self):
         shop_actions.updateItemList()
-
-
 
     def __init__(self):
         self.setup()
@@ -322,7 +316,6 @@ class Personnage:
             self.LevelUP()
             # self.Surrender()
             self.randx = random.random()
-            print(f'Random X ={self.randx}')
             
             if self.randx >0.96:
                 mouse.move(960,480)
@@ -353,7 +346,6 @@ class Personnage:
                 if self.yuumiMana < (15*(self.resourceMax)/100):
                     print('you got '+ str(self.yuumiMana))
                     self.procPassive()
-
 
             
             if self.adcDead == True:
@@ -607,8 +599,7 @@ def Connexion():
                     table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y") ,"LastAction": 'Connexion'})
         else:
             print('No connexion detected, waiting 1 seconds')
-            
-            
+             
     except:
         print('No more accounts')
         Connexion()
