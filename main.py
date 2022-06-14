@@ -936,6 +936,10 @@ def statuscheck():
                                 if records['fields']['IngameName'] == SummonerName:
                                     recordId = records['id']
                                     table.update(recordId, {"Unban": str(datetime.datetime.now()+datetime.timedelta(seconds=lockoutTime))})
+                        #if  0 < error["penaltyTimeRemaining"] < 901: sleep = error["penaltyTimeRemaining"]
+                        if 0 < error["penaltyTimeRemaining"] < 901:
+                            time.sleep(error["penaltyTimeRemaining"])
+                            print("Sleeping for " + str(error["penaltyTimeRemaining"]))
             except:
                 pass
             sleep(2)
