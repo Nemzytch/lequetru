@@ -252,6 +252,11 @@ class Personnage:
                 team= math.ceil((i+1)/(len(self.datas["allPlayers"])/2))
 
                 self.toplanerTimer = random.randint(900, 1300)
+                #click middle of the screen
+                mouse.move(self.screenWidth/2, self.screenHeight/2)
+                MouseClick()
+                time.sleep(0.5)
+                
                 pydirectinput.press('space')
                 time.sleep(0.5)
                 if inGameChecks.inBase() == True:
