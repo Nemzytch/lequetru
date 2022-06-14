@@ -461,7 +461,10 @@ class Personnage:
     def Surrender(self):  
         global OneMinute
         if self.datas["gameData"]["gameTime"] > OneMinute:
-            shop_actions.checkShopClosed()
+            try :
+                shop_actions.checkShopClosed()
+            except:
+                print("can't check shop ")
             Surrend = pyautogui.locateOnScreen("images/Surrend.png", grayscale=False,confidence=0.80, region =())
             OneMinute=OneMinute+20
             try:
