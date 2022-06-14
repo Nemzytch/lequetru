@@ -84,13 +84,9 @@ def cycle(buyList):
         pydirectinput.press('enter')
         time.sleep(0.2)
         time.sleep(0.2)
-    pydirectinput.press('p')
+    pydirectinput.press('esc')
     buyList = []
     time.sleep(0.2)
-    try :
-        checkShopClosed()
-    except:
-        print("Can't verify shop is closed")    
 
 def checkShopClosed():
     if capture.locate_img("images/openShop.png") is not None:

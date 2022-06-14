@@ -324,6 +324,7 @@ class Personnage:
             
             if self.randx >0.96:
                 mouse.move(960,480)
+                pydirectinput.press('esc')
                 MouseClick()
 
             if self.adcDead == False:

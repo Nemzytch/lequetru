@@ -1351,7 +1351,7 @@
                         },
                         {
                             "name": "evtSysMenu",
-                            "value": "[Esc]"
+                            "value": "[k]"
                         },
                         {
                             "name": "evtToggleMinionHealthBars",
