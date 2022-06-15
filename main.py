@@ -42,73 +42,9 @@ import mouse
 import ctypes
 import inGameChecks
 import shop_actions
-import clientConnect
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
-
-
-
-from operator import contains
-import requests
-from lcu import LcuInfo
-import psutil
-import os
-import time
-import urllib3
-
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-
-def connect(username,password):
-  lcu_info = LcuInfo()
-  lcu_port = lcu_info.access_port
-  lcu_endpoint = f'https://127.0.0.1:{lcu_port}/rso-auth/v1/session/credentials'
-  lcu_password = lcu_info.remoting_auth_token
-  lcu_user = 'riot'
-  
-  print(f'LCU Token Access: {lcu_password}.')
-  print(f'LCU Port: {lcu_port}.')
-
-  payload = {
-    'username': username,
-    'password': password,
-    'persistLogin': False
-  }
-  response = requests.put(lcu_endpoint, json=payload, verify=False, auth=(lcu_user, lcu_password))
-  print(response.json())
-
-def Connection_State():
-  ClientStarted = False
-  ClientUXStarted = False
-  
-  for proc in psutil.process_iter():
-    if "LeagueClientUx.exe" in proc.name():
-      ClientUXStarted = True
-      # print(f'Process: {proc.name()}')
-    if "Riot" in proc.name():
-      # print(f'Process: {proc.name()}')
-      ClientStarted = True
-  return ClientStarted, ClientUXStarted
-
-
-
-def stay_connected(username,password):
-  ClientStarted = Connection_State()[0]
-  ClientUXStarted = Connection_State()[1]
-  if ClientStarted == False:
-    os.startfile("C:\\Riot Games\\League of Legends\\LeagueClient.exe")
-    print("Starting League of Legends..")
-    time.sleep(5)
-    connect(username,password)
-  if ClientStarted == True and ClientUXStarted == False:
-    print("Connection client started but not connected to LCU.")
-    time.sleep(5)
-    connect(username,password)
-  if ClientStarted == True and ClientUXStarted == True:
-    print("Connected to LCU, chill.")
-    time.sleep(5)
-
-
 
 
 #__________ SCREEN ELEMENT __________________
@@ -581,19 +517,14 @@ def Connexion():  # sourcery skip: low-code-quality
     table = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'YUUMI') 
     Connexion_image = pyautogui.locateOnScreen("images/Connexion.png", grayscale=False,confidence=0.90)
     TermsOfServices = pyautogui.locateOnScreen("images/TermsOfServices.png", grayscale=False,confidence=0.90)
-    
-    if Connection_State()[0] == False:
-        os.startfile("C:\\Riot Games\\League of Legends\\LeagueClient.exe")
-        print("Starting League of Legends..")
-        time.sleep(10)
-    
     try:
-        if Connection_State()[1] == False:
+        if Connexion_image!=None:
             formula = match({"HWID": hwid})
             formula2 = match({"HWID": "None"})
             listOfNone = table.all(formula=formula2)
             listOfAcc = table.all(formula=formula)
-
+            print(listOfNone)
+            
             print("Number of acc for the HWID : " + str(len(listOfAcc)))
             if len(listOfAcc) <4:
                 print("You need more accounts")
@@ -605,52 +536,47 @@ def Connexion():  # sourcery skip: low-code-quality
                 Personnage.account = table.first(formula=formula, sort=["Unban"])['fields']['Account']
     
             password = table.first(formula=formula, sort=["Unban"])['fields']['Password']
-            stay_connected(Personnage.account, password)
             
-            print("trying to connect to "+ Personnage.account, password)
-
             #LogDesired
-            # mouse.move(Connexion_image[0],Connexion_image[1]+80)
-            # time.sleep(0.1)
-            # MouseClick()
-            # pyautogui.typewrite(Personnage.account, interval=0.10)
-            # time.sleep(0.1)
-            # print(f'Log Write : {Personnage.account}')
+            mouse.move(Connexion_image[0],Connexion_image[1]+80)
+            time.sleep(0.1)
+            MouseClick()
+            pyautogui.typewrite(Personnage.account, interval=0.10)
+            time.sleep(0.1)
+            print(f'Log Write : {Personnage.account}')
                 
             #PwdDesired
-            # mouse.move(Connexion_image[0],Connexion_image[1]+140)
-            # time.sleep(0.1)
-            # MouseClick()
+            mouse.move(Connexion_image[0],Connexion_image[1]+140)
+            time.sleep(0.1)
+            MouseClick()
             # pyautogui.typewrite(password, interval=0.10)
-            # pyperclip.copy(password)
-            # pyautogui.hotkey('ctrl', 'v')
-            # time.sleep(0.1)
-            # print('Pwd Write')
+            pyperclip.copy(password)
+            pyautogui.hotkey('ctrl', 'v')
+            time.sleep(0.1)
+            print('Pwd Write')
             for records in table.all():
                 if records['fields']['Account'] == Personnage.account:
                     recordId = records['id']
                     table.update(recordId, {"Unban": str(datetime.datetime.now())})
-            print("Just sent connexion, waiting for the game to start")
-            time.sleep(5)
             
-            # if TermsOfServices != None:
-            #     mouse.move(TermsOfServices[0],TermsOfServices[1])
-            #     time.sleep(1)
-            #     pyautogui.scroll(-100000)
-            #     time.sleep(1)
-            #     pyautogui.click(TermsOfServices[0],TermsOfServices[1]+600)
+            if TermsOfServices != None:
+                mouse.move(TermsOfServices[0],TermsOfServices[1])
+                time.sleep(1)
+                pyautogui.scroll(-100000)
+                time.sleep(1)
+                pyautogui.click(TermsOfServices[0],TermsOfServices[1]+600)
                 
             #Press connexion button
-            # mouse.move(Connexion_image[0]+60,Connexion_image[1]+520)
-            # time.sleep(0.1)
-            # MouseClick()
-            # time.sleep(6)
+            mouse.move(Connexion_image[0]+60,Connexion_image[1]+520)
+            time.sleep(0.1)
+            MouseClick()
+            time.sleep(6)
             
-            # #Press Play button
-            # mouse.move(Connexion_image[0],Connexion_image[1]+650)
-            # time.sleep(0.1)
-            # MouseClick()
-            # time.sleep(0.1)
+            #Press Play button
+            mouse.move(Connexion_image[0],Connexion_image[1]+650)
+            time.sleep(0.1)
+            MouseClick()
+            time.sleep(0.1)
             gamedirs = [r'C:\Riot Games\League of Legends',r'D:\Games\League of Legends',r'D:\Riot Games\League of Legends',] 
             lockfile = None
             while not lockfile:
@@ -659,8 +585,6 @@ def Connexion():  # sourcery skip: low-code-quality
 
                     if not os.path.isfile(lockpath):
                         print("Waiting League to start")
-                        time.sleep(4)
-                        Connexion()
                         continue
                         
                     print('Found running League of Legends, dir', gamedir, "sleeping 30 sec to make sure everything loaded")
