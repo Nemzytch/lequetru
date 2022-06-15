@@ -33,9 +33,9 @@ def Connection_State():
   for proc in psutil.process_iter():
     if "LeagueClientUx.exe" in proc.name():
       ClientUXStarted = True
-      print(f'Process: {proc.name()}')
+      # print(f'Process: {proc.name()}')
     if "Riot" in proc.name():
-      print(f'Process: {proc.name()}')
+      # print(f'Process: {proc.name()}')
       ClientStarted = True
   return ClientStarted, ClientUXStarted
 
