@@ -10,7 +10,7 @@ import time
 import pyautogui
 import ctypes
 import win32api    
-# import pyautogui
+import mouse
     
     
 user32 = ctypes.windll.user32
@@ -21,16 +21,15 @@ height = 768
 width = 1024
 top =int((screenHeight-height)/2)
 left = int((screenWidth-width)/2)
-
-
-
 mon = {'top': top, 'left':left, 'width':width, 'height':height}
-
 sct = mss()
 sct_img = sct.grab(mon)
 offset =[left,top]
 
+ennemi_image = 'ennemi.png'
 def locate_img(imgPath):
+    global ennemiX
+    global ennemiY
     global offset
     image_to_find = cv2.imread(imgPath)
     sct_img = sct.grab(mon)
@@ -47,9 +46,13 @@ def locate_img(imgPath):
         return [x+offset[0],y+offset[1]]
 
 
-# pyautogui.screenshot('screenshot.png',region=(left,top,width,height))
 
-# image = 'ennemi.png'
-# ennemi =locate_img(image)
-# print(ennemi)
 
+def find_ennemi():
+    ennemi = locate_img(ennemi_image)
+    if ennemi != None:
+        mouse.move(ennemi[0],ennemi[1])
+    # else:
+    #     print("no ennemi found")
+    #     return None
+    return ennemi
