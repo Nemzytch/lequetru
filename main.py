@@ -47,7 +47,6 @@ import clientConnect
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 #__________ SCREEN ELEMENT __________________
 user32 = ctypes.windll.user32
