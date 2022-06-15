@@ -538,51 +538,13 @@ def Connexion():  # sourcery skip: low-code-quality
 
         password = table.first(formula=formula, sort=["Unban"])['fields']['Password']
         
-        
         clientConnect.stay_connected(Personnage.account, password)
         
-        # #LogDesired
-        # mouse.move(Connexion_image[0],Connexion_image[1]+80)
-        # time.sleep(0.1)
-        # MouseClick()
-        # pyautogui.typewrite(Personnage.account, interval=0.10)
-        # time.sleep(0.1)
-        
-        
-        # print(f'Log Write : {Personnage.account}')
-            
-        # #PwdDesired
-        # mouse.move(Connexion_image[0],Connexion_image[1]+140)
-        # time.sleep(0.1)
-        # MouseClick()
-        # # pyautogui.typewrite(password, interval=0.10)
-        # pyperclip.copy(password)
-        # pyautogui.hotkey('ctrl', 'v')
-        # time.sleep(0.1)
-        # print('Pwd Write')
         for records in table.all():
             if records['fields']['Account'] == Personnage.account:
                 recordId = records['id']
                 table.update(recordId, {"Unban": str(datetime.datetime.now())})
         
-        # if TermsOfServices != None:
-        #     mouse.move(TermsOfServices[0],TermsOfServices[1])
-        #     time.sleep(1)
-        #     pyautogui.scroll(-100000)
-        #     time.sleep(1)
-        #     pyautogui.click(TermsOfServices[0],TermsOfServices[1]+600)
-            
-        # #Press connexion button
-        # mouse.move(Connexion_image[0]+60,Connexion_image[1]+520)
-        # time.sleep(0.1)
-        # MouseClick()
-        # time.sleep(6)
-        
-        # #Press Play button
-        # mouse.move(Connexion_image[0],Connexion_image[1]+650)
-        # time.sleep(0.1)
-        # MouseClick()
-        # time.sleep(0.1)
         gamedirs = [r'C:\Riot Games\League of Legends',r'D:\Games\League of Legends',r'D:\Riot Games\League of Legends',] 
         lockfile = None
         while not lockfile:
@@ -591,18 +553,21 @@ def Connexion():  # sourcery skip: low-code-quality
 
                 if not os.path.isfile(lockpath):
                     print("Waiting League to start")
+                    time.sleep(10)
                     continue
-                    
-                print('Found running League of Legends, dir', gamedir, "sleeping 30 sec to make sure everything loaded")
-                time.sleep(30)
+                if clientConnect.Connection_State()[1] == True:
+                    print("LCU is started")
+                    time.sleep(15)
+                print('Found running League of Legends, dir', gamedir, "sleeping 15 sec to make sure everything loaded")
+
+                time.sleep(15)
                 lockfile = open(r'%s\lockfile' % gamedir, 'r')
         for records in table2.all():
             if records['fields']['PcName'] == socket.gethostname():
                 recordId = records['id']
-                table2.update(recordId, {"ConnectedOn": Personnage.account})
                 #LastAction update
                 now = datetime.datetime.now() - datetime.timedelta(hours=2)
-                table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y") ,"LastAction": 'Connexion'})
+                table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y") ,"LastAction": 'Connexion',"ConnectedOn": Personnage.account})
 
     except:
         print('No more accounts/ Connection failed')
