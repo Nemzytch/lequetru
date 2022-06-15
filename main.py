@@ -666,7 +666,6 @@ def Connexion():  # sourcery skip: low-code-quality
                     if not os.path.isfile(lockpath):
                         print("Waiting League to start")
                         time.sleep(4)
-                        Connexion()
                         continue
                         
                     print('Found running League of Legends, dir', gamedir, "sleeping 30 sec to make sure everything loaded")
