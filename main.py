@@ -48,6 +48,69 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 
+
+from operator import contains
+import requests
+from lcu import LcuInfo
+import psutil
+import os
+import time
+import urllib3
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+def connect(username,password):
+  lcu_info = LcuInfo()
+  lcu_port = lcu_info.access_port
+  lcu_endpoint = f'https://127.0.0.1:{lcu_port}/rso-auth/v1/session/credentials'
+  lcu_password = lcu_info.remoting_auth_token
+  lcu_user = 'riot'
+  
+  print(f'LCU Token Access: {lcu_password}.')
+  print(f'LCU Port: {lcu_port}.')
+
+  payload = {
+    'username': username,
+    'password': password,
+    'persistLogin': False
+  }
+  response = requests.put(lcu_endpoint, json=payload, verify=False, auth=(lcu_user, lcu_password))
+  print(response.json())
+
+def Connection_State():
+  ClientStarted = False
+  ClientUXStarted = False
+  
+  for proc in psutil.process_iter():
+    if "LeagueClientUx.exe" in proc.name():
+      ClientUXStarted = True
+      # print(f'Process: {proc.name()}')
+    if "Riot" in proc.name():
+      # print(f'Process: {proc.name()}')
+      ClientStarted = True
+  return ClientStarted, ClientUXStarted
+
+
+
+def stay_connected(username,password):
+  ClientStarted = Connection_State()[0]
+  ClientUXStarted = Connection_State()[1]
+  if ClientStarted == False:
+    os.startfile("C:\\Riot Games\\League of Legends\\LeagueClient.exe")
+    print("Starting League of Legends..")
+    time.sleep(5)
+    connect(username,password)
+  if ClientStarted == True and ClientUXStarted == False:
+    print("Connection client started but not connected to LCU.")
+    time.sleep(5)
+    connect(username,password)
+  if ClientStarted == True and ClientUXStarted == True:
+    print("Connected to LCU, chill.")
+    time.sleep(5)
+
+
+
+
 #__________ SCREEN ELEMENT __________________
 user32 = ctypes.windll.user32
 screenWidth = user32.GetSystemMetrics(0)
@@ -519,13 +582,13 @@ def Connexion():  # sourcery skip: low-code-quality
     Connexion_image = pyautogui.locateOnScreen("images/Connexion.png", grayscale=False,confidence=0.90)
     TermsOfServices = pyautogui.locateOnScreen("images/TermsOfServices.png", grayscale=False,confidence=0.90)
     
-    if clientConnect.Connection_State()[0] == False:
+    if Connection_State()[0] == False:
         os.startfile("C:\\Riot Games\\League of Legends\\LeagueClient.exe")
         print("Starting League of Legends..")
         time.sleep(10)
     
     try:
-        if clientConnect.Connection_State()[1] == False:
+        if Connection_State()[1] == False:
             formula = match({"HWID": hwid})
             formula2 = match({"HWID": "None"})
             listOfNone = table.all(formula=formula2)
@@ -542,7 +605,7 @@ def Connexion():  # sourcery skip: low-code-quality
                 Personnage.account = table.first(formula=formula, sort=["Unban"])['fields']['Account']
     
             password = table.first(formula=formula, sort=["Unban"])['fields']['Password']
-            clientConnect.stay_connected(Personnage.account, password)
+            stay_connected(Personnage.account, password)
             
             print("trying to connect to "+ Personnage.account, password)
 
