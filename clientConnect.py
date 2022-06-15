@@ -24,6 +24,8 @@ def connect(username,password):
     'persistLogin': False
   }
   response = requests.put(lcu_endpoint, json=payload, verify=False, auth=(lcu_user, lcu_password))
+  #print the complete request
+  print(response)
   print(response.json())
 
 def Connection_State():
