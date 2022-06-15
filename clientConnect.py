@@ -58,7 +58,6 @@ def stay_connected(username,password):
     time.sleep(5)
     
 
-stay_connected("Faylovie","!DonOtEaTtheYe11OwSnow")
 
 
 
