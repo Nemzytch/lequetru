@@ -1,0 +1,139 @@
+champ-select:
+    data:
+        skins:
+            10: 10000
+            101: 101000
+            104: 104000
+            107: 107000
+            111: 111000
+            120: 120000
+            13: 13000
+            15: 15000
+            16: 16000
+            17: 17000
+            18: 18000
+            21: 21000
+            22: 22000
+            221: 221000
+            222: 222000
+            235: 235000
+            236: 236000
+            28: 28000
+            350: 350000
+            40: 40000
+            42: 42000
+            427: 427000
+            432: 432000
+            498: 498000
+            518: 518000
+            64: 64000
+            67: 67000
+            74: 74000
+            8: 8000
+            85: 85000
+            86: 86000
+            875: 875000
+            887: 887000
+            89: 89000
+        spells:
+            420:
+            - 7
+            - 14
+            830:
+            - 4
+            - 7
+    schemaVersion: 1
+emotes:
+    data:
+        newEmotes:
+        - 3772
+    schemaVersion: 1
+lol-champ-select:
+    data:
+        reportAndMutingTooltipShown: true
+    schemaVersion: 0
+lol-clash:
+    data:
+        clash-start-modal-seen: true
+    schemaVersion: 1
+lol-general:
+    data:
+        uploadCrashReports: true
+    schemaVersion: 0
+lol-home-hubs:
+    data:
+        anima-squad-hub-2022:
+            watchedIntro: true
+        lunar-revel-hub-2022:
+            currentTheme: "fire"
+        sentinels-hub-2021:
+            clickedSkip: true
+            skipAll: true
+            watchedIntro: true
+    schemaVersion: 1
+lol-honor:
+    data:
+        recallReleaseNotified: true
+    schemaVersion: 1
+lol-leagues:
+    data:
+        hasSeenFlexRestrictionModal: true
+        last-split-start-modal: 12.100000
+    schemaVersion: 1
+lol-loot:
+    data:
+        mythicEssenceNavigationTooltipSeen: true
+    schemaVersion: 1
+lol-notifications:
+    data:
+        rgmNotificationTimestamp: 1648751053570
+    schemaVersion: 1
+lol-npe-first-touch:
+    data: null
+    schemaVersion: 1
+lol-npe-rewards:
+    data:
+        challenges:
+            allMissionsCompleted: false
+            totalCount: 8
+        login:
+            allRewardsClaimed: true
+            lastCompletedMissionDate: 1643983774000
+            lastCompletedMissionInternalName: "npe_rewards_login_v1_step7"
+    schemaVersion: 1
+lol-npe-tutorial-path:
+    data:
+        hasSeenTutorialPath: true
+        hasSkippedTutorialPath: false
+        shouldSeeNewPlayerExperience: false
+    schemaVersion: 1
+lol-parties:
+    data:
+        hasSeenOpenPartyFirstExperience: true
+        hasSeenOpenPartyTooltip: true
+    schemaVersion: 1
+lol-player-behavior:
+    data:
+        codeOfConductAccepted: true
+    schemaVersion: 0
+lol-premade-voice:
+    data:
+        autoJoin: false
+        inputMode: "voiceActivity"
+        muteOnConnect: false
+        pushToTalkKey: "[<Unbound>]"
+        showFirstExperienceInGame: true
+        showFirstExperienceInLCU: true
+    schemaVersion: 1
+lol-profiles:
+    data:
+        ranked-reference-modal-login-seen-for-season: 12
+    schemaVersion: 0
+lol-tft:
+    data:
+        previouslySeenSeasons: "TFT6_Series,TFT6_Act2_Series,TFT7_Series"
+    schemaVersion: 1
+lol-tutorial:
+    data:
+        championSelectRunesTooltipSeenCount: 9
+    schemaVersion: 1
