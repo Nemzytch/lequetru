@@ -357,10 +357,11 @@ class Personnage:
                 if self.datas["gameData"]["gameTime"] > 600:
                     if self.jungleDead == False:
                         pyautogui.click(self.jungleHp75Pixel[0],self.jungleHp75Pixel[1]) 
-                        time.sleep(0.2)                   
-                        pydirectinput.press('w')  
-                        print('going to jungler')
-                        time.sleep(5)
+                        for _ in range(3):
+                            time.sleep(0.2)                   
+                            pydirectinput.press('w')  
+                            print('going to jungler')
+                        time.sleep(3)
                         pydirectinput.press('e')
                         time.sleep(9)
                         pydirectinput.press('e')
@@ -370,10 +371,11 @@ class Personnage:
                     if self.jungleDead == True:
                         if self.midDead == False:
                             pyautogui.click(self.midHp75pixel[0],self.midHp75pixel[1])
-                            time.sleep(0.2)                     
-                            pydirectinput.press('w')  
-                            print('going to midlaner')
-                            time.sleep(5)
+                            for _ in range(3):
+                                time.sleep(0.2)                     
+                                pydirectinput.press('w')  
+                                print('going to midlaner')
+                            time.sleep(3)
                             pydirectinput.press('e')
                             time.sleep(9)
                             pydirectinput.press('e')
@@ -382,10 +384,11 @@ class Personnage:
                         if self.midDead == True:
                             if self.topDead == False:
                                 pyautogui.click(self.topHp75Pixel[0],self.topHp75Pixel[1])
-                                time.sleep(0.2)                     
-                                pydirectinput.press('w')  
-                                print('going to toplaner')
-                                time.sleep(5)
+                                for _ in range(3):
+                                    time.sleep(0.2)                     
+                                    pydirectinput.press('w')  
+                                    print('going to toplaner')
+                                time.sleep(3)
                                 pydirectinput.press('e')
                                 time.sleep(9)
                                 pydirectinput.press('e')
@@ -398,7 +401,6 @@ class Personnage:
                     Action = "Going back"
                     LastAction()
                     mouse.move(self.BaseX,self.BaseY)
-                    print('adc is not alive')
                     time.sleep(0.2)
                     MouseClick()
                     pydirectinput.press('h')
