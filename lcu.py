@@ -12,3 +12,5 @@ class LcuInfo:
     
     self.remoting_auth_token = info_cmd[index_after_remoting_auth_label:(index_after_remoting_auth_label + 22)]
     self.access_port = info_cmd[index_after_app_port_label:(index_after_app_port_label + 5)].strip().replace('"', '')
+    
+    

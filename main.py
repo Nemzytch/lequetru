@@ -42,6 +42,7 @@ import mouse
 import ctypes
 import inGameChecks
 import shop_actions
+import clientConnect
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
@@ -269,7 +270,6 @@ class Personnage:
                 time.sleep(0.2)
                 pydirectinput.press('enter')
 
-
                 self.passiveCooldown = time.time()
 
                 if team ==1:
@@ -416,19 +416,17 @@ class Personnage:
 
             time.sleep(0.5)
 
-
-
     def updatePosition(self):
         self.position = [self.datas.posX, self.datas.posY]
 
 
-    def ctrlt(key):
+    def ctrlt(self):
         pydirectinput.keyDown('ctrl')
-        pydirectinput.press(key)
+        pydirectinput.press(self)
         pydirectinput.keyUp('ctrl')
 
 
-    def procPassive(self) : 
+    def procPassive(self): 
         user32 = ctypes.windll.user32
         screenWidth = user32.GetSystemMetrics(0)
         screenHeight = user32.GetSystemMetrics(1)
@@ -443,14 +441,13 @@ class Personnage:
         if time.time() > (self.passiveCooldown +10):
             try:
                 Ennemies = capture.locate_img("ennemi.png")
-                if Ennemies[0]+40 >0 and Ennemies[0]+40<1920:
-                    if Ennemies[1]+100 >0 and Ennemies[1]+100<1080:
-                        mouse.move(Ennemies[0]+40, Ennemies[1]+100)
+                if Ennemies[0] > -40 and Ennemies[0] < 1880 and Ennemies[1] > -100 and Ennemies[1] < 980:
+                    mouse.move(Ennemies[0]+40, Ennemies[1]+100)
                 self.ennemyPosition = [Ennemies[0], Ennemies[1]]
                 pydirectinput.press('w')
                 MouseClick()
                 pydirectinput.press('h')    
-                 
+
                 mouse.move(self.adcPicture[0],self.adcPicture[1])
                 time.sleep(0.2)
                 time.sleep(0.1)
@@ -462,10 +459,6 @@ class Personnage:
     def Surrender(self):  
         global OneMinute
         if self.datas["gameData"]["gameTime"] > OneMinute:
-            try :
-                shop_actions.checkShopClosed()
-            except:
-                print("can't check shop ")
             Surrend = pyautogui.locateOnScreen("images/Surrend.png", grayscale=False,confidence=0.80, region =())
             OneMinute=OneMinute+20
             try:
@@ -517,7 +510,7 @@ class Personnage:
     def action(self):
         return False
 
-def Connexion():
+def Connexion():  # sourcery skip: low-code-quality
     ConfigSetup()
     PcName = socket.gethostname()
     print(PcName)
@@ -527,90 +520,93 @@ def Connexion():
     Connexion_image = pyautogui.locateOnScreen("images/Connexion.png", grayscale=False,confidence=0.90)
     TermsOfServices = pyautogui.locateOnScreen("images/TermsOfServices.png", grayscale=False,confidence=0.90)
     try:
-        if Connexion_image!=None:
-            formula = match({"HWID": hwid})
-            formula2 = match({"HWID": "None"})
-            listOfNone = table.all(formula=formula2)
-            listOfAcc = table.all(formula=formula)
-            print(listOfNone)
-            
-            print("Number of acc for the HWID : " + str(len(listOfAcc)))
-            if len(listOfAcc) <4:
-                print("You need more accounts")
-                for i in range(4-len(listOfAcc)):
-                    print("Adding account")
-                    table.update(listOfNone[i]['id'], {"HWID": hwid})
-            if len(listOfAcc) >= 4:
-                print("You have enough accounts")
-                Personnage.account = table.first(formula=formula, sort=["Unban"])['fields']['Account']
-    
-            password = table.first(formula=formula, sort=["Unban"])['fields']['Password']
-            
-            #LogDesired
-            mouse.move(Connexion_image[0],Connexion_image[1]+80)
-            time.sleep(0.1)
-            MouseClick()
-            pyautogui.typewrite(Personnage.account, interval=0.10)
-            time.sleep(0.1)
-            print(f'Log Write : {Personnage.account}')
-                
-            #PwdDesired
-            mouse.move(Connexion_image[0],Connexion_image[1]+140)
-            time.sleep(0.1)
-            MouseClick()
-            # pyautogui.typewrite(password, interval=0.10)
-            pyperclip.copy(password)
-            pyautogui.hotkey('ctrl', 'v')
-            time.sleep(0.1)
-            print('Pwd Write')
-            for records in table.all():
-                if records['fields']['Account'] == Personnage.account:
-                    recordId = records['id']
-                    table.update(recordId, {"Unban": str(datetime.datetime.now())})
-            
-            if TermsOfServices != None:
-                mouse.move(TermsOfServices[0],TermsOfServices[1])
-                time.sleep(1)
-                pyautogui.scroll(-100000)
-                time.sleep(1)
-                pyautogui.click(TermsOfServices[0],TermsOfServices[1]+600)
-                
-            #Press connexion button
-            mouse.move(Connexion_image[0]+60,Connexion_image[1]+520)
-            time.sleep(0.1)
-            MouseClick()
-            time.sleep(6)
-            
-            #Press Play button
-            mouse.move(Connexion_image[0],Connexion_image[1]+650)
-            time.sleep(0.1)
-            MouseClick()
-            time.sleep(0.1)
-            gamedirs = [r'C:\Riot Games\League of Legends',r'D:\Games\League of Legends',r'D:\Riot Games\League of Legends',] 
-            lockfile = None
-            while not lockfile:
-                for gamedir in gamedirs:
-                    lockpath = r'%s\lockfile' % gamedir
 
-                    if not os.path.isfile(lockpath):
-                        print("Waiting League to start")
-                        continue
-                        
-                    print('Found running League of Legends, dir', gamedir, "sleeping 30 sec to make sure everything loaded")
-                    time.sleep(30)
-                    lockfile = open(r'%s\lockfile' % gamedir, 'r')
-            for records in table2.all():
-                if records['fields']['PcName'] == socket.gethostname():
-                    recordId = records['id']
-                    table2.update(recordId, {"ConnectedOn": Personnage.account})
-                    #LastAction update
-                    now = datetime.datetime.now() - datetime.timedelta(hours=2)
-                    table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y") ,"LastAction": 'Connexion'})
-        else:
-            print('No connexion detected, waiting 1 seconds')
-             
+        formula = match({"HWID": hwid})
+        formula2 = match({"HWID": "None"})
+        listOfNone = table.all(formula=formula2)
+        listOfAcc = table.all(formula=formula)
+        print(listOfNone)
+        
+        print("Number of acc for the HWID : " + str(len(listOfAcc)))
+        if len(listOfAcc) <4:
+            print("You need more accounts")
+            for i in range(4-len(listOfAcc)):
+                print("Adding account")
+                table.update(listOfNone[i]['id'], {"HWID": hwid})
+        if len(listOfAcc) >= 4:
+            print("You have enough accounts")
+            Personnage.account = table.first(formula=formula, sort=["Unban"])['fields']['Account']
+
+        password = table.first(formula=formula, sort=["Unban"])['fields']['Password']
+        
+        
+        clientConnect.stay_connected(Personnage.account, password)
+        
+        # #LogDesired
+        # mouse.move(Connexion_image[0],Connexion_image[1]+80)
+        # time.sleep(0.1)
+        # MouseClick()
+        # pyautogui.typewrite(Personnage.account, interval=0.10)
+        # time.sleep(0.1)
+        
+        
+        # print(f'Log Write : {Personnage.account}')
+            
+        # #PwdDesired
+        # mouse.move(Connexion_image[0],Connexion_image[1]+140)
+        # time.sleep(0.1)
+        # MouseClick()
+        # # pyautogui.typewrite(password, interval=0.10)
+        # pyperclip.copy(password)
+        # pyautogui.hotkey('ctrl', 'v')
+        # time.sleep(0.1)
+        # print('Pwd Write')
+        for records in table.all():
+            if records['fields']['Account'] == Personnage.account:
+                recordId = records['id']
+                table.update(recordId, {"Unban": str(datetime.datetime.now())})
+        
+        # if TermsOfServices != None:
+        #     mouse.move(TermsOfServices[0],TermsOfServices[1])
+        #     time.sleep(1)
+        #     pyautogui.scroll(-100000)
+        #     time.sleep(1)
+        #     pyautogui.click(TermsOfServices[0],TermsOfServices[1]+600)
+            
+        # #Press connexion button
+        # mouse.move(Connexion_image[0]+60,Connexion_image[1]+520)
+        # time.sleep(0.1)
+        # MouseClick()
+        # time.sleep(6)
+        
+        # #Press Play button
+        # mouse.move(Connexion_image[0],Connexion_image[1]+650)
+        # time.sleep(0.1)
+        # MouseClick()
+        # time.sleep(0.1)
+        gamedirs = [r'C:\Riot Games\League of Legends',r'D:\Games\League of Legends',r'D:\Riot Games\League of Legends',] 
+        lockfile = None
+        while not lockfile:
+            for gamedir in gamedirs:
+                lockpath = r'%s\lockfile' % gamedir
+
+                if not os.path.isfile(lockpath):
+                    print("Waiting League to start")
+                    continue
+                    
+                print('Found running League of Legends, dir', gamedir, "sleeping 30 sec to make sure everything loaded")
+                time.sleep(30)
+                lockfile = open(r'%s\lockfile' % gamedir, 'r')
+        for records in table2.all():
+            if records['fields']['PcName'] == socket.gethostname():
+                recordId = records['id']
+                table2.update(recordId, {"ConnectedOn": Personnage.account})
+                #LastAction update
+                now = datetime.datetime.now() - datetime.timedelta(hours=2)
+                table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y") ,"LastAction": 'Connexion'})
+
     except:
-        print('No more accounts')
+        print('No more accounts/ Connection failed')
         Connexion()
 
 class lobby():
@@ -663,21 +659,13 @@ def statuscheck():
 
     # Helper function
     def request(method, path, query='', data=''):
-        if not query:
-            url = '%s://%s:%s%s' % (lobby.protocol, lobby.host, lobby.port, path)
-        else:
-            url = '%s://%s:%s%s?%s' % (lobby.protocol, lobby.host, lobby.port, path, query)
+        url = f'{lobby.protocol}://{lobby.host}:{lobby.port}{path}?{query}' if query else f'{lobby.protocol}://{lobby.host}:{lobby.port}{path}'
 
-        print('%s %s %s' % (method.upper().ljust(7, ' '), url, data))
+        print(f"{method.upper().ljust(7, ' ')} {url} {data}")
 
         fn = getattr(s, method)
 
-        if not data:
-            r = fn(url, verify=False, headers=headers)
-        else:
-            r = fn(url, verify=False, headers=headers, json=data)
-
-        return r
+        return fn(url, verify=False, headers=headers, json=data) if data else fn(url, verify=False, headers=headers)
 
     userpass = b64encode(bytes('%s:%s' % (lobby.username, lobby.password), 'utf-8')).decode('ascii')
     headers = { 'Authorization': 'Basic %s' % userpass }
@@ -707,15 +695,15 @@ def statuscheck():
                 Lastphase = phase 
                 PhaseNumber = 0 
                 print('reset Lastphase to phase and reset PhaseNumber to 0')
-                
+
             else: # si c'est la meme Phase que la derniere fois ca veut dire que c'est pas passée à autre chose et on check si ca recommence plus de 10 fois
                 
                 PhaseNumber = PhaseNumber + 1 # Rajoute 1 pour chaque meme phase
                 if PhaseNumber >= 10: 
-                    print(phase+ " phase time to run pussy destroyer")
+                    print(f"{phase} phase time to run pussy destroyer")
                     print(PhaseNumber)
                     PussyDestroyer()
-                else :
+                else:
                     print(phase+ "  phase tout est ok pour l'instant")
                     print(PhaseNumber)
 
@@ -735,7 +723,7 @@ def statuscheck():
             idtoken = request('get', '/lol-login/v1/session').json()['idToken']     
              
             def getrequest(url):
-                auth = 'Bearer %s' % idtoken
+                auth = f'Bearer {idtoken}'
                 headers = {
                     'Content-Type': 'application/json',
                     'Authorization': auth
@@ -743,7 +731,7 @@ def statuscheck():
                 return requests.get(url, headers=headers)
             
             def PostRequest(url, data):
-                auth = 'Bearer %s' % idtoken
+                auth = f'Bearer {idtoken}'
 
                 headers = {
                     'Content-Type': 'application/json',
@@ -762,7 +750,6 @@ def statuscheck():
                         Refund = PostRequest( str(StoreUrl)+'/storefront/v3/refund', data=({"accountId":accid ,"transactionId":TransacID ,"inventoryType":"CHAMPION","language":"en_GB"})) 
                                        
         def Store():
-
             idtoken = request('get', '/lol-login/v1/session').json()['idToken']
             accid = request('get', '/lol-login/v1/session').json()['accountId']
             print(accid, "acc id is here")
@@ -773,14 +760,13 @@ def statuscheck():
             print(ChampionsCollection)
                                         
             def PostRequest(url, data):
-                auth = 'Bearer %s' % idtoken
-            
+                auth = f'Bearer {idtoken}'
+
                 headers = {
                     'Content-Type': 'application/json',
                     'Authorization': auth
                 }
-                r = requests.post(url, data=json.dumps(data), headers=headers, verify=False)
-                return r
+                return requests.post(url, data=json.dumps(data), headers=headers, verify=False)
             
             champIDListCheap = [32,1,22,36,86,10,11,20,78,13,27,15,16,19]
             ChampIDListLessCheap = [44,17,18,23]
