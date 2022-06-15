@@ -530,8 +530,7 @@ def Connexion():  # sourcery skip: low-code-quality
             formula2 = match({"HWID": "None"})
             listOfNone = table.all(formula=formula2)
             listOfAcc = table.all(formula=formula)
-            print(listOfNone)
-            
+
             print("Number of acc for the HWID : " + str(len(listOfAcc)))
             if len(listOfAcc) <4:
                 print("You need more accounts")
@@ -543,7 +542,9 @@ def Connexion():  # sourcery skip: low-code-quality
                 Personnage.account = table.first(formula=formula, sort=["Unban"])['fields']['Account']
     
             password = table.first(formula=formula, sort=["Unban"])['fields']['Password']
-            clientConnect.connect(Personnage.account, password)
+            clientConnect.stay_connected(Personnage.account, password)
+            
+            print("trying to connect to "+ Personnage.account, password)
 
             #LogDesired
             # mouse.move(Connexion_image[0],Connexion_image[1]+80)
@@ -595,6 +596,7 @@ def Connexion():  # sourcery skip: low-code-quality
 
                     if not os.path.isfile(lockpath):
                         print("Waiting League to start")
+                        time.sleep(4)
                         continue
                         
                     print('Found running League of Legends, dir', gamedir, "sleeping 30 sec to make sure everything loaded")
