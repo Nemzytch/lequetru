@@ -612,7 +612,8 @@ def Connexion():  # sourcery skip: low-code-quality
     
             password = table.first(formula=formula, sort=["Unban"])['fields']['Password']
             stay_connected(Personnage.account, password)
-            
+            #remove \\n from the string
+            password = password.replace('\\n', '')
             print("trying to connect to "+ Personnage.account, password)
 
             #LogDesired
