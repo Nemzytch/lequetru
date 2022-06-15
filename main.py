@@ -516,9 +516,10 @@ def Connexion():  # sourcery skip: low-code-quality
     
     table = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'YUUMI') 
     Connexion_image = pyautogui.locateOnScreen("images/Connexion.png", grayscale=False,confidence=0.90)
+    Connexion_smaller = pyautogui.locateOnScreen("images/connexion_smaller.jpg", grayscale=False,confidence=0.90)
     TermsOfServices = pyautogui.locateOnScreen("images/TermsOfServices.png", grayscale=False,confidence=0.90)
     try:
-        if Connexion_image!=None:
+        if Connexion_image or Connexion_smaller!=None:
             formula = match({"HWID": hwid})
             formula2 = match({"HWID": "None"})
             listOfNone = table.all(formula=formula2)
