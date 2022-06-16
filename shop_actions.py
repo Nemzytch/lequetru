@@ -39,7 +39,7 @@ offset =[left,top]
 
 
 
-itemList = [["Spellthief's Edge", 400, []], ['Oracle Lens', 0, []], ['Dark Seal', 350, []], ['Imperial Mandate', 2500, [['Kindlegem', 800], ['Bandleglass Mirror', 950]]], ['Ardent Censer', 2300, [['Amplifying Tome', 435], ['Forbidden Idol', 800], ['Amplifying Tome', 435]]], ['Staff of Flowing Water', 2300, [['Amplifying Tome', 435], ['Forbidden Idol', 800], ['Amplifying Tome', 435]]], ['Chemtech Putrifier', 2300, [['Oblivion Orb', 800], ['Bandleglass Mirror', 950]]], ['Redemption', 2300, [['Kindlegem', 800], ['Forbidden Idol', 800]]]]
+itemList = [["Spellthief's Edge", 400, []], ['Oracle Lens', 0, []], ['Dark Seal', 350, []], ['Imperial Mandate', 2500, [['Kindlegem', 800], ['Bandleglass Mirror', 950]]], ['Ardent Censer', 2300, [['Amplifying Tome', 435], ['Forbidden Idol', 800], ['Amplifying Tome', 435]]], ['Staff of Flowing Water', 2300, [['Amplifying Tome', 435], ['Forbidden Idol', 800], ['Amplifying Tome', 435]]], ['Chemtech Putrifier', 2300, [['Oblivion Orb', 800], ['Bandleglass Mirror', 950]]], ['Redemption', 2300, [['Kindlegem', 800], ['Forbidden Idol', 800]]],['YosuIsBad', 80000]]
     
 
 
