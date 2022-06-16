@@ -95,7 +95,7 @@ def restart():
     os.execv(sys.executable, ['python'] + sys.argv)
 
 def PussyDestroyer():
-    
+    os.system('cls' if os.name == 'nt' else 'clear')
     procList = []
 
     for proc in psutil.process_iter():
