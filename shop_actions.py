@@ -73,6 +73,7 @@ def canBuy(GOLDS,itemList):
 
 
 def cycle(buyList):
+    pydirectinput.press("s")
     pydirectinput.press('p')
     time.sleep(0.2)
     for items in buyList:

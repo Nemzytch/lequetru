@@ -347,10 +347,9 @@ class Personnage:
                 print('Attached')
                 inGameChecks.attached(self.yuumiState["abilities"]["Q"]["abilityLevel"])
                 self.Surrender()
+                self.procPassive()
 
-                if self.yuumiMana < (15*(self.resourceMax)/100):
-                    print('you got '+ str(self.yuumiMana))
-                    self.procPassive()
+                    
 
             
             if self.adcDead == True:
@@ -428,34 +427,26 @@ class Personnage:
 
 
     def procPassive(self): 
-        user32 = ctypes.windll.user32
-        screenWidth = user32.GetSystemMetrics(0)
-        screenHeight = user32.GetSystemMetrics(1)
-        height = 768
-        width = 1024
-        top =int((screenHeight-height)/2)
-        left = int((screenWidth-width)/2)
-
-        mon = {'top': top, 'left':left, 'width':width, 'height':height}
-        sct = mss()
-        sct_img = sct.grab(mon)
-        if time.time() > (self.passiveCooldown +10):
-            try:
-                Ennemies = capture.locate_img("ennemi.png")
-                if Ennemies[0] > -40 and Ennemies[0] < 1880 and Ennemies[1] > -100 and Ennemies[1] < 980:
-                    mouse.move(Ennemies[0]+40, Ennemies[1]+100)
-                self.ennemyPosition = [Ennemies[0], Ennemies[1]]
-                pydirectinput.press('w')
-                MouseClick()
-                pydirectinput.press('h')    
-
-                mouse.move(self.adcPicture[0],self.adcPicture[1])
-                time.sleep(0.2)
-                time.sleep(0.1)
-                pydirectinput.press('w')
-                self.passiveCooldown = time.time()
-            except TypeError:
-                print("No ennemies found")
+        if self.yuumiMana < (20*(self.resourceMax)/100):
+            
+            if time.time() > (self.passiveCooldown +10):
+                try:
+                    Ennemies = capture.find_ennemi()
+                    if Ennemies[0] > -40 and Ennemies[0] < 1880 and Ennemies[1] > -100 and Ennemies[1] < 980:
+                        mouse.move(Ennemies[0]+40, Ennemies[1]+100)
+                    pydirectinput.press('w')
+                    MouseClick()
+                    pydirectinput.press('h')    
+                    mouse.move(self.adcPicture[0],self.adcPicture[1])
+                    time.sleep(0.3)
+                    pydirectinput.press('w')
+                    self.ennemyPosition = [Ennemies[0], Ennemies[1]]
+                    self.passiveCooldown = time.time()
+                except TypeError:
+                    print("No ennemies found")
+        else:
+            print('No need to proc passive you got '+ str(self.yuumiMana))
+            
 
     def Surrender(self):  
         global OneMinute

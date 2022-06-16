@@ -183,5 +183,27 @@ def inBase():
     g = FullLife.pixel(0,0)
     return bool(g[0] and g[1] and g[2] > 31)
 
+def click_base(base_coords):
+    mouse.move(base_coords[0],base_coords[1])
+    pydirectinput.press('h')
 
 
+def changeCarry(teamDeath):
+    print("Changing carry")
+
+def back(base_coords):
+    print("We back to base ")
+    click_base(base_coords)
+    while capture.find_ennemi() != None:
+        click_base(base_coords)
+        sendEcheck()
+        time.sleep(0.3)
+    time.sleep(4)
+    pydirectinput.press("b")
+    time.sleep(9)
+
+        
+
+def adcDead(gametime):
+    if gametime < 900:
+        back()

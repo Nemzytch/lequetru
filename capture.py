@@ -12,7 +12,7 @@ import ctypes
 import win32api    
 import mouse
     
-    
+
 user32 = ctypes.windll.user32
 screenWidth = user32.GetSystemMetrics(0)
 screenHeight = user32.GetSystemMetrics(1)
@@ -28,10 +28,9 @@ offset =[left,top]
 
 ennemi_image = 'ennemi.png'
 def locate_img(imgPath):
-    global ennemiX
-    global ennemiY
     global offset
     image_to_find = cv2.imread(imgPath)
+    sct = mss()
     sct_img = sct.grab(mon)
     
     img = Image.frombytes('RGB', (sct_img.size.width, sct_img.size.height), sct_img.rgb)
@@ -52,7 +51,4 @@ def find_ennemi():
     ennemi = locate_img(ennemi_image)
     if ennemi != None:
         mouse.move(ennemi[0],ennemi[1])
-    # else:
-    #     print("no ennemi found")
-    #     return None
     return ennemi
