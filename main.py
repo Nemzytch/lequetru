@@ -526,7 +526,6 @@ def Connexion():  # sourcery skip: low-code-quality
             formula2 = match({"HWID": "None"})
             listOfNone = table.all(formula=formula2)
             listOfAcc = table.all(formula=formula)
-            print(listOfNone)
             
             print("Number of acc for the HWID : " + str(len(listOfAcc)))
             if len(listOfAcc) <4:
