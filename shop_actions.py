@@ -42,7 +42,6 @@ offset =[left,top]
 itemList = [["Spellthief's Edge", 400, []], ['Oracle Lens', 0, []], ['Dark Seal', 350, []], ['Imperial Mandate', 2500, [['Kindlegem', 800], ['Bandleglass Mirror', 950]]], ['Ardent Censer', 2300, [['Amplifying Tome', 435], ['Forbidden Idol', 800], ['Amplifying Tome', 435]]], ['Staff of Flowing Water', 2300, [['Amplifying Tome', 435], ['Forbidden Idol', 800], ['Amplifying Tome', 435]]], ['Chemtech Putrifier', 2300, [['Oblivion Orb', 800], ['Bandleglass Mirror', 950]]], ['Redemption', 2300, [['Kindlegem', 800], ['Forbidden Idol', 800]]],['YosuIsBad', 80000, []]]
     
 
-
 def canBuy(GOLDS,itemList):
     buyList= []
     print(f"item list from canBuy FUNC: {str(itemList)}")
@@ -73,20 +72,22 @@ def canBuy(GOLDS,itemList):
 
 
 def cycle(buyList):
-    pydirectinput.press('p')
-    time.sleep(0.2)
-    for items in buyList:
-        pydirectinput.keyDown('ctrl')
-        pydirectinput.press('l')
-        pydirectinput.keyUp('ctrl')
-        pyautogui.write((items).lower(), interval=0.10)
+    if len(buyList) > 0:
+        pydirectinput.press('p')
         time.sleep(0.2)
-        pydirectinput.press('enter')
+        for items in buyList:
+            pydirectinput.keyDown('ctrl')
+            pydirectinput.press('l')
+            pydirectinput.keyUp('ctrl')
+            pyautogui.write((items).lower(), interval=0.10)
+            time.sleep(0.2)
+            pydirectinput.press('enter')
+            time.sleep(0.4)
+        pydirectinput.press('esc')
+        buyList = []
         time.sleep(0.2)
-        time.sleep(0.2)
-    pydirectinput.press('esc')
-    buyList = []
-    time.sleep(0.2)
+    else: 
+        print("No items to buy")
 
 def checkShopClosed():
     if capture.locate_img("images/openShop.png") is not None:
