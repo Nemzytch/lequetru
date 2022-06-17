@@ -39,13 +39,13 @@ offset =[left,top]
 
 
 
-itemList = [["Spellthief's Edge", 400, []], ['Oracle Lens', 0, []], ['Dark Seal', 350, []], ['Imperial Mandate', 2500, [['Kindlegem', 800], ['Bandleglass Mirror', 950]]], ['Ardent Censer', 2300, [['Amplifying Tome', 435], ['Forbidden Idol', 800], ['Amplifying Tome', 435]]], ['Staff of Flowing Water', 2300, [['Amplifying Tome', 435], ['Forbidden Idol', 800], ['Amplifying Tome', 435]]], ['Chemtech Putrifier', 2300, [['Oblivion Orb', 800], ['Bandleglass Mirror', 950]]], ['Redemption', 2300, [['Kindlegem', 800], ['Forbidden Idol', 800]]],['YosuIsBad', 80000]]
+itemList = [["Spellthief's Edge", 400, []], ['Oracle Lens', 0, []], ['Dark Seal', 350, []], ['Imperial Mandate', 2500, [['Kindlegem', 800], ['Bandleglass Mirror', 950]]], ['Ardent Censer', 2300, [['Amplifying Tome', 435], ['Forbidden Idol', 800], ['Amplifying Tome', 435]]], ['Staff of Flowing Water', 2300, [['Amplifying Tome', 435], ['Forbidden Idol', 800], ['Amplifying Tome', 435]]], ['Chemtech Putrifier', 2300, [['Oblivion Orb', 800], ['Bandleglass Mirror', 950]]], ['Redemption', 2300, [['Kindlegem', 800], ['Forbidden Idol', 800]]],['YosuIsBad', 80000, []]]
     
 
 
 def canBuy(GOLDS,itemList):
     buyList= []
-    print("item list from canBuy FUNC: " + str(itemList))
+    print(f"item list from canBuy FUNC: {str(itemList)}")
     #try to buy the first item in the list if not enough money, try components of the item if not enough money, break
     if GOLDS < itemList[0][1]:
         print("Not enough gold for full item")
@@ -53,21 +53,21 @@ def canBuy(GOLDS,itemList):
             print("Trying to buy components")
             for component in itemList[0][2]:
                 if GOLDS >= component[1]:
-                    print("Adding " + component[0] + " to buy list")
+                    print(f"Adding {component[0]} to buy list")
                     buyList.append(component[0])
                     #updating main item price
                     itemList[0][1] -= component[1]
                     #remove components from the components of the item
                     GOLDS -= component[1]
                     itemList[0][2].remove(component)
-                    
+
     else:
-        print("Adding " +str(itemList[0][0]) + " to buy list")
+        print(f"Adding {str(itemList[0][0])} to buy list")
         GOLDS -= itemList[0][1]
         buyList.append(itemList[0][0])
         itemList.pop(0)
         print(GOLDS)
-            
+
     cycle(buyList)
 
 
