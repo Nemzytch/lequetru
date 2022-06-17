@@ -96,13 +96,15 @@ def restart():
 
 def PussyDestroyer():
     os.system('cls' if os.name == 'nt' else 'clear')
-    procList = [proc.name() for proc in psutil.process_iter() if "Riot" in proc.name()]
+    procList = []
 
-
+    for proc in psutil.process_iter():
+        if "Riot" in proc.name():
+            procList.append(proc.name())
     for proc in psutil.process_iter():
         if "League" in proc.name():
             procList.append(proc.name())
-
+            
     for _ in procList:
         subprocess.call(["taskkill", "/F", "/IM", _])
         time.sleep(0.1)
@@ -218,7 +220,7 @@ class Personnage:
     def setup(self):                    
         self.updateDatas()
         i=0
-        while "gameData" not in self.datas:
+        while not "gameData" in self.datas:
             time.sleep(0.2)
             self.updateDatas()
         while self.datas["gameData"]["gameTime"] < 1:
@@ -254,6 +256,7 @@ class Personnage:
                 mouse.move(self.screenWidth/2, self.screenHeight/2)
                 MouseClick()
                 time.sleep(0.5)
+                
                 pydirectinput.press('space')
                 time.sleep(0.5)
                 if inGameChecks.inBase() == True:
@@ -283,7 +286,7 @@ class Personnage:
                     self.qY = 350
                     print(self.Team)
                 else:
-                    print(i)
+                    print(str(i))
                 break
             else:
                 i=i+1
@@ -487,7 +490,10 @@ class Personnage:
         self.yuumiState = self.datas["activePlayer"]
         self.teamState = self.datas["allPlayers"]
         self.WName = self.yuumiState["abilities"]["W"]["displayName"]
-        self.attached = self.WName == "Change of Plan"
+        if self.WName == "Change of Plan":
+            self.attached = True
+        else: 
+            self.attached = False
         self.YuumiLevel = self.yuumiState["level"]
         self.adcName = self.teamState[self.adcIndex]["championName"]
         self.adcDead = self.teamState[self.adcIndex]["isDead"]
@@ -510,8 +516,8 @@ def Connexion():  # sourcery skip: low-code-quality
     PcName = socket.gethostname()
     print(PcName)
     hwid = str(subprocess.check_output('wmic csproduct get uuid')).split('\\r\\n')[1].strip('\\r').strip()
-
-    table = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'YUUMI')
+    
+    table = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'YUUMI') 
     Connexion_image = pyautogui.locateOnScreen("images/Connexion.png", grayscale=False,confidence=0.90)
     TermsOfServices = pyautogui.locateOnScreen("images/TermsOfServices.png", grayscale=False,confidence=0.90)
     try:
@@ -520,8 +526,8 @@ def Connexion():  # sourcery skip: low-code-quality
             formula2 = match({"HWID": "None"})
             listOfNone = table.all(formula=formula2)
             listOfAcc = table.all(formula=formula)
-
-            print(f"Number of acc for the HWID : {len(listOfAcc)}")
+            
+            print("Number of acc for the HWID : " + str(len(listOfAcc)))
             if len(listOfAcc) <4:
                 print("You need more accounts")
                 for i in range(4-len(listOfAcc)):
@@ -530,9 +536,9 @@ def Connexion():  # sourcery skip: low-code-quality
             if len(listOfAcc) >= 4:
                 print("You have enough accounts")
                 Personnage.account = table.first(formula=formula, sort=["Unban"])['fields']['Account']
-
+    
             password = table.first(formula=formula, sort=["Unban"])['fields']['Password']
-
+            
             #LogDesired
             mouse.move(Connexion_image[0],Connexion_image[1]+80)
             time.sleep(0.1)
@@ -540,7 +546,7 @@ def Connexion():  # sourcery skip: low-code-quality
             pyautogui.typewrite(Personnage.account, interval=0.10)
             time.sleep(0.1)
             print(f'Log Write : {Personnage.account}')
-
+                
             #PwdDesired
             mouse.move(Connexion_image[0],Connexion_image[1]+140)
             time.sleep(0.1)
@@ -554,26 +560,26 @@ def Connexion():  # sourcery skip: low-code-quality
                 if records['fields']['Account'] == Personnage.account:
                     recordId = records['id']
                     table.update(recordId, {"Unban": str(datetime.datetime.now())})
-
+            
             if TermsOfServices != None:
                 mouse.move(TermsOfServices[0],TermsOfServices[1])
                 time.sleep(1)
                 pyautogui.scroll(-100000)
                 time.sleep(1)
                 pyautogui.click(TermsOfServices[0],TermsOfServices[1]+600)
-
+                
             #Press connexion button
             mouse.move(Connexion_image[0]+60,Connexion_image[1]+520)
             time.sleep(0.1)
             MouseClick()
             time.sleep(6)
-
+            
             #Press Play button
             mouse.move(Connexion_image[0],Connexion_image[1]+650)
             time.sleep(0.1)
             MouseClick()
             time.sleep(0.1)
-            gamedirs = [r'C:\Riot Games\League of Legends',r'D:\Games\League of Legends',r'D:\Riot Games\League of Legends',]
+            gamedirs = [r'C:\Riot Games\League of Legends',r'D:\Games\League of Legends',r'D:\Riot Games\League of Legends',] 
             lockfile = None
             while not lockfile:
                 for gamedir in gamedirs:
@@ -582,7 +588,7 @@ def Connexion():  # sourcery skip: low-code-quality
                     if not os.path.isfile(lockpath):
                         print("Waiting League to start")
                         continue
-
+                        
                     print('Found running League of Legends, dir', gamedir, "sleeping 30 sec to make sure everything loaded")
                     time.sleep(30)
                     lockfile = open(r'%s\lockfile' % gamedir, 'r')
@@ -595,8 +601,8 @@ def Connexion():  # sourcery skip: low-code-quality
                     table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y") ,"LastAction": 'Connexion'})
         else:
             print('No connexion detected, waiting 1 seconds')
-
-    except Exception:
+             
+    except:
         print('No more accounts')
         Connexion()
 
@@ -640,6 +646,7 @@ def statuscheck():
         session.get('https://127.0.0.1:2999/liveclientdata/allgamedata', verify = False)
         print("Avant Chargement")
         time.sleep(1)
+        perso = Personnage()
     except ConnectionError as ce:
         print("you aren't in game")
 
