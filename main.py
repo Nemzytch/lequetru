@@ -339,9 +339,9 @@ class Personnage:
                     print('Going to adc')
                     mouse.move(self.adcPicture[0],self.adcPicture[1])               
                     pydirectinput.press('w')
-                    #LastAction
-                    Action = "Going to adc"
-                    LastAction()
+                    #LastAction: 
+                    # Action = "Going to adc"
+                    # LastAction()
 
             if self.attached == True:
                 print('Attached')
@@ -398,8 +398,8 @@ class Personnage:
                                 print('going back to base')  
             
                 if time.time()> (self.backCooldown+50):
-                    Action = "Going back"
-                    LastAction()
+                    # Action = "Going back"
+                    # LastAction()
                     mouse.move(self.BaseX,self.BaseY)
                     time.sleep(0.2)
                     MouseClick()
