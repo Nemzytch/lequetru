@@ -10,3 +10,5 @@ pip install pyairtable
 pip install colorama
 pip install termcolor
 pip install pyperclip
+pip install psutil
+pip install mss
