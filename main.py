@@ -75,8 +75,21 @@ lastMessageChampSelect = datetime.datetime.now() - datetime.timedelta(minutes=4)
 OneMinute= 900
 saved_time = datetime.datetime.now()
 Action = "Waiting"
-API_KEY= "key181wgNDrYM2bms"
-BASE_ID = "appHnr7cu8j1HlMC2"
+
+with open("../Infos.txt", "r") as f:
+    for line in f:         
+        if "PC_NAME" in line:
+            Pc_Name = line.strip().split(":")[1]
+            print(Pc_Name)
+            
+        if "API_KEY" in line:
+            API_KEY = line.strip().split(":")[1]
+            print(API_KEY)
+            
+        if "BASE_ID" in line:
+            BASE_ID = line.strip().split(":")[1]
+            print(BASE_ID)
+            
 table = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'YUUMI')
 table2 = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'ADMIN')
 
@@ -115,7 +128,7 @@ def PussyDestroyer():
     restart()
 def Pause():
     for records in table2.all():
-        if records['fields']['PcName'] == socket.gethostname():
+        if records['fields']['PcName'] == Pc_Name:
             recordId = records['id']
             if "Status" in records['fields']:
                 print("Play")
@@ -229,7 +242,7 @@ class Personnage:
             print("Loading Screen")
         print("Game just started")
         for records in table2.all():
-            if records['fields']['PcName'] == socket.gethostname():
+            if records['fields']['PcName'] == Pc_Name:
                 recordId = records['id']
                 now = datetime.datetime.now() - datetime.timedelta(hours=2)
                 table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y"),"LastAction": "InGame" })
@@ -308,7 +321,7 @@ class Personnage:
             current_time = datetime.datetime.now()
             if (current_time - saved_time).seconds >= 10:
                 for records in table2.all():
-                    if records['fields']['PcName'] == socket.gethostname():
+                    if records['fields']['PcName'] == Pc_Name:
                         recordId = records['id']
                         now = datetime.datetime.now() - datetime.timedelta(hours=2)
                         table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y"), "LastAction": Action })
@@ -513,8 +526,6 @@ class Personnage:
 
 def Connexion():  # sourcery skip: low-code-quality
     ConfigSetup()
-    PcName = socket.gethostname()
-    print(PcName)
     hwid = str(subprocess.check_output('wmic csproduct get uuid')).split('\\r\\n')[1].strip('\\r').strip()
     
     table = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'YUUMI') 
@@ -593,7 +604,7 @@ def Connexion():  # sourcery skip: low-code-quality
                     time.sleep(30)
                     lockfile = open(r'%s\lockfile' % gamedir, 'r')
             for records in table2.all():
-                if records['fields']['PcName'] == socket.gethostname():
+                if records['fields']['PcName'] == Pc_Name:
                     recordId = records['id']
                     table2.update(recordId, {"ConnectedOn": Personnage.account})
                     #LastAction update
@@ -710,7 +721,7 @@ def statuscheck():
             current_time = datetime.datetime.now()
             if (current_time - saved_time).seconds >= 25:
                 for records in table2.all():
-                    if records['fields']['PcName'] == socket.gethostname():
+                    if records['fields']['PcName'] == Pc_Name:
                         recordId = records['id']
                         now = datetime.datetime.now() - datetime.timedelta(hours=2)
                         table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y"),"LastAction": phase})
@@ -798,7 +809,7 @@ def statuscheck():
             
             
             for records in table2.all():
-                if records['fields']['PcName'] == socket.gethostname():
+                if records['fields']['PcName'] == Pc_Name:
                     recordId = records['id']
                     #add 1 to the number of games played
                     table2.update(recordId, {"GamePlayed": int(records['fields']['GamePlayed'])+1})
@@ -823,7 +834,7 @@ def statuscheck():
             if tier == 'IRON' and division == 'IV' and leaguepoints <= 0:
                 print('One more account readyyyyy')
                 table.update(recordId, {"FinishedAcc": "Finish"})
-                table.update(recordId,{"PcName":  socket.gethostname()+" STOP"})
+                table.update(recordId,{"PcName":  Pc_Name+" STOP"})
                 PussyDestroyer()
         
             time.sleep(2)
@@ -893,7 +904,7 @@ def statuscheck():
             
             if tier == 'IRON' and division == 'IV' and leaguepoints <= 0:
                 print('One more account readyyyyy')
-                table.update(recordId,{"PcName":  socket.gethostname()+" STOP","HWID":  socket.gethostname()+" STOP","FinishedAcc": "Finish"})
+                table.update(recordId,{"PcName":  Pc_Name+" STOP","HWID":  Pc_Name+" STOP","FinishedAcc": "Finish"})
                 PussyDestroyer()
                 
             QueueLockout = None
@@ -1046,7 +1057,7 @@ def statuscheck():
 
         elif phase == 'InProgress':
             for records in table2.all():
-                if records['fields']['PcName'] == socket.gethostname():
+                if records['fields']['PcName'] == Pc_Name:
                     recordId = records['id']
                     #LastGameRun update
                     now = datetime.datetime.now() - datetime.timedelta(hours=2)
