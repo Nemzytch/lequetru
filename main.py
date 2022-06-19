@@ -797,6 +797,13 @@ def statuscheck():
             PhaseBlock()
             LastAction()
             
+            for records in table2.all():
+                if records['fields']['PcName'] == Pc_Name:
+                    recordId = records['id']
+                    #add 1 to the number of games played
+                    table2.update(recordId, {"GamePlayed": int(records['fields']['GamePlayed'])+1})
+                    print('GamePlayed +1')
+                    
             r = request('post', '/lol-lobby/v2/play-again')
         if phase =='EndOfGame':
             PhaseBlock()
@@ -806,15 +813,6 @@ def statuscheck():
             time.sleep(2)
             print("sending play again")
             r = request('post', '/lol-lobby/v2/play-again')
-            
-            
-            for records in table2.all():
-                if records['fields']['PcName'] == Pc_Name:
-                    recordId = records['id']
-                    #add 1 to the number of games played
-                    table2.update(recordId, {"GamePlayed": int(records['fields']['GamePlayed'])+1})
-                    print('GamePlayed +1')
-                    
             
             puuid = request('get', '/lol-summoner/v1/current-summoner').json()['puuid']
 
