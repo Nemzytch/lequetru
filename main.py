@@ -150,6 +150,7 @@ def ConfigSetup():
             
 def fetchDatas():
     response = requests.get("https://127.0.0.1:2999/liveclientdata/allgamedata", verify = False).text
+    print(response)
     return json.loads(response)
 
 def MouseClick():
