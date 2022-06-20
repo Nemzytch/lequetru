@@ -96,7 +96,6 @@ table2 = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'ADMIN')
 PhaseNumber = 0
 Lastphase = "Nothing"
 
-
 def restart():
     subprocess.call(["git", "reset", "--hard", "HEAD"])
     subprocess.call(["git", "pull"])
@@ -797,12 +796,16 @@ def statuscheck():
             PhaseBlock()
             LastAction()
             
+            puuid = request('get', '/lol-summoner/v1/current-summoner').json()['puuid']
+            ActualGameId = request('get', '/lol-match-history/v1/products/lol/'+puuid+'/matches').json()['games']['games'][0]['gameId']
+           
             for records in table2.all():
                 if records['fields']['PcName'] == Pc_Name:
                     recordId = records['id']
-                    #add 1 to the number of games played
-                    table2.update(recordId, {"GamePlayed": int(records['fields']['GamePlayed'])+1})
-                    print('GamePlayed +1')
+                    if records['fields']['LastGameId'] != ActualGameId:
+                        table2.update(recordId, {'LastGameId': ActualGameId})
+                        table2.update(recordId, {"GamePlayed": int(records['fields']['GamePlayed'])+1})
+                        print('GamePlayed +1')
                     
             r = request('post', '/lol-lobby/v2/play-again')
         if phase =='EndOfGame':
