@@ -798,8 +798,6 @@ def statuscheck():
             
             puuid = request('get', '/lol-summoner/v1/current-summoner').json()['puuid']
             ActualGameId = request('get', '/lol-match-history/v1/products/lol/'+puuid+'/matches').json()['games']['games'][0]['gameId']
-            print(ActualGameId)
-            time.sleep(100000)
             for records in table2.all():
                 if records['fields']['PcName'] == Pc_Name:
                     recordId = records['id']
