@@ -236,7 +236,7 @@ class Personnage:
         while not "gameData" in self.datas:
             time.sleep(0.2)
             self.updateDatas()
-        while self.datas["gameData"]["gameTime"] < 5:
+        while self.datas["gameData"]["gameTime"] < 1:
             time.sleep(0.2)
             self.updateDatas()
             print("Loading Screen")
