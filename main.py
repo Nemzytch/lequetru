@@ -219,7 +219,7 @@ class Personnage:
     jungleIndex = None
     topIndex = None
     carryHP =None
-    adcName = None
+    # adcName = None
 
     adcPicture = [1005+left,447+top]
     midHp75pixel = [928+left,448+top]
@@ -510,7 +510,7 @@ class Personnage:
         else: 
             self.attached = False
         self.YuumiLevel = self.yuumiState["level"]
-        self.adcName = self.teamState[self.adcIndex]["championName"]
+        # self.adcName = self.teamState[self.adcIndex]["championName"]
         self.adcDead = self.teamState[self.adcIndex]["isDead"]
         self.jungleDead = self.teamState[self.jungleIndex]["isDead"]
         self.midDead = self.teamState[self.midIndex]["isDead"]
