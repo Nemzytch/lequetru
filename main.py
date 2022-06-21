@@ -22,6 +22,7 @@ from logging import info
 from PIL import ImageGrab
 from pyairtable import Table
 from base64 import b64encode 
+from datetime import datetime
 from cv2 import validateDisparity
 from pyairtable.formulas import match
 from colorama import Fore, Back, Style
