@@ -6,3 +6,4 @@ import pytz
 
 now = datetime.datetime.now(pytz.timezone('Europe/Paris'))
 print(now.strftime("%H:%M %m-%d-%Y"))
+print('ok')
