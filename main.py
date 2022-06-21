@@ -717,14 +717,14 @@ def statuscheck():
 
         def LastAction():
             global saved_time
-            current_time = datetime.datetime.now()
+            current_time = datetime.now()
             if (current_time - saved_time).seconds >= 25:
                 for records in table2.all():
                     if records['fields']['PcName'] == Pc_Name:
                         recordId = records['id']
                         now = datetime.now()
                         table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y"),"LastAction": phase})
-                        saved_time = datetime.datetime.now()
+                        saved_time = datetime.now()
                         
         def Refund():
             idtoken = request('get', '/lol-login/v1/session').json()['idToken']     
