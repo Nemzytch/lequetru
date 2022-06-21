@@ -248,8 +248,8 @@ class Personnage:
         for records in table2.all():
             if records['fields']['PcName'] == Pc_Name:
                 recordId = records['id']
-                time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
-                table2.update(recordId, {"LastActionTime": time,"LastAction": "InGame" })
+                Time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
+                table2.update(recordId, {"LastActionTime": Time ,"LastAction": "InGame" })
 
         with open('stuff.json',) as f:
             self.stuff = json.load(f)
@@ -608,8 +608,8 @@ def Connexion():  # sourcery skip: low-code-quality
                     recordId = records['id']
                     table2.update(recordId, {"ConnectedOn": Personnage.account})
                     #LastAction update
-                    time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
-                    table2.update(recordId, {"LastActionTime": time ,"LastAction": 'Connexion'})
+                    Time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
+                    table2.update(recordId, {"LastActionTime": Time ,"LastAction": 'Connexion'})
         else:
             print('No connexion detected, waiting 1 seconds')
              
@@ -722,8 +722,8 @@ def statuscheck():
                 for records in table2.all():
                     if records['fields']['PcName'] == Pc_Name:
                         recordId = records['id']
-                        time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
-                        table2.update(recordId, {"LastActionTime": time,"LastAction": phase})
+                        Time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
+                        table2.update(recordId, {"LastActionTime": Time ,"LastAction": phase})
                         saved_time = datetime.datetime.now()
                         
         def Refund():
@@ -1062,8 +1062,8 @@ def statuscheck():
                 if records['fields']['PcName'] == Pc_Name:
                     recordId = records['id']
                     #LastGameRun update
-                    time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
-                    table2.update(recordId, {"LastGameRun": time })
+                    Time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
+                    table2.update(recordId, {"LastGameRun": Time  })
             LastAction()
             
             print('in progress')
