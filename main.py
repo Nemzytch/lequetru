@@ -150,7 +150,9 @@ def ConfigSetup():
             
 def fetchDatas():
     response = requests.get("https://127.0.0.1:2999/liveclientdata/allgamedata", verify = False).text
-    print(response)
+    with open("data.json", "w") as f:
+        f.write(response)
+
     return json.loads(response)
 
 def MouseClick():
@@ -245,7 +247,7 @@ class Personnage:
         for records in table2.all():
             if records['fields']['PcName'] == Pc_Name:
                 recordId = records['id']
-                now = datetime.datetime.now() - datetime.timedelta(hours=2)
+                now = datetime.datetime.now() - datetime.timedelta(hours=3)
                 table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y"),"LastAction": "InGame" })
 
         with open('stuff.json',) as f:
@@ -324,7 +326,7 @@ class Personnage:
                 for records in table2.all():
                     if records['fields']['PcName'] == Pc_Name:
                         recordId = records['id']
-                        now = datetime.datetime.now() - datetime.timedelta(hours=2)
+                        now = datetime.datetime.now() - datetime.timedelta(hours=3)
                         table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y"), "LastAction": Action })
                         saved_time = datetime.datetime.now()
                         
@@ -609,7 +611,7 @@ def Connexion():  # sourcery skip: low-code-quality
                     recordId = records['id']
                     table2.update(recordId, {"ConnectedOn": Personnage.account})
                     #LastAction update
-                    now = datetime.datetime.now() - datetime.timedelta(hours=2)
+                    now = datetime.datetime.now() - datetime.timedelta(hours=3)
                     table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y") ,"LastAction": 'Connexion'})
         else:
             print('No connexion detected, waiting 1 seconds')
@@ -724,7 +726,7 @@ def statuscheck():
                 for records in table2.all():
                     if records['fields']['PcName'] == Pc_Name:
                         recordId = records['id']
-                        now = datetime.datetime.now() - datetime.timedelta(hours=2)
+                        now = datetime.datetime.now() - datetime.timedelta(hours=3)
                         table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y"),"LastAction": phase})
                         saved_time = datetime.datetime.now()
                         
@@ -1062,7 +1064,7 @@ def statuscheck():
                 if records['fields']['PcName'] == Pc_Name:
                     recordId = records['id']
                     #LastGameRun update
-                    now = datetime.datetime.now() - datetime.timedelta(hours=2)
+                    now = datetime.datetime.now() - datetime.timedelta(hours=3)
                     table2.update(recordId, {"LastGameRun": now.strftime("%H:%M %m-%d-%Y") })
             LastAction()
             
