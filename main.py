@@ -608,8 +608,8 @@ def Connexion():  # sourcery skip: low-code-quality
                     recordId = records['id']
                     table2.update(recordId, {"ConnectedOn": Personnage.account})
                     #LastAction update
-                    # time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
-                    # table2.update(recordId, {"LastActionTime": time ,"LastAction": 'Connexion'})
+                    time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
+                    table2.update(recordId, {"LastActionTime": time ,"LastAction": 'Connexion'})
         else:
             print('No connexion detected, waiting 1 seconds')
              
