@@ -795,17 +795,19 @@ def statuscheck():
         if phase =='PreEndOfGame':
             PhaseBlock()
             LastAction()
-            
-            puuid = request('get', '/lol-summoner/v1/current-summoner').json()['puuid']
-            ActualGameId = request('get', '/lol-match-history/v1/products/lol/'+puuid+'/matches').json()['games']['games'][0]['gameId']
-            for records in table2.all():
-                if records['fields']['PcName'] == Pc_Name:
-                    recordId = records['id']
-                    if records['fields']['LastGameId'] != ActualGameId:
-                        table2.update(recordId, {'LastGameId': ActualGameId})
-                        table2.update(recordId, {"GamePlayed": int(records['fields']['GamePlayed'])+1})
-                        print('GamePlayed +1')
-                    
+            try :
+                puuid = request('get', '/lol-summoner/v1/current-summoner').json()['puuid']
+                ActualGameId = request('get', '/lol-match-history/v1/products/lol/'+puuid+'/matches').json()['games']['games'][0]['gameId']
+                for records in table2.all():
+                    if records['fields']['PcName'] == Pc_Name:
+                        recordId = records['id']
+                        if records['fields']['LastGameId'] != ActualGameId:
+                            table2.update(recordId, {'LastGameId': ActualGameId})
+                            table2.update(recordId, {"GamePlayed": int(records['fields']['GamePlayed'])+1})
+                            print('GamePlayed +1')
+            except: 
+                print('no game')
+                        
             r = request('post', '/lol-lobby/v2/play-again')
         if phase =='EndOfGame':
             PhaseBlock()
