@@ -925,7 +925,7 @@ def statuscheck():
                     print(errors)
                     for error in errors:
                         print(error["penaltyTimeRemaining"])
-                        if error["penaltyTimeRemaining"] > 901:
+                        if error["penaltyTimeRemaining"] > 2000:
                             QueueLockout = True
                             print('QueueLockout')
                             lockoutTime = error["penaltyTimeRemaining"]
@@ -935,7 +935,7 @@ def statuscheck():
                                     recordId = records['id']
                                     table.update(recordId, {"Unban": str(datetime.datetime.now()+datetime.timedelta(seconds=lockoutTime))})
                         #if  0 < error["penaltyTimeRemaining"] < 901: sleep = error["penaltyTimeRemaining"]
-                        if 0 < error["penaltyTimeRemaining"] < 901:
+                        if 0 < error["penaltyTimeRemaining"] < 2000:
                             time.sleep(error["penaltyTimeRemaining"])
                             print("Sleeping for " + str(error["penaltyTimeRemaining"]))
             except:
