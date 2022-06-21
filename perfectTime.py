@@ -1,10 +1,10 @@
 #print the univeral time in the format of hh:mm:ss
 
 import time
-import datetime
+from datetime import datetime
 
+#print time in new york time
 
+Now = datetime.utcnow()
 
-Now = datetime.datetime.now()
-
-print(Now)
+print(Now.strftime("%H:%M:%S"))
