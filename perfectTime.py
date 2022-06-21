@@ -1,10 +1,8 @@
-#print the univeral time in the format of hh:mm:ss
+import datetime
+import pytz
 
-import time
-from datetime import datetime
 
-#print time in new york time
+# print datetime from paris
 
-Now = datetime.utcnow()
-
-print(Now.strftime("%H:%M:%S"))
+now = datetime.datetime.now(pytz.timezone('Europe/Paris'))
+print(now.strftime("%H:%M %m-%d-%Y"))
