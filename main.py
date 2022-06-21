@@ -22,7 +22,6 @@ from logging import info
 from PIL import ImageGrab
 from pyairtable import Table
 from base64 import b64encode 
-from datetime import datetime
 from cv2 import validateDisparity
 from pyairtable.formulas import match
 from colorama import Fore, Back, Style
@@ -70,11 +69,11 @@ ePosition = [481+left,724+top]
 
 gamedirs = [r'C:\Games\Garena\32787\LeagueClient',r'D:\Games\League of Legends',r'C:\Riot Games\League of Legends']
 os.system("")
-lastMessageChampSelect = datetime.now() - datetime.timedelta(minutes=4)
+lastMessageChampSelect = datetime.datetime.now() - datetime.timedelta(minutes=4)
 
 
 OneMinute= 900
-saved_time = datetime.now()
+saved_time = datetime.datetime.now()
 Action = "Waiting"
 
 with open("../Infos.txt", "r") as f:
@@ -248,7 +247,7 @@ class Personnage:
         for records in table2.all():
             if records['fields']['PcName'] == Pc_Name:
                 recordId = records['id']
-                now = datetime.now()
+                now = datetime.datetime.now()
                 table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y"),"LastAction": "InGame" })
 
         with open('stuff.json',) as f:
@@ -608,7 +607,7 @@ def Connexion():  # sourcery skip: low-code-quality
                     recordId = records['id']
                     table2.update(recordId, {"ConnectedOn": Personnage.account})
                     #LastAction update
-                    now = datetime.now()
+                    now = datetime.datetime.now()
                     table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y") ,"LastAction": 'Connexion'})
         else:
             print('No connexion detected, waiting 1 seconds')
@@ -718,14 +717,14 @@ def statuscheck():
 
         def LastAction():
             global saved_time
-            current_time = datetime.now()
+            current_time = datetime.datetime.now()
             if (current_time - saved_time).seconds >= 25:
                 for records in table2.all():
                     if records['fields']['PcName'] == Pc_Name:
                         recordId = records['id']
-                        now = datetime.now()
+                        now = datetime.datetime.now()
                         table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y"),"LastAction": phase})
-                        saved_time = datetime.now()
+                        saved_time = datetime.datetime.now()
                         
         def Refund():
             idtoken = request('get', '/lol-login/v1/session').json()['idToken']     
@@ -1063,7 +1062,7 @@ def statuscheck():
                 if records['fields']['PcName'] == Pc_Name:
                     recordId = records['id']
                     #LastGameRun update
-                    now = datetime.now()
+                    now = datetime.datetime.now()
                     table2.update(recordId, {"LastGameRun": now.strftime("%H:%M %m-%d-%Y") })
             LastAction()
             
