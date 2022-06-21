@@ -150,8 +150,8 @@ def ConfigSetup():
             
 def fetchDatas():
     response = requests.get("https://127.0.0.1:2999/liveclientdata/allgamedata", verify = False).text
-    with open("data.json", "w") as f:
-        f.write(response)
+    # with open("data.json", "w") as f:
+    #     f.write(response)
 
     return json.loads(response)
 
