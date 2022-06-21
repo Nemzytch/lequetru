@@ -247,7 +247,7 @@ class Personnage:
         for records in table2.all():
             if records['fields']['PcName'] == Pc_Name:
                 recordId = records['id']
-                now = datetime.datetime.now() - datetime.timedelta(hours=3)
+                now = datetime.datetime.now()
                 table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y"),"LastAction": "InGame" })
 
         with open('stuff.json',) as f:
@@ -607,7 +607,7 @@ def Connexion():  # sourcery skip: low-code-quality
                     recordId = records['id']
                     table2.update(recordId, {"ConnectedOn": Personnage.account})
                     #LastAction update
-                    now = datetime.datetime.now() - datetime.timedelta(hours=3)
+                    now = datetime.datetime.now()
                     table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y") ,"LastAction": 'Connexion'})
         else:
             print('No connexion detected, waiting 1 seconds')
@@ -722,7 +722,7 @@ def statuscheck():
                 for records in table2.all():
                     if records['fields']['PcName'] == Pc_Name:
                         recordId = records['id']
-                        now = datetime.datetime.now() - datetime.timedelta(hours=3)
+                        now = datetime.datetime.now()
                         table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y"),"LastAction": phase})
                         saved_time = datetime.datetime.now()
                         
@@ -1062,7 +1062,7 @@ def statuscheck():
                 if records['fields']['PcName'] == Pc_Name:
                     recordId = records['id']
                     #LastGameRun update
-                    now = datetime.datetime.now() - datetime.timedelta(hours=3)
+                    now = datetime.datetime.now()
                     table2.update(recordId, {"LastGameRun": now.strftime("%H:%M %m-%d-%Y") })
             LastAction()
             
