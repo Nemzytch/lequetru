@@ -718,7 +718,7 @@ def statuscheck():
         def LastAction():
             global saved_time
             current_time = datetime.datetime.now()
-            if (current_time - saved_time).seconds >= 1:
+            if (current_time - saved_time).seconds >= 15:
                 for records in table2.all():
                     if records['fields']['PcName'] == Pc_Name:
                         recordId = records['id']
