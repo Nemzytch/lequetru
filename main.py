@@ -70,11 +70,11 @@ ePosition = [481+left,724+top]
 
 gamedirs = [r'C:\Games\Garena\32787\LeagueClient',r'D:\Games\League of Legends',r'C:\Riot Games\League of Legends']
 os.system("")
-lastMessageChampSelect = datetime.datetime.now() - datetime.timedelta(minutes=4)
+lastMessageChampSelect = datetime.now() - datetime.timedelta(minutes=4)
 
 
 OneMinute= 900
-saved_time = datetime.datetime.now()
+saved_time = datetime.now()
 Action = "Waiting"
 
 with open("../Infos.txt", "r") as f:
