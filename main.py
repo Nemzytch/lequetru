@@ -183,7 +183,7 @@ class Personnage:
     datas = None
     hp = None
     position = None
-    yuumiIndex = None
+
     Team = None
     BaseX = None
     BaseY = None
@@ -208,14 +208,15 @@ class Personnage:
 
     # Taxi     
     toplanerTimer = None
-    adcDead = None
+    adcDead = False
     jungleDead = None
     midDead = None
     topDead = None
-    adcIndex = None
-    midIndex = None
-    jungleIndex = None
-    topIndex = None
+    yuumiIndex = 4
+    adcIndex = 3
+    midIndex = 2
+    jungleIndex = 1
+    topIndex = 0
     carryHP =None
     # adcName = None
 
