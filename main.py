@@ -239,7 +239,7 @@ class Personnage:
         while not "gameData" in self.datas:
             time.sleep(0.2)
             self.updateDatas()
-        while self.datas["gameData"]["gameTime"] < 1:
+        while self.datas["gameData"]["gameTime"] < 2:
             time.sleep(0.2)
             self.updateDatas()
             print("Loading Screen")
@@ -311,64 +311,61 @@ class Personnage:
         shop_actions.updateItemList()
 
     def __init__(self):
-        self.setup()
-        self.start()
+        # try self.setup and selt.start()
+        try :
+            self.setup()
+            self.start()
+        except Exception as e:
+            print(e)
+            print('Error in the init')
+            self.setup()
+            self.start()
 
     def updateDatas(self):
         self.datas = fetchDatas()
 
     def start(self):
-        
-        def LastAction():            
-            global saved_time
-            current_time = datetime.datetime.now()
-            if (current_time - saved_time).seconds >= 10:
-                for records in table2.all():
-                    if records['fields']['PcName'] == Pc_Name:
-                        recordId = records['id']
-                        now = datetime.datetime.now() - datetime.timedelta(hours=3)
-                        table2.update(recordId, {"LastActionTime": now.strftime("%H:%M %m-%d-%Y"), "LastAction": Action })
-                        saved_time = datetime.datetime.now()
                         
         while self.datas["gameData"]["gameTime"] < 3600:
-            self.updateDatas()
-            self.updatePerso()
-            self.LevelUP()
+            
+            try: 
+                self.updateDatas()
+                self.updatePerso()
+                self.LevelUP()
+            except Exception as e:
+                print(e)
+                print('Error in the start')
+                self.updateDatas()
+                self.updatePerso()
+                self.LevelUP()
             # self.Surrender()
             self.randx = random.random()
-            
+
             if self.randx >0.96:
                 mouse.move(960,480)
                 pydirectinput.press('esc')
                 MouseClick()
 
-            if self.adcDead == False:
-                if self.attached == False:
-                    if self.yuumiMana < self.resourceMax:
-                        if inGameChecks.inBase() == True:
-                            self.shop()
-                        self.updateDatas()
-                        self.updatePerso()
+            if self.adcDead == False and self.attached == False and self.yuumiMana < self.resourceMax:
+                if inGameChecks.inBase() == True:
+                    self.shop()
+                self.updateDatas()
+                self.updatePerso()
 
-            if self.adcDead == False:
-                if self.attached == False:
-                    print('Going to adc')
-                    mouse.move(self.adcPicture[0],self.adcPicture[1])               
-                    pydirectinput.press('w')
-                    #LastAction: 
-                    # Action = "Going to adc"
-                    # LastAction()
-
+            if self.adcDead == False and self.attached == False:
+                print('Going to adc')
+                mouse.move(self.adcPicture[0],self.adcPicture[1])
+                pydirectinput.press('w')
             if self.attached == True:
                 print('Attached')
                 inGameChecks.attached(self.yuumiState["abilities"]["Q"]["abilityLevel"])
                 self.Surrender()
 
                 if self.yuumiMana < (15*(self.resourceMax)/100):
-                    print('you got '+ str(self.yuumiMana))
+                    print(f'you got {str(self.yuumiMana)}')
                     self.procPassive()
 
-            
+
             if self.adcDead == True:
                 if self.datas["gameData"]["gameTime"] > 600:
                     if self.jungleDead == False:
@@ -412,7 +409,7 @@ class Personnage:
                                 pydirectinput.press('w')
                             if self.topDead == True:
                                 print('going back to base')  
-            
+
                 if time.time()> (self.backCooldown+50):
                     # Action = "Going back"
                     # LastAction()
@@ -511,7 +508,6 @@ class Personnage:
         else: 
             self.attached = False
         self.YuumiLevel = self.yuumiState["level"]
-        # self.adcName = self.teamState[self.adcIndex]["championName"]
         self.adcDead = self.teamState[self.adcIndex]["isDead"]
         self.jungleDead = self.teamState[self.jungleIndex]["isDead"]
         self.midDead = self.teamState[self.midIndex]["isDead"]
@@ -1000,7 +996,7 @@ def statuscheck():
                     r = request('post', url, data = data)
                     lastMessageChampSelect = datetime.datetime.now()
                 
-                
+
                 runesPages = request('get', '/lol-perks/v1/pages').json()
                 print(runesPages)
                 for _ in runesPages:
