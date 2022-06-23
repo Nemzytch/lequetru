@@ -845,6 +845,7 @@ def statuscheck():
             PhaseBlock()
             LastAction()
             ConfigSetup()
+            Pause()
             while Personnage.fullApiAccess == False:
                 try :
                     ChampionsCollection = request('get', '/lol-champions/v1/inventories/' + str(accid) + '/champions-playable-count').json()['championsOwned']
