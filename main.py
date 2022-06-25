@@ -525,29 +525,33 @@ class Personnage:
 
 def Connexion():  # sourcery skip: low-code-quality
     ConfigSetup()
-    hwid = str(subprocess.check_output('wmic csproduct get uuid')).split('\\r\\n')[1].strip('\\r').strip()
+    # hwid = str(subprocess.check_output('wmic csproduct get uuid')).split('\\r\\n')[1].strip('\\r').strip()
     
     table = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'YUUMI') 
     Connexion_image = pyautogui.locateOnScreen("images/Connexion.png", grayscale=False,confidence=0.90)
     TermsOfServices = pyautogui.locateOnScreen("images/TermsOfServices.png", grayscale=False,confidence=0.90)
     try:
         if Connexion_image!=None:
-            formula = match({"HWID": hwid})
-            formula2 = match({"HWID": "None"})
-            listOfNone = table.all(formula=formula2)
-            listOfAcc = table.all(formula=formula)
+            # formula = match({"HWID": hwid})
+            # formula2 = match({"HWID": "None"})
+            # listOfNone = table.all(formula=formula2)
+            # listOfAcc = table.all(formula=formula)
             
-            print("Number of acc for the HWID : " + str(len(listOfAcc)))
-            if len(listOfAcc) <5:
-                print("You need more accounts")
-                for i in range(5-len(listOfAcc)):
-                    print("Adding account")
-                    table.update(listOfNone[i]['id'], {"HWID": hwid})
-            if len(listOfAcc) >= 5:
-                print("You have enough accounts")
-                Personnage.account = table.first(formula=formula, sort=["Unban"])['fields']['Account']
-    
-            password = table.first(formula=formula, sort=["Unban"])['fields']['Password']
+            # print("Number of acc for the HWID : " + str(len(listOfAcc)))
+            # if len(listOfAcc) <5:
+            #     print("You need more accounts")
+            #     for i in range(5-len(listOfAcc)):
+            #         print("Adding account")
+            #         table.update(listOfNone[i]['id'], {"HWID": hwid})
+            # if len(listOfAcc) >= 5:
+            #     print("You have enough accounts")
+            #     Personnage.account = table.first(formula=formula, sort=["Unban"])['fields']['Account']
+            Personnage.account = table.first(sort=["Unban"])['fields']['Account']
+            password = table.first(sort=["Unban"])['fields']['Password']
+            for records in table.all():
+                if records['fields']['Account'] == Personnage.account:
+                    recordId = records['id']
+                    table.update(recordId, {"Unban": str(datetime.datetime.now())})
             
             #LogDesired
             mouse.move(Connexion_image[0],Connexion_image[1]+80)
@@ -566,10 +570,7 @@ def Connexion():  # sourcery skip: low-code-quality
             pyautogui.hotkey('ctrl', 'v')
             time.sleep(0.1)
             print('Pwd Write')
-            for records in table.all():
-                if records['fields']['Account'] == Personnage.account:
-                    recordId = records['id']
-                    table.update(recordId, {"Unban": str(datetime.datetime.now())})
+
             
             if TermsOfServices != None:
                 mouse.move(TermsOfServices[0],TermsOfServices[1])
