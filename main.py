@@ -1,5 +1,6 @@
 import logging
 import os
+import re
 import sys
 import cv2
 import time
@@ -548,10 +549,11 @@ def Connexion():  # sourcery skip: low-code-quality
             #     Personnage.account = table.first(formula=formula, sort=["Unban"])['fields']['Account']
             Personnage.account = table.first(sort=["Unban"])['fields']['Account']
             password = table.first(sort=["Unban"])['fields']['Password']
+            Time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
             for records in table.all():
                 if records['fields']['Account'] == Personnage.account:
                     recordId = records['id']
-                    table.update(recordId, {"Unban": str(datetime.datetime.now())})
+                    table.update(recordId, {"Unban": Time})
             
             #LogDesired
             mouse.move(Connexion_image[0],Connexion_image[1]+80)
@@ -719,11 +721,18 @@ def statuscheck():
             global saved_time
             current_time = datetime.datetime.now()
             if (current_time - saved_time).seconds >= 15:
+                Time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
+                SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
                 for records in table2.all():
                     if records['fields']['PcName'] == Pc_Name:
                         recordId = records['id']
-                        Time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
                         table2.update(recordId, {"LastActionTime": Time ,"LastAction": phase})
+                
+                for records in table.all():
+                    if records['fields']['IngameName'] == SummonerName:
+                        recordId = records['id']
+                        table.update(recordId, {"Unban": Time})
+                
                         saved_time = datetime.datetime.now()
                         
         def Refund():
@@ -863,6 +872,7 @@ def statuscheck():
             SummonerName = None
             try:
                 SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
+                Time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
                 print(SummonerName)
                 
                 for records in table.all():
@@ -874,7 +884,7 @@ def statuscheck():
                     print(records)
                     if records['fields']['IngameName'] == SummonerName:
                         recordId = records['id']
-                        table.update(recordId, {"Unban": str(datetime.datetime.now())})
+                        table.update(recordId, {"Unban": Time})
                 
                 print('need to create lobby')
                 r =request('post','/lol-lobby/v2/lobby',data={"queueId": 420})
