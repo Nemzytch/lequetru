@@ -11,6 +11,8 @@ restart_timer = 2
 
 subprocess.call(["git", "reset", "--hard", "HEAD"])
 subprocess.call(["git", "pull"])
+os.system('cpu.bat')
+
 print('Updating')
 
 def start_script():
