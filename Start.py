@@ -15,9 +15,10 @@ screenWidth = user32.GetSystemMetrics(0)
 screenHeight = user32.GetSystemMetrics(1)
 
 xpos = 0
-ypos = 400
-width = (screenWidth-1028) /2
 length = 400
+ypos = (screenHeight - length)
+width = (screenWidth-1028) /2
+
 
 def enumHandler(hwnd, lParam):
     #thetitle = win32gui.GetWindowText(hwnd)
