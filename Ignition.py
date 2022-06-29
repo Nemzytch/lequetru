@@ -4,6 +4,13 @@ import os
 import time
 import mouse 
 import win32gui
+import ctypes
+
+
+#__________ SCREEN ELEMENT __________________
+user32 = ctypes.windll.user32
+screenWidth = user32.GetSystemMetrics(0)
+screenHeight = user32.GetSystemMetrics(1)
 
 os.startfile("C:\\Riot Games\\League of Legends\\LeagueClient.exe")
 print("Starting League of Legends..")
@@ -16,7 +23,7 @@ time.sleep(3)
 
 xpos = 0
 ypos = 400
-width = 400
+width = (screenWidth - 1024) / 2
 length = 400
 
 def enumHandler(hwnd, lParam):
