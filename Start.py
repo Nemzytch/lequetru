@@ -7,6 +7,7 @@ import time
 import win32gui
 import ctypes
 
+time.sleep(1)
 
 #__________ SCREEN ELEMENT RESIZE__________________
 user32 = ctypes.windll.user32
