@@ -245,12 +245,15 @@ class Personnage:
             self.updateDatas()
             print("Loading Screen")
         print("Game just started")
-        for records in table2.all():
-            if records['fields']['PcName'] == Pc_Name:
-                recordId = records['id']
-                Time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
-                table2.update(recordId, {"LastActionTime": Time ,"LastAction": "InGame" })
-
+        try:
+            for records in table2.all():
+                if records['fields']['PcName'] == Pc_Name:
+                    recordId = records['id']
+                    Time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
+                    table2.update(recordId, {"LastActionTime": Time ,"LastAction": "InGame" })
+        except:
+            print("Can not update the table")
+            
         with open('stuff.json',) as f:
             self.stuff = json.load(f)
         print('stuff loaded')
@@ -605,13 +608,16 @@ def Connexion():  # sourcery skip: low-code-quality
                     print('Found running League of Legends, dir', gamedir, "sleeping 30 sec to make sure everything loaded")
                     time.sleep(30)
                     lockfile = open(r'%s\lockfile' % gamedir, 'r')
-            for records in table2.all():
-                if records['fields']['PcName'] == Pc_Name:
-                    recordId = records['id']
-                    table2.update(recordId, {"ConnectedOn": Personnage.account})
-                    #LastAction update
-                    Time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
-                    table2.update(recordId, {"LastActionTime": Time ,"LastAction": 'Connexion'})
+            try:
+                for records in table2.all():
+                    if records['fields']['PcName'] == Pc_Name:
+                        recordId = records['id']
+                        table2.update(recordId, {"ConnectedOn": Personnage.account})
+                        #LastAction update
+                        Time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
+                        table2.update(recordId, {"LastActionTime": Time ,"LastAction": 'Connexion'})
+            except:
+                print("Error when updating the table")
         else:
             print('No connexion detected, waiting 1 seconds')
              
@@ -719,21 +725,24 @@ def statuscheck():
 
         def LastAction():
             global saved_time
-            current_time = datetime.datetime.now()
-            if (current_time - saved_time).seconds >= 15:
-                Time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
-                SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
-                for records in table2.all():
-                    if records['fields']['PcName'] == Pc_Name:
-                        recordId = records['id']
-                        table2.update(recordId, {"LastActionTime": Time ,"LastAction": phase})
-                
-                for records in table.all():
-                    if records['fields']['IngameName'] == SummonerName:
-                        recordId = records['id']
-                        table.update(recordId, {"Unban": Time})
-                
-                        saved_time = datetime.datetime.now()
+            try:
+                current_time = datetime.datetime.now()
+                if (current_time - saved_time).seconds >= 15:
+                    Time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
+                    SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
+                    for records in table2.all():
+                        if records['fields']['PcName'] == Pc_Name:
+                            recordId = records['id']
+                            table2.update(recordId, {"LastActionTime": Time ,"LastAction": phase})
+                    
+                    for records in table.all():
+                        if records['fields']['IngameName'] == SummonerName:
+                            recordId = records['id']
+                            table.update(recordId, {"Unban": Time})
+                    
+                            saved_time = datetime.datetime.now()
+            except:
+                print('Error when updating the table')
                         
         def Refund():
             idtoken = request('get', '/lol-login/v1/session').json()['idToken']     
@@ -1069,12 +1078,6 @@ def statuscheck():
 
 
         elif phase == 'InProgress':
-            for records in table2.all():
-                if records['fields']['PcName'] == Pc_Name:
-                    recordId = records['id']
-                    #LastGameRun update
-                    Time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
-                    table2.update(recordId, {"LastGameRun": Time  })
             LastAction()
             
             print('in progress')
