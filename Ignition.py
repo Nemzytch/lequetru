@@ -12,6 +12,7 @@ time.sleep(15)
 file_path = "C:\\Users\\Administrator\\Desktop\\lequetru\\start.py"
 directory = "C:\\Users\\Administrator\\Desktop\\lequetru"
 subprocess.Popen(["start", "cmd", "/k", file_path], shell = True, cwd = directory)
+time.sleep(3)
 
 xpos = 0
 ypos = 500
