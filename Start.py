@@ -16,10 +16,8 @@ screenHeight = user32.GetSystemMetrics(1)
 
 xpos = 0
 length = 400
-ypos = (screenHeight - length)
-print(ypos)
-width = (screenWidth-1028) /2
-print(width)
+ypos = 520
+width = 345
 
 def enumHandler(hwnd, lParam):
     #thetitle = win32gui.GetWindowText(hwnd)
