@@ -15,9 +15,9 @@ subprocess.Popen(["start", "cmd", "/k", file_path], shell = True, cwd = director
 time.sleep(3)
 
 xpos = 0
-ypos = 500
+ypos = 400
 width = 400
-length = 500
+length = 400
 
 def enumHandler(hwnd, lParam):
     #thetitle = win32gui.GetWindowText(hwnd)
