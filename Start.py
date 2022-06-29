@@ -16,7 +16,7 @@ screenHeight = user32.GetSystemMetrics(1)
 
 xpos = 0
 ypos = 400
-width = 400
+width = (screenWidth-1028) /2
 length = 400
 
 def enumHandler(hwnd, lParam):
