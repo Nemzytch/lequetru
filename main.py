@@ -689,6 +689,7 @@ def statuscheck():
     s = requests.session()# Create Request session
 
     while True: # # Main worker loop
+        r = "Not connected yet"
         try :
             accid = request('get', '/lol-login/v1/session').json()['accountId']
             r = request('get', '/lol-gameflow/v1/gameflow-phase')
