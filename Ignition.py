@@ -23,7 +23,7 @@ time.sleep(3)
 
 xpos = 0
 ypos = 400
-width = (screenWidth - 1024) / 2
+width = (screenWidth - 1028) / 2
 length = 400
 
 def enumHandler(hwnd, lParam):
