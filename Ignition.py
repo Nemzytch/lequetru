@@ -6,7 +6,7 @@ import mouse
 
 os.startfile("C:\\Riot Games\\League of Legends\\LeagueClient.exe")
 print("Starting League of Legends..")
-time.sleep(15)
+time.sleep(30)
 
 file_path = "C:\\Users\\Administrator\\Desktop\\lequetru\\start.py"
 directory = "C:\\Users\\Administrator\\Desktop\\lequetru"
