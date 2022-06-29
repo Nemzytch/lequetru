@@ -20,9 +20,9 @@ width = 400
 length = 500
 
 def enumHandler(hwnd, lParam):
-    thetitle = win32gui.GetWindowText(hwnd)
+    #thetitle = win32gui.GetWindowText(hwnd)
     if win32gui.IsWindowVisible(hwnd):
-        if thetitle in win32gui.GetWindowText(hwnd):
+        if '.exe' in win32gui.GetWindowText(hwnd):
             win32gui.MoveWindow(hwnd, xpos, ypos, width, length, True)
 
 
