@@ -689,18 +689,6 @@ def statuscheck():
     s = requests.session()# Create Request session
 
     while True: # # Main worker loop
-        r = "Not connected yet"
-        try :
-            accid = request('get', '/lol-login/v1/session').json()['accountId']
-            r = request('get', '/lol-gameflow/v1/gameflow-phase')
-            if r.status_code != 200:
-                print(Back.BLACK + Fore.RED + str(r.status_code) + Style.RESET_ALL, r.text)
-                continue
-            print(Back.BLACK + Fore.GREEN + str(r.status_code) + Style.RESET_ALL, r.text)
-        except:
-            print('cant get phase yes')
-            time.sleep(3)
-        phase = r.json()
         
         def PhaseBlock():
             global PhaseNumber # Vaut 0 a la base 
@@ -722,7 +710,19 @@ def statuscheck():
                 else:
                     print(phase+ "  phase tout est ok pour l'instant")
                     print(PhaseNumber)
-
+                    
+        r = 'Not connected yet'
+        try :
+            accid = request('get', '/lol-login/v1/session').json()['accountId']
+            r = request('get', '/lol-gameflow/v1/gameflow-phase')
+            if r.status_code != 200:
+                print(Back.BLACK + Fore.RED + str(r.status_code) + Style.RESET_ALL, r.text)
+                continue
+            print(Back.BLACK + Fore.GREEN + str(r.status_code) + Style.RESET_ALL, r.text)
+        except:
+            print('cant get phase yes')
+            time.sleep(3)
+        phase = r.json()
 
         def LastAction():
             global saved_time
@@ -808,6 +808,9 @@ def statuscheck():
                 time.sleep(1)
             BoughtChampion = PostRequest( str(StoreUrl)+'/storefront/v3/purchase', data=({"accountId":accid,"items":[{"inventoryType":"CHAMPION","itemId":350,"ipCost":6300,"quantity":1}]}))
         
+        if phase == 'Not connected yet':
+            print("You are not connected yet")
+            PhaseBlock()
         if phase =='WaitingForStats':
             print("you are in WaitingForStats phase")
             PhaseBlock()
