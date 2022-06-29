@@ -5,7 +5,7 @@ import time
 
 os.system("cd C:\\Users\\Administrator\\Desktop\\lequetru")
 
-file_path = "Test2.py"
+file_path = "start.py"
 
 time.sleep(10)
 os.startfile("C:\\Riot Games\\League of Legends\\LeagueClient.exe")
