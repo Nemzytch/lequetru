@@ -532,9 +532,9 @@ class Personnage:
 def Connexion():  # sourcery skip: low-code-quality
     print("entered connexxoin")
     try :
-        logins = tableActions.getLogins()
+        logins = tableActions.get_logins()
         login, password = logins[0], logins[1]
-        clientConnect.stay_connected(logins[0], logins[1])
+        clientConnect.stay_connected(login, password)
         #get last connected account from lastConnectedAcc.txt
 
         gamedirs = [r'C:\Riot Games\League of Legends',r'D:\Games\League of Legends',r'D:\Riot Games\League of Legends',] 
