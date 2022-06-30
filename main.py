@@ -563,6 +563,7 @@ def Connexion():  # sourcery skip: low-code-quality
 
                
     except:
+        print("Error when connecting")
         Connexion()
     ConfigSetup()  
 class lobby():
