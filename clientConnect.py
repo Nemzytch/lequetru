@@ -49,7 +49,7 @@ def stay_connected(username,password):
   if ClientStarted == False:
     os.startfile("C:\\Riot Games\\League of Legends\\LeagueClient.exe")
     print("Starting League of Legends..")
-    time.sleep(5)
+    time.sleep(15)
     connect(username,password)
   if ClientStarted == True and ClientUXStarted == False:
     print("Connection client started but not connected to LCU.")
