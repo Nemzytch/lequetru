@@ -43,6 +43,8 @@ import mouse
 import ctypes
 import inGameChecks
 import shop_actions
+import clientConnect
+import tableActions
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
@@ -528,102 +530,40 @@ class Personnage:
         return False
 
 def Connexion():  # sourcery skip: low-code-quality
-    ConfigSetup()
-    # hwid = str(subprocess.check_output('wmic csproduct get uuid')).split('\\r\\n')[1].strip('\\r').strip()
     
-    table = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'YUUMI') 
-    Connexion_image = pyautogui.locateOnScreen("images/Connexion.png", grayscale=False,confidence=0.90)
-    TermsOfServices = pyautogui.locateOnScreen("images/TermsOfServices.png", grayscale=False,confidence=0.90)
     try:
-        if Connexion_image!=None:
-            # formula = match({"HWID": hwid})
-            # formula2 = match({"HWID": "None"})
-            # listOfNone = table.all(formula=formula2)
-            # listOfAcc = table.all(formula=formula)
-            
-            # print("Number of acc for the HWID : " + str(len(listOfAcc)))
-            # if len(listOfAcc) <5:
-            #     print("You need more accounts")
-            #     for i in range(5-len(listOfAcc)):
-            #         print("Adding account")
-            #         table.update(listOfNone[i]['id'], {"HWID": hwid})
-            # if len(listOfAcc) >= 5:
-            #     print("You have enough accounts")
-            #     Personnage.account = table.first(formula=formula, sort=["Unban"])['fields']['Account']
-            Personnage.account = table.first(sort=["Unban"])['fields']['Account']
-            password = table.first(sort=["Unban"])['fields']['Password']
-            Time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
-            for records in table.all():
-                if records['fields']['Account'] == Personnage.account:
+        login, password = tableActions.get_logins()[0], tableActions.get_logins()[1]
+        clientConnect.stay_connected(login, password)
+        print("Aptempted Connexion")
+
+        gamedirs = [r'C:\Riot Games\League of Legends',r'D:\Games\League of Legends',r'D:\Riot Games\League of Legends',] 
+        lockfile = None
+        while not lockfile:
+            for gamedir in gamedirs:
+                lockpath = r'%s\lockfile' % gamedir
+
+                if not os.path.isfile(lockpath):
+                    print("Waiting League to start")
+                    continue
+                    
+                print('Found running League of Legends, dir', gamedir, "sleeping 30 sec to make sure everything loaded")
+                time.sleep(30)
+                lockfile = open(r'%s\lockfile' % gamedir, 'r')
+        try:
+            for records in table2.all():
+                if records['fields']['PcName'] == Pc_Name:
                     recordId = records['id']
-                    table.update(recordId, {"Unban": Time})
-            
-            #LogDesired
-            mouse.move(Connexion_image[0],Connexion_image[1]+80)
-            time.sleep(0.1)
-            MouseClick()
-            pyautogui.typewrite(Personnage.account, interval=0.10)
-            time.sleep(0.1)
-            print(f'Log Write : {Personnage.account}')
-                
-            #PwdDesired
-            mouse.move(Connexion_image[0],Connexion_image[1]+140)
-            time.sleep(0.1)
-            MouseClick()
-            # pyautogui.typewrite(password, interval=0.10)
-            pyperclip.copy(password)
-            pyautogui.hotkey('ctrl', 'v')
-            time.sleep(0.1)
-            print('Pwd Write')
+                    table2.update(recordId, {"ConnectedOn": Personnage.account})
+                    #LastAction update
+                    Time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
+                    table2.update(recordId, {"LastActionTime": Time ,"LastAction": 'Connexion'})
+        except:
+            print("Error when updating the table")
 
-            
-            if TermsOfServices != None:
-                mouse.move(TermsOfServices[0],TermsOfServices[1])
-                time.sleep(1)
-                pyautogui.scroll(-100000)
-                time.sleep(1)
-                pyautogui.click(TermsOfServices[0],TermsOfServices[1]+600)
-                
-            #Press connexion button
-            mouse.move(Connexion_image[0]+60,Connexion_image[1]+520)
-            time.sleep(0.1)
-            MouseClick()
-            time.sleep(6)
-            
-            #Press Play button
-            mouse.move(Connexion_image[0],Connexion_image[1]+650)
-            time.sleep(0.1)
-            MouseClick()
-            time.sleep(0.1)
-            gamedirs = [r'C:\Riot Games\League of Legends',r'D:\Games\League of Legends',r'D:\Riot Games\League of Legends',] 
-            lockfile = None
-            while not lockfile:
-                for gamedir in gamedirs:
-                    lockpath = r'%s\lockfile' % gamedir
-
-                    if not os.path.isfile(lockpath):
-                        print("Waiting League to start")
-                        continue
-                        
-                    print('Found running League of Legends, dir', gamedir, "sleeping 30 sec to make sure everything loaded")
-                    time.sleep(30)
-                    lockfile = open(r'%s\lockfile' % gamedir, 'r')
-            try:
-                for records in table2.all():
-                    if records['fields']['PcName'] == Pc_Name:
-                        recordId = records['id']
-                        table2.update(recordId, {"ConnectedOn": Personnage.account})
-                        #LastAction update
-                        Time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
-                        table2.update(recordId, {"LastActionTime": Time ,"LastAction": 'Connexion'})
-            except:
-                print("Error when updating the table")
-        else:
-            print('No connexion detected, waiting 1 seconds')
-             
+               
     except:
         Connexion()
-
+    ConfigSetup()  
 class lobby():
     username = 'riot'
     champion = 350 
