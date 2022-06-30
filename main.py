@@ -532,14 +532,14 @@ class Personnage:
 def Connexion():  # sourcery skip: low-code-quality
     print("entered connexxoin")
     # try :
-    logins = tableActions.get_logins()
-    login, password = logins[0], logins[1]
-    clientConnect.stay_connected(login, password)
+    # logins = tableActions.get_logins()
+    # login, password = logins[0], logins[1]
+    clientConnect.stay_connected()
     #get last connected account from lastConnectedAcc.txt
     Personnage.account = tableActions.get_username()
-    print("Connected to account : " + Personnage.account)
+    print(f"Connected to account : {Personnage.account}")
 
-    gamedirs = [r'C:\Riot Games\League of Legends',r'D:\Games\League of Legends',r'D:\Riot Games\League of Legends',] 
+    gamedirs = [r'C:\Riot Games\League of Legends',r'D:\Games\League of Legends',r'D:\Riot Games\League of Legends',]
     lockfile = None
     while not lockfile:
         for gamedir in gamedirs:
@@ -549,14 +549,11 @@ def Connexion():  # sourcery skip: low-code-quality
                 print("Waiting League to start")
                 time.sleep(5)
                 continue
-                
+
             print('Found running League of Legends, dir', gamedir, "sleeping 10 sec to make sure everything loaded")
             time.sleep(10)
             lockfile = open(r'%s\lockfile' % gamedir, 'r')
-      
-    # except Exception:
-    #     print(Exception)
-        Connexion()
+
     ConfigSetup()  
 class lobby():
     username = 'riot'
@@ -705,19 +702,12 @@ def statuscheck():
             StoreUrl = request('get', '/lol-store/v1/getStoreUrl').json()
             transactions = getrequest('https://euw.store.leagueoflegends.com/storefront/v3/history/purchase').json()['transactions']
             
-            for champs in transactions:
-                if champs['itemId'] == 350:
-                    if champs['refundable'] == True:
-                        TransacID = champs['transactionId']
-                        print(TransacID)
-                        Refund = PostRequest( str(StoreUrl)+'/storefront/v3/refund', data=({"accountId":accid ,"transactionId":TransacID ,"inventoryType":"CHAMPION","language":"en_GB"})) 
                                        
         def Store():
             idtoken = request('get', '/lol-login/v1/session').json()['idToken']
             accid = request('get', '/lol-login/v1/session').json()['accountId']
             print(accid, "acc id is here")
             StoreUrl = request('get', '/lol-store/v1/getStoreUrl').json()
-            TransacHistory = request('get', '/lol-store/v1/transaction/history').json()
 
             ChampionsCollection = request('get', '/lol-champions/v1/inventories/' + str(accid) + '/champions-playable-count').json()['championsOwned']
             print(ChampionsCollection)
