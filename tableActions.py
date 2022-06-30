@@ -48,4 +48,12 @@ def update_admin(login):
                 table2.update(recordId, {"LastActionTime": Time ,"LastAction": 'Connexion'})
     except:
         print("Error when updating the table")
+        
+        
+def get_username():
+    for records in table2.all():
+        if records['fields']['PcName'] == Pc_Name:
+            recordId = records['id']
+            username = table2.first(recordId)['fields']['Username']
+            return username
     
