@@ -531,11 +531,9 @@ class Personnage:
 
 def Connexion():  # sourcery skip: low-code-quality
     print("entered connexxoin")
-
     try :
         clientConnect.stay_connected()
         #get last connected account from lastConnectedAcc.txt
-
 
         gamedirs = [r'C:\Riot Games\League of Legends',r'D:\Games\League of Legends',r'D:\Riot Games\League of Legends',] 
         lockfile = None
@@ -548,8 +546,8 @@ def Connexion():  # sourcery skip: low-code-quality
                     time.sleep(5)
                     continue
                     
-                print('Found running League of Legends, dir', gamedir, "sleeping 30 sec to make sure everything loaded")
-                time.sleep(30)
+                print('Found running League of Legends, dir', gamedir, "sleeping 10 sec to make sure everything loaded")
+                time.sleep(10)
                 lockfile = open(r'%s\lockfile' % gamedir, 'r')
         try:
             for records in table2.all():
