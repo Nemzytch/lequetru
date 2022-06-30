@@ -5,6 +5,7 @@ import psutil
 import os
 import time
 import urllib3
+import subprocess
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -25,8 +26,18 @@ def connect(username,password):
   }
   response = requests.put(lcu_endpoint, json=payload, verify=False, auth=(lcu_user, lcu_password))
   #print the complete request
+  
   print(response)
-  print(response.json())
+  if response.status_code == 201:
+    print("Got a response from Riot server.")
+  if response.status_code != 201:
+    print("Didnt get a positive response from Riot server.")
+  if response.json()["error"] != "":
+    print("Connection attempt failed.")
+    print("Error :"+response.json()["error"])
+    if response.json()["type"] == "needs_credentials":
+      print("Invalid credentials.")
+    
   
 
 def Connection_State():
@@ -40,6 +51,7 @@ def Connection_State():
     if "Riot" in proc.name():
       # print(f'Process: {proc.name()}')
       ClientStarted = True
+  print(f'Client Started: {ClientStarted}, Client UX Started: {ClientUXStarted}')
   return ClientStarted, ClientUXStarted
 
 
@@ -57,10 +69,27 @@ def stay_connected(username,password):
     time.sleep(5)
     connect(username,password)
   if ClientStarted == True and ClientUXStarted == True:
-    print("Connected to LCU, chill.")
-    time.sleep(5)
+    PussyDestroyer()
+    time.sleep(1)
+    stay_connected(username,password)
     
+def PussyDestroyer():
+  print("Pussy Destroyer")
+  os.system('cls' if os.name == 'nt' else 'clear')
+  procList = []
 
+  for proc in psutil.process_iter():
+      if "Riot" in proc.name():
+          procList.append(proc.name())
+  for proc in psutil.process_iter():
+      if "League" in proc.name():
+          procList.append(proc.name())
+          
+  for _ in procList:
+      subprocess.call(["taskkill", "/F", "/IM", _])
+      time.sleep(0.1)
+  time.sleep(1)
+  
 
 
 
