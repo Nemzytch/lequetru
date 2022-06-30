@@ -571,15 +571,17 @@ class lobby():
     protocol = 'https'
     gamedirs = [r'C:\Riot Games\League of Legends',r'D:\Games\League of Legends',r'D:\Riot Games\League of Legends',]
     lockfile = None
-    print('Waiting for League of Legends to start ..')
+    print('We are in lobby class waiting')
     Connexion()
     while not lockfile:
         for gamedir in gamedirs:
             lockpath = r'%s\lockfile' % gamedir
             if not os.path.isfile(lockpath):
+                print("waiting for League to start")
                 continue
             print('Found running League of Legends, dir', gamedir)
             lockfile = open(r'%s\lockfile' % gamedir, 'r')
+           
 
     lockdata = lockfile.read()
     lockfile.close()

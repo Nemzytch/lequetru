@@ -44,6 +44,7 @@ def Connection_State():
 
 
 def stay_connected(username,password):
+  print("hello from stay connected")
   ClientStarted = Connection_State()[0]
   ClientUXStarted = Connection_State()[1]
   if ClientStarted == False:
