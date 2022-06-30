@@ -34,10 +34,10 @@ def connect(username,password):
   start_league = requests.post(launch_league, verify=False, auth=(lcu_user, lcu_password))
   print(start_league)
   print(acceptAgreement)
-  #print the complete request
   print("request: ", response.request.body)
   print(response)
   print(response.json())
+  tableActions.update_admin(username)
 
 def Connection_State():
   ClientStarted = False

@@ -28,11 +28,24 @@ table2 = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'ADMIN')
 def get_logins():
     account = table.first(sort=["Unban"])['fields']['Account']
     password = table.first(sort=["Unban"])['fields']['Password']
-    Time = str(datetime.datetime.now())
+    Time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
     for records in table.all():
         if records['fields']['Account'] == account:
             recordId = records['id']
             table.update(recordId, {"Unban": Time})
             
     return account, password
+
+
+def update_admin(login):
+    try:
+        for records in table2.all():
+            if records['fields']['PcName'] == Pc_Name:
+                recordId = records['id']
+                table2.update(recordId, {"ConnectedOn": login})
+                #LastAction update
+                Time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
+                table2.update(recordId, {"LastActionTime": Time ,"LastAction": 'Connexion'})
+    except:
+        print("Error when updating the table")
     
