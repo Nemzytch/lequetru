@@ -530,8 +530,9 @@ class Personnage:
         return False
 
 def Connexion():  # sourcery skip: low-code-quality
-    
+    print("entered connexxoin")
     try:
+        print("entered the try")
         login, password = tableActions.get_logins()[0], tableActions.get_logins()[1]
         clientConnect.stay_connected(login, password)
         print("Aptempted Connexion")
@@ -571,8 +572,9 @@ class lobby():
     protocol = 'https'
     gamedirs = [r'C:\Riot Games\League of Legends',r'D:\Games\League of Legends',r'D:\Riot Games\League of Legends',]
     lockfile = None
-    print('We are in lobby class waiting')
     Connexion()
+    print('We are in lobby class waiting')
+    
     while not lockfile:
         for gamedir in gamedirs:
             lockpath = r'%s\lockfile' % gamedir
