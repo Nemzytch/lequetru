@@ -531,11 +531,9 @@ class Personnage:
 
 def Connexion():  # sourcery skip: low-code-quality
     print("entered connexxoin")
-    # try :
-    # logins = tableActions.get_logins()
-    # login, password = logins[0], logins[1]
+
     clientConnect.stay_connected()
-    #get last connected account from lastConnectedAcc.txt
+
     Personnage.account = tableActions.get_username()
     print(f"Connected to account : {Personnage.account}")
 

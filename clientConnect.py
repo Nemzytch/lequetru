@@ -72,7 +72,6 @@ def stay_connected():
     login,password = logins[0],logins[1]
     print(login, password)
     connect(login,password)
-    
   if ClientStarted == True and ClientUXStarted == True:
     print("Connected to LCU, chill.")
     time.sleep(1)
