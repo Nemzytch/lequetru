@@ -5,6 +5,7 @@ import psutil
 import os
 import time
 import urllib3
+import tableActions
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -43,25 +44,27 @@ def Connection_State():
   return ClientStarted, ClientUXStarted
 
 
-
-def stay_connected(username,password):
-  print("hello from stay connected")
-  print("username: ", username)
-  print("password: ", password)
+def stay_connected():
   ClientStarted = Connection_State()[0]
   ClientUXStarted = Connection_State()[1]
   if ClientStarted == False:
     os.startfile("C:\\Riot Games\\League of Legends\\LeagueClient.exe")
     print("Starting League of Legends..")
     time.sleep(15)
-    connect(username,password)
+    logins =password = tableActions.get_logins()
+    login,password = logins[0],logins[1]
+    print(login, password)
+    connect(login,password)
   if ClientStarted == True and ClientUXStarted == False:
     print("Connection client started but not connected to LCU.")
     time.sleep(5)
-    connect(username,password)
+    logins =password = tableActions.get_logins()
+    login,password = logins[0],logins[1]
+    print(login, password)
+    connect(login,password)
   if ClientStarted == True and ClientUXStarted == True:
     print("Connected to LCU, chill.")
-    time.sleep(5)
+    time.sleep(1)
     
 
 

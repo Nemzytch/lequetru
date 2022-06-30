@@ -531,42 +531,38 @@ class Personnage:
 
 def Connexion():  # sourcery skip: low-code-quality
     print("entered connexxoin")
-    # try:
-    print("entered the try")
-    logins =password = tableActions.get_logins()
-    login,password = logins[0],logins[1]
-    print(login, password)
-    clientConnect.stay_connected(login, password)
-    print("Aptempted Connexion")
 
-    gamedirs = [r'C:\Riot Games\League of Legends',r'D:\Games\League of Legends',r'D:\Riot Games\League of Legends',] 
-    lockfile = None
-    while not lockfile:
-        for gamedir in gamedirs:
-            lockpath = r'%s\lockfile' % gamedir
+    try :
+        clientConnect.stay_connected()
+        print("Aptempted Connexion")
 
-            if not os.path.isfile(lockpath):
-                print("Waiting League to start")
-                time.sleep(5)
-                continue
+        gamedirs = [r'C:\Riot Games\League of Legends',r'D:\Games\League of Legends',r'D:\Riot Games\League of Legends',] 
+        lockfile = None
+        while not lockfile:
+            for gamedir in gamedirs:
+                lockpath = r'%s\lockfile' % gamedir
+
+                if not os.path.isfile(lockpath):
+                    print("Waiting League to start")
+                    time.sleep(5)
+                    continue
+                    
+                print('Found running League of Legends, dir', gamedir, "sleeping 30 sec to make sure everything loaded")
+                time.sleep(30)
+                lockfile = open(r'%s\lockfile' % gamedir, 'r')
+        try:
+            for records in table2.all():
+                if records['fields']['PcName'] == Pc_Name:
+                    recordId = records['id']
+                    table2.update(recordId, {"ConnectedOn": Personnage.account})
+                    #LastAction update
+                    Time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
+                    table2.update(recordId, {"LastActionTime": Time ,"LastAction": 'Connexion'})
+        except:
+            print("Error when updating the table")
+
                 
-            print('Found running League of Legends, dir', gamedir, "sleeping 30 sec to make sure everything loaded")
-            time.sleep(30)
-            lockfile = open(r'%s\lockfile' % gamedir, 'r')
-    try:
-        for records in table2.all():
-            if records['fields']['PcName'] == Pc_Name:
-                recordId = records['id']
-                table2.update(recordId, {"ConnectedOn": Personnage.account})
-                #LastAction update
-                Time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
-                table2.update(recordId, {"LastActionTime": Time ,"LastAction": 'Connexion'})
     except:
-        print("Error when updating the table")
-
-               
-    # except:
-        #print the error
         print("Error when connecting")
         Connexion()
     ConfigSetup()  
