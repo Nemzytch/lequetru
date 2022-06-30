@@ -53,23 +53,26 @@ def Connection_State():
   return ClientStarted, ClientUXStarted
 
 
-def stay_connected(login,password):
+def stay_connected():
   ClientStarted = Connection_State()[0]
   ClientUXStarted = Connection_State()[1]
+  
   if ClientStarted == False and ClientUXStarted == False:
     os.startfile("C:\\Riot Games\\League of Legends\\LeagueClient.exe")
     print("Starting League of Legends..")
     time.sleep(15)
-    # logins = tableActions.get_logins()
-    # login,password = logins[0],logins[1]
+    logins = tableActions.get_logins()
+    login,password = logins[0],logins[1]
     print(login, password)
     connect(login,password)
+    
   if ClientStarted == True and ClientUXStarted == False:
     print("Connection client started but not connected to LCU.")
-    # logins =password = tableActions.get_logins()
-    # login,password = logins[0],logins[1]
+    logins =password = tableActions.get_logins()
+    login,password = logins[0],logins[1]
     print(login, password)
     connect(login,password)
+    
   if ClientStarted == True and ClientUXStarted == True:
     print("Connected to LCU, chill.")
     time.sleep(1)
