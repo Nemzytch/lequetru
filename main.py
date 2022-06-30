@@ -531,31 +531,31 @@ class Personnage:
 
 def Connexion():  # sourcery skip: low-code-quality
     print("entered connexxoin")
-    try :
-        logins = tableActions.get_logins()
-        login, password = logins[0], logins[1]
-        clientConnect.stay_connected(login, password)
-        #get last connected account from lastConnectedAcc.txt
-        Personnage.account = tableActions.get_username()
-        print("Connected to account : " + Personnage.account)
+    # try :
+    logins = tableActions.get_logins()
+    login, password = logins[0], logins[1]
+    clientConnect.stay_connected(login, password)
+    #get last connected account from lastConnectedAcc.txt
+    Personnage.account = tableActions.get_username()
+    print("Connected to account : " + Personnage.account)
 
-        gamedirs = [r'C:\Riot Games\League of Legends',r'D:\Games\League of Legends',r'D:\Riot Games\League of Legends',] 
-        lockfile = None
-        while not lockfile:
-            for gamedir in gamedirs:
-                lockpath = r'%s\lockfile' % gamedir
+    gamedirs = [r'C:\Riot Games\League of Legends',r'D:\Games\League of Legends',r'D:\Riot Games\League of Legends',] 
+    lockfile = None
+    while not lockfile:
+        for gamedir in gamedirs:
+            lockpath = r'%s\lockfile' % gamedir
 
-                if not os.path.isfile(lockpath):
-                    print("Waiting League to start")
-                    time.sleep(5)
-                    continue
-                    
-                print('Found running League of Legends, dir', gamedir, "sleeping 10 sec to make sure everything loaded")
-                time.sleep(10)
-                lockfile = open(r'%s\lockfile' % gamedir, 'r')
+            if not os.path.isfile(lockpath):
+                print("Waiting League to start")
+                time.sleep(5)
+                continue
+                
+            print('Found running League of Legends, dir', gamedir, "sleeping 10 sec to make sure everything loaded")
+            time.sleep(10)
+            lockfile = open(r'%s\lockfile' % gamedir, 'r')
       
-    except Exception:
-        print(Exception)
+    # except Exception:
+    #     print(Exception)
         Connexion()
     ConfigSetup()  
 class lobby():
