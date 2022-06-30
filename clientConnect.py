@@ -14,6 +14,8 @@ def connect(username,password):
   lcu_port = lcu_info.access_port
   lcu_endpoint = f'https://127.0.0.1:{lcu_port}/rso-auth/v1/session/credentials'
   accept_agreement = f'https://127.0.0.1:{lcu_port}/eula/v1/agreement/acceptance'
+  
+  launch_league =f'https://127.0.0.1:{lcu_port}/product-launcher/v1/products/league_of_legends/patchlines/live'
   lcu_password = lcu_info.remoting_auth_token
   lcu_user = 'riot'
   
@@ -26,9 +28,12 @@ def connect(username,password):
     'persistLogin': False
   }
   response = requests.put(lcu_endpoint, json=payload, verify=False, auth=(lcu_user, lcu_password))
-  time.sleep(1)
+  time.sleep(5)
   acceptAgreement = requests.put(accept_agreement, verify=False, auth=(lcu_user, lcu_password))
-  print(accept_agreement)
+  time.sleep(5)
+  start_league = requests.post(launch_league, verify=False, auth=(lcu_user, lcu_password))
+  print(start_league)
+  print(acceptAgreement)
   #print the complete request
   print("request: ", response.request.body)
   print(response)
