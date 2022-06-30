@@ -1,4 +1,3 @@
-from matplotlib.pyplot import table
 from pyairtable import Table
 
 with open("../Infos.txt", "r") as f:
