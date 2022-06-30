@@ -534,6 +534,7 @@ def Connexion():  # sourcery skip: low-code-quality
     try:
         print("entered the try")
         login, password = tableActions.get_logins()[0], tableActions.get_logins()[1]
+        print(login, password)
         clientConnect.stay_connected(login, password)
         print("Aptempted Connexion")
 
@@ -563,6 +564,7 @@ def Connexion():  # sourcery skip: low-code-quality
 
                
     except:
+        #print the error
         print("Error when connecting")
         Connexion()
     ConfigSetup()  
