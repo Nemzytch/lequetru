@@ -536,6 +536,8 @@ def Connexion():  # sourcery skip: low-code-quality
         login, password = logins[0], logins[1]
         clientConnect.stay_connected(login, password)
         #get last connected account from lastConnectedAcc.txt
+        Personnage.account = tableActions.get_username()
+        print("Connected to account : " + Personnage.account)
 
         gamedirs = [r'C:\Riot Games\League of Legends',r'D:\Games\League of Legends',r'D:\Riot Games\League of Legends',] 
         lockfile = None

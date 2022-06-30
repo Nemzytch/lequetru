@@ -54,6 +54,6 @@ def get_username():
     for records in table2.all():
         if records['fields']['PcName'] == Pc_Name:
             recordId = records['id']
-            username = table2.first(recordId)['fields']['Username']
+            username = table2.first(recordId)['fields']['ConnectedOn']
             return username
     
