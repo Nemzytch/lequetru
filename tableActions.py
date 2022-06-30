@@ -1,3 +1,4 @@
+from threading import activeCount
 import pyairtable
 from pyairtable import Table
 from pyairtable.formulas import match
@@ -32,5 +33,6 @@ def get_logins():
         if records['fields']['Account'] == account:
             recordId = records['id']
             table.update(recordId, {"Unban": Time})
+            
     return account, password
     

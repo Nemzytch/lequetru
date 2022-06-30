@@ -13,6 +13,7 @@ def connect(username,password):
   lcu_info = LcuInfo()
   lcu_port = lcu_info.access_port
   lcu_endpoint = f'https://127.0.0.1:{lcu_port}/rso-auth/v1/session/credentials'
+  accept_agreement = f'https://127.0.0.1:{lcu_port}/eula/v1/agreement/acceptance'
   lcu_password = lcu_info.remoting_auth_token
   lcu_user = 'riot'
   
@@ -25,6 +26,9 @@ def connect(username,password):
     'persistLogin': False
   }
   response = requests.put(lcu_endpoint, json=payload, verify=False, auth=(lcu_user, lcu_password))
+  time.sleep(1)
+  acceptAgreement = requests.put(accept_agreement, verify=False, auth=(lcu_user, lcu_password))
+  print(accept_agreement)
   #print the complete request
   print("request: ", response.request.body)
   print(response)
@@ -47,17 +51,16 @@ def Connection_State():
 def stay_connected():
   ClientStarted = Connection_State()[0]
   ClientUXStarted = Connection_State()[1]
-  if ClientStarted == False:
+  if ClientStarted == False and ClientUXStarted == False:
     os.startfile("C:\\Riot Games\\League of Legends\\LeagueClient.exe")
     print("Starting League of Legends..")
     time.sleep(15)
-    logins =password = tableActions.get_logins()
+    logins = tableActions.get_logins()
     login,password = logins[0],logins[1]
     print(login, password)
     connect(login,password)
   if ClientStarted == True and ClientUXStarted == False:
     print("Connection client started but not connected to LCU.")
-    time.sleep(5)
     logins =password = tableActions.get_logins()
     login,password = logins[0],logins[1]
     print(login, password)

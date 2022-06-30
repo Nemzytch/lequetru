@@ -534,7 +534,8 @@ def Connexion():  # sourcery skip: low-code-quality
 
     try :
         clientConnect.stay_connected()
-        print("Aptempted Connexion")
+        #get last connected account from lastConnectedAcc.txt
+
 
         gamedirs = [r'C:\Riot Games\League of Legends',r'D:\Games\League of Legends',r'D:\Riot Games\League of Legends',] 
         lockfile = None
