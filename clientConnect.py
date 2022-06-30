@@ -25,6 +25,7 @@ def connect(username,password):
   }
   response = requests.put(lcu_endpoint, json=payload, verify=False, auth=(lcu_user, lcu_password))
   #print the complete request
+  print("request: ", response.request.body)
   print(response)
   print(response.json())
 
@@ -45,6 +46,8 @@ def Connection_State():
 
 def stay_connected(username,password):
   print("hello from stay connected")
+  print("username: ", username)
+  print("password: ", password)
   ClientStarted = Connection_State()[0]
   ClientUXStarted = Connection_State()[1]
   if ClientStarted == False:
