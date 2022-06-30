@@ -27,7 +27,7 @@ table2 = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'ADMIN')
 def get_logins():
     account = table.first(sort=["Unban"])['fields']['Account']
     password = table.first(sort=["Unban"])['fields']['Password']
-    Time = datetime.datetime.now()
+    Time = str(datetime.datetime.now())
     for records in table.all():
         if records['fields']['Account'] == account:
             recordId = records['id']
