@@ -24,18 +24,27 @@ table = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'YUUMI')
 table2 = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'ADMIN')
 
 
-
 def get_logins():
-    account = table.first(sort=["Unban"])['fields']['Account']
-    password = table.first(sort=["Unban"])['fields']['Password']
-    Time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
+    list_of_account = []
+    list_of_connected = []
+    
     for records in table.all():
-        if records['fields']['Account'] == account:
-            recordId = records['id']
-            table.update(recordId, {"Unban": Time})
-            
-    return account, password
+        list_of_account.append(records['fields']['Account'])
+    
+    for records in table2.all():
+        list_of_connected.append(records['fields']['ConnectedOn'])
 
+    for element in list_of_account:
+        if element in list_of_connected:
+            list_of_account.remove(element)
+            
+    for records in table.all(sort=["Unban"]):
+        for element in list_of_account:
+            if records['fields']['Account'] == element:
+                recordId = records['id']
+                Time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
+                table.update(recordId, {"Unban": Time})
+                return records['fields']['Account'], records['fields']['Password']
 
 def update_admin(login):
     try:

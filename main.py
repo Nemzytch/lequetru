@@ -538,16 +538,9 @@ def Connexion():  # sourcery skip: low-code-quality
     TermsOfServices = pyautogui.locateOnScreen("images/TermsOfServices.png", grayscale=False,confidence=0.90)
     try:
         if Connexion_image!=None:
-
-            Personnage.account = table.first(sort=["Unban"])['fields']['Account']
-            password = table.first(sort=["Unban"])['fields']['Password']
-            Time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
-            for records in table.all():
-                if records['fields']['Account'] == Personnage.account:
-                    recordId = records['id']
-                    table.update(recordId, {"Unban": Time})
+            login = tableActions.get_logins()
+            Personnage.account , password = login[0], login[1]
             
-            #LogDesired
             mouse.move(Connexion_image[0],Connexion_image[1]+80)
             time.sleep(0.1)
             MouseClick()
