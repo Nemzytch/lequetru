@@ -530,9 +530,7 @@ class Personnage:
         return False
 
 def Connexion():  # sourcery skip: low-code-quality
-    ConfigSetup()
-    clientConnect.stay_connected()
-    
+    ConfigSetup() 
     table = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'YUUMI') 
     Connexion_image = pyautogui.locateOnScreen("images/Connexion.png", grayscale=False,confidence=0.90)
     TermsOfServices = pyautogui.locateOnScreen("images/TermsOfServices.png", grayscale=False,confidence=0.90)
