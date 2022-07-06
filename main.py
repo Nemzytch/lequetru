@@ -530,27 +530,88 @@ class Personnage:
         return False
 
 def Connexion():  # sourcery skip: low-code-quality
-    print("entered connexxoin")
+    ConfigSetup()
+    # hwid = str(subprocess.check_output('wmic csproduct get uuid')).split('\\r\\n')[1].strip('\\r').strip()
+    
+    table = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'YUUMI') 
+    Connexion_image = pyautogui.locateOnScreen("images/Connexion.png", grayscale=False,confidence=0.90)
+    TermsOfServices = pyautogui.locateOnScreen("images/TermsOfServices.png", grayscale=False,confidence=0.90)
+    try:
+        if Connexion_image!=None:
 
-    clientConnect.stay_connected()
+            Personnage.account = table.first(sort=["Unban"])['fields']['Account']
+            password = table.first(sort=["Unban"])['fields']['Password']
+            Time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
+            for records in table.all():
+                if records['fields']['Account'] == Personnage.account:
+                    recordId = records['id']
+                    table.update(recordId, {"Unban": Time})
+            
+            #LogDesired
+            mouse.move(Connexion_image[0],Connexion_image[1]+80)
+            time.sleep(0.1)
+            MouseClick()
+            pyautogui.typewrite(Personnage.account, interval=0.10)
+            time.sleep(0.1)
+            print(f'Log Write : {Personnage.account}')
+                
+            #PwdDesired
+            mouse.move(Connexion_image[0],Connexion_image[1]+140)
+            time.sleep(0.1)
+            MouseClick()
+            # pyautogui.typewrite(password, interval=0.10)
+            pyperclip.copy(password)
+            pyautogui.hotkey('ctrl', 'v')
+            time.sleep(0.1)
+            print('Pwd Write')
 
-    Personnage.account = tableActions.get_username()
-    print(f"Connected to account : {Personnage.account}")
+            
+            if TermsOfServices != None:
+                mouse.move(TermsOfServices[0],TermsOfServices[1])
+                time.sleep(1)
+                pyautogui.scroll(-100000)
+                time.sleep(1)
+                pyautogui.click(TermsOfServices[0],TermsOfServices[1]+600)
+                
+            #Press connexion button
+            mouse.move(Connexion_image[0]+60,Connexion_image[1]+520)
+            time.sleep(0.1)
+            MouseClick()
+            time.sleep(6)
+            
+            #Press Play button
+            mouse.move(Connexion_image[0],Connexion_image[1]+650)
+            time.sleep(0.1)
+            MouseClick()
+            time.sleep(0.1)
+            gamedirs = [r'C:\Riot Games\League of Legends',r'D:\Games\League of Legends',r'D:\Riot Games\League of Legends',] 
+            lockfile = None
+            while not lockfile:
+                for gamedir in gamedirs:
+                    lockpath = r'%s\lockfile' % gamedir
 
-    gamedirs = [r'C:\Riot Games\League of Legends',r'D:\Games\League of Legends',r'D:\Riot Games\League of Legends',]
-    lockfile = None
-    while not lockfile:
-        for gamedir in gamedirs:
-            lockpath = r'%s\lockfile' % gamedir
-
-            if not os.path.isfile(lockpath):
-                print("Waiting League to start")
-                time.sleep(5)
-                continue
-
-            print('Found running League of Legends, dir', gamedir, "sleeping 10 sec to make sure everything loaded")
-            time.sleep(10)
-            lockfile = open(r'%s\lockfile' % gamedir, 'r')
+                    if not os.path.isfile(lockpath):
+                        print("Waiting League to start")
+                        continue
+                        
+                    print('Found running League of Legends, dir', gamedir, "sleeping 30 sec to make sure everything loaded")
+                    time.sleep(30)
+                    lockfile = open(r'%s\lockfile' % gamedir, 'r')
+            try:
+                for records in table2.all():
+                    if records['fields']['PcName'] == Pc_Name:
+                        recordId = records['id']
+                        table2.update(recordId, {"ConnectedOn": Personnage.account})
+                        #LastAction update
+                        Time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
+                        table2.update(recordId, {"LastActionTime": Time ,"LastAction": 'Connexion'})
+            except:
+                print("Error when updating the table")
+        else:
+            print('No connexion detected, waiting 1 seconds')
+             
+    except:
+        Connexion()
 
     ConfigSetup()  
 class lobby():
