@@ -531,7 +531,7 @@ class Personnage:
 
 def Connexion():  # sourcery skip: low-code-quality
     ConfigSetup()
-    # hwid = str(subprocess.check_output('wmic csproduct get uuid')).split('\\r\\n')[1].strip('\\r').strip()
+    clientConnect.stay_connected()
     
     table = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'YUUMI') 
     Connexion_image = pyautogui.locateOnScreen("images/Connexion.png", grayscale=False,confidence=0.90)
