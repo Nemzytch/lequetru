@@ -848,29 +848,30 @@ def statuscheck():
             ConfigSetup()
             Pause()
             
-            while Personnage.fullApiAccess == False:
-                def Get_champs():
-                    try :
-                        ChampionsCollection = request('get', '/lol-champions/v1/inventories/' + str(accid) + '/champions-playable-count').json()['championsOwned']
-                        if ChampionsCollection < 20:
-                            Store() #buy champs
-                        else:
-                            print('champs ok')
-                        Personnage.fullApiAccess = True
-                        
-                    except:
-                        print("can't get champs yet")
-                        Personnage.fullApiAccess = False
-                        time.sleep(1)
-                
-                    try: 
-                        func_timeout(20, Get_champs)
+            def Get_champs():
+                try :
+                    ChampionsCollection = request('get', '/lol-champions/v1/inventories/' + str(accid) + '/champions-playable-count').json()['championsOwned']
+                    if ChampionsCollection < 20:
+                        Store() #buy champs
+                    else:
+                        print('champs ok')
+                    Personnage.fullApiAccess = True
+                    
+                except:
+                    print("can't get champs yet")
+                    Personnage.fullApiAccess = False
+                    time.sleep(1)
+            
+                try: 
+                    func_timeout(20, Get_champs)
 
-                    except FunctionTimedOut:
-                        print ( "Get champs could not complete within 20 seconds and was terminated.\n")
-                    except Exception as e:
-                        print(e)
-                        
+                except FunctionTimedOut:
+                    print ( "Get champs could not complete within 20 seconds and was terminated.\n")
+                    PussyDestroyer()
+                except Exception as e:
+                    print(e)
+                    
+            while Personnage.fullApiAccess == False:     
                 Get_champs()
                     
             SummonerName = None
