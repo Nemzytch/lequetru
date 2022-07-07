@@ -7,6 +7,7 @@ import time
 import json
 import math
 from cv2 import phase
+from matplotlib.pyplot import get
 import mouse 
 import socket
 import random
@@ -31,6 +32,7 @@ from requests.exceptions import HTTPError
 from requests.exceptions import ConnectionError
 from requests.packages.urllib3.util.retry import Retry
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
+from func_timeout import func_timeout, FunctionTimedOut
 import subprocess
 import pyperclip
 import psutil
@@ -846,19 +848,30 @@ def statuscheck():
             LastAction()
             ConfigSetup()
             Pause()
+            
             while Personnage.fullApiAccess == False:
-                try :
-                    ChampionsCollection = request('get', '/lol-champions/v1/inventories/' + str(accid) + '/champions-playable-count').json()['championsOwned']
+                def Get_champs():
+                    try :
+                        ChampionsCollection = request('get', '/lol-champions/v1/inventories/' + str(accid) + '/champions-playable-count').json()['championsOwned']
+                        if ChampionsCollection < 20:
+                            Store() #buy champs
+                        else:
+                            print('champs ok')
+                        Personnage.fullApiAccess = True
+                        
+                    except:
+                        print("can't get champs yet")
+                        Personnage.fullApiAccess = False
+                        time.sleep(1)
+                Get_champs()
                 
-                    if ChampionsCollection < 20:
-                        Store() #buy champs
-                    else:
-                        print('champs ok')
-                    Personnage.fullApiAccess = True
-                except:
-                    print("can't get champs yet")
-                    Personnage.fullApiAccess = False
-                    time.sleep(1)
+                try: 
+                    func_timeout(20, Get_champs)
+
+                except FunctionTimedOut:
+                    print ( "Get champs could not complete within 20 seconds and was terminated.\n")
+                except Exception as e:
+                    print(e)
                     
             SummonerName = None
             try:
