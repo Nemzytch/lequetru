@@ -8,7 +8,11 @@ import urllib3
 import tableActions
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-
+def accept_agreement():
+  lcu_info = LcuInfo()
+  lcu_port = lcu_info.access_port
+  lcu_endpoint = f'https://localhost:{lcu_port}/riotclient/lcu/acceptagreement'
+  
 def connect(username,password):
   lcu_info = LcuInfo()
   lcu_port = lcu_info.access_port

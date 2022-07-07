@@ -45,6 +45,7 @@ import inGameChecks
 import shop_actions
 import clientConnect
 import tableActions
+import clientConnect
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
@@ -555,14 +556,10 @@ def Connexion():  # sourcery skip: low-code-quality
             pyautogui.hotkey('ctrl', 'v')
             time.sleep(0.1)
             print('Pwd Write')
-
             
-            if TermsOfServices != None:
-                mouse.move(TermsOfServices[0],TermsOfServices[1])
-                time.sleep(1)
-                pyautogui.scroll(-100000)
-                time.sleep(1)
-                pyautogui.click(TermsOfServices[0],TermsOfServices[1]+600)
+            time.sleep(2)
+            clientConnect.accept_agreement()
+            time.sleep(2)
                 
             #Press connexion button
             mouse.move(Connexion_image[0]+60,Connexion_image[1]+520)
