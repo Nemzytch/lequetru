@@ -31,7 +31,6 @@ from requests.exceptions import HTTPError
 from requests.exceptions import ConnectionError
 from requests.packages.urllib3.util.retry import Retry
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
-from func_timeout import func_timeout, FunctionTimedOut
 import subprocess
 import pyperclip
 import psutil
@@ -848,7 +847,9 @@ def statuscheck():
             ConfigSetup()
             Pause()
             
-            def Get_champs():
+
+                    
+            while Personnage.fullApiAccess == False: 
                 try :
                     ChampionsCollection = request('get', '/lol-champions/v1/inventories/' + str(accid) + '/champions-playable-count').json()['championsOwned']
                     if ChampionsCollection < 20:
@@ -860,18 +861,7 @@ def statuscheck():
                 except:
                     print("can't get champs yet")
                     Personnage.fullApiAccess = False
-                    time.sleep(1)
-            
-                try: 
-                    func_timeout(20, Get_champs)
-
-                except FunctionTimedOut:
-                    print ( "Get champs could not complete within 20 seconds and was terminated.\n")
-                    #stop all and run Pussydestroyer
-                    PussyDestroyer()
-                    
-            while Personnage.fullApiAccess == False:     
-                Get_champs()
+                    time.sleep(1)    
                     
             SummonerName = None
             try:
