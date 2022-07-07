@@ -862,15 +862,16 @@ def statuscheck():
                         print("can't get champs yet")
                         Personnage.fullApiAccess = False
                         time.sleep(1)
-                Get_champs()
                 
-                try: 
-                    func_timeout(20, Get_champs)
+                    try: 
+                        func_timeout(20, Get_champs)
 
-                except FunctionTimedOut:
-                    print ( "Get champs could not complete within 20 seconds and was terminated.\n")
-                except Exception as e:
-                    print(e)
+                    except FunctionTimedOut:
+                        print ( "Get champs could not complete within 20 seconds and was terminated.\n")
+                    except Exception as e:
+                        print(e)
+                        
+                Get_champs()
                     
             SummonerName = None
             try:
