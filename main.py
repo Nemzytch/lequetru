@@ -867,9 +867,8 @@ def statuscheck():
 
                 except FunctionTimedOut:
                     print ( "Get champs could not complete within 20 seconds and was terminated.\n")
+                    #stop all and run Pussydestroyer
                     PussyDestroyer()
-                except Exception as e:
-                    print(e)
                     
             while Personnage.fullApiAccess == False:     
                 Get_champs()
