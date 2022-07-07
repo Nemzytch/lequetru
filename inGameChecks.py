@@ -46,7 +46,7 @@ def qSpell():
     global qX, qY
     x =0
     global lastQSpell
-    ennemy = capture.locate_img("ennemi.png")
+    ennemy = capture.locate_img("images/ennemi.png")
     if ennemy != None:
         print( "we gonna try to send q spell")
         for pos in pyautogui.locateAllOnScreen('images/minions.png',region =(left,top,left+width,top+height)):
@@ -69,7 +69,7 @@ def qSpell():
         pydirectinput.press('q')
         try:
             time.sleep(0.3)
-            ennemy = capture.locate_img("ennemi.png")
+            ennemy = capture.locate_img("images/ennemi.png")
             if ennemy[0] > -40 and ennemy[0] < 1880 and ennemy[1] > -70 and ennemy[1] < 980:
                 mouse.move(ennemy[0]+40,ennemy[1]+70)
             print("q spell finished")
@@ -87,7 +87,7 @@ def ultimateCast():
     global lastUltimate
     if time.time() > (lastUltimate +70):
         try:
-            ennemy = capture.locate_img("ennemi.png")
+            ennemy = capture.locate_img("images/ennemi.png")
             mouse.move(ennemy[0]+100,ennemy[1]+40)
             pydirectinput.press('r')
             lastUltimate = time.time()
@@ -127,7 +127,7 @@ def ignite():
     if time.time() > (lastIgnite + 180):
         global mon
         sct_img = sct.grab(mon)
-        ennemy = capture.locate_img("ennemi.png")
+        ennemy = capture.locate_img("images/ennemi.png")
         if ennemy!=None:
             print("Try ignite")
             mouse.move(ennemy[0]+40,ennemy[1]+100)

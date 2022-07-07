@@ -460,7 +460,7 @@ class Personnage:
         sct_img = sct.grab(mon)
         if time.time() > (self.passiveCooldown +10):
             try:
-                Ennemies = capture.locate_img("ennemi.png")
+                Ennemies = capture.locate_img("images/ennemi.png")
                 if Ennemies[0] > -40 and Ennemies[0] < 1880 and Ennemies[1] > -100 and Ennemies[1] < 980:
                     mouse.move(Ennemies[0]+40, Ennemies[1]+100)
                 self.ennemyPosition = [Ennemies[0], Ennemies[1]]
