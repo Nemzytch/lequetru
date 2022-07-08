@@ -2,6 +2,7 @@ import os
 import sys
 import datetime
 from pyairtable import Table
+import requests
 
 with open(r"C:\Users\Administrator\Desktop\Infos.txt", "r") as f:
     for line in f:         
@@ -27,7 +28,8 @@ def check_time():
 def check_crash(last_airtable_action):
     date_crash = datetime.datetime.strptime(last_airtable_action.replace("T", " ")[:-5], '%Y-%m-%d %H:%M:%S')
     utc_2 = date_crash + datetime.timedelta(hours=3)
-    if datetime.datetime.now() > utc_2:
+    Time = (requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['datetime']).replace("T", " ")[:-13]
+    if str(Time) > str(utc_2):
         return True
     else:
         return False
