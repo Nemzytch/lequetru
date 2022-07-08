@@ -252,8 +252,7 @@ class Personnage:
             for records in table2.all():
                 if records['fields']['PcName'] == Pc_Name:
                     recordId = records['id']
-                    Time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
-                    table2.update(recordId, {"LastActionTime": Time ,"LastAction": "InGame" })
+                    table2.update(recordId, {"LastAction": "InGame" })
         except:
             print("Can not update the table")
             
@@ -578,9 +577,7 @@ def Connexion():  # sourcery skip: low-code-quality
                     if records['fields']['PcName'] == Pc_Name:
                         recordId = records['id']
                         table2.update(recordId, {"ConnectedOn": Personnage.account})
-                        #LastAction update
-                        Time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
-                        table2.update(recordId, {"LastActionTime": Time ,"LastAction": 'Connexion'})
+                        table2.update(recordId, {"LastAction": 'Connexion'})
 
             except:
                 print("Error when updating the table")
@@ -714,18 +711,11 @@ def statuscheck():
             try:
                 current_time = datetime.datetime.now()
                 if (current_time - saved_time).seconds >= 15:
-                    Time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
                     SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
                     for records in table2.all():
                         if records['fields']['PcName'] == Pc_Name:
                             recordId = records['id']
-                            table2.update(recordId, {"LastActionTime": Time ,"LastAction": phase})
-                    
-                    for records in table.all():
-                        if records['fields']['IngameName'] == SummonerName:
-                            recordId = records['id']
-                            table.update(recordId, {"Unban": Time})
-                    
+                            table2.update(recordId, {"LastAction": phase})
                             saved_time = datetime.datetime.now()
             except:
                 print('Error when updating the table')
