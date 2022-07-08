@@ -2,8 +2,8 @@ import os
 import sys
 import datetime
 from pyairtable import Table
-#C:\Users\Administrator\Desktop\Infos.txt
-with open("C:\Users\Administrator\Desktop\Infos.txt", "r") as f:
+
+with open(r"C:\Users\Administrator\Desktop\Infos.txt", "r") as f:
     for line in f:         
         if "PC_NAME" in line:
             Pc_Name = line.strip().split(":")[1]
