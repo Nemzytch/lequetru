@@ -35,8 +35,12 @@ def check_crash(last_airtable_action):
     date_crash = datetime.datetime.strptime(last_airtable_action.replace("T", " ")[:-5], '%Y-%m-%d %H:%M:%S')
     utc_2 = date_crash + datetime.timedelta(hours=3)
     if datetime.datetime.now() > utc_2:
+        print("True")
+        time.sleep(250)
         return True
     else:
+        print("false")
+        time.sleep(250)
         return False
 
 def just_restarted():
