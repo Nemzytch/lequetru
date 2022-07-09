@@ -37,8 +37,8 @@ def check_crash(last_airtable_action):
 def just_restarted():
     for records in table2.all():
         if records['fields']['PcName'] == Pc_Name:
-                table2.update(records['id'], {'LastAction':'Just Restarted'})         
-            
+                table2.update(records['id'], {'LastAction':'Just Restarted'})
+                table2.update(records['id'], {'N.Crashed': int(records['fields']['GamePlayed'])+1})
 def restart():
     if check_crash(check_time())== True:
         just_restarted()
