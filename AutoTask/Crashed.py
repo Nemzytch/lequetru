@@ -46,7 +46,7 @@ def discord():
         'content': (Pc_Name + ' crashed at ' + check_time() + ' and restarted at '+ Time),
     }
     headers = {
-        'authorization': 'OTY0OTg2MDQwODY1NjgxNDMw.Ylsnjw.RsDfA2OIl7rPKLUpGmd8XoTgc6s'
+        'authorization': 'MzczNTI1MDgwNzAzMjM4MTQ1.Yd1yjQ.1EIuHQh2sbo2EIK12Zgs_7djrY8'
     }
     
     (pyautogui.screenshot()).save ('photo.png')
