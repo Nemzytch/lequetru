@@ -55,7 +55,7 @@ def discord():
    
 def restart():
     if check_crash(check_time())== True:
-        discord()
+        #discord()
         just_restarted()
         print("Restarting PC")
         os.system("shutdown -r -t 0")
