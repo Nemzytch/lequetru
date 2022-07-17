@@ -4,6 +4,7 @@ import datetime
 from pyairtable import Table
 import requests
 import pyautogui
+import time
 
 with open(r"C:\Users\Administrator\Desktop\Infos.txt", "r") as f:
     for line in f:         
@@ -35,7 +36,18 @@ def check_crash(last_airtable_action):
     else:
         return False
 
-def just_restarted():
+def Pause():
+    for records in table2.all():
+        if records['fields']['PcName'] == Pc_Name:
+            recordId = records['id']
+            if "Status" in records['fields']:
+                print("Play")
+            else:
+                print("Pause :(")
+                time.sleep(600)
+                Pause()
+                
+def just_restarted():         
     for records in table2.all():
         if records['fields']['PcName'] == Pc_Name:
                 table2.update(records['id'], {'LastAction':'Just Restarted'})
@@ -54,6 +66,7 @@ def discord():
                     data=payload,headers=headers, files={'file': open('photo.png', 'rb')})
    
 def restart():
+    Pause()
     if check_crash(check_time())== True:
         #discord()
         just_restarted()
