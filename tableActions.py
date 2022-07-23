@@ -26,18 +26,27 @@ table2 = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'ADMIN')
 
 def get_logins():
     list_of_account = []
+    list_of_finished = []
+    list_of_banned = []
     list_of_connected = []
     
     for records in table.all():
         list_of_account.append(records['fields']['Account'])
-    
+        
+        if records['fields']['FinishedAcc'] == "Finish":
+            list_of_finished.append(records['fields']['Account'])
+            
+        if records['fields']['FinishedAcc'] == "Banned ?":
+            list_of_banned.append(records['fields']['Account'])
+            
     for records in table2.all():
         list_of_connected.append(records['fields']['ConnectedOn'])
+    
+    for i in range(5):
+        for element in list_of_account:
+            if element in list_of_connected or element in list_of_finished or element in list_of_banned:
+                list_of_account.remove(element)
 
-    for element in list_of_account:
-        if element in list_of_connected:
-            list_of_account.remove(element)
-            
     for records in table.all(sort=["Unban"]):
         for element in list_of_account:
             if records['fields']['Account'] == element:
@@ -45,7 +54,7 @@ def get_logins():
                 Time = requests.get("http://worldtimeapi.org/api/timezone/Europe/Paris").json()['utc_datetime']
                 table.update(recordId, {"Unban": Time})
                 return records['fields']['Account'], records['fields']['Password']
-
+    
 def update_admin(login):
     try:
         for records in table2.all():
