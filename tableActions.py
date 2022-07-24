@@ -72,4 +72,47 @@ def get_username():
     for records in table2.all():
         if records['fields']['PcName'] == Pc_Name:
             return records['fields']['ConnectedOn']
+        
+        
+def set_blue_essence(IngameName,amount):
+    for records in table.all():
+        if records['fields']['IngameName'] == IngameName:
+            recordId = records['id']
+            table.update(recordId, {"BlueEssence": amount})
+
+
+def set_skin_list(IngameName,skin_list):
+    for records in table.all():
+        if records['fields']['IngameName'] == IngameName:
+            recordId = records['id']
+            table.update(recordId, {"SkinList": skin_list})
+           
+            
+def get_account_name(IngameName):
+    for records in table.all():
+        if records['fields']['IngameName'] == IngameName:
+            return records['fields']['Account']
+        
+
+def set_low_priority(IngameName,low_priority):
+    for records in table.all():
+        if records['fields']['IngameName'] == IngameName:
+            recordId = records['id']
+            table.update(recordId, {"LowPriority": low_priority})
+            
+            
+def check_ingame_name(winloss):
+    for records in table.all():
+        if records['fields']['WIN/LOSS'] == winloss:
+            print(records['fields']['IngameName'])
+            if records['fields']['IngameName'] == "None":
+                return False
+            
+            
+def set_ingame_name(IngameName,winloss):
+    for records in table.all():
+        if records['fields']['WIN/LOSS'] == winloss:
+            recordId = records['id']
+            table.update(recordId, {"IngameName": IngameName})
+            return True
     

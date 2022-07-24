@@ -45,6 +45,7 @@ import inGameChecks
 import shop_actions
 import clientConnect
 import tableActions
+import SetupFinishedAcc
 import clientConnect
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -825,7 +826,7 @@ def statuscheck():
             if tier == 'IRON' and division == 'IV' and leaguepoints <= 0:
                 print('One more account readyyyyy')
                 table.update(recordId, {"FinishedAcc": "Finish"})
-                table.update(recordId,{"PcName":  Pc_Name+" STOP"})
+                SetupFinishedAcc.FinishAcc()
                 PussyDestroyer()
         
             time.sleep(2)
@@ -833,7 +834,7 @@ def statuscheck():
         if phase =='None':
             PhaseBlock()
             LastAction()
-            ConfigSetup()
+            # ConfigSetup()
             Pause()
             
 
@@ -879,7 +880,6 @@ def statuscheck():
             PhaseBlock()
         
         if phase =='Lobby': 
-            ConfigSetup()
             PhaseBlock()
             LastAction()
             SummonerName = request('get', '/lol-summoner/v1/current-summoner').json()["displayName"]
@@ -901,7 +901,7 @@ def statuscheck():
             if tier == 'IRON' and division == 'IV' and leaguepoints <= 0:
                 print('One more account readyyyyy')
                 table.update(recordId, {"FinishedAcc": "Finish"})
-                table.update(recordId,{"PcName":  Pc_Name+" STOP"})
+                SetupFinishedAcc.FinishAcc()
                 PussyDestroyer()
                 
             QueueLockout = None
