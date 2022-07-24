@@ -822,7 +822,6 @@ def statuscheck():
                     recordId = records['id']
                     table.update(recordId, {"WIN/LOSS": str(wins)+'W/'+str(losses)+'L',"Rank": str(tier) +' '+ str(division) +' '+ str(leaguepoints)+"LP"})
             
-            #Iron4 0Lp stop account
             if tier == 'IRON' and division == 'IV' and leaguepoints <= 0:
                 print('One more account readyyyyy')
                 table.update(recordId, {"FinishedAcc": "Finish"})
@@ -901,7 +900,8 @@ def statuscheck():
             
             if tier == 'IRON' and division == 'IV' and leaguepoints <= 0:
                 print('One more account readyyyyy')
-                table.update(recordId,{"PcName":  Pc_Name+" STOP","HWID":  Pc_Name+" STOP","FinishedAcc": "Finish"})
+                table.update(recordId, {"FinishedAcc": "Finish"})
+                table.update(recordId,{"PcName":  Pc_Name+" STOP"})
                 PussyDestroyer()
                 
             QueueLockout = None
