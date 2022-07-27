@@ -16,7 +16,7 @@ import time
 connector = Connector()
 
 Summoner_id = "none"
-text = "Ceci est un message envoyer depuis l'api et j'ai aussi accepté votre demande d'ami uwu ezzzz"
+text = "Hello summoner,\n\nWe hope you will have fun with your new account! Feel free to join our discord and leave a comment about your experience with NoxuSmurfs, a Prime capsule is rewarded for this!\n\nAny question or problem with one of our accounts? You can contact us on our discord server, a room is dedicated to this :)\n\nDiscord link : https://discord.gg/k7XcvqJ3Ra"
 
 async def Message(connection):
     global Summoner_id
