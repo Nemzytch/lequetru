@@ -827,6 +827,7 @@ def statuscheck():
                 print('One more account readyyyyy')
                 table.update(recordId, {"FinishedAcc": "Finish"})
                 SetupFinishedAcc.FinishAcc()
+                request("post", "/lol-chat/v1/friend-requests", data = {"name": "NoxuSmurfs", "direction": "out"})
                 PussyDestroyer()
         
             time.sleep(2)
@@ -834,7 +835,7 @@ def statuscheck():
         if phase =='None':
             PhaseBlock()
             LastAction()
-            # ConfigSetup()
+            ConfigSetup()
             Pause()
             
 
@@ -902,6 +903,7 @@ def statuscheck():
                 print('One more account readyyyyy')
                 table.update(recordId, {"FinishedAcc": "Finish"})
                 SetupFinishedAcc.FinishAcc()
+                request("post", "/lol-chat/v1/friend-requests", data = {"name": "NoxuSmurfs", "direction": "out"})
                 PussyDestroyer()
                 
             QueueLockout = None
