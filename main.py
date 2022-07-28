@@ -100,6 +100,7 @@ table2 = Table(API_KEY, 'appHnr7cu8j1HlMC2', 'ADMIN')
 
 PhaseNumber = 0
 Lastphase = "Nothing"
+Banned_account_indice = 0
 
 def restart():
     subprocess.call(["git", "reset", "--hard", "HEAD"])
@@ -838,7 +839,7 @@ def statuscheck():
             ConfigSetup()
             Pause()
             
-
+            global Banned_account_indice
                     
             while Personnage.fullApiAccess == False: 
                 try :
@@ -851,6 +852,13 @@ def statuscheck():
                     
                 except:
                     print("can't get champs yet")
+                    Banned_account_indice = Banned_account_indice + 1
+                    print(Banned_account_indice)
+                    if Banned_account_indice >= 10:
+                        Banned_account_indice = 0
+                        tableActions.set_banned_account()
+                        PussyDestroyer()
+                        
                     Personnage.fullApiAccess = False
                     time.sleep(1)    
                     

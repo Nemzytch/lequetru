@@ -116,4 +116,19 @@ def set_ingame_name(IngameName,winloss):
             recordId = records['id']
             table.update(recordId, {"IngameName": IngameName})
             return True
-    
+
+def get_account_connected_on():
+    for records in table2.all():
+        if records['fields']['PcName'] == Pc_Name:
+            return records['fields']['ConnectedOn']
+            
+def set_banned_account():
+    for records in table2.all():
+        if records['fields']['PcName'] == Pc_Name:
+            connected_on = records['fields']['ConnectedOn']
+        
+    for records in table.all():
+        if records['fields']['Account'] == connected_on:
+            recordId = records['id']
+            table.update(recordId, {"FinishedAcc": "Banned ?"})
+            

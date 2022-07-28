@@ -33,7 +33,7 @@ async def Message(connection):
             time.sleep(1)
             await connection.request("post",f"/lol-chat/v1/conversations/{Summoner_id}/messages", data={"body": text})
             
-        print("Message envoyé")
+        print("Message envoyé à " + Summoner_id)
 
 #connection 
 @connector.ready
