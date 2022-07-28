@@ -44,7 +44,8 @@ def get_logins():
     
     for i in range(5):
         for element in list_of_account:
-            if element in list_of_connected or element in list_of_finished or element in list_of_banned:
+            # if element in list_of_connected or element in list_of_finished or element in list_of_banned:
+            if element in list_of_connected or element in list_of_banned:
                 list_of_account.remove(element)
 
     for records in table.all(sort=["Unban"]):
