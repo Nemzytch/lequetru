@@ -43,6 +43,9 @@ def get_logins():
         
         if records['fields']['FinishedAcc'] == "Vendu":
             list_of_not_available.append(records['fields']['Account'])
+        
+        if records['fields']['FinishedAcc'] == "No champs":
+            list_of_not_available.append(records['fields']['Account'])
             
     for records in table2.all():
         list_of_not_available.append(records['fields']['ConnectedOn'])
