@@ -854,7 +854,7 @@ def statuscheck():
                     print("can't get champs yet")
                     Banned_account_indice = Banned_account_indice + 1
                     print(Banned_account_indice)
-                    if Banned_account_indice >= 10:
+                    if Banned_account_indice >= 60:
                         Banned_account_indice = 0
                         tableActions.set_banned_account()
                         PussyDestroyer()
