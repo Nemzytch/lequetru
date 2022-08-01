@@ -687,7 +687,7 @@ def statuscheck():
             else: # si c'est la meme Phase que la derniere fois ca veut dire que c'est pas passée à autre chose et on check si ca recommence plus de 10 fois
                 
                 PhaseNumber = PhaseNumber + 1 # Rajoute 1 pour chaque meme phase
-                if PhaseNumber >= 10: 
+                if PhaseNumber >= 40: 
                     print(f"{phase} phase time to run pussy destroyer")
                     print(PhaseNumber)
                     PussyDestroyer()
